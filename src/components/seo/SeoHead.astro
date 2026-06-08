@@ -12,7 +12,7 @@ const {
   title,
   description,
   canonicalPath = Astro.url.pathname,
-  ogImage = '/og/chiffr-default.jpg',
+  ogImage = '/og/chiffr-default.png',
   noindex = false,
   schema,
 } = Astro.props;
@@ -20,7 +20,34 @@ const {
 const siteUrl = Astro.site ?? new URL('https://chiffr-devis.fr');
 const canonicalUrl = new URL(canonicalPath, siteUrl).toString().replace(/\/$/, '');
 const absoluteOgImage = new URL(ogImage, siteUrl).toString();
-const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+const toAbsoluteSiteUrl = (value: string) => new URL(value, siteUrl).toString();
+
+const absolutizeSchemaUrls = (value: any): any => {
+  if (Array.isArray(value)) {
+    return value.map(absolutizeSchemaUrls);
+  }
+
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => {
+        if (
+          (key === 'item' || key === 'url' || key === '@id') &&
+          typeof entry === 'string' &&
+          entry.startsWith('/')
+        ) {
+          return [key, toAbsoluteSiteUrl(entry)];
+        }
+
+        return [key, absolutizeSchemaUrls(entry)];
+      }),
+    );
+  }
+
+  return value;
+};
+
+const rawSchemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+const schemas = rawSchemas.map(absolutizeSchemaUrls);
 ---
 
 <title>{title}</title>
