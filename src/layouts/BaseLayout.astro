@@ -35,18 +35,15 @@ const navItems = [
   { label: 'VMC', href: '/logiciel-devis-vmc' },
   { label: 'IRVE', href: '/logiciel-devis-irve' },
   { label: 'Solaire', href: '/logiciel-devis-photovoltaique' },
-  { label: 'Fonctions', href: '/fonctionnalites' },
   { label: 'Tarifs', href: '/tarifs' },
-  { label: 'Modèles', href: '/modeles-devis' },
-  { label: 'Guides', href: '/guides-devis-artisans-energie' },
-  { label: 'Alternatives', href: '/alternatives-logiciels-devis-batiment' },
 ];
 
 const resourceItems = [
-  { label: 'Modèles de devis', href: '/modeles-devis' },
-  { label: 'Alternatives logiciels', href: '/alternatives-logiciels-devis-batiment' },
-  { label: 'Guides', href: '/guides-devis-artisans-energie' },
+  { label: 'Tarifs', href: '/tarifs' },
   { label: 'Fonctionnalités', href: '/fonctionnalites' },
+  { label: 'Modèles de devis', href: '/modeles-devis' },
+  { label: 'Guides', href: '/guides-devis-artisans-energie' },
+  { label: 'Alternatives logiciels', href: '/alternatives-logiciels-devis-batiment' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -105,25 +102,14 @@ const isLegalPath = legalPaths.some(
       .site-header * {
         box-sizing: border-box;
       }
-
-      :root {
-        --chiffr-header-offset: 146px;
-      }
-
-      body {
-        padding-top: var(--chiffr-header-offset);
-      }
-
       [id] {
-        scroll-margin-top: calc(var(--chiffr-header-offset) + 18px);
+        scroll-margin-top: 128px;
       }
 
-      .site-header {
-        position: fixed;
+.site-header {
+        position: sticky;
         top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1000;
+        z-index: 90;
         padding: 14px 20px;
         background:
           linear-gradient(180deg, rgba(255, 248, 239, 0.97), rgba(255, 248, 239, 0.88)),
@@ -275,6 +261,7 @@ const isLegalPath = legalPaths.some(
       .nav-links::-webkit-scrollbar {
         display: none;
       }
+
 
       .nav-link,
       .nav-more-button {
@@ -620,20 +607,7 @@ const isLegalPath = legalPaths.some(
           grid-template-columns: 1.2fr 0.8fr 0.8fr;
         }
       }
-
-      @media (min-width: 1241px) {
-        :root {
-          --chiffr-header-offset: 128px;
-        }
-      }
-
-      @media (max-width: 420px) {
-        :root {
-          --chiffr-header-offset: 178px;
-        }
-      }
-
-      @media (max-width: 1240px) {
+@media (max-width: 1240px) {
         .header-shell {
           grid-template-columns: 1fr;
         }
@@ -655,11 +629,7 @@ const isLegalPath = legalPaths.some(
       }
 
       @media (max-width: 760px) {
-        :root {
-          --chiffr-header-offset: 170px;
-        }
-
-        .site-header {
+.site-header {
           padding: 12px 14px 10px;
         }
 
@@ -772,6 +742,344 @@ const isLegalPath = legalPaths.some(
 
         .footer-bottom {
           display: grid;
+        }
+      }
+
+
+      .mobile-menu-toggle,
+      .mobile-menu-backdrop,
+      .mobile-menu-panel {
+        display: none;
+      }
+
+      @media (max-width: 860px) {
+body.mobile-menu-open {
+          overflow: hidden;
+        }
+
+        .site-header {
+          padding: 10px 12px 8px;
+        }
+
+        .header-shell {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+        }
+
+        .brand-card {
+          min-width: 0;
+          grid-template-columns: 44px auto;
+          gap: 10px;
+          padding: 8px 10px;
+          border-radius: 20px;
+        }
+
+        .brand-mark {
+          width: 44px;
+          height: 44px;
+          border-radius: 15px;
+          font-size: 23px;
+        }
+
+        .brand-name {
+          font-size: 20px;
+        }
+
+        .brand-subtitle {
+          font-size: 10.5px;
+          line-height: 1.18;
+        }
+
+        .nav-card {
+          width: auto;
+          display: flex;
+          padding: 0;
+          border: 0;
+          background: transparent;
+          box-shadow: none;
+        }
+
+        .home-link,
+        .nav-links,
+        .nav-more,
+        .header-cta,
+        .mobile-nav-shell {
+          display: none !important;
+        }
+
+        .mobile-menu-toggle {
+          width: 52px;
+          height: 52px;
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          border: 1px solid rgba(18, 63, 61, 0.1);
+          border-radius: 18px;
+          background: rgba(255, 255, 255, 0.82);
+          color: var(--teal);
+          box-shadow:
+            0 16px 36px rgba(18, 63, 61, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+          width: 21px;
+          height: 2px;
+          border-radius: 999px;
+          background: currentColor;
+          transition: transform 180ms ease, opacity 180ms ease;
+        }
+
+        .mobile-menu-toggle.is-open span:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.is-open span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .mobile-menu-toggle.is-open span:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .header-reform-strip {
+          min-height: 34px;
+          margin-top: 8px;
+          justify-content: center;
+          border-radius: 18px;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .header-reform-strip span:not(.header-reform-icon) {
+          display: none;
+        }
+
+        .mobile-menu-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 1090;
+          display: block;
+          background: rgba(8, 29, 28, 0.46);
+          opacity: 0;
+          transition: opacity 180ms ease;
+        }
+
+        .mobile-menu-backdrop.is-visible {
+          opacity: 1;
+        }
+
+        .mobile-menu-panel {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1100;
+          width: min(390px, 88vw);
+          display: flex;
+          flex-direction: column;
+          background:
+            radial-gradient(circle at 100% 0%, rgba(183, 110, 60, 0.12), transparent 34%),
+            linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(248, 241, 232, 0.98));
+          border-left: 1px solid rgba(18, 63, 61, 0.12);
+          box-shadow: -28px 0 80px rgba(18, 63, 61, 0.22);
+          transform: translateX(104%);
+          transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mobile-menu-panel.is-open {
+          transform: translateX(0);
+        }
+
+        .mobile-menu-head {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+          padding: 18px 18px 14px;
+          border-bottom: 1px solid rgba(18, 63, 61, 0.08);
+        }
+
+        .mobile-menu-logo {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          color: var(--teal);
+        }
+
+        .mobile-menu-logo strong {
+          display: block;
+          font-size: 22px;
+          line-height: 1;
+          font-weight: 950;
+          letter-spacing: -0.04em;
+        }
+
+        .mobile-menu-logo span {
+          display: block;
+          margin-top: 4px;
+          color: #667977;
+          font-size: 11px;
+          line-height: 1.2;
+          font-weight: 800;
+        }
+
+        .mobile-menu-close {
+          width: 46px;
+          height: 46px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(18, 63, 61, 0.1);
+          border-radius: 16px;
+          background: rgba(255, 255, 255, 0.8);
+          color: var(--teal);
+          font-size: 32px;
+          line-height: 1;
+          cursor: pointer;
+        }
+
+        .mobile-menu-body {
+          display: grid;
+          gap: 18px;
+          padding: 18px;
+          overflow-y: auto;
+        }
+
+        .mobile-menu-group p {
+          margin: 0 0 10px;
+          color: var(--copper);
+          font-size: 12px;
+          line-height: 1;
+          font-weight: 950;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+
+        .mobile-menu-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 9px;
+        }
+
+        .mobile-menu-link,
+        .mobile-menu-row {
+          color: var(--teal);
+          border: 1px solid rgba(18, 63, 61, 0.1);
+          background: rgba(255, 255, 255, 0.78);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .mobile-menu-link {
+          min-height: 46px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 12px;
+          border-radius: 17px;
+          font-size: 13px;
+          font-weight: 950;
+        }
+
+        .mobile-menu-link.active,
+        .mobile-menu-row.active {
+          border-color: rgba(18, 63, 61, 0.2);
+          background: var(--teal);
+          color: white;
+        }
+
+        .mobile-menu-list {
+          display: grid;
+          gap: 9px;
+        }
+
+        .mobile-menu-row {
+          min-height: 52px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+          padding: 0 15px;
+          border-radius: 18px;
+          font-size: 15px;
+          font-weight: 950;
+        }
+
+        .mobile-menu-row strong {
+          color: var(--copper);
+          font-size: 18px;
+        }
+
+        .mobile-menu-row.active strong {
+          color: white;
+        }
+
+        .mobile-menu-cta {
+          min-height: 56px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          border-radius: 999px;
+          background: var(--teal);
+          color: white;
+          font-size: 15px;
+          font-weight: 950;
+          box-shadow: 0 18px 44px rgba(18, 63, 61, 0.18);
+        }
+
+        .mobile-menu-reform {
+          display: grid;
+          gap: 6px;
+          padding: 16px;
+          border-radius: 20px;
+          background: rgba(220, 236, 235, 0.68);
+          border: 1px solid rgba(18, 63, 61, 0.1);
+          color: var(--teal);
+        }
+
+        .mobile-menu-reform strong {
+          font-size: 14px;
+          font-weight: 950;
+        }
+
+        .mobile-menu-reform span {
+          color: #667977;
+          font-size: 13px;
+          line-height: 1.35;
+          font-weight: 760;
+        }
+
+        .footer-bottom {
+          display: grid;
+        }
+      }
+      @media (max-width: 420px) {
+.brand-card {
+          grid-template-columns: 40px auto;
+          padding: 8px;
+        }
+
+        .brand-mark {
+          width: 40px;
+          height: 40px;
+          border-radius: 14px;
+          font-size: 21px;
+        }
+
+        .brand-name {
+          font-size: 19px;
+        }
+
+        .mobile-menu-toggle {
+          width: 48px;
+          height: 48px;
+          border-radius: 17px;
         }
       }
 
@@ -905,6 +1213,7 @@ const isLegalPath = legalPaths.some(
                 ))}
               </div>
             </div>
+
           </div>
 
           <a href="/contact" class="header-cta">
@@ -916,6 +1225,19 @@ const isLegalPath = legalPaths.some(
             </svg>
             <span>Demander un accès</span>
           </a>
+
+          <button
+            type="button"
+            class="mobile-menu-toggle"
+            data-mobile-menu-button
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
         </nav>
       </div>
 
@@ -925,27 +1247,71 @@ const isLegalPath = legalPaths.some(
         <span>Chiffr vous aide à préparer vos factures, données client et dossiers.</span>
       </a>
 
-      <div class="mobile-nav-shell">
-        <div class="mobile-nav-scroll" aria-label="Navigation mobile">
-          {navItems.map((item) => (
-            <a
-              href={item.href}
-              class:list={['mobile-link', { active: isActive(item.href) }]}
-            >
-              {item.label}
-            </a>
-          ))}
 
-          {resourceItems.map((item) => (
-            <a
-              href={item.href}
-              class:list={['mobile-link resource', { active: isActive(item.href) }]}
-            >
-              {item.label}
-            </a>
-          ))}
+      <div class="mobile-menu-backdrop" data-mobile-menu-backdrop hidden></div>
+
+      <aside
+        id="mobile-menu"
+        class="mobile-menu-panel"
+        data-mobile-menu-panel
+        aria-label="Menu mobile Chiffr"
+        aria-hidden="true"
+      >
+        <div class="mobile-menu-head">
+          <a href="/" class="mobile-menu-logo" aria-label="Accueil Chiffr">
+            <div class="brand-mark small" aria-hidden="true">C</div>
+            <div>
+              <strong>Chiffr</strong>
+              <span>Devis &amp; factures artisans énergie</span>
+            </div>
+          </a>
+
+          <button
+            type="button"
+            class="mobile-menu-close"
+            data-mobile-menu-close
+            aria-label="Fermer le menu"
+          >
+            ×
+          </button>
         </div>
-      </div>
+
+        <div class="mobile-menu-body">
+          <div class="mobile-menu-group">
+            <p>Métiers</p>
+            <div class="mobile-menu-grid">
+              {navItems.slice(0, 7).map((item) => (
+                <a href={item.href} class:list={['mobile-menu-link', { active: isActive(item.href) }]}>
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="mobile-menu-group">
+            <p>Ressources</p>
+            <div class="mobile-menu-list">
+              {resourceItems.map((item) => (
+                <a href={item.href} class:list={['mobile-menu-row', { active: isActive(item.href) }]}>
+                  <span>{item.label}</span>
+                  <strong>→</strong>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <a href="/contact" class="mobile-menu-cta">
+            Demander un accès
+            <span aria-hidden="true">→</span>
+          </a>
+
+          <a class="mobile-menu-reform" href="/fonctionnalites#facturation-electronique">
+            <strong>Facturation électronique 2026–2027</strong>
+            <span>Préparer vos factures, mentions et dossiers client.</span>
+          </a>
+        </div>
+      </aside>
+
     </header>
 
     <main>
@@ -1034,6 +1400,50 @@ const isLegalPath = legalPaths.some(
 
       moreMenu?.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', closeMoreMenu);
+      });
+
+      const mobileMenuButton = document.querySelector('[data-mobile-menu-button]');
+      const mobileMenuPanel = document.querySelector('[data-mobile-menu-panel]');
+      const mobileMenuBackdrop = document.querySelector('[data-mobile-menu-backdrop]');
+      const mobileMenuClose = document.querySelector('[data-mobile-menu-close]');
+
+      function setMobileMenu(open) {
+        if (!mobileMenuButton || !mobileMenuPanel || !mobileMenuBackdrop) return;
+
+        document.body.classList.toggle('mobile-menu-open', open);
+        mobileMenuButton.classList.toggle('is-open', open);
+        mobileMenuButton.setAttribute('aria-expanded', String(open));
+        mobileMenuPanel.setAttribute('aria-hidden', String(!open));
+
+        if (open) {
+          mobileMenuBackdrop.hidden = false;
+          window.requestAnimationFrame(() => {
+            mobileMenuBackdrop.classList.add('is-visible');
+            mobileMenuPanel.classList.add('is-open');
+          });
+        } else {
+          mobileMenuBackdrop.classList.remove('is-visible');
+          mobileMenuPanel.classList.remove('is-open');
+          window.setTimeout(() => {
+            mobileMenuBackdrop.hidden = true;
+          }, 180);
+        }
+      }
+
+      mobileMenuButton?.addEventListener('click', () => {
+        const isOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        setMobileMenu(!isOpen);
+      });
+
+      mobileMenuClose?.addEventListener('click', () => setMobileMenu(false));
+      mobileMenuBackdrop?.addEventListener('click', () => setMobileMenu(false));
+
+      mobileMenuPanel?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setMobileMenu(false);
       });
     </script>
   </body>
