@@ -4,9 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { competitorAlternatives } from '../data/competitorAlternatives';
 import { useCaseAlternatives } from '../data/useCaseAlternatives';
 
-const title = 'Alternatives logiciels devis bâtiment | Obat, Tolteck, Costructor, Batappli';
+const title = 'Alternatives logiciels devis bâtiment | Comparatif artisans énergie';
 const description =
-  'Comparez les alternatives aux logiciels de devis bâtiment : Obat, Tolteck, Costructor, Batappli, ProGBat, Sage Batigest, EBP et plus. Découvrez Chiffr pour artisans énergie.';
+  'Comparez Obat, Tolteck, Costructor, Batappli, ProGBat, Sage Batigest, EBP et autres logiciels avec Chiffr, l’alternative spécialisée artisans énergie.';
 
 const mainCompetitors = competitorAlternatives.slice(0, 6);
 const otherCompetitors = competitorAlternatives.slice(6);
@@ -41,22 +41,22 @@ const faqs = [
   {
     question: 'Pourquoi comparer les logiciels de devis bâtiment ?',
     answer:
-      'Tous les logiciels ne répondent pas au même besoin. Certains sont très généralistes, d’autres plus orientés bâtiment complet, chantier ou gestion d’entreprise. Chiffr se concentre sur les devis et factures des artisans énergie.',
+      'Tous les logiciels ne répondent pas au même besoin. Certains couvrent le bâtiment complet, d’autres la gestion commerciale ou la facturation généraliste. Chiffr se concentre sur les devis et factures des artisans énergie : PAC, clim, chauffage, CVC, VMC, IRVE et solaire.',
   },
   {
     question: 'Chiffr est-il une alternative à Obat, Tolteck ou Costructor ?',
     answer:
-      'Oui, Chiffr peut être une alternative si vous cherchez un outil plus spécialisé pour les artisans PAC, climatisation, chauffage, VMC, IRVE, solaire ou CVC.',
+      'Oui, Chiffr peut être une alternative si vous cherchez un outil plus spécialisé pour les artisans PAC, climatisation, chauffage, CVC, VMC, IRVE ou solaire. Les logiciels généralistes peuvent rester adaptés pour une gestion BTP plus large.',
   },
   {
     question: 'Faut-il choisir un logiciel généraliste ou spécialisé ?',
     answer:
-      'Un logiciel généraliste peut convenir si vous voulez gérer beaucoup d’aspects de l’entreprise. Un outil spécialisé comme Chiffr est plus adapté si votre priorité est de produire vite des devis énergie clairs, guidés et faciles à suivre.',
+      'Un logiciel généraliste peut convenir si vous voulez gérer beaucoup d’aspects de l’entreprise. Un outil spécialisé comme Chiffr est plus adapté si votre priorité est de produire vite des devis énergie clairs, guidés, signables et faciles à facturer.',
   },
   {
     question: 'Les pages alternatives sont-elles des classements ?',
     answer:
-      'Non. Elles servent à comparer les positionnements et les usages. Le bon choix dépend de votre métier, de votre organisation et de vos besoins réels.',
+      'Non. Ces pages ne sont pas des classements et ne prétendent pas qu’un outil est meilleur dans tous les cas. Elles servent à comparer les positionnements, les usages et la pertinence pour un artisan énergie.',
   },
 ];
 
@@ -655,12 +655,12 @@ const faqSchema = {
         <div>
           <p class="alt-hub-pill">Alternatives logiciels devis bâtiment</p>
 
-          <h1>Comparer les logiciels de devis bâtiment sans perdre le métier de vue</h1>
+          <h1>Comparer les logiciels de devis bâtiment avec un angle artisans énergie</h1>
 
           <p class="alt-hub-lead">
-            Obat, Tolteck, Costructor, Batappli, ProGBat, Sage Batigest, EBP et autres outils
-            couvrent des besoins différents. Chiffr prend un angle plus spécialisé :
-            devis et factures pour artisans énergie, PAC, climatisation, chauffage, CVC, VMC, IRVE et solaire.
+            Obat, Tolteck, Costructor, Batappli, ProGBat, Sage Batigest, EBP, Axonaut, Abby, Evoliz,
+            Artinove ou Henrri ne répondent pas tous au même besoin. Chiffr prend un angle plus spécialisé :
+            devis, signature, acompte, factures, relances et suivi client pour artisans énergie.
           </p>
 
           <div class="alt-hub-actions">
@@ -721,8 +721,8 @@ const faqSchema = {
         <PagePhotoShowcase
           variant="alternatives"
           eyebrow="Comparatif visuel"
-          title="Comparer un logiciel, c’est surtout comparer son usage réel sur le terrain"
-          text="Chiffr met l’accent sur les dossiers simples à suivre : client, devis, photos, signature, acompte, facture et relance."
+          title="Le bon logiciel est celui qui colle à votre chantier, pas seulement à votre bureau"
+          text="Un installateur PAC, clim, VMC ou IRVE doit retrouver vite son client, ses photos, ses lignes de devis, sa signature, son acompte, ses factures et ses relances."
           ctaLabel="Voir les alternatives"
           ctaHref="#alternatives"
         />
@@ -734,10 +734,10 @@ const faqSchema = {
       <div class="alt-hub-shell">
         <div class="alt-hub-section-head">
           <p class="alt-hub-kicker">Alternatives principales</p>
-          <h2>Les logiciels les plus comparés par les artisans bâtiment</h2>
+          <h2>Les alternatives les plus recherchées par les artisans bâtiment</h2>
           <p>
-            Chaque page compare le positionnement du logiciel avec Chiffr, sans dénigrement :
-            le but est d’aider l’artisan à choisir selon son usage.
+            Chaque page compare le positionnement public du logiciel avec Chiffr, sans dénigrement ni faux classement :
+            l’objectif est d’aider un artisan énergie à comprendre quel outil colle le mieux à sa façon de travailler.
           </p>
         </div>
 
@@ -792,10 +792,10 @@ const faqSchema = {
       <div class="alt-hub-shell">
         <div class="alt-hub-section-head">
           <p class="alt-hub-kicker">Autres alternatives</p>
-          <h2>Des pages utiles pour élargir la comparaison</h2>
+          <h2>D’autres logiciels à comparer selon votre profil</h2>
           <p>
-            Ces pages ciblent aussi les recherches autour de la facturation, de la gestion commerciale
-            et des outils de devis plus généralistes.
+            Ces pages couvrent aussi les recherches autour de la facturation en ligne, de la gestion commerciale,
+            des indépendants et des outils moins spécialisés bâtiment.
           </p>
         </div>
 
@@ -828,7 +828,7 @@ const faqSchema = {
       <div class="alt-hub-shell">
         <div class="alt-hub-section-head">
           <p class="alt-hub-kicker">Alternatives par usage</p>
-          <h2>Des pages pour chercher selon votre vrai besoin</h2>
+          <h2>Comparer aussi par besoin : signature, acompte, photos, relances</h2>
           <p>
             Ces pages ne comparent pas un concurrent précis. Elles ciblent les recherches concrètes :
             logiciel de devis simple, mobile, avec signature, acompte, facture d’acompte,
@@ -935,11 +935,11 @@ const faqSchema = {
 
     <section class="alt-hub-cta">
       <div class="alt-hub-shell alt-hub-narrow">
-        <p class="alt-hub-kicker">Demander un accès</p>
-        <h2>Vous cherchez surtout à faire des devis énergie plus vite ?</h2>
+        <p class="alt-hub-kicker">Accès sur demande</p>
+        <h2>Vous comparez les logiciels parce que vos devis énergie prennent trop de temps ?</h2>
         <p>
-          Chiffr vous aide à partir d’un modèle métier, ajouter vos lignes, joindre vos photos,
-          générer un PDF premium, faire signer, demander un acompte et facturer.
+          Chiffr vous aide à partir d’un modèle métier, ajouter les bonnes lignes, joindre vos photos chantier,
+          générer un PDF premium, faire signer, demander un acompte, facturer et relancer sans perdre le fil.
         </p>
 
         <a href="/contact" class="alt-hub-btn primary">Demander un accès</a>
