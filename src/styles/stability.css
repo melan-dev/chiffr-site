@@ -1,41 +1,59 @@
-/* Chiffr — anti-jump / no-flicker stability layer */
+/* Chiffr — production scroll / layout stability layer
+   Objectif : éviter les sauts visibles en production Cloudflare Pages,
+   surtout lors des clics vers une ancre ou une nouvelle page. */
 
-/* Évite les micro-sauts quand la scrollbar apparaît/disparaît */
-html {
+/* On désactive le smooth natif : il se déclenchait avant le chargement final
+   des assets en prod, puis la page recalculait sa hauteur. */
+html,
+html:focus-within {
+  scroll-behavior: auto !important;
   scrollbar-gutter: stable;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  background: var(--cream);
 }
 
-/* Évite les recalculs brutaux d’ancrage */
 body {
   overflow-x: hidden;
   overflow-anchor: none;
+  min-height: 100%;
 }
 
-/* Ancres internes : évite que le header sticky masque la section */
+/* Les ancres restent lisibles sous le header sticky. */
 [id] {
-  scroll-margin-top: 120px;
+  scroll-margin-top: 132px;
 }
 
-/* Supprime le flash blanc / fade au changement de page.
-   Les anciennes animations reveal rendaient le contenu opacity:0 avant JS. */
+/* Pendant une navigation / arrivée depuis une ancre, aucune animation de scroll. */
+html.chiffr-route-loading,
+html.chiffr-route-loading * {
+  scroll-behavior: auto !important;
+}
+
+/* Les anciennes animations reveal rendaient le contenu opacity:0 avant JS.
+   On garde le contenu visible et on ne laisse plus ces classes déplacer le layout. */
 .reveal,
 .reveal-card,
 .reveal.visible,
-.reveal-card.visible {
+.reveal-card.visible,
+.pricing-reveal,
+.pricing-reveal-card,
+.pricing-reveal.is-visible,
+.pricing-reveal-card.is-visible {
   opacity: 1 !important;
   transform: none !important;
   transition:
-    transform 180ms ease,
     box-shadow 180ms ease,
     background 180ms ease,
-    border-color 180ms ease !important;
+    border-color 180ms ease,
+    color 180ms ease !important;
 }
 
-/* Sécurité : aucune page ne doit apparaître transparente au chargement */
+/* Sécurité : aucune grande section ne doit être animée en Y au chargement. */
 .hero,
 .section,
+.home-hero,
+.home-section,
+.home-final,
 .irve-hero,
 .irve-section,
 .pricing-hero,
@@ -55,12 +73,59 @@ body {
 .models-cta,
 .contact-hero,
 .contact-section,
-.contact-cta {
+.contact-cta,
+.guide-hero,
+.guide-section,
+.guide-cta,
+.usecase-hero,
+.usecase-section,
+.usecase-cta,
+.alt-hero,
+.alt-section,
+.alt-cta,
+.alt-hub-hero,
+.alt-hub-section,
+.alt-hub-cta,
+.context-photo-section {
   opacity: 1 !important;
   transform: none !important;
 }
 
-/* Les boutons peuvent avoir du hover, mais pas de rebond au clic */
+/* Les images ne doivent jamais ajouter un espace inattendu sous elles. */
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+img,
+picture,
+video,
+canvas {
+  display: block;
+}
+
+/* Les gros visuels gardent une géométrie stable pendant le chargement. */
+.home-visual,
+.trade-hero-photo,
+.context-photo-main,
+.context-photo-card,
+.page-photo-showcase-image,
+.quote-model-visual,
+.feature-visual-card,
+.trade-photo-proof-card,
+.contact-form-card,
+.pricing-card,
+.models-card,
+.qm-card,
+.app-card {
+  contain: layout paint;
+  backface-visibility: hidden;
+}
+
+/* On ne laisse pas les boutons/cartes créer un rebond au clic. */
 a,
 button,
 summary {
@@ -69,6 +134,7 @@ summary {
 
 a:active,
 button:active,
+summary:active,
 .contact-btn:active,
 .models-btn:active,
 .qm-btn:active,
@@ -83,7 +149,7 @@ button:active,
   transform: none !important;
 }
 
-/* Focus accessible sans faire bouger le layout */
+/* Focus accessible sans faire bouger le layout. */
 a:focus,
 button:focus,
 summary:focus,
@@ -103,45 +169,16 @@ textarea:focus-visible {
   outline-offset: 3px;
 }
 
-/* Stabilise les grosses cartes animées */
-.app-card,
-.irve-card,
-.models-card,
-.qm-card,
-.contact-card,
-.pricing-card {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-/* Stabilise les cartes cliquables */
-.model-card,
-.contact-link-card,
-.contact-option,
-.trade-card,
-.qm-related-link,
-.pricing-plan,
-.feature-card,
-.workflow-card,
-.qm-mini-card,
-.models-step,
-.contact-faq-card,
-.models-faq-card,
-.qm-faq-card {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-/* Sur tablette/mobile : pas d’animation flottante, plus stable */
-@media (max-width: 860px) {
+/* Sur mobile/tablette : zéro flottement auto, zéro hover qui déplace. */
+@media (max-width: 900px) {
   .app-card,
   .irve-card,
   .models-card,
   .qm-card,
   .contact-card,
-  .pricing-card {
+  .pricing-card,
+  .home-card,
+  .hero-card {
     animation: none !important;
   }
 
@@ -158,22 +195,23 @@ textarea:focus-visible {
   .app-row:hover,
   .qm-card-step:hover,
   .models-app-row:hover,
-  .contact-app-row:hover {
+  .contact-app-row:hover,
+  .feature-visual-card:hover,
+  .page-photo-showcase:hover,
+  .context-photo-main:hover,
+  .context-photo-card:hover {
     transform: none !important;
   }
 }
 
-/* Si l’utilisateur préfère moins d’animations */
+/* Si l’utilisateur préfère moins d’animations, tout devient instantané. */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -87,6 +87,16 @@ const isLegalPath = legalPaths.some(
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <script is:inline>
+      (() => {
+        try {
+          if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        } catch {}
+
+        document.documentElement.classList.add('chiffr-route-loading');
+      })();
+    </script>
+
     <SeoHead
       title={title}
       description={description}
@@ -992,5 +1002,180 @@ const isLegalPath = legalPaths.some(
         link.addEventListener('click', closeMoreMenu);
       });
     </script>
+
+    <script is:inline>
+      (() => {
+        const HEADER_OFFSET = 132;
+        const DELAYS = [0, 60, 160, 360, 760, 1250];
+
+        const cleanPath = (url) => {
+          const path = url.pathname.replace(/\/+$/, '');
+          return path || '/';
+        };
+
+        const getHashTarget = (hash) => {
+          if (!hash || hash === '#') return null;
+
+          try {
+            const id = decodeURIComponent(hash.slice(1));
+            return document.getElementById(id);
+          } catch {
+            return document.getElementById(hash.slice(1));
+          }
+        };
+
+        const scrollToHash = (hash) => {
+          const target = getHashTarget(hash);
+          if (!target) return false;
+
+          const top = Math.max(
+            0,
+            target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET
+          );
+
+          window.scrollTo({
+            top,
+            left: 0,
+            behavior: 'auto',
+          });
+
+          return true;
+        };
+
+        const scrollTopNow = () => {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'auto',
+          });
+        };
+
+        const scheduleHashScroll = (hash) => {
+          DELAYS.forEach((delay) => {
+            window.setTimeout(() => scrollToHash(hash), delay);
+          });
+        };
+
+        const scheduleTopScroll = () => {
+          DELAYS.slice(0, 5).forEach((delay) => {
+            window.setTimeout(scrollTopNow, delay);
+          });
+        };
+
+        document.addEventListener(
+          'click',
+          (event) => {
+            const target = event.target;
+            if (!(target instanceof Element)) return;
+
+            const link = target.closest('a[href]');
+            if (!link) return;
+            if (link.target || link.hasAttribute('download')) return;
+
+            const rawHref = link.getAttribute('href');
+            if (!rawHref) return;
+            if (
+              rawHref.startsWith('mailto:') ||
+              rawHref.startsWith('tel:') ||
+              rawHref.startsWith('javascript:')
+            ) {
+              return;
+            }
+
+            let url;
+            try {
+              url = new URL(rawHref, window.location.href);
+            } catch {
+              return;
+            }
+
+            if (url.origin !== window.location.origin) return;
+
+            const samePath = cleanPath(url) === cleanPath(window.location);
+
+            if (url.hash) {
+              event.preventDefault();
+
+              try {
+                sessionStorage.setItem('chiffr:pendingHash', url.hash);
+              } catch {}
+
+              if (samePath) {
+                history.pushState(null, '', `${url.pathname}${url.search}${url.hash}`);
+                scheduleHashScroll(url.hash);
+              } else {
+                window.location.href = `${url.pathname}${url.search}`;
+              }
+
+              return;
+            }
+
+            if (!samePath) {
+              try {
+                sessionStorage.setItem('chiffr:forceTop', '1');
+              } catch {}
+            }
+          },
+          { capture: true }
+        );
+
+        const settleScroll = () => {
+          let pendingHash = '';
+
+          try {
+            pendingHash = sessionStorage.getItem('chiffr:pendingHash') || '';
+            if (pendingHash) sessionStorage.removeItem('chiffr:pendingHash');
+          } catch {}
+
+          if (pendingHash) {
+            history.replaceState(
+              null,
+              '',
+              `${window.location.pathname}${window.location.search}${pendingHash}`
+            );
+            scheduleHashScroll(pendingHash);
+            return;
+          }
+
+          if (window.location.hash) {
+            scheduleHashScroll(window.location.hash);
+            return;
+          }
+
+          let shouldForceTop = false;
+
+          try {
+            shouldForceTop = sessionStorage.getItem('chiffr:forceTop') === '1';
+            if (shouldForceTop) sessionStorage.removeItem('chiffr:forceTop');
+          } catch {}
+
+          if (shouldForceTop) scheduleTopScroll();
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', settleScroll, { once: true });
+        } else {
+          settleScroll();
+        }
+
+        window.addEventListener(
+          'load',
+          () => {
+            document.documentElement.classList.remove('chiffr-route-loading');
+            document.documentElement.classList.add('chiffr-route-ready');
+
+            if (window.location.hash) {
+              scheduleHashScroll(window.location.hash);
+            }
+          },
+          { once: true }
+        );
+
+        window.addEventListener('pageshow', (event) => {
+          if (event.persisted && !window.location.hash) scheduleTopScroll();
+        });
+      })();
+    </script>
+
   </body>
 </html>
