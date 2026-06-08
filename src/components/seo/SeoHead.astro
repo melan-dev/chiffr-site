@@ -17,7 +17,7 @@ const {
   schema,
 } = Astro.props;
 
-const siteUrl = Astro.site ?? new URL('https://chiffr.fr');
+const siteUrl = Astro.site ?? new URL('https://chiffr-devis.fr');
 const canonicalUrl = new URL(canonicalPath, siteUrl).toString().replace(/\/$/, '');
 const absoluteOgImage = new URL(ogImage, siteUrl).toString();
 const baseSchemas = [

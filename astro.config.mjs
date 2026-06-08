@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://chiffr.fr',
+  site: 'https://chiffr-devis.fr',
   trailingSlash: 'never',
   vite: {
     plugins: [tailwindcss()],

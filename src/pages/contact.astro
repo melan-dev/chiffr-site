@@ -70,7 +70,7 @@ const contactSchema = {
   '@type': 'ContactPage',
   name: 'Contact Chiffr',
   description,
-  url: 'https://chiffr.fr/contact',
+  url: 'https://chiffr-devis.fr/contact',
 };
 
 const faqSchema = {
@@ -899,7 +899,7 @@ const faqSchema = {
         message || 'Non renseigné',
         '',
         '---',
-        'Envoyé depuis chiffr.fr/contact',
+        'Envoyé depuis chiffr-devis.fr/contact',
       ].join('\n');
 
       const mailtoUrl = `mailto:melan@livdapps.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;

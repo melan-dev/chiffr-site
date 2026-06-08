@@ -3,7 +3,7 @@ export function GET() {
 `User-agent: *
 Allow: /
 
-Sitemap: https://chiffr.fr/sitemap-index.xml
+Sitemap: https://chiffr-devis.fr/sitemap-index.xml
 `,
     {
       headers: {
