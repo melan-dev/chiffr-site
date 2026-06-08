@@ -1,9 +1,13 @@
 ---
 import '../styles/global.css';
-import '../styles/responsive.css';
 import '../styles/compact.css';
+import '../styles/responsive.css';
 import '../styles/stability.css';
 import SeoHead from '../components/seo/SeoHead.astro';
+import RelatedQuoteModels from '../components/RelatedQuoteModels.astro';
+import RelatedSeoGuides from '../components/RelatedSeoGuides.astro';
+import RelatedAlternatives from '../components/RelatedAlternatives.astro';
+import ContextualPhotoSection from '../components/ContextualPhotoSection.astro';
 
 interface Props {
   title: string;
@@ -25,17 +29,23 @@ const currentPath = Astro.url.pathname;
 
 const navItems = [
   { label: 'PAC', href: '/logiciel-devis-pompe-a-chaleur' },
-  { label: 'Climatisation', href: '/logiciel-devis-climatisation' },
+  { label: 'Clim', href: '/logiciel-devis-climatisation' },
   { label: 'Chauffage', href: '/logiciel-devis-chauffagiste' },
   { label: 'CVC', href: '/logiciel-devis-frigoriste-cvc' },
   { label: 'VMC', href: '/logiciel-devis-vmc' },
   { label: 'IRVE', href: '/logiciel-devis-irve' },
   { label: 'Solaire', href: '/logiciel-devis-photovoltaique' },
+  { label: 'Fonctions', href: '/fonctionnalites' },
   { label: 'Tarifs', href: '/tarifs' },
+  { label: 'Modèles', href: '/modeles-devis' },
+  { label: 'Guides', href: '/guides-devis-artisans-energie' },
+  { label: 'Alternatives', href: '/alternatives-logiciels-devis-batiment' },
 ];
 
 const resourceItems = [
   { label: 'Modèles de devis', href: '/modeles-devis' },
+  { label: 'Alternatives logiciels', href: '/alternatives-logiciels-devis-batiment' },
+  { label: 'Guides', href: '/guides-devis-artisans-energie' },
   { label: 'Fonctionnalités', href: '/fonctionnalites' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -52,10 +62,14 @@ const footerMetiers = [
 
 const footerChiffr = [
   { label: 'Tarifs', href: '/tarifs' },
-  { label: 'Alternative Obat', href: '/alternative-obat' },
+  { label: 'Alternatives logiciels', href: '/alternatives-logiciels-devis-batiment' },
+  { label: 'Guides devis', href: '/guides-devis-artisans-energie' },
   { label: 'Modèles de devis', href: '/modeles-devis' },
   { label: 'Fonctionnalités', href: '/fonctionnalites' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Mentions légales', href: '/mentions-legales' },
+  { label: 'Confidentialité', href: '/confidentialite' },
+  { label: 'CGU', href: '/cgu' },
 ];
 
 const isActive = (href: string) => {
@@ -64,6 +78,11 @@ const isActive = (href: string) => {
 };
 
 const isResourceActive = resourceItems.some((item) => isActive(item.href));
+
+const legalPaths = ['/mentions-legales', '/confidentialite', '/cgu'];
+const isLegalPath = legalPaths.some(
+  (path) => currentPath === path || currentPath.startsWith(`${path}/`)
+);
 ---
 
 <!doctype html>
@@ -81,23 +100,39 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
     />
 
     <style is:inline>
-      /* Critical layout CSS placé dans <head> pour éviter le flash/jump en production. */
+      /* CSS critique du layout dans le <head> : évite le flash/jump en production. */
       .site-header,
       .site-header * {
         box-sizing: border-box;
       }
 
+      :root {
+        --chiffr-header-offset: 146px;
+      }
+
+      body {
+        padding-top: var(--chiffr-header-offset);
+      }
+
+      [id] {
+        scroll-margin-top: calc(var(--chiffr-header-offset) + 18px);
+      }
+
       .site-header {
-        position: sticky;
+        position: fixed;
         top: 0;
-        z-index: 80;
+        right: 0;
+        left: 0;
+        z-index: 1000;
         padding: 14px 20px;
         background:
-          linear-gradient(180deg, rgba(255, 248, 239, 0.96), rgba(255, 248, 239, 0.82)),
+          linear-gradient(180deg, rgba(255, 248, 239, 0.97), rgba(255, 248, 239, 0.88)),
           radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.1), transparent 30%),
           radial-gradient(circle at 85% 0%, rgba(18, 63, 61, 0.08), transparent 28%);
         border-bottom: 1px solid rgba(18, 63, 61, 0.08);
         backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 16px 50px rgba(18, 63, 61, 0.08);
       }
 
       .header-shell {
@@ -230,8 +265,15 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
         min-width: 0;
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 4px;
+        justify-content: flex-start;
+        gap: 3px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
       }
 
       .nav-link,
@@ -240,11 +282,11 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 46px;
-        padding: 0 14px;
-        border-radius: 18px;
+        min-height: 44px;
+        padding: 0 10px;
+        border-radius: 17px;
         color: #244a47;
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1;
         font-weight: 900;
         white-space: nowrap;
@@ -407,6 +449,57 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
           inset 0 -2px 0 rgba(0, 0, 0, 0.08);
       }
 
+      .header-reform-strip {
+        width: 100%;
+        max-width: 1420px;
+        margin: 10px auto 0;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 9px 14px;
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at 15% 0%, rgba(47, 143, 107, 0.14), transparent 40%),
+          rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(18, 63, 61, 0.1);
+        color: var(--teal);
+        box-shadow: 0 14px 34px rgba(18, 63, 61, 0.05);
+        text-align: center;
+      }
+
+      .header-reform-strip strong {
+        font-size: 13px;
+        line-height: 1.1;
+        font-weight: 950;
+      }
+
+      .header-reform-strip span:not(.header-reform-icon) {
+        color: #667977;
+        font-size: 12px;
+        line-height: 1.2;
+        font-weight: 800;
+      }
+
+      .header-reform-icon {
+        width: 22px;
+        height: 22px;
+        flex: none;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--teal);
+        color: white;
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .header-reform-strip:hover {
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 18px 42px rgba(18, 63, 61, 0.08);
+      }
+
       .mobile-nav-shell {
         display: none;
       }
@@ -528,6 +621,18 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
         }
       }
 
+      @media (min-width: 1241px) {
+        :root {
+          --chiffr-header-offset: 128px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        :root {
+          --chiffr-header-offset: 178px;
+        }
+      }
+
       @media (max-width: 1240px) {
         .header-shell {
           grid-template-columns: 1fr;
@@ -550,6 +655,10 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
       }
 
       @media (max-width: 760px) {
+        :root {
+          --chiffr-header-offset: 170px;
+        }
+
         .site-header {
           padding: 12px 14px 10px;
         }
@@ -604,6 +713,16 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
         }
 
         .header-cta svg {
+          display: none;
+        }
+
+        .header-reform-strip {
+          justify-content: flex-start;
+          overflow-x: auto;
+          border-radius: 22px;
+        }
+
+        .header-reform-strip span:not(.header-reform-icon) {
           display: none;
         }
 
@@ -663,6 +782,68 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
           animation-duration: 0.001ms !important;
           animation-iteration-count: 1 !important;
         }
+      }
+
+      .reveal,
+      .reveal-card,
+      .reveal.visible,
+      .reveal-card.visible,
+      .pricing-reveal,
+      .pricing-reveal-card,
+      .pricing-reveal.is-visible,
+      .pricing-reveal-card.is-visible {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .hero,
+      .section,
+      .irve-hero,
+      .irve-section,
+      .pricing-hero,
+      .pricing-plans,
+      .pricing-compare,
+      .pricing-proof-section,
+      .pricing-faq,
+      .pricing-cta,
+      .features-hero,
+      .features-section,
+      .features-cta,
+      .qm-hero,
+      .qm-section,
+      .qm-cta,
+      .models-hero,
+      .models-section,
+      .models-cta,
+      .contact-hero,
+      .contact-section,
+      .contact-cta,
+      .guide-hero,
+      .guide-section,
+      .guide-cta,
+      .usecase-hero,
+      .usecase-section,
+      .usecase-cta,
+      .alt-hero,
+      .alt-section,
+      .alt-cta,
+      .alt-hub-hero,
+      .alt-hub-section,
+      .alt-hub-cta {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      a:active,
+      button:active,
+      summary:active,
+      .brand-card:active,
+      .header-cta:active,
+      .nav-link:active,
+      .nav-more-button:active,
+      .home-link:active,
+      .mobile-link:active {
+        transform: none !important;
       }
     </style>
   </head>
@@ -726,17 +907,23 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
             </div>
           </div>
 
-          <a href="https://app.chiffr.fr" class="header-cta">
+          <a href="/contact" class="header-cta">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M13.6 4.4c2.4-.9 4.4-.8 5.2 0s.9 2.8 0 5.2c-.8 2-2.5 4.4-5 6.9l-.7.7-4.3-4.3.7-.7c2.5-2.5 4.9-4.2 6.9-5Z" />
               <path d="M8.7 12.9 5.5 13.7 4 18l4.3-1.5.8-3.2" />
               <path d="M13.2 17.4 11.8 21l3.5-1.4 1.4-3.4" />
               <path d="M15.8 8.2h.01" />
             </svg>
-            <span>Démarrer l’essai</span>
+            <span>Demander un accès</span>
           </a>
         </nav>
       </div>
+
+      <a class="header-reform-strip" href="/fonctionnalites#facturation-electronique">
+        <span class="header-reform-icon" aria-hidden="true">✓</span>
+        <strong>Facturation électronique 2026–2027</strong>
+        <span>Chiffr vous aide à préparer vos factures, données client et dossiers.</span>
+      </a>
 
       <div class="mobile-nav-shell">
         <div class="mobile-nav-scroll" aria-label="Navigation mobile">
@@ -765,6 +952,15 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
       <slot />
     </main>
 
+    {!isLegalPath && (
+      <>
+        <ContextualPhotoSection currentPath={currentPath} />
+        <RelatedQuoteModels currentPath={currentPath} />
+        <RelatedSeoGuides currentPath={currentPath} />
+        <RelatedAlternatives currentPath={currentPath} />
+      </>
+    )}
+
     <footer class="site-footer">
       <div class="footer-shell">
         <div class="footer-brand">
@@ -777,11 +973,11 @@ const isResourceActive = resourceItems.some((item) => isActive(item.href));
           </a>
 
           <p>
-            Logiciel de devis et factures pensé pour les artisans PAC, climatisation,
-            chauffage, CVC, VMC, IRVE et solaire.
+            Logiciel de devis, factures, signature électronique et suivi client pensé pour les artisans PAC, climatisation,
+            chauffage, CVC, VMC, IRVE et solaire. Chiffr aide aussi à préparer la transition vers la facturation électronique 2026–2027.
           </p>
 
-          <a href="https://app.chiffr.fr" class="footer-cta">Démarrer l’essai</a>
+          <a href="/contact" class="footer-cta">Demander un accès</a>
         </div>
 
         <div class="footer-column">
