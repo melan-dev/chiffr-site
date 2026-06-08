@@ -1,0 +1,125 @@
+---
+import TradeLanding from '../components/TradeLanding.astro';
+
+const page = {
+  title: 'Logiciel devis chauffe-eau thermodynamique | Chiffr',
+  description:
+    'Chiffr aide à créer des devis chauffe-eau thermodynamique clairs : ballon, raccordements, condensats, photos chantier, signature, acompte et factures.',
+  canonicalPath: '/logiciel-devis-chauffe-eau-thermodynamique',
+  pill: 'Logiciel devis chauffe-eau thermodynamique',
+  h1: 'Des devis chauffe-eau thermodynamique plus clairs et mieux suivis',
+  lead:
+    'Chiffr aide les artisans énergie à préparer des devis chauffe-eau thermodynamique propres : fourniture, pose, raccordements, évacuation, photos chantier, PDF premium, signature, acompte et factures.',
+  checks: ['Ballon thermo', 'Raccordements', 'Condensats', 'Acompte', 'Factures'],
+  appTitle: 'Chauffe-eau thermo',
+  appSubtitle: 'Modèle métier préparé',
+  appBadgeLabel: 'Base',
+  appBadgeValue: 'Thermo',
+  appStripLabel: 'Chantier type',
+  appStripText: 'Ancien ballon → fourniture → raccordements → mise en service → facture',
+  appSteps: [
+    { title: 'Ancien équipement', text: 'Ballon existant, accès, évacuation et contraintes.', status: 'relevé' },
+    { title: 'Fourniture ballon', text: 'Chauffe-eau thermodynamique, groupe, accessoires.', status: 'à chiffrer' },
+    { title: 'Raccordements', text: 'Eau, électricité, évacuation condensats, sécurité.', status: 'à vérifier' },
+    { title: 'Mise en service', text: 'Essais, explication client, facture et solde.', status: 'ensuite' },
+  ],
+  appMini: [
+    { label: 'Photos', value: 'Ancien ballon' },
+    { label: 'Client', value: 'Signature' },
+    { label: 'Suivi', value: 'Solde' },
+  ],
+  problemTitle: 'Un devis chauffe-eau thermo doit détailler plus qu’une simple pose.',
+  problemText:
+    'Il faut souvent prévoir dépose, fourniture, raccordements eau, alimentation électrique, évacuation condensats, groupe ou gaines selon configuration, sécurité et mise en service.',
+  solutionTitle: 'Chiffr prépare une base claire pour ce type de chantier.',
+  solutionText:
+    'Chiffr aide à structurer les postes du devis, rattacher les photos utiles et suivre la suite : PDF, signature, acompte, facture de solde et relance.',
+  quoteKicker: 'Lignes de devis chauffe-eau thermodynamique',
+  quoteTitle: 'Les postes fréquents à prévoir dans un devis chauffe-eau thermo',
+  quoteIntro:
+    'Un devis clair montre la fourniture, la pose, les raccordements et les contraintes du chantier.',
+  quoteLines: [
+    { title: 'Dépose', text: 'Ancien ballon, évacuation, démontage et nettoyage zone.' },
+    { title: 'Fourniture', text: 'Chauffe-eau thermodynamique, capacité, accessoires et options.' },
+    { title: 'Pose', text: 'Installation, fixation, mise en place, adaptations.' },
+    { title: 'Hydraulique', text: 'Eau froide, eau chaude, groupe de sécurité, raccords.' },
+    { title: 'Électricité', text: 'Alimentation, protection, raccordement et contrôle.' },
+    { title: 'Condensats', text: 'Évacuation condensats, siphon, raccordement et essais.' },
+    { title: 'Mise en service', text: 'Contrôle, réglages, explication client, photos.' },
+    { title: 'Facturation', text: 'Acompte, facture d’acompte, solde et finale.' },
+  ],
+  featuresKicker: 'Fonctions utiles pour chauffe-eau thermo',
+  featuresTitle: 'Du relevé chantier à la facture finale',
+  featuresIntro:
+    'Chiffr aide à garder un dossier propre pour un chantier technique et souvent urgent.',
+  features: [
+    { title: 'Modèles métier', text: 'Base de devis adaptée au chauffe-eau thermodynamique.' },
+    { title: 'Photos chantier', text: 'Ancien ballon, accès, raccordements, évacuation, plaque machine.' },
+    { title: 'Lignes fréquentes', text: 'Dépose, fourniture, raccordements, condensats, mise en service.' },
+    { title: 'PDF premium', text: 'Un devis propre et facile à comprendre.' },
+    { title: 'Signature', text: 'Validation client simple et traçable.' },
+    { title: 'Acompte', text: 'Demande d’acompte après acceptation.' },
+    { title: 'Factures', text: 'Acompte, solde et facture finale.' },
+    { title: 'Relances', text: 'Suivi des devis envoyés et actions à faire.' },
+  ],
+  usecaseTitle: 'Chiffr s’adapte aux devis chauffe-eau thermo courants',
+  usecaseIntro:
+    'Remplacement, installation neuve ou adaptation : l’objectif est de ne rien oublier.',
+  useCases: [
+    { title: 'Remplacement ballon', text: 'Dépose ancien ballon, fourniture, raccordements et mise en service.' },
+    { title: 'Pose neuve', text: 'Installation, alimentation, évacuation condensats et sécurité.' },
+    { title: 'Local contraint', text: 'Accès, hauteur, évacuation, passage et photos chantier.' },
+    { title: 'Facture avec acompte', text: 'Signature, acompte, facture d’acompte, solde et finale.' },
+  ],
+  photoTitle: 'Les photos utiles pour sécuriser un devis chauffe-eau thermo',
+  photoIntro:
+    'Les photos permettent de retrouver rapidement l’ancien équipement, les accès et les raccordements.',
+  photoItems: [
+    'Ancien ballon ou équipement existant',
+    'Emplacement prévu du chauffe-eau thermodynamique',
+    'Raccordements eau froide et eau chaude',
+    'Alimentation électrique et protection',
+    'Évacuation condensats',
+    'Accès chantier, hauteur, passage ou contraintes',
+  ],
+  internalTitle: 'Continuer vers les pages liées aux devis chauffe-eau thermo',
+  internalIntro:
+    'Cette page cible le chauffe-eau thermodynamique. Elle peut envoyer vers chauffage, PAC, modèles et guides pratiques.',
+  internalLinks: [
+    { label: 'Logiciel devis chauffagiste', href: '/logiciel-devis-chauffagiste' },
+    { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
+    { label: 'Modèle devis chauffe-eau thermodynamique', href: '/modele-devis-chauffe-eau-thermodynamique' },
+    { label: 'Modèles de devis', href: '/modeles-devis' },
+    { label: 'Alternative Obat', href: '/alternative-obat' },
+    { label: 'Contact Chiffr', href: '/contact' },
+  ],
+  ctaTitle: 'Vos devis chauffe-eau thermo doivent être simples, mais complets.',
+  ctaText:
+    'Chiffr prépare la bonne base, garde les photos utiles et suit le dossier jusqu’à la facture finale.',
+  faqTitle: 'Logiciel devis chauffe-eau thermodynamique : les questions courantes',
+  faqs: [
+    {
+      question: 'Chiffr est-il adapté aux devis chauffe-eau thermodynamique ?',
+      answer:
+        'Oui. Chiffr peut aider à structurer les devis avec fourniture, pose, raccordements, évacuation condensats, mise en service, photos et factures.',
+    },
+    {
+      question: 'Peut-on gérer les photos de l’ancien ballon ?',
+      answer:
+        'Oui. Vous pouvez rattacher des photos de l’ancien équipement, de l’emplacement, des raccordements et des contraintes d’accès.',
+    },
+    {
+      question: 'Chiffr gère-t-il acompte et facture finale ?',
+      answer:
+        'Oui. Chiffr est conçu pour suivre signature, acompte, facture d’acompte, solde et facture finale.',
+    },
+    {
+      question: 'Chiffr remplace-t-il le choix technique de l’artisan ?',
+      answer:
+        'Non. Chiffr prépare une structure claire, mais l’artisan garde la main sur les choix techniques, les prix, les quantités et les options.',
+    },
+  ],
+};
+---
+
+<TradeLanding {...page} />

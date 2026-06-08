@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalPageShell from '../components/legal/LegalPageShell.astro';
+
+const title = 'Politique de confidentialité | Chiffr';
+const description =
+  'Politique de confidentialité du site Chiffr : données collectées, finalités, conservation, droits et contact.';
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/confidentialite">
+  <LegalPageShell
+    eyebrow="Données personnelles"
+    title="Politique de confidentialité"
+    description="Cette page explique comment les données personnelles peuvent être traitées lors de l’utilisation du site marketing Chiffr."
+  >
+    <h2>Responsable du traitement</h2>
+    <div class="legal-card">
+      <p><strong>Responsable :</strong> Melan Valet, entrepreneur individuel</p>
+      <p><strong>SIREN :</strong> 103 905 741</p>
+      <p><strong>Adresse :</strong> 1444 Route de Mende, Bât. A - Appart. 94, 34090 Montpellier, France</p>
+      <p><strong>Contact :</strong> <a href="mailto:melan@livdapps.com">melan@livdapps.com</a></p>
+    </div>
+
+    <h2>Portée de cette politique</h2>
+    <p>
+      Cette politique concerne le site marketing chiffr.fr. L’application accessible sur app.chiffr.fr pourra disposer
+      de règles de confidentialité spécifiques, adaptées aux données traitées dans l’application.
+    </p>
+
+    <h2>Données pouvant être collectées</h2>
+    <p>
+      Selon votre usage du site, Chiffr peut traiter les catégories de données suivantes :
+    </p>
+    <ul>
+      <li>données d’identification et de contact lorsque vous écrivez à Chiffr : nom, prénom, entreprise, métier, email, téléphone si communiqué ;</li>
+      <li>contenu des messages envoyés volontairement par email ou via un futur formulaire ;</li>
+      <li>données techniques nécessaires au bon fonctionnement du site : adresse IP, navigateur, appareil, pages consultées, logs de sécurité ;</li>
+      <li>données de mesure d’audience si un outil d’analytics est activé ultérieurement.</li>
+    </ul>
+
+    <h2>Finalités</h2>
+    <p>Les données sont utilisées pour :</p>
+    <ul>
+      <li>répondre aux demandes de contact ;</li>
+      <li>présenter Chiffr, ses fonctionnalités et ses offres ;</li>
+      <li>préparer une relation commerciale ou un accès à l’application ;</li>
+      <li>améliorer la lisibilité, la performance et la sécurité du site ;</li>
+      <li>respecter les obligations légales applicables.</li>
+    </ul>
+
+    <h2>Bases légales</h2>
+    <p>
+      Les traitements peuvent reposer, selon les cas, sur votre consentement, sur l’intérêt légitime de Chiffr à présenter
+      et sécuriser son site, sur l’exécution de mesures précontractuelles lorsque vous demandez des informations, ou sur
+      une obligation légale.
+    </p>
+
+    <h2>Destinataires</h2>
+    <p>
+      Les données sont destinées à l’éditeur du site et, si nécessaire, aux prestataires techniques strictement utiles
+      au fonctionnement du site, à l’hébergement, à la messagerie, à la sécurité ou à la mesure d’audience.
+    </p>
+
+    <h2>Durées de conservation</h2>
+    <p>
+      Les messages de contact peuvent être conservés jusqu’à trois ans à compter du dernier échange. Les logs techniques
+      peuvent être conservés pour une durée limitée nécessaire à la sécurité et au diagnostic technique. Les cookies ou
+      mesures d’audience, si activés, respecteront les durées applicables.
+    </p>
+
+    <h2>Cookies et mesure d’audience</h2>
+    <p>
+      Le site peut utiliser des cookies strictement nécessaires à son fonctionnement. Si des cookies de mesure d’audience,
+      de publicité ou de suivi sont ajoutés ultérieurement, une information adaptée sera affichée et, lorsque nécessaire,
+      votre consentement sera demandé.
+    </p>
+
+    <h2>Vos droits</h2>
+    <p>
+      Vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou l’opposition au traitement de vos données,
+      ainsi que la portabilité lorsque ce droit s’applique. Vous pouvez écrire à :
+      <a href="mailto:melan@livdapps.com">melan@livdapps.com</a>.
+    </p>
+    <p>
+      Vous pouvez également introduire une réclamation auprès de la CNIL si vous estimez que vos droits ne sont pas respectés.
+    </p>
+
+    <h2>Sécurité</h2>
+    <p>
+      Chiffr met en œuvre des mesures raisonnables pour protéger les informations transmises via le site. Aucun système
+      n’étant totalement exempt de risque, il est recommandé de ne pas transmettre d’informations sensibles non nécessaires
+      par email ou via un formulaire de contact.
+    </p>
+  </LegalPageShell>
+</BaseLayout>

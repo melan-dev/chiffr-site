@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalPageShell from '../components/legal/LegalPageShell.astro';
+
+const title = 'CGU | Chiffr';
+const description =
+  'Conditions générales d’utilisation du site marketing Chiffr : accès, contenus, responsabilité, propriété intellectuelle et contact.';
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/cgu">
+  <LegalPageShell
+    eyebrow="Conditions d’utilisation"
+    title="Conditions générales d’utilisation"
+    description="Ces conditions encadrent l’utilisation du site marketing Chiffr accessible sur chiffr.fr."
+  >
+    <h2>Éditeur</h2>
+    <div class="legal-card">
+      <p><strong>Éditeur :</strong> Melan Valet, entrepreneur individuel</p>
+      <p><strong>SIREN :</strong> 103 905 741</p>
+      <p><strong>SIRET :</strong> 103 905 741 00015</p>
+      <p><strong>Contact :</strong> <a href="mailto:melan@livdapps.com">melan@livdapps.com</a></p>
+    </div>
+
+    <h2>Objet</h2>
+    <p>
+      Les présentes conditions générales d’utilisation définissent les règles d’accès et d’utilisation du site marketing
+      Chiffr. Elles ne constituent pas les conditions commerciales complètes de l’application app.chiffr.fr, qui pourront
+      être précisées séparément lors de l’ouverture du service.
+    </p>
+
+    <h2>Accès au site</h2>
+    <p>
+      Le site est accessible gratuitement. Chiffr peut modifier, suspendre ou interrompre tout ou partie du site pour des
+      raisons de maintenance, de sécurité, d’évolution technique ou de mise à jour des contenus.
+    </p>
+
+    <h2>Utilisation autorisée</h2>
+    <p>
+      L’utilisateur s’engage à utiliser le site de manière normale, loyale et conforme à la loi. Il est interdit de tenter
+      de perturber le fonctionnement du site, d’accéder frauduleusement à ses systèmes, de copier massivement ses contenus
+      ou d’utiliser ses pages d’une manière portant atteinte aux droits de Chiffr ou de tiers.
+    </p>
+
+    <h2>Contenus et informations métier</h2>
+    <p>
+      Les contenus publiés sur le site, y compris les exemples de devis, de lignes métier, de factures, de signature,
+      d’acompte ou de suivi client, sont fournis à titre informatif. Ils ne remplacent pas l’expertise de l’artisan,
+      ni un conseil juridique, fiscal, comptable ou technique adapté.
+    </p>
+    <p>
+      Chaque utilisateur reste responsable de vérifier ses prix, ses mentions obligatoires, ses assurances, ses normes,
+      ses règles de TVA, ses obligations professionnelles et la conformité de ses documents commerciaux.
+    </p>
+
+    <h2>Facturation électronique 2026-2027</h2>
+    <p>
+      Les contenus relatifs à la réforme de la facturation électronique sont présentés à titre pédagogique. Chiffr aide
+      à préparer des dossiers, données clients, devis et factures plus structurés, mais ne se présente pas comme plateforme
+      agréée ou service de conformité réglementaire complet.
+    </p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      Les textes, visuels, composants, marques, logos, maquettes, structures de pages et éléments graphiques du site sont
+      protégés. Toute reproduction ou réutilisation non autorisée est interdite, sauf autorisation écrite préalable ou
+      exception légale.
+    </p>
+
+    <h2>Liens et services tiers</h2>
+    <p>
+      Le site peut contenir des liens vers des sites ou services tiers. Chiffr ne contrôle pas ces sites et ne peut être
+      tenu responsable de leur contenu, de leurs pratiques ou de leur disponibilité.
+    </p>
+
+    <h2>Évolution des conditions</h2>
+    <p>
+      Chiffr peut modifier les présentes conditions afin de tenir compte de l’évolution du site, de l’application, de la loi
+      ou des usages. La version applicable est celle publiée sur cette page.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Pour toute question relative à ces conditions, vous pouvez écrire à :
+      <a href="mailto:melan@livdapps.com">melan@livdapps.com</a>.
+    </p>
+  </LegalPageShell>
+</BaseLayout>

@@ -1,0 +1,272 @@
+---
+import TradeLanding from '../components/TradeLanding.astro';
+
+const page = {
+  title: 'Logiciel devis IRVE | Devis borne de recharge avec Chiffr',
+  description:
+    'Chiffr aide les installateurs IRVE à créer des devis borne de recharge clairs : lignes adaptées, photos chantier, PDF premium, signature et factures.',
+  canonicalPath: '/logiciel-devis-irve',
+
+  pill: 'Logiciel devis IRVE',
+  h1: 'Des devis IRVE plus clairs pour vos installations de bornes de recharge',
+  lead:
+    'Chiffr aide les installateurs IRVE à préparer des devis propres : visite technique, borne, protections électriques, câblage, pose, raccordement, mise en service, photos chantier, signature, acompte et factures.',
+
+  checks: [
+    'Borne de recharge',
+    'Protection électrique',
+    'Câblage',
+    'Photos chantier',
+    'Signature',
+    'Acompte',
+    'Factures',
+  ],
+
+  appTitle: 'Borne de recharge',
+  appSubtitle: 'Modèle métier préparé',
+  appBadgeLabel: 'Base',
+  appBadgeValue: 'IRVE',
+  appStripLabel: 'Chantier type',
+  appStripText:
+    'Relevé tableau → protection dédiée → câblage → pose borne → mise en service → signature → facture',
+
+  appSteps: [
+    {
+      title: 'Relevé électrique',
+      text: 'Tableau, puissance disponible, distance, accès et cheminement.',
+      status: 'relevé',
+    },
+    {
+      title: 'Protection dédiée',
+      text: 'Disjoncteur, différentiel, coffret, accessoires et conformité.',
+      status: 'à chiffrer',
+    },
+    {
+      title: 'Câblage et pose',
+      text: 'Cheminement, percement, fixation, borne murale ou pied.',
+      status: 'à vérifier',
+    },
+    {
+      title: 'Mise en service',
+      text: 'Paramétrage, essais, explication client, acompte et facture.',
+      status: 'ensuite',
+    },
+  ],
+
+  appMini: [
+    {
+      label: 'Photos',
+      value: 'Tableau',
+    },
+    {
+      label: 'Client',
+      value: 'Signature',
+    },
+    {
+      label: 'Suivi',
+      value: 'Solde',
+    },
+  ],
+
+  problemTitle: 'Un devis IRVE doit être précis sur l’électricité et le cheminement.',
+  problemText:
+    'Installer une borne de recharge ne se résume pas à une ligne “pose borne”. Il faut souvent prévoir le relevé du tableau, la protection dédiée, le câble, la distance, le passage, les percements, la fixation, les essais et la mise en service. Sans structure claire, le devis devient vite flou pour le client.',
+
+  solutionTitle: 'Chiffr prépare une base claire pour vos devis de borne de recharge.',
+  solutionText:
+    'Chiffr vous aide à partir d’un modèle IRVE adapté, avec les postes fréquents déjà organisés. Vous gardez la main sur les prix, les quantités, les options et les remarques chantier, puis vous suivez la suite : PDF, signature, acompte, facture et relance.',
+
+  quoteKicker: 'Lignes de devis IRVE',
+  quoteTitle: 'Les postes fréquents à prévoir dans un devis IRVE',
+  quoteIntro:
+    'Un devis de borne de recharge clair doit détailler la borne, la protection, le câblage, la pose, le raccordement et la mise en service.',
+
+  quoteLines: [
+    {
+      title: 'Visite technique',
+      text: 'Relevé sur site, tableau électrique, puissance disponible, distance, accès et contraintes.',
+    },
+    {
+      title: 'Fourniture borne',
+      text: 'Borne murale ou sur pied, puissance adaptée, option connectée, badge ou délestage selon besoin.',
+    },
+    {
+      title: 'Protection électrique',
+      text: 'Disjoncteur, différentiel, coffret, parafoudre si prévu, accessoires et repérage.',
+    },
+    {
+      title: 'Câblage',
+      text: 'Câble, gaine, goulotte, cheminement, percement, fixation et passage intérieur ou extérieur.',
+    },
+    {
+      title: 'Pose',
+      text: 'Installation de la borne, support mural, pied, raccordement et finition propre.',
+    },
+    {
+      title: 'Raccordement tableau',
+      text: 'Connexion au tableau électrique, adaptation éventuelle, repérage et contrôle.',
+    },
+    {
+      title: 'Mise en service',
+      text: 'Paramétrage, tests de charge, vérification du fonctionnement et explication au client.',
+    },
+    {
+      title: 'Dossier client',
+      text: 'Photos chantier, PDF premium, signature, acompte, facture d’acompte, solde et relance.',
+    },
+  ],
+
+  featuresKicker: 'Fonctions utiles pour installateurs IRVE',
+  featuresTitle: 'Du relevé électrique à la facture finale',
+  featuresIntro:
+    'Chiffr aide à garder un dossier propre pour chaque installation de borne de recharge, sans transformer votre devis en usine à gaz.',
+
+  features: [
+    {
+      title: 'Modèles IRVE',
+      text: 'Bases de devis pour borne résidentielle, entreprise, pose murale, pied, câblage et protection dédiée.',
+    },
+    {
+      title: 'Lignes fréquentes',
+      text: 'Borne, différentiel, disjoncteur, câble, goulotte, raccordement, paramétrage, essais et mise en service.',
+    },
+    {
+      title: 'Photos chantier',
+      text: 'Tableau électrique, emplacement de la borne, cheminement du câble, accès, contraintes et croquis terrain.',
+    },
+    {
+      title: 'PDF premium',
+      text: 'Un devis lisible, sérieux et rassurant pour expliquer un chantier électrique technique.',
+    },
+    {
+      title: 'Signature',
+      text: 'Validation client sur place ou à distance, selon votre façon de travailler.',
+    },
+    {
+      title: 'Acompte',
+      text: 'Demande d’acompte après acceptation du devis, avec suivi du reste à encaisser.',
+    },
+    {
+      title: 'Factures',
+      text: 'Facture d’acompte, facture de solde, facture finale et historique client.',
+    },
+    {
+      title: 'Relances',
+      text: 'Suivi des devis IRVE envoyés, signatures attendues et paiements à récupérer.',
+    },
+  ],
+
+  usecaseTitle: 'Chiffr s’adapte aux devis IRVE les plus courants',
+  usecaseIntro:
+    'Borne résidentielle, garage, pose extérieure, entreprise ou remplacement : chaque dossier peut partir d’une base claire, puis être ajusté par l’artisan.',
+
+  useCases: [
+    {
+      title: 'Borne 7,4 kW en maison',
+      text: 'Protection dédiée, câblage, pose murale, raccordement tableau, paramétrage et essais.',
+    },
+    {
+      title: 'Installation triphasée',
+      text: 'Relevé du tableau, protection adaptée, câblage, borne compatible et mise en service.',
+    },
+    {
+      title: 'Pose extérieure',
+      text: 'Cheminement, percement, fixation, passage câble, contraintes météo et accès chantier.',
+    },
+    {
+      title: 'Entreprise ou flotte',
+      text: 'Plusieurs points de charge, repérage, options de gestion, photos et suivi du dossier client.',
+    },
+  ],
+
+  photoTitle: 'Les photos utiles pour sécuriser un devis IRVE',
+  photoIntro:
+    'Les photos aident à justifier le devis, préparer l’intervention et éviter les oublis au moment de chiffrer ou de facturer.',
+
+  photoItems: [
+    'Tableau électrique existant',
+    'Protection disponible ou coffret à prévoir',
+    'Emplacement prévu de la borne',
+    'Cheminement du câble',
+    'Distance tableau → borne',
+    'Contraintes de percement, gaine ou extérieur',
+    'Accès garage, mur, pied ou support prévu',
+    'Croquis, repérage client ou remarque terrain',
+  ],
+
+  internalTitle: 'Continuer vers les pages liées aux devis énergie',
+  internalIntro:
+    'Cette page cible les installateurs IRVE. Elle renvoie vers les autres métiers énergie pour construire un vrai maillage SEO autour de Chiffr.',
+
+  internalLinks: [
+    {
+      label: 'Logiciel devis photovoltaïque',
+      href: '/logiciel-devis-photovoltaique',
+    },
+    {
+      label: 'Logiciel devis pompe à chaleur',
+      href: '/logiciel-devis-pompe-a-chaleur',
+    },
+    {
+      label: 'Logiciel devis climatisation',
+      href: '/logiciel-devis-climatisation',
+    },
+    {
+      label: 'Logiciel devis chauffagiste',
+      href: '/logiciel-devis-chauffagiste',
+    },
+    {
+      label: 'Logiciel devis frigoriste / CVC',
+      href: '/logiciel-devis-frigoriste-cvc',
+    },
+    {
+      label: 'Logiciel devis VMC',
+      href: '/logiciel-devis-vmc',
+    },
+    {
+      label: 'Modèles de devis',
+      href: '/modeles-devis',
+    },
+    {
+      label: 'Tarifs Chiffr',
+      href: '/tarifs',
+    },
+  ],
+
+  ctaTitle: 'Vos devis IRVE doivent être précis, lisibles et rassurants.',
+  ctaText:
+    'Chiffr prépare une base métier pour vos installations de borne de recharge, avec les lignes à vérifier, les photos chantier, le PDF premium, la signature, l’acompte et les factures.',
+
+  faqTitle: 'Logiciel devis IRVE : les questions courantes',
+
+  faqs: [
+    {
+      question: 'Chiffr est-il adapté aux devis IRVE ?',
+      answer:
+        'Oui. Chiffr est pensé pour les artisans énergie, dont les installateurs IRVE. Il aide à structurer les devis de borne de recharge avec les bonnes lignes, les photos chantier, la signature, l’acompte, les factures et le suivi client.',
+    },
+    {
+      question: 'Quelles lignes prévoir dans un devis de borne de recharge ?',
+      answer:
+        'Un devis IRVE peut inclure la visite technique, la fourniture de la borne, les protections électriques, le câblage, le cheminement, la pose, le raccordement au tableau, les tests, la mise en service, les options et les photos du chantier.',
+    },
+    {
+      question: 'Peut-on ajouter des photos chantier au dossier ?',
+      answer:
+        'Oui. Chiffr permet de conserver les photos utiles au dossier client : tableau électrique, emplacement de la borne, cheminement du câble, accès, contraintes de pose, croquis ou repérage terrain.',
+    },
+    {
+      question: 'Chiffr gère-t-il l’acompte et les factures ?',
+      answer:
+        'Oui. Chiffr accompagne le cycle complet : devis, signature, acompte, facture d’acompte, facture de solde ou finale, relance et suivi client.',
+    },
+    {
+      question: 'Chiffr remplace-t-il le choix technique de l’installateur IRVE ?',
+      answer:
+        'Non. Chiffr prépare une structure claire et vous fait gagner du temps, mais l’artisan garde toujours la main sur les choix techniques, les prix, les quantités et les options.',
+    },
+  ],
+};
+---
+
+<TradeLanding {...page} />

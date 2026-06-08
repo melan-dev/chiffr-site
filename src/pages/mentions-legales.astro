@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalPageShell from '../components/legal/LegalPageShell.astro';
+
+const title = 'Mentions légales | Chiffr';
+const description =
+  'Mentions légales du site Chiffr : éditeur, contact, immatriculation, hébergement, propriété intellectuelle et responsabilité.';
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/mentions-legales">
+  <LegalPageShell
+    eyebrow="Informations légales"
+    title="Mentions légales"
+    description="Cette page rassemble les informations d’identification relatives au site marketing Chiffr accessible sur chiffr.fr."
+  >
+    <h2>Éditeur du site</h2>
+    <div class="legal-card">
+      <p><strong>Site :</strong> chiffr.fr</p>
+      <p><strong>Application :</strong> app.chiffr.fr</p>
+      <p><strong>Éditeur :</strong> Melan Valet, entrepreneur individuel</p>
+      <p><strong>Nom commercial déclaré au RNE :</strong> LIVD</p>
+      <p><strong>SIREN :</strong> 103 905 741</p>
+      <p><strong>SIRET :</strong> 103 905 741 00015</p>
+      <p><strong>Code APE :</strong> 5829C - Édition de logiciels applicatifs</p>
+      <p><strong>Date d’immatriculation au RNE :</strong> 24/04/2026</p>
+      <p><strong>Adresse de l’entreprise :</strong> 1444 Route de Mende, Bât. A - Appart. 94, 34090 Montpellier, France</p>
+      <p><strong>Responsable de la publication :</strong> Melan Valet</p>
+      <p><strong>Contact :</strong> <a href="mailto:melan@livdapps.com">melan@livdapps.com</a></p>
+      <p><strong>TVA intracommunautaire :</strong> à compléter si applicable.</p>
+    </div>
+
+    <h2>Objet du site</h2>
+    <p>
+      Chiffr est un site marketing public présentant une solution de devis, factures, signature, acomptes,
+      relances et suivi client destinée aux artisans énergie : pompe à chaleur, climatisation, chauffage,
+      CVC, VMC, IRVE et solaire.
+    </p>
+    <p>
+      Le site chiffr.fr est séparé de l’application accessible sur app.chiffr.fr.
+    </p>
+
+    <h2>Hébergement</h2>
+    <div class="legal-alert">
+      <strong>À compléter au moment du déploiement final.</strong>
+      <p>
+        Les informations relatives à l’hébergeur doivent être ajustées selon la plateforme effectivement retenue
+        pour chiffr.fr, par exemple Cloudflare Pages ou Firebase Hosting.
+      </p>
+    </div>
+    <div class="legal-card">
+      <p><strong>Hébergeur :</strong> à compléter.</p>
+      <p><strong>Adresse de l’hébergeur :</strong> à compléter.</p>
+      <p><strong>Contact hébergeur :</strong> à compléter.</p>
+    </div>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      Le site, sa structure, ses textes, ses visuels, ses éléments graphiques, ses composants et son identité visuelle
+      sont protégés. Toute reproduction, représentation, modification ou diffusion, totale ou partielle, sans autorisation
+      préalable, est interdite, sauf exceptions prévues par la loi.
+    </p>
+    <p>
+      Les marques, noms de produits ou services tiers éventuellement cités restent la propriété de leurs titulaires respectifs.
+      Les pages comparatives ou alternatives publiées sur le site sont fournies à titre informatif et ne constituent pas une
+      affiliation, une approbation ou un partenariat, sauf mention contraire.
+    </p>
+
+    <h2>Responsabilité</h2>
+    <p>
+      Chiffr s’efforce de fournir des informations claires, utiles et à jour. Les contenus du site marketing sont toutefois
+      fournis à titre informatif et ne remplacent pas un conseil juridique, comptable, fiscal ou technique adapté à une
+      situation particulière.
+    </p>
+    <p>
+      Les exemples de devis, de lignes métier, de factures ou de documents présentés sur le site sont des exemples pédagogiques.
+      Chaque artisan reste responsable de vérifier l’exactitude de ses prix, mentions, obligations professionnelles, assurances,
+      normes et documents commerciaux.
+    </p>
+
+    <h2>Liens externes</h2>
+    <p>
+      Le site peut contenir des liens vers des sites tiers. Chiffr ne contrôle pas ces sites et ne peut être tenu responsable
+      de leur contenu, de leur disponibilité ou de leurs pratiques.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Pour toute question relative au site ou à ces mentions légales, vous pouvez écrire à :
+      <a href="mailto:melan@livdapps.com">melan@livdapps.com</a>.
+    </p>
+  </LegalPageShell>
+</BaseLayout>

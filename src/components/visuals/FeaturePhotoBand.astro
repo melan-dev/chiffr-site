@@ -1,0 +1,98 @@
+---
+import { featureVisuals } from '../../data/visualAssets';
+
+interface Props {
+  variant?: keyof typeof featureVisuals;
+  eyebrow?: string;
+  title: string;
+  text: string;
+  href?: string;
+}
+
+const {
+  variant = 'photosChantier',
+  eyebrow = 'Chiffr en pratique',
+  title,
+  text,
+  href = '/fonctionnalites',
+} = Astro.props;
+
+const visual = featureVisuals[variant] ?? featureVisuals.photosChantier;
+---
+
+<section class="feature-photo-band">
+  <img src={visual.src} alt={visual.alt} width="1400" height="933" loading="lazy" decoding="async" />
+
+  <div>
+    <p>{eyebrow}</p>
+    <h2>{title}</h2>
+    <span>{text}</span>
+    <a href={href}>En savoir plus →</a>
+  </div>
+</section>
+
+<style>
+  .feature-photo-band,
+  .feature-photo-band * {
+    box-sizing: border-box;
+  }
+
+  .feature-photo-band {
+    display: grid;
+    overflow: hidden;
+    border-radius: 32px;
+    border: 1px solid rgba(18, 63, 61, 0.1);
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: 0 24px 70px rgba(18, 63, 61, 0.1);
+  }
+
+  .feature-photo-band img {
+    width: 100%;
+    min-height: 260px;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .feature-photo-band div {
+    padding: clamp(22px, 4vw, 36px);
+  }
+
+  .feature-photo-band p {
+    margin: 0;
+    color: var(--copper);
+    font-size: 14px;
+    font-weight: 950;
+  }
+
+  .feature-photo-band h2 {
+    margin: 12px 0 0;
+    color: var(--teal);
+    font-size: clamp(28px, 3.4vw, 46px);
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+    font-weight: 950;
+  }
+
+  .feature-photo-band span {
+    display: block;
+    margin-top: 14px;
+    color: #536866;
+    font-size: 16px;
+    line-height: 1.62;
+    font-weight: 700;
+  }
+
+  .feature-photo-band a {
+    display: inline-flex;
+    margin-top: 20px;
+    color: var(--teal);
+    font-weight: 950;
+  }
+
+  @media (min-width: 860px) {
+    .feature-photo-band {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+    }
+  }
+</style>

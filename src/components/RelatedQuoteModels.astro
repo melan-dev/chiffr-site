@@ -1,0 +1,352 @@
+---
+type RelatedModel = {
+  label: string;
+  href: string;
+  text: string;
+  tag: string;
+};
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const relatedByPath: Record<string, RelatedModel[]> = {
+  '/logiciel-devis-pompe-a-chaleur': [
+    {
+      label: 'Modèle devis PAC air/eau',
+      href: '/modele-devis-pac-air-eau',
+      text: 'Les lignes à prévoir pour une installation ou un remplacement par PAC air/eau.',
+      tag: 'PAC',
+    },
+    {
+      label: 'Modèle devis remplacement chaudière par PAC',
+      href: '/modele-devis-remplacement-chaudiere-pac',
+      text: 'Dépose, évacuation, raccordements, désembouage, mise en service et acompte.',
+      tag: 'Rénovation',
+    },
+    {
+      label: 'Modèle devis chauffe-eau thermodynamique',
+      href: '/modele-devis-chauffe-eau-thermodynamique',
+      text: 'Fourniture, dépose ballon, raccordements, condensats et mise en service.',
+      tag: 'CET',
+    },
+  ],
+
+  '/logiciel-devis-climatisation': [
+    {
+      label: 'Modèle devis clim monosplit',
+      href: '/modele-devis-clim-monosplit',
+      text: 'Unité intérieure, groupe extérieur, liaison frigorifique, condensats et pose.',
+      tag: 'Monosplit',
+    },
+    {
+      label: 'Modèle devis clim multisplit',
+      href: '/modele-devis-clim-multisplit',
+      text: 'Plusieurs unités intérieures, groupe extérieur, liaisons, percements et essais.',
+      tag: 'Multisplit',
+    },
+  ],
+
+  '/logiciel-devis-chauffagiste': [
+    {
+      label: 'Modèle devis remplacement chaudière par PAC',
+      href: '/modele-devis-remplacement-chaudiere-pac',
+      text: 'Dépose chaudière, adaptation réseau, PAC, électricité, désembouage et facture.',
+      tag: 'Chauffage',
+    },
+    {
+      label: 'Modèle devis PAC air/eau',
+      href: '/modele-devis-pac-air-eau',
+      text: 'Un modèle complet pour structurer les postes d’un devis PAC air/eau.',
+      tag: 'PAC',
+    },
+    {
+      label: 'Modèle devis chauffe-eau thermodynamique',
+      href: '/modele-devis-chauffe-eau-thermodynamique',
+      text: 'Installation ou remplacement de chauffe-eau thermodynamique.',
+      tag: 'ECS',
+    },
+  ],
+
+  '/logiciel-devis-frigoriste-cvc': [
+    {
+      label: 'Modèle devis clim monosplit',
+      href: '/modele-devis-clim-monosplit',
+      text: 'Pose, liaisons frigorifiques, condensats, raccordement électrique et mise en service.',
+      tag: 'Clim',
+    },
+    {
+      label: 'Modèle devis clim multisplit',
+      href: '/modele-devis-clim-multisplit',
+      text: 'Un modèle plus détaillé pour les installations avec plusieurs unités intérieures.',
+      tag: 'CVC',
+    },
+  ],
+
+  '/logiciel-devis-vmc': [
+    {
+      label: 'Modèle devis VMC simple flux',
+      href: '/modele-devis-vmc-simple-flux',
+      text: 'Caisson, gaines, bouches, sorties, raccordements et réglages.',
+      tag: 'Simple flux',
+    },
+    {
+      label: 'Modèle devis VMC double flux',
+      href: '/modele-devis-vmc-double-flux',
+      text: 'Réseau insufflation/extraction, échangeur, bouches, équilibrage et mise en service.',
+      tag: 'Double flux',
+    },
+  ],
+
+  '/logiciel-devis-irve': [
+    {
+      label: 'Modèle devis borne recharge 7 kW',
+      href: '/modele-devis-borne-recharge-7kw',
+      text: 'Borne résidentielle, protection électrique, câblage, pose et mise en service.',
+      tag: '7 kW',
+    },
+    {
+      label: 'Modèle devis borne recharge 22 kW',
+      href: '/modele-devis-borne-recharge-22kw',
+      text: 'Installation plus puissante avec protections, câblage, configuration et essais.',
+      tag: '22 kW',
+    },
+  ],
+
+  '/logiciel-devis-photovoltaique': [
+    {
+      label: 'Modèle devis photovoltaïque autoconsommation',
+      href: '/modele-devis-photovoltaique-autoconsommation',
+      text: 'Panneaux, onduleur, fixation, raccordement, protections et mise en service.',
+      tag: 'Solaire',
+    },
+  ],
+
+  '/logiciel-devis-chauffe-eau-thermodynamique': [
+    {
+      label: 'Modèle devis chauffe-eau thermodynamique',
+      href: '/modele-devis-chauffe-eau-thermodynamique',
+      text: 'Fourniture, dépose ancien ballon, raccordements, condensats et mise en service.',
+      tag: 'CET',
+    },
+    {
+      label: 'Modèle devis PAC air/eau',
+      href: '/modele-devis-pac-air-eau',
+      text: 'Une structure proche pour les artisans énergie qui posent aussi des PAC.',
+      tag: 'PAC',
+    },
+  ],
+};
+
+const cleanPath = currentPath.endsWith('/') && currentPath !== '/'
+  ? currentPath.slice(0, -1)
+  : currentPath;
+
+const relatedModels = relatedByPath[cleanPath] ?? [];
+const shouldRender = relatedModels.length > 0;
+---
+
+{shouldRender && (
+  <section class="related-models-section" aria-labelledby="related-models-title">
+    <div class="related-models-shell">
+      <div class="related-models-head">
+        <p class="related-models-kicker">Modèles de devis liés</p>
+
+        <h2 id="related-models-title">
+          Des exemples concrets pour ce métier
+        </h2>
+
+        <p>
+          Chaque page métier renvoie vers des modèles de devis plus précis :
+          lignes à prévoir, points à vérifier, exemple PDF fictif et structure adaptée.
+        </p>
+      </div>
+
+      <div class="related-models-grid">
+        {relatedModels.map((model) => (
+          <a href={model.href} class="related-model-card">
+            <span class="related-model-tag">{model.tag}</span>
+            <strong>{model.label}</strong>
+            <p>{model.text}</p>
+            <small>Voir le modèle →</small>
+          </a>
+        ))}
+
+        <a href="/modeles-devis" class="related-model-card all-models">
+          <span class="related-model-tag">Bibliothèque</span>
+          <strong>Tous les modèles de devis</strong>
+          <p>
+            PAC, climatisation, VMC, IRVE, solaire, chauffe-eau thermodynamique
+            et chauffage.
+          </p>
+          <small>Voir tous les modèles →</small>
+        </a>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .related-models-section,
+  .related-models-section * {
+    box-sizing: border-box;
+  }
+
+  .related-models-section {
+    padding: clamp(42px, 4vw, 64px) 20px;
+    background:
+      radial-gradient(circle at 14% 0%, rgba(183, 110, 60, 0.1), transparent 30%),
+      linear-gradient(180deg, rgba(255, 248, 239, 0), rgba(255, 248, 239, 0.72));
+  }
+
+  .related-models-shell {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .related-models-head {
+    max-width: 820px;
+    margin-bottom: 24px;
+  }
+
+  .related-models-kicker {
+    margin: 0;
+    color: var(--copper);
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 950;
+  }
+
+  .related-models-head h2 {
+    margin: 12px 0 0;
+    color: var(--teal);
+    font-size: clamp(30px, 3.3vw, 46px);
+    line-height: 1.07;
+    letter-spacing: -0.045em;
+    font-weight: 950;
+  }
+
+  .related-models-head p {
+    margin: 12px 0 0;
+    color: #536866;
+    font-size: 16px;
+    line-height: 1.58;
+  }
+
+  .related-models-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .related-model-card {
+    display: grid;
+    gap: 10px;
+    min-height: 190px;
+    padding: 22px;
+    border-radius: 26px;
+    color: inherit;
+    background:
+      linear-gradient(145deg, rgba(255, 253, 249, 0.96), rgba(255, 255, 255, 0.88)),
+      radial-gradient(circle at top right, rgba(183, 110, 60, 0.1), transparent 42%);
+    border: 1px solid rgba(18, 63, 61, 0.12);
+    box-shadow:
+      0 24px 64px rgba(18, 63, 61, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.88);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
+  }
+
+  .related-model-card:hover {
+    transform: translateY(-4px);
+    background: white;
+    box-shadow:
+      0 30px 78px rgba(18, 63, 61, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .related-model-tag {
+    width: fit-content;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(220, 236, 235, 0.82);
+    color: var(--teal);
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 950;
+  }
+
+  .related-model-card strong {
+    color: var(--teal);
+    font-size: 22px;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    font-weight: 950;
+  }
+
+  .related-model-card p {
+    margin: 0;
+    color: #536866;
+    font-size: 15px;
+    line-height: 1.52;
+  }
+
+  .related-model-card small {
+    margin-top: auto;
+    color: var(--copper);
+    font-size: 13px;
+    font-weight: 950;
+  }
+
+  .related-model-card.all-models {
+    background:
+      radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.12), transparent 36%),
+      linear-gradient(145deg, #123f3d, #0d302e);
+  }
+
+  .related-model-card.all-models .related-model-tag {
+    background: rgba(255, 255, 255, 0.12);
+    color: #f3dfcf;
+  }
+
+  .related-model-card.all-models strong,
+  .related-model-card.all-models small {
+    color: white;
+  }
+
+  .related-model-card.all-models p {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  @media (min-width: 760px) {
+    .related-models-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .related-models-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .related-models-section {
+      padding: 38px 16px;
+    }
+
+    .related-model-card {
+      min-height: auto;
+      padding: 18px;
+      border-radius: 22px;
+    }
+
+    .related-model-card strong {
+      font-size: 20px;
+    }
+  }
+</style>

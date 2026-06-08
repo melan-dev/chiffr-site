@@ -1,0 +1,967 @@
+---
+import PagePhotoShowcase from '../components/visuals/PagePhotoShowcase.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { competitorAlternatives } from '../data/competitorAlternatives';
+import { useCaseAlternatives } from '../data/useCaseAlternatives';
+
+const title = 'Alternatives logiciels devis bâtiment | Obat, Tolteck, Costructor, Batappli';
+const description =
+  'Comparez les alternatives aux logiciels de devis bâtiment : Obat, Tolteck, Costructor, Batappli, ProGBat, Sage Batigest, EBP et plus. Découvrez Chiffr pour artisans énergie.';
+
+const mainCompetitors = competitorAlternatives.slice(0, 6);
+const otherCompetitors = competitorAlternatives.slice(6);
+
+const mainUseCases = useCaseAlternatives.slice(0, 6);
+const otherUseCases = useCaseAlternatives.slice(6);
+
+const allAlternativePages = [
+  ...competitorAlternatives.map((page) => ({
+    name: page.h1,
+    url: `/${page.slug}`,
+  })),
+  ...useCaseAlternatives.map((page) => ({
+    name: page.h1,
+    url: `/${page.slug}`,
+  })),
+];
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Alternatives logiciels devis bâtiment',
+  itemListElement: allAlternativePages.map((page, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: page.name,
+    url: page.url,
+  })),
+};
+
+const faqs = [
+  {
+    question: 'Pourquoi comparer les logiciels de devis bâtiment ?',
+    answer:
+      'Tous les logiciels ne répondent pas au même besoin. Certains sont très généralistes, d’autres plus orientés bâtiment complet, chantier ou gestion d’entreprise. Chiffr se concentre sur les devis et factures des artisans énergie.',
+  },
+  {
+    question: 'Chiffr est-il une alternative à Obat, Tolteck ou Costructor ?',
+    answer:
+      'Oui, Chiffr peut être une alternative si vous cherchez un outil plus spécialisé pour les artisans PAC, climatisation, chauffage, VMC, IRVE, solaire ou CVC.',
+  },
+  {
+    question: 'Faut-il choisir un logiciel généraliste ou spécialisé ?',
+    answer:
+      'Un logiciel généraliste peut convenir si vous voulez gérer beaucoup d’aspects de l’entreprise. Un outil spécialisé comme Chiffr est plus adapté si votre priorité est de produire vite des devis énergie clairs, guidés et faciles à suivre.',
+  },
+  {
+    question: 'Les pages alternatives sont-elles des classements ?',
+    answer:
+      'Non. Elles servent à comparer les positionnements et les usages. Le bon choix dépend de votre métier, de votre organisation et de vos besoins réels.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/alternatives-logiciels-devis-batiment"
+  schema={[itemListSchema, faqSchema]}
+>
+  <style is:inline>
+    .alternatives-page,
+    .alternatives-page * {
+      box-sizing: border-box;
+    }
+
+    .alternatives-page {
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    .alt-hub-shell {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .alt-hub-narrow {
+      max-width: 920px;
+    }
+
+    .alt-hub-hero,
+    .alt-hub-section,
+    .alt-hub-cta {
+      position: relative;
+      padding: 72px 20px;
+    }
+
+    .alt-hub-hero {
+      padding-top: 88px;
+      padding-bottom: 76px;
+    }
+
+    .alt-hub-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(183, 110, 60, 0.14), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(18, 63, 61, 0.12), transparent 32%);
+    }
+
+    .alt-hub-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .alt-hub-pill,
+    .alt-hub-kicker {
+      display: inline-flex;
+      width: fit-content;
+      margin: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--teal);
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .alt-hub-kicker {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--copper);
+      font-size: 15px;
+    }
+
+    .alternatives-page h1 {
+      margin: 26px 0 0;
+      max-width: 940px;
+      color: var(--teal);
+      font-size: clamp(42px, 5.4vw, 78px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+    }
+
+    .alt-hub-lead {
+      margin: 22px 0 0;
+      max-width: 780px;
+      color: #536866;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .alt-hub-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .alt-hub-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 999px;
+      padding: 16px 24px;
+      font-weight: 950;
+      line-height: 1;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .alt-hub-btn.primary {
+      color: white;
+      background: var(--teal);
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.18);
+    }
+
+    .alt-hub-btn.primary:hover {
+      transform: translateY(-2px);
+      background: #0d302e;
+      box-shadow: 0 24px 48px rgba(18, 63, 61, 0.22);
+    }
+
+    .alt-hub-btn.secondary {
+      color: var(--teal);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(18, 63, 61, 0.14);
+    }
+
+    .alt-hub-btn.secondary:hover {
+      transform: translateY(-2px);
+      background: white;
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.08);
+    }
+
+    .alt-hub-proof {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: #667977;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .alt-hub-proof span::before {
+      content: "✓";
+      margin-right: 6px;
+      color: var(--success);
+    }
+
+    .alt-hub-card,
+    .alt-card,
+    .alt-hub-panel,
+    .alt-hub-step,
+    .alt-hub-faq-card {
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background:
+        linear-gradient(145deg, rgba(255, 253, 249, 0.96), rgba(255, 255, 255, 0.86)),
+        radial-gradient(circle at top right, rgba(183, 110, 60, 0.1), transparent 44%);
+      box-shadow:
+        0 26px 74px rgba(18, 63, 61, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .alt-hub-card {
+      overflow: hidden;
+      border-radius: 36px;
+      padding: 22px;
+    }
+
+    .alt-hub-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .alt-hub-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .alt-hub-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.18);
+    }
+
+    .alt-hub-dots span:nth-child(1) {
+      background: #f3dfcf;
+    }
+
+    .alt-hub-dots span:nth-child(2) {
+      background: #dceceb;
+    }
+
+    .alt-hub-dots span:nth-child(3) {
+      background: rgba(47, 143, 107, 0.45);
+    }
+
+    .alt-hub-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.08);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .alt-hub-status span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 6px rgba(47, 143, 107, 0.12);
+    }
+
+    .alt-hub-card-head {
+      padding: 24px;
+      border-radius: 28px;
+      color: white;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.12), transparent 34%),
+        linear-gradient(135deg, #123f3d, #0d302e);
+    }
+
+    .alt-hub-card-head p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .alt-hub-card-head h2 {
+      margin: 8px 0 0;
+      color: white;
+      font-size: 34px;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      font-weight: 950;
+    }
+
+    .alt-hub-card-list {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .alt-hub-card-row {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(18, 63, 61, 0.08);
+    }
+
+    .alt-hub-card-row b {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .alt-hub-card-row strong {
+      color: var(--teal);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .alt-hub-card-row small {
+      color: #667977;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .alt-hub-section-head {
+      max-width: 880px;
+      margin-bottom: 30px;
+    }
+
+    .alt-hub-section-head h2,
+    .alt-hub-panel h2,
+    .alt-hub-cta h2 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: clamp(34px, 3.8vw, 56px);
+      line-height: 1.06;
+      letter-spacing: -0.048em;
+      font-weight: 950;
+    }
+
+    .alt-hub-section-head p,
+    .alt-hub-panel p,
+    .alt-hub-cta p {
+      margin: 14px 0 0;
+      color: #536866;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .alt-grid-list,
+    .alt-step-grid,
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .alt-card {
+      display: grid;
+      gap: 13px;
+      min-height: 250px;
+      border-radius: 28px;
+      padding: 22px;
+      color: inherit;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .alt-card:hover {
+      transform: translateY(-4px);
+      background: white;
+      box-shadow: 0 26px 70px rgba(18, 63, 61, 0.12);
+    }
+
+    .alt-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .alt-card small {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.07);
+      color: var(--teal);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .alt-card h3 {
+      margin: 12px 0 0;
+      color: var(--teal);
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-weight: 950;
+    }
+
+    .alt-card p {
+      margin: 0;
+      color: #536866;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .alt-card-arrow {
+      width: 38px;
+      height: 38px;
+      flex: none;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--teal);
+      color: white;
+      font-weight: 950;
+      transition: transform 180ms ease;
+    }
+
+    .alt-card:hover .alt-card-arrow {
+      transform: translateX(3px);
+    }
+
+    .alt-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .alt-card-tags span {
+      display: inline-flex;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: rgba(220, 236, 235, 0.72);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .alt-hub-split {
+      display: grid;
+      gap: 22px;
+    }
+
+    .alt-hub-panel {
+      border-radius: 34px;
+      padding: 34px;
+    }
+
+    .alt-hub-panel.dark {
+      background: var(--teal);
+      color: white;
+    }
+
+    .alt-hub-panel.dark h2 {
+      color: white;
+    }
+
+    .alt-hub-panel.dark p {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .alt-hub-step {
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .alt-hub-step b {
+      display: inline-grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .alt-hub-step h3 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 950;
+    }
+
+    .alt-hub-step p {
+      margin: 8px 0 0;
+      color: #536866;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .alt-hub-faq-card {
+      border-radius: 26px;
+      padding: 22px 24px;
+    }
+
+    .alt-hub-faq-card summary {
+      cursor: pointer;
+      color: var(--teal);
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      font-weight: 900;
+    }
+
+    .alt-hub-faq-card p {
+      margin: 14px 0 0;
+      color: #536866;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .alt-hub-cta {
+      text-align: center;
+    }
+
+    .alt-hub-cta .alt-hub-shell {
+      padding: 50px 28px;
+      border-radius: 38px;
+      border: 1px solid rgba(18, 63, 61, 0.1);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.13), transparent 36%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 253, 249, 0.86));
+      box-shadow: 0 26px 78px rgba(18, 63, 61, 0.1);
+    }
+
+    .alt-hub-cta .alt-hub-btn {
+      margin-top: 24px;
+    }
+
+    @media (min-width: 760px) {
+      .alt-grid-list,
+      .alt-step-grid,
+      .faq-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1020px) {
+      .alt-hub-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .alt-grid-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .alt-hub-split {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .alt-step-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .alt-hub-hero,
+      .alt-hub-section,
+      .alt-hub-cta {
+        padding: 52px 18px;
+      }
+
+      .alt-hub-hero {
+        padding-top: 58px;
+      }
+
+      .alternatives-page h1 {
+        font-size: clamp(40px, 14vw, 58px);
+      }
+
+      .alt-hub-lead {
+        font-size: 18px;
+      }
+
+      .alt-hub-actions {
+        display: grid;
+      }
+
+      .alt-hub-btn {
+        width: 100%;
+      }
+
+      .alt-hub-card-row {
+        grid-template-columns: 36px 1fr;
+      }
+
+      .alt-hub-card-row small {
+        grid-column: 2;
+      }
+
+      .alt-hub-panel {
+        padding: 24px;
+        border-radius: 28px;
+      }
+    }
+  </style>
+
+  <div class="alternatives-page">
+    <section class="alt-hub-hero">
+      <div class="alt-hub-shell alt-hub-grid">
+        <div>
+          <p class="alt-hub-pill">Alternatives logiciels devis bâtiment</p>
+
+          <h1>Comparer les logiciels de devis bâtiment sans perdre le métier de vue</h1>
+
+          <p class="alt-hub-lead">
+            Obat, Tolteck, Costructor, Batappli, ProGBat, Sage Batigest, EBP et autres outils
+            couvrent des besoins différents. Chiffr prend un angle plus spécialisé :
+            devis et factures pour artisans énergie, PAC, climatisation, chauffage, CVC, VMC, IRVE et solaire.
+          </p>
+
+          <div class="alt-hub-actions">
+            <a href="#alternatives" class="alt-hub-btn primary">Voir les alternatives</a>
+            <a href="/modeles-devis" class="alt-hub-btn secondary">Voir les modèles de devis</a>
+          </div>
+
+          <div class="alt-hub-proof">
+            <span>Comparatifs propres</span>
+            <span>Pas de classement inventé</span>
+            <span>Sources publiques</span>
+            <span>Angle artisans énergie</span>
+            <span>Maillage SEO</span>
+          </div>
+        </div>
+
+        <aside class="alt-hub-card" aria-label="Aperçu stratégie alternatives Chiffr">
+          <div class="alt-hub-card-top">
+            <div class="alt-hub-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="alt-hub-status"><span></span> Comparaison guidée</div>
+          </div>
+
+          <div class="alt-hub-card-head">
+            <p>Choisir le bon logiciel</p>
+            <h2>Généraliste ou spécialisé énergie ?</h2>
+          </div>
+
+          <div class="alt-hub-card-list">
+            <div class="alt-hub-card-row">
+              <b>01</b>
+              <strong>Comparer les usages</strong>
+              <small>besoin réel</small>
+            </div>
+            <div class="alt-hub-card-row">
+              <b>02</b>
+              <strong>Regarder le métier couvert</strong>
+              <small>PAC · Clim · IRVE</small>
+            </div>
+            <div class="alt-hub-card-row">
+              <b>03</b>
+              <strong>Tester les modèles concrets</strong>
+              <small>devis</small>
+            </div>
+            <div class="alt-hub-card-row">
+              <b>04</b>
+              <strong>Choisir l’outil adapté</strong>
+              <small>terrain</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="alt-hub-section">
+      <div class="alt-hub-shell">
+        <PagePhotoShowcase
+          variant="alternatives"
+          eyebrow="Comparatif visuel"
+          title="Comparer un logiciel, c’est surtout comparer son usage réel sur le terrain"
+          text="Chiffr met l’accent sur les dossiers simples à suivre : client, devis, photos, signature, acompte, facture et relance."
+          ctaLabel="Voir les alternatives"
+          ctaHref="#alternatives"
+        />
+      </div>
+    </section>
+
+
+    <section class="alt-hub-section" id="alternatives">
+      <div class="alt-hub-shell">
+        <div class="alt-hub-section-head">
+          <p class="alt-hub-kicker">Alternatives principales</p>
+          <h2>Les logiciels les plus comparés par les artisans bâtiment</h2>
+          <p>
+            Chaque page compare le positionnement du logiciel avec Chiffr, sans dénigrement :
+            le but est d’aider l’artisan à choisir selon son usage.
+          </p>
+        </div>
+
+        <div class="alt-grid-list">
+          {mainCompetitors.map((alternative) => (
+            <a href={`/${alternative.slug}`} class="alt-card">
+              <div class="alt-card-top">
+                <div>
+                  <small>Alternative</small>
+                  <h3>{alternative.competitorName}</h3>
+                </div>
+
+                <span class="alt-card-arrow">→</span>
+              </div>
+
+              <p>{alternative.metaDescription}</p>
+
+              <div class="alt-card-tags">
+                <span>Devis</span>
+                <span>Factures</span>
+                <span>Artisans énergie</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="alt-hub-section">
+      <div class="alt-hub-shell alt-hub-split">
+        <article class="alt-hub-panel dark">
+          <p class="alt-hub-kicker">Notre angle</p>
+          <h2>Chiffr n’essaie pas de devenir un logiciel BTP généraliste.</h2>
+          <p>
+            Chiffr se concentre sur le devis/facture des artisans énergie : modèles métier,
+            lignes préparées, photos chantier, PDF premium, signature, acompte, factures et suivi client.
+          </p>
+        </article>
+
+        <article class="alt-hub-panel">
+          <p class="alt-hub-kicker">Pourquoi comparer ?</p>
+          <h2>Le meilleur logiciel dépend du métier et du niveau de complexité.</h2>
+          <p>
+            Un outil généraliste peut être parfait pour une entreprise BTP large. Pour un artisan PAC,
+            climatisation, VMC, IRVE ou solaire, un outil plus guidé métier peut être plus direct.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="alt-hub-section">
+      <div class="alt-hub-shell">
+        <div class="alt-hub-section-head">
+          <p class="alt-hub-kicker">Autres alternatives</p>
+          <h2>Des pages utiles pour élargir la comparaison</h2>
+          <p>
+            Ces pages ciblent aussi les recherches autour de la facturation, de la gestion commerciale
+            et des outils de devis plus généralistes.
+          </p>
+        </div>
+
+        <div class="alt-grid-list">
+          {otherCompetitors.map((alternative) => (
+            <a href={`/${alternative.slug}`} class="alt-card">
+              <div class="alt-card-top">
+                <div>
+                  <small>Alternative</small>
+                  <h3>{alternative.competitorName}</h3>
+                </div>
+
+                <span class="alt-card-arrow">→</span>
+              </div>
+
+              <p>{alternative.metaDescription}</p>
+
+              <div class="alt-card-tags">
+                <span>Comparatif</span>
+                <span>Devis</span>
+                <span>Chiffr</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="alt-hub-section">
+      <div class="alt-hub-shell">
+        <div class="alt-hub-section-head">
+          <p class="alt-hub-kicker">Alternatives par usage</p>
+          <h2>Des pages pour chercher selon votre vrai besoin</h2>
+          <p>
+            Ces pages ne comparent pas un concurrent précis. Elles ciblent les recherches concrètes :
+            logiciel de devis simple, mobile, avec signature, acompte, facture d’acompte,
+            photos chantier, relance client ou catalogue artisan.
+          </p>
+        </div>
+
+        <div class="alt-grid-list">
+          {mainUseCases.map((page) => (
+            <a href={`/${page.slug}`} class="alt-card">
+              <div class="alt-card-top">
+                <div>
+                  <small>Usage</small>
+                  <h3>{page.eyebrow}</h3>
+                </div>
+
+                <span class="alt-card-arrow">→</span>
+              </div>
+
+              <p>{page.metaDescription}</p>
+
+              <div class="alt-card-tags">
+                <span>Devis</span>
+                <span>Usage métier</span>
+                <span>Chiffr</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="alt-hub-section">
+      <div class="alt-hub-shell">
+        <div class="alt-hub-section-head">
+          <p class="alt-hub-kicker">Guides logiciels Chiffr</p>
+          <h2>Signature, acompte, photos chantier, relances et catalogue</h2>
+          <p>
+            Ces pages renforcent le maillage SEO autour des fonctions importantes de Chiffr,
+            avec un angle concret pour les artisans énergie.
+          </p>
+        </div>
+
+        <div class="alt-grid-list">
+          {otherUseCases.map((page) => (
+            <a href={`/${page.slug}`} class="alt-card">
+              <div class="alt-card-top">
+                <div>
+                  <small>Fonction</small>
+                  <h3>{page.eyebrow}</h3>
+                </div>
+
+                <span class="alt-card-arrow">→</span>
+              </div>
+
+              <p>{page.metaDescription}</p>
+
+              <div class="alt-card-tags">
+                <span>PAC</span>
+                <span>Clim</span>
+                <span>VMC</span>
+                <span>IRVE</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="alt-hub-section">
+      <div class="alt-hub-shell">
+        <div class="alt-hub-section-head">
+          <p class="alt-hub-kicker">Méthode</p>
+          <h2>Comment lire ces comparatifs</h2>
+        </div>
+
+        <div class="alt-step-grid">
+          <article class="alt-hub-step">
+            <b>01</b>
+            <h3>Regarder le positionnement</h3>
+            <p>Généraliste BTP, gestion d’entreprise, facturation ou spécialisation énergie.</p>
+          </article>
+
+          <article class="alt-hub-step">
+            <b>02</b>
+            <h3>Comparer les usages</h3>
+            <p>Devis, facture, chantier, acompte, signature, relances, catalogue et photos terrain.</p>
+          </article>
+
+          <article class="alt-hub-step">
+            <b>03</b>
+            <h3>Vérifier les métiers</h3>
+            <p>PAC, climatisation, chauffage, VMC, IRVE, solaire et CVC n’ont pas les mêmes lignes.</p>
+          </article>
+
+          <article class="alt-hub-step">
+            <b>04</b>
+            <h3>Tester sur un vrai devis</h3>
+            <p>Le plus important : est-ce que l’outil vous aide à produire un devis clair plus vite ?</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt-hub-cta">
+      <div class="alt-hub-shell alt-hub-narrow">
+        <p class="alt-hub-kicker">Accès sur demande</p>
+        <h2>Vous cherchez surtout à faire des devis énergie plus vite ?</h2>
+        <p>
+          Chiffr vous aide à partir d’un modèle métier, ajouter vos lignes, joindre vos photos,
+          générer un PDF premium, faire signer, demander un acompte et facturer.
+        </p>
+
+        <a href="/contact" class="alt-hub-btn primary">Demander un accès</a>
+      </div>
+    </section>
+
+    <section class="alt-hub-section">
+      <div class="alt-hub-shell alt-hub-narrow">
+        <div class="alt-hub-section-head">
+          <p class="alt-hub-kicker">FAQ</p>
+          <h2>Questions fréquentes</h2>
+        </div>
+
+        <div class="faq-list">
+          {faqs.map((item) => (
+            <details class="alt-hub-faq-card">
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

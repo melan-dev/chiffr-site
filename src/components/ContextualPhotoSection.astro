@@ -1,0 +1,311 @@
+---
+import { getVisualStoryByPath } from '../data/visualAssets';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const normalizedPath =
+  currentPath.endsWith('/') && currentPath !== '/'
+    ? currentPath.slice(0, -1)
+    : currentPath;
+
+const story = getVisualStoryByPath(normalizedPath);
+
+const shouldShow =
+  normalizedPath !== '/' &&
+  !normalizedPath.startsWith('/logiciel-devis-') &&
+  !normalizedPath.includes('/contact') &&
+  !normalizedPath.includes('/robots.txt');
+---
+
+{shouldShow && (
+  <section class="context-photo-section" aria-labelledby="context-photo-title">
+    <div class="context-photo-shell">
+      <div class="context-photo-head">
+        <p>{story.eyebrow}</p>
+        <h2 id="context-photo-title">{story.title}</h2>
+        <span>{story.text}</span>
+      </div>
+
+      <div class="context-photo-grid">
+        <a class="context-photo-main" href={story.ctaHref}>
+          <img
+            src={story.hero.src}
+            alt={story.hero.alt}
+            width="1800"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <div class="context-photo-main-copy">
+            <small>Chiffr sur le terrain</small>
+            <strong>{story.ctaLabel}</strong>
+            <span aria-hidden="true">→</span>
+          </div>
+        </a>
+
+        <div class="context-photo-cards">
+          {story.cards.map((card) => (
+            <article class="context-photo-card">
+              <img
+                src={card.image.src}
+                alt={card.image.alt}
+                width="1400"
+                height="933"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <div>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .context-photo-section,
+  .context-photo-section * {
+    box-sizing: border-box;
+  }
+
+  .context-photo-section {
+    position: relative;
+    overflow: hidden;
+    padding: 64px 20px;
+    background:
+      radial-gradient(circle at 8% 0%, rgba(183, 110, 60, 0.1), transparent 30%),
+      radial-gradient(circle at 92% 12%, rgba(18, 63, 61, 0.08), transparent 32%),
+      linear-gradient(180deg, rgba(255, 248, 239, 0.26), rgba(255, 248, 239, 0.78));
+  }
+
+  .context-photo-shell {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .context-photo-head {
+    display: grid;
+    gap: 10px;
+    max-width: 860px;
+    margin-bottom: 24px;
+  }
+
+  .context-photo-head p {
+    margin: 0;
+    color: var(--copper);
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 950;
+  }
+
+  .context-photo-head h2 {
+    margin: 0;
+    color: var(--teal);
+    font-size: clamp(30px, 3.7vw, 52px);
+    line-height: 1.03;
+    letter-spacing: -0.052em;
+    font-weight: 950;
+  }
+
+  .context-photo-head span {
+    color: #536866;
+    font-size: 17px;
+    line-height: 1.65;
+    font-weight: 680;
+  }
+
+  .context-photo-grid {
+    display: grid;
+    gap: 16px;
+    padding: 18px;
+    border-radius: 38px;
+    border: 1px solid rgba(18, 63, 61, 0.1);
+    background:
+      radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.12), transparent 36%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 253, 249, 0.84));
+    box-shadow:
+      0 30px 90px rgba(18, 63, 61, 0.09),
+      inset 0 1px 0 rgba(255, 255, 255, 0.86);
+  }
+
+  .context-photo-main,
+  .context-photo-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    background: white;
+    border: 1px solid rgba(18, 63, 61, 0.08);
+    box-shadow: 0 18px 54px rgba(18, 63, 61, 0.07);
+  }
+
+  .context-photo-main {
+    min-height: 420px;
+    display: grid;
+    align-items: end;
+    color: white;
+    isolation: isolate;
+  }
+
+  .context-photo-main::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(8, 29, 28, 0.02), rgba(8, 29, 28, 0.78)),
+      radial-gradient(circle at 85% 8%, rgba(183, 110, 60, 0.22), transparent 34%);
+  }
+
+  .context-photo-main img,
+  .context-photo-card img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .context-photo-main:hover img,
+  .context-photo-card:hover img {
+    transform: scale(1.035);
+  }
+
+  .context-photo-main-copy {
+    display: grid;
+    gap: 7px;
+    padding: 28px;
+  }
+
+  .context-photo-main-copy small {
+    width: fit-content;
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #f3dfcf;
+    font-size: 12px;
+    font-weight: 950;
+  }
+
+  .context-photo-main-copy strong {
+    max-width: 520px;
+    color: white;
+    font-size: clamp(25px, 3vw, 40px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    font-weight: 950;
+  }
+
+  .context-photo-main-copy span {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    margin-top: 8px;
+    border-radius: 999px;
+    background: white;
+    color: var(--teal);
+    font-weight: 950;
+  }
+
+  .context-photo-cards {
+    display: grid;
+    gap: 14px;
+  }
+
+  .context-photo-card {
+    min-height: 190px;
+    display: grid;
+    align-items: end;
+    isolation: isolate;
+  }
+
+  .context-photo-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(8, 29, 28, 0.03), rgba(8, 29, 28, 0.76));
+  }
+
+  .context-photo-card div {
+    padding: 20px;
+  }
+
+  .context-photo-card h3 {
+    margin: 0;
+    color: white;
+    font-size: 21px;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    font-weight: 950;
+  }
+
+  .context-photo-card p {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 13px;
+    line-height: 1.45;
+    font-weight: 760;
+  }
+
+  @media (min-width: 900px) {
+    .context-photo-grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      min-height: 500px;
+    }
+
+    .context-photo-main {
+      min-height: 500px;
+    }
+
+    .context-photo-cards {
+      grid-template-rows: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .context-photo-section {
+      padding: 46px 16px;
+    }
+
+    .context-photo-grid {
+      padding: 12px;
+      border-radius: 30px;
+    }
+
+    .context-photo-main {
+      min-height: 360px;
+      border-radius: 26px;
+    }
+
+    .context-photo-card {
+      min-height: 220px;
+      border-radius: 24px;
+    }
+
+    .context-photo-main-copy {
+      padding: 22px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .context-photo-main img,
+    .context-photo-card img {
+      transition-duration: 0.001ms !important;
+    }
+  }
+</style>

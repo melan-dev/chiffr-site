@@ -1,0 +1,924 @@
+---
+import PagePhotoShowcase from './visuals/PagePhotoShowcase.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { CompetitorAlternative } from '../data/competitorAlternatives';
+
+interface Props {
+  alternative: CompetitorAlternative;
+}
+
+const { alternative } = Astro.props;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: alternative.faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Accueil',
+      item: '/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Alternatives logiciels devis bâtiment',
+      item: '/alternatives-logiciels-devis-batiment',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: alternative.h1,
+      item: `/${alternative.slug}`,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={alternative.title}
+  description={alternative.metaDescription}
+  canonicalPath={`/${alternative.slug}`}
+  schema={[faqSchema, breadcrumbSchema]}
+>
+  <style is:inline>
+    .alt-page,
+    .alt-page * {
+      box-sizing: border-box;
+    }
+
+    .alt-page {
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    .alt-shell {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .alt-narrow {
+      max-width: 920px;
+    }
+
+    .alt-hero,
+    .alt-section,
+    .alt-cta {
+      position: relative;
+      padding: 72px 20px;
+    }
+
+    .alt-hero {
+      padding-top: 88px;
+      padding-bottom: 76px;
+    }
+
+    .alt-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(183, 110, 60, 0.14), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(18, 63, 61, 0.12), transparent 32%);
+    }
+
+    .alt-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .alt-pill,
+    .alt-kicker {
+      display: inline-flex;
+      width: fit-content;
+      margin: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--teal);
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .alt-kicker {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--copper);
+      font-size: 15px;
+    }
+
+    .alt-kicker.light {
+      color: #f3dfcf;
+    }
+
+    .alt-page h1 {
+      margin: 26px 0 0;
+      max-width: 920px;
+      color: var(--teal);
+      font-size: clamp(42px, 5.4vw, 78px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+    }
+
+    .alt-lead {
+      margin: 22px 0 0;
+      max-width: 760px;
+      color: #536866;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .alt-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .alt-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 999px;
+      padding: 16px 24px;
+      font-weight: 950;
+      line-height: 1;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .alt-btn.primary {
+      color: white;
+      background: var(--teal);
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.18);
+    }
+
+    .alt-btn.primary:hover {
+      transform: translateY(-2px);
+      background: #0d302e;
+      box-shadow: 0 24px 48px rgba(18, 63, 61, 0.22);
+    }
+
+    .alt-btn.secondary {
+      color: var(--teal);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(18, 63, 61, 0.14);
+    }
+
+    .alt-btn.secondary:hover {
+      transform: translateY(-2px);
+      background: white;
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.08);
+    }
+
+    .alt-proof {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: #667977;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .alt-proof span::before {
+      content: "✓";
+      margin-right: 6px;
+      color: var(--success);
+    }
+
+    .alt-card,
+    .alt-panel,
+    .alt-mini-card,
+    .alt-comparison-card,
+    .alt-link-card,
+    .alt-faq-card {
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background:
+        linear-gradient(145deg, rgba(255, 253, 249, 0.96), rgba(255, 255, 255, 0.86)),
+        radial-gradient(circle at top right, rgba(183, 110, 60, 0.1), transparent 44%);
+      box-shadow:
+        0 26px 74px rgba(18, 63, 61, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .alt-card {
+      overflow: hidden;
+      border-radius: 36px;
+      padding: 22px;
+    }
+
+    .alt-app-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .alt-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .alt-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.18);
+    }
+
+    .alt-dots span:nth-child(1) {
+      background: #f3dfcf;
+    }
+
+    .alt-dots span:nth-child(2) {
+      background: #dceceb;
+    }
+
+    .alt-dots span:nth-child(3) {
+      background: rgba(47, 143, 107, 0.45);
+    }
+
+    .alt-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.08);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .alt-status span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 6px rgba(47, 143, 107, 0.12);
+    }
+
+    .alt-card-head {
+      padding: 24px;
+      border-radius: 28px;
+      color: white;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.12), transparent 34%),
+        linear-gradient(135deg, #123f3d, #0d302e);
+    }
+
+    .alt-card-head p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .alt-card-head h2 {
+      margin: 8px 0 0;
+      color: white;
+      font-size: 34px;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      font-weight: 950;
+    }
+
+    .alt-card-list {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .alt-card-row {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(18, 63, 61, 0.08);
+    }
+
+    .alt-card-row b {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .alt-card-row strong {
+      color: var(--teal);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .alt-card-row small {
+      color: #667977;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .alt-section-head {
+      max-width: 880px;
+      margin-bottom: 30px;
+    }
+
+    .alt-section-head h2,
+    .alt-panel h2,
+    .alt-cta h2 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: clamp(34px, 3.8vw, 56px);
+      line-height: 1.06;
+      letter-spacing: -0.048em;
+      font-weight: 950;
+    }
+
+    .alt-section-head p,
+    .alt-panel p,
+    .alt-cta p {
+      margin: 14px 0 0;
+      color: #536866;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .alt-split {
+      display: grid;
+      gap: 22px;
+    }
+
+    .alt-panel {
+      border-radius: 34px;
+      padding: 34px;
+    }
+
+    .alt-panel.dark {
+      background: var(--teal);
+      color: white;
+    }
+
+    .alt-panel.dark h2 {
+      color: white;
+    }
+
+    .alt-panel.dark p {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .alt-panel-source {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(18, 63, 61, 0.1);
+    }
+
+    .alt-panel.dark .alt-panel-source {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .alt-panel-source strong {
+      display: block;
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    .alt-panel.dark .alt-panel-source strong {
+      color: white;
+    }
+
+    .alt-panel-source p {
+      margin-top: 7px;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .alt-panel-source a {
+      display: inline-flex;
+      margin-top: 10px;
+      color: var(--copper);
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .alt-list-grid,
+    .alt-usecase-grid,
+    .alt-links-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .alt-mini-card,
+    .alt-link-card {
+      border-radius: 24px;
+      padding: 20px;
+      color: var(--teal);
+      font-weight: 900;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .alt-mini-card:hover,
+    .alt-link-card:hover {
+      transform: translateY(-3px);
+      background: white;
+      box-shadow: 0 18px 46px rgba(18, 63, 61, 0.09);
+    }
+
+    .alt-mini-card::before {
+      content: "✓";
+      display: inline-grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      margin-right: 10px;
+      border-radius: 999px;
+      background: var(--success);
+      color: white;
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .alt-comparison-card {
+      overflow: hidden;
+      border-radius: 30px;
+    }
+
+    .alt-comparison-table-wrap {
+      overflow-x: auto;
+    }
+
+    .alt-comparison-table {
+      width: 100%;
+      min-width: 880px;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.74);
+    }
+
+    .alt-comparison-table th,
+    .alt-comparison-table td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(18, 63, 61, 0.08);
+      border-right: 1px solid rgba(18, 63, 61, 0.05);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .alt-comparison-table th {
+      background: var(--teal);
+      color: white;
+      font-weight: 950;
+    }
+
+    .alt-comparison-table td:first-child {
+      color: var(--teal);
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .alt-comparison-table td:nth-child(3) {
+      color: #244a47;
+      font-weight: 800;
+    }
+
+    .alt-note {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(220, 236, 235, 0.72);
+      color: #536866;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .alt-link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .alt-link-card span {
+      color: var(--copper);
+      font-weight: 950;
+    }
+
+    .alt-faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .alt-faq-card {
+      border-radius: 26px;
+      padding: 22px 24px;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .alt-faq-card:hover {
+      transform: translateY(-2px);
+      background: white;
+      box-shadow: 0 18px 46px rgba(18, 63, 61, 0.08);
+    }
+
+    .alt-faq-card summary {
+      cursor: pointer;
+      color: var(--teal);
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      font-weight: 900;
+    }
+
+    .alt-faq-card p {
+      margin: 14px 0 0;
+      color: #536866;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .alt-cta {
+      text-align: center;
+    }
+
+    .alt-cta .alt-shell {
+      padding: 50px 28px;
+      border-radius: 38px;
+      border: 1px solid rgba(18, 63, 61, 0.1);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.13), transparent 36%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 253, 249, 0.86));
+      box-shadow: 0 26px 78px rgba(18, 63, 61, 0.1);
+    }
+
+    .alt-cta .alt-btn {
+      margin-top: 24px;
+    }
+
+    @media (min-width: 760px) {
+      .alt-list-grid,
+      .alt-usecase-grid,
+      .alt-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1020px) {
+      .alt-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .alt-split {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .alt-list-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .alt-usecase-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .alt-links-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .alt-hero,
+      .alt-section,
+      .alt-cta {
+        padding: 52px 18px;
+      }
+
+      .alt-hero {
+        padding-top: 58px;
+      }
+
+      .alt-page h1 {
+        font-size: clamp(40px, 14vw, 58px);
+      }
+
+      .alt-lead {
+        font-size: 18px;
+      }
+
+      .alt-actions {
+        display: grid;
+      }
+
+      .alt-btn {
+        width: 100%;
+      }
+
+      .alt-card-row {
+        grid-template-columns: 36px 1fr;
+      }
+
+      .alt-card-row small {
+        grid-column: 2;
+      }
+
+      .alt-panel {
+        padding: 24px;
+        border-radius: 28px;
+      }
+    }
+  </style>
+
+  <div class="alt-page">
+    <section class="alt-hero">
+      <div class="alt-shell alt-grid">
+        <div>
+          <p class="alt-pill">Comparatif logiciel devis bâtiment</p>
+
+          <h1>{alternative.h1}</h1>
+
+          <p class="alt-lead">{alternative.intro}</p>
+
+          <div class="alt-actions">
+            <a href="/contact" class="alt-btn primary">Demander un accès à Chiffr</a>
+            <a href="/modeles-devis" class="alt-btn secondary">Voir les modèles de devis</a>
+          </div>
+
+          <div class="alt-proof">
+            <span>Modèles métier</span>
+            <span>PAC · Clim · VMC · IRVE</span>
+            <span>PDF premium</span>
+            <span>Signature</span>
+            <span>Acompte</span>
+            <span>Factures</span>
+          </div>
+        </div>
+
+        <aside class="alt-card" aria-label={`Comparatif ${alternative.competitorName} et Chiffr`}>
+          <div class="alt-app-top">
+            <div class="alt-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="alt-status"><span></span> Comparatif clair</div>
+          </div>
+
+          <div class="alt-card-head">
+            <p>Alternative à {alternative.competitorName}</p>
+            <h2>Généraliste ou spécialisé énergie ?</h2>
+          </div>
+
+          <div class="alt-card-list">
+            <div class="alt-card-row">
+              <b>01</b>
+              <strong>Comparer le besoin réel</strong>
+              <small>usage</small>
+            </div>
+            <div class="alt-card-row">
+              <b>02</b>
+              <strong>Regarder les métiers couverts</strong>
+              <small>énergie</small>
+            </div>
+            <div class="alt-card-row">
+              <b>03</b>
+              <strong>Tester les modèles de devis</strong>
+              <small>concret</small>
+            </div>
+            <div class="alt-card-row">
+              <b>04</b>
+              <strong>Choisir l’outil le plus adapté</strong>
+              <small>terrain</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="alt-section">
+      <div class="alt-shell">
+        <PagePhotoShowcase
+          variant="alternatives"
+          eyebrow="Comparer sur le terrain"
+          title={`Alternative à ${alternative.competitorName} : comparer l’usage réel`}
+          text="Le bon logiciel n’est pas seulement celui qui a le plus de menus. Pour un artisan énergie, il doit aider à préparer un devis clair, suivre le client, signer, encaisser et facturer."
+          ctaLabel="Voir les modèles Chiffr"
+          ctaHref="/modeles-devis"
+        />
+      </div>
+    </section>
+
+
+    <section class="alt-section">
+      <div class="alt-shell alt-split">
+        <article class="alt-panel dark">
+          <p class="alt-kicker light">Pour qui {alternative.competitorName} peut convenir ?</p>
+          <h2>{alternative.competitorName} peut être adapté si vous cherchez un outil plus généraliste.</h2>
+          <p>
+            Cette page ne cherche pas à dénigrer {alternative.competitorName}.
+            L’objectif est de comparer les usages et de montrer quand Chiffr peut être plus pertinent
+            pour un artisan énergie.
+          </p>
+
+          <div class="alt-panel-source">
+            <strong>Source publique consultée</strong>
+            <p>{alternative.sourceSummary}</p>
+            <a href={alternative.sourceUrl} target="_blank" rel="nofollow noopener">
+              Voir le site {alternative.sourceName} →
+            </a>
+          </div>
+        </article>
+
+        <article class="alt-panel">
+          <p class="alt-kicker">Positionnement Chiffr</p>
+          <h2>Chiffr se concentre sur les devis et factures des artisans énergie.</h2>
+          <p>{alternative.chiffrAngle}</p>
+
+          <div class="alt-panel-source">
+            <strong>À retenir</strong>
+            <p>
+              Chiffr ne prétend pas remplacer tous les logiciels BTP généralistes.
+              Il vise un usage plus précis : préparer vite des devis métier, les faire signer,
+              demander un acompte et facturer proprement.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="alt-section">
+      <div class="alt-shell">
+        <div class="alt-section-head">
+          <p class="alt-kicker">Quand choisir {alternative.competitorName} ?</p>
+          <h2>Les cas où {alternative.competitorName} peut être adapté</h2>
+          <p>
+            Le bon logiciel dépend surtout de votre métier, de votre niveau de complexité
+            et de ce que vous voulez gérer au quotidien.
+          </p>
+        </div>
+
+        <div class="alt-list-grid">
+          {alternative.goodFit.map((item) => (
+            <div class="alt-mini-card">{item}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="alt-section">
+      <div class="alt-shell">
+        <div class="alt-section-head">
+          <p class="alt-kicker">Différences Chiffr</p>
+          <h2>Là où Chiffr prend un angle plus spécialisé</h2>
+          <p>
+            Chiffr part du principe qu’un artisan énergie ne veut pas une page blanche :
+            il veut les bons modèles, les bonnes lignes et les bonnes actions selon son chantier.
+          </p>
+        </div>
+
+        <div class="alt-list-grid">
+          {alternative.chiffrDifferences.map((item) => (
+            <div class="alt-mini-card">{item}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="alt-section">
+      <div class="alt-shell">
+        <div class="alt-section-head">
+          <p class="alt-kicker">Comparatif par usage</p>
+          <h2>{alternative.competitorName} ou Chiffr : comparer selon votre besoin</h2>
+          <p>
+            Ce tableau n’est pas un classement. Il sert à clarifier les différences de positionnement.
+          </p>
+        </div>
+
+        <div class="alt-comparison-card">
+          <div class="alt-comparison-table-wrap">
+            <table class="alt-comparison-table">
+              <thead>
+                <tr>
+                  <th>Critère</th>
+                  <th>{alternative.competitorName}</th>
+                  <th>Chiffr</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {alternative.comparison.map((row) => (
+                  <tr>
+                    <td>{row.label}</td>
+                    <td>{row.competitor}</td>
+                    <td>{row.chiffr}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="alt-note">
+          Les fonctionnalités, offres et tarifs des logiciels peuvent évoluer.
+          Vérifiez toujours les informations directement sur les sites officiels avant de choisir un outil.
+        </p>
+      </div>
+    </section>
+
+    <section class="alt-section">
+      <div class="alt-shell">
+        <div class="alt-section-head">
+          <p class="alt-kicker">Cas métiers énergie</p>
+          <h2>Pourquoi Chiffr peut mieux coller aux devis PAC, clim, VMC, IRVE et solaire</h2>
+        </div>
+
+        <div class="alt-usecase-grid">
+          {alternative.energyUseCases.map((item) => (
+            <div class="alt-mini-card">{item}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="alt-section">
+      <div class="alt-shell">
+        <div class="alt-section-head">
+          <p class="alt-kicker">Pages utiles</p>
+          <h2>Continuer la comparaison avec des pages concrètes</h2>
+        </div>
+
+        <div class="alt-links-grid">
+          {alternative.relatedLinks.map((item) => (
+            <a href={item.href} class="alt-link-card">
+              {item.label}
+              <span>→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="alt-cta">
+      <div class="alt-shell alt-narrow">
+        <p class="alt-kicker">Accès sur demande</p>
+        <h2>Vous faites surtout des devis énergie ?</h2>
+        <p>
+          Chiffr vous aide à démarrer depuis des modèles métier, ajouter vos lignes,
+          générer un PDF premium, faire signer, demander un acompte et facturer proprement.
+        </p>
+
+        <a href="/contact" class="alt-btn primary">Demander un accès</a>
+      </div>
+    </section>
+
+    <section class="alt-section">
+      <div class="alt-shell alt-narrow">
+        <div class="alt-section-head">
+          <p class="alt-kicker">FAQ</p>
+          <h2>Questions fréquentes</h2>
+        </div>
+
+        <div class="alt-faq-list">
+          {alternative.faqs.map((item) => (
+            <details class="alt-faq-card">
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

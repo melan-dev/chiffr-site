@@ -1,0 +1,125 @@
+---
+import TradeLanding from '../components/TradeLanding.astro';
+
+const page = {
+  title: 'Logiciel devis VMC | Chiffr',
+  description:
+    'Chiffr aide les artisans VMC à créer des devis ventilation clairs : simple flux, double flux, gaines, bouches, photos chantier, acompte et factures.',
+  canonicalPath: '/logiciel-devis-vmc',
+  pill: 'Logiciel devis VMC',
+  h1: 'Des devis VMC plus clairs pour la ventilation simple flux et double flux',
+  lead:
+    'Chiffr aide les artisans VMC à préparer des devis propres : caisson, gaines, bouches, raccordements, réglages, photos chantier, PDF premium, signature, acompte et factures.',
+  checks: ['Simple flux', 'Double flux', 'Gaines', 'Photos', 'Factures'],
+  appTitle: 'VMC',
+  appSubtitle: 'Modèle métier préparé',
+  appBadgeLabel: 'Base',
+  appBadgeValue: 'VMC',
+  appStripLabel: 'Chantier type',
+  appStripText: 'Relevé logement → caisson → gaines → bouches → réglages → facture',
+  appSteps: [
+    { title: 'Relevé ventilation', text: 'Pièces, combles, gaines, accès et contraintes.', status: 'relevé' },
+    { title: 'Caisson VMC', text: 'Simple flux, double flux, accessoires et options.', status: 'à chiffrer' },
+    { title: 'Réseau', text: 'Gaines, bouches, sorties toiture, raccordements.', status: 'à vérifier' },
+    { title: 'Réglages et facture', text: 'Essais, équilibrage, PDF, acompte et solde.', status: 'ensuite' },
+  ],
+  appMini: [
+    { label: 'Photos', value: 'Combles' },
+    { label: 'Client', value: 'Signature' },
+    { label: 'Suivi', value: 'Factures' },
+  ],
+  problemTitle: 'Un devis VMC doit rendre visible ce qui est souvent caché.',
+  problemText:
+    'Les gaines, combles, passages, bouches, caisson, évacuation et réglages ne sont pas toujours faciles à expliquer au client. Un devis clair aide à justifier le travail prévu.',
+  solutionTitle: 'Chiffr structure le devis VMC avec des lignes compréhensibles.',
+  solutionText:
+    'Chiffr prépare une base pour les devis VMC, avec les postes fréquents et les actions à suivre : PDF, signature, acompte, facture et relance.',
+  quoteKicker: 'Lignes de devis VMC',
+  quoteTitle: 'Les postes fréquents à prévoir dans un devis VMC',
+  quoteIntro:
+    'VMC simple flux ou double flux : chaque projet demande une structure claire pour éviter les oublis.',
+  quoteLines: [
+    { title: 'Relevé', text: 'Pièces, volumes, combles, accès, contraintes et photos.' },
+    { title: 'Caisson', text: 'VMC simple flux, double flux, hygroréglable ou accessoires.' },
+    { title: 'Gaines', text: 'Réseau de gaines, longueurs, isolations, raccordements.' },
+    { title: 'Bouches', text: 'Bouches d’extraction, insufflation, entrées d’air, réglages.' },
+    { title: 'Sorties', text: 'Sortie toiture, rejet, prise d’air, accessoires et étanchéité.' },
+    { title: 'Électricité', text: 'Alimentation, commande, protection, raccordement.' },
+    { title: 'Mise en service', text: 'Essais, équilibrage, réglages et explication client.' },
+    { title: 'Dossier client', text: 'Photos, PDF, signature, acompte, facture et relance.' },
+  ],
+  featuresKicker: 'Fonctions utiles pour artisans VMC',
+  featuresTitle: 'Du relevé terrain au dossier client final',
+  featuresIntro:
+    'Chiffr aide à garder une trace claire des contraintes, des postes et du suivi.',
+  features: [
+    { title: 'Modèles VMC', text: 'Bases pour simple flux, double flux, remplacement ou rénovation.' },
+    { title: 'Photos chantier', text: 'Combles, caisson, gaines, bouches, accès et contraintes.' },
+    { title: 'Lignes fréquentes', text: 'Caisson, gaines, bouches, raccordements, réglages.' },
+    { title: 'PDF premium', text: 'Un devis clair pour un chantier peu visible.' },
+    { title: 'Signature', text: 'Validation client simple et traçable.' },
+    { title: 'Acompte', text: 'Demande d’acompte après acceptation.' },
+    { title: 'Factures', text: 'Acompte, solde et facture finale.' },
+    { title: 'Suivi client', text: 'Relances, actions à faire et historique.' },
+  ],
+  usecaseTitle: 'Chiffr s’adapte aux devis VMC les plus courants',
+  usecaseIntro:
+    'Rénovation, remplacement, simple flux ou double flux : chaque dossier peut partir d’une base adaptée.',
+  useCases: [
+    { title: 'VMC simple flux', text: 'Caisson, gaines, bouches, sorties et essais.' },
+    { title: 'VMC double flux', text: 'Caisson, réseau insufflation/extraction, réglages et options.' },
+    { title: 'Remplacement VMC', text: 'Dépose ancienne VMC, adaptation du réseau et mise en service.' },
+    { title: 'Entretien ventilation', text: 'Nettoyage, contrôle, remplacement bouches ou accessoires.' },
+  ],
+  photoTitle: 'Les photos utiles pour sécuriser un devis VMC',
+  photoIntro:
+    'Les photos aident à expliquer les contraintes et à retrouver rapidement le contexte du chantier.',
+  photoItems: [
+    'Caisson VMC existant ou emplacement prévu',
+    'Combles, accès et contraintes de passage',
+    'Gaines existantes ou réseau à créer',
+    'Bouches d’extraction ou insufflation',
+    'Sortie toiture, rejet ou prise d’air',
+    'Tableau électrique ou alimentation prévue',
+  ],
+  internalTitle: 'Continuer vers les pages liées aux devis VMC',
+  internalIntro:
+    'Cette page cible la ventilation. Les pages suivantes pourront viser les modèles VMC, CVC, chauffage et blog pratique.',
+  internalLinks: [
+    { label: 'Modèle devis VMC double flux', href: '/modele-devis-vmc-double-flux' },
+    { label: 'Logiciel devis frigoriste / CVC', href: '/logiciel-devis-frigoriste-cvc' },
+    { label: 'Logiciel devis chauffagiste', href: '/logiciel-devis-chauffagiste' },
+    { label: 'Modèles de devis', href: '/modeles-devis' },
+    { label: 'Alternative Obat', href: '/alternative-obat' },
+    { label: 'Contact Chiffr', href: '/contact' },
+  ],
+  ctaTitle: 'Vos devis VMC méritent une structure claire.',
+  ctaText:
+    'Chiffr prépare une base métier, vous aide à garder les photos et suit le dossier jusqu’à la facture.',
+  faqTitle: 'Logiciel devis VMC : les questions courantes',
+  faqs: [
+    {
+      question: 'Chiffr est-il adapté aux devis VMC ?',
+      answer:
+        'Oui. Chiffr peut aider à structurer des devis VMC simple flux, double flux, remplacement, entretien ou rénovation.',
+    },
+    {
+      question: 'Peut-on gérer les photos des combles ou gaines ?',
+      answer:
+        'Oui. Les photos chantier peuvent être rattachées au dossier pour conserver les contraintes de passage, caisson, gaines ou bouches.',
+    },
+    {
+      question: 'Chiffr convient-il à la VMC double flux ?',
+      answer:
+        'Oui. Les devis VMC double flux demandent souvent plus de structure : réseau, caisson, bouches, réglages, options et mise en service.',
+    },
+    {
+      question: 'Peut-on facturer après signature ?',
+      answer:
+        'Oui. Chiffr est conçu pour suivre signature, acompte, facture de solde et facture finale.',
+    },
+  ],
+};
+---
+
+<TradeLanding {...page} />

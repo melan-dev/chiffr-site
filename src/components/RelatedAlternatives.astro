@@ -1,0 +1,419 @@
+---
+import { competitorAlternatives } from '../data/competitorAlternatives';
+import { useCaseAlternatives } from '../data/useCaseAlternatives';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const normalizedPath =
+  currentPath.endsWith('/') && currentPath !== '/'
+    ? currentPath.slice(0, -1)
+    : currentPath;
+
+const currentSlug = normalizedPath.replace('/', '');
+
+type AlternativeCard = {
+  slug: string;
+  label: string;
+  title: string;
+  text: string;
+  kind: 'Concurrent' | 'Usage';
+};
+
+const competitorCards: AlternativeCard[] = competitorAlternatives.map((item) => ({
+  slug: item.slug,
+  label: item.competitorName,
+  title: item.h1,
+  text: item.metaDescription,
+  kind: 'Concurrent',
+}));
+
+const useCaseCards: AlternativeCard[] = useCaseAlternatives.map((item) => ({
+  slug: item.slug,
+  label: item.eyebrow,
+  title: item.h1,
+  text: item.metaDescription,
+  kind: 'Usage',
+}));
+
+const allAlternatives = [...competitorCards, ...useCaseCards];
+
+const alternativeGroups = {
+  pac: [
+    'alternative-obat',
+    'alternative-tolteck',
+    'alternative-logiciel-devis-batiment',
+    'logiciel-devis-specialise-energie',
+  ],
+  clim: [
+    'alternative-tolteck',
+    'alternative-obat',
+    'alternative-logiciel-devis-artisan',
+    'logiciel-devis-mobile-artisan',
+  ],
+  vmc: [
+    'alternative-obat',
+    'alternative-logiciel-devis-batiment',
+    'logiciel-devis-specialise-energie',
+    'logiciel-devis-avec-photos-chantier',
+  ],
+  irve: [
+    'alternative-obat',
+    'alternative-logiciel-devis-batiment',
+    'logiciel-devis-specialise-energie',
+    'logiciel-devis-avec-acompte',
+  ],
+  solaire: [
+    'alternative-obat',
+    'alternative-costructor',
+    'logiciel-devis-specialise-energie',
+    'logiciel-devis-avec-acompte',
+  ],
+  facture: [
+    'alternative-logiciel-facturation-batiment',
+    'logiciel-devis-avec-acompte',
+    'logiciel-devis-avec-facture-acompte',
+    'alternative-obat',
+  ],
+  suivi: [
+    'logiciel-devis-avec-relance-client',
+    'logiciel-devis-avec-signature-client',
+    'alternative-obat',
+    'alternative-tolteck',
+  ],
+  competitor: [
+    'alternative-obat',
+    'alternative-tolteck',
+    'alternative-costructor',
+    'alternative-batappli',
+  ],
+  default: [
+    'alternative-obat',
+    'alternative-tolteck',
+    'alternative-logiciel-devis-batiment',
+    'logiciel-devis-specialise-energie',
+  ],
+};
+
+function getAlternativeSlugsForPath(path: string) {
+  if (
+    path.includes('pompe-a-chaleur') ||
+    path.includes('pac') ||
+    path.includes('chaudiere')
+  ) {
+    return alternativeGroups.pac;
+  }
+
+  if (path.includes('clim')) {
+    return alternativeGroups.clim;
+  }
+
+  if (path.includes('vmc')) {
+    return alternativeGroups.vmc;
+  }
+
+  if (
+    path.includes('irve') ||
+    path.includes('borne') ||
+    path.includes('recharge')
+  ) {
+    return alternativeGroups.irve;
+  }
+
+  if (
+    path.includes('photovoltaique') ||
+    path.includes('solaire') ||
+    path.includes('onduleur')
+  ) {
+    return alternativeGroups.solaire;
+  }
+
+  if (
+    path.includes('facture') ||
+    path.includes('acompte') ||
+    path.includes('solde') ||
+    path.includes('paiement')
+  ) {
+    return alternativeGroups.facture;
+  }
+
+  if (
+    path.includes('relance') ||
+    path.includes('signature') ||
+    path.includes('suivi')
+  ) {
+    return alternativeGroups.suivi;
+  }
+
+  if (path.includes('alternative-')) {
+    return alternativeGroups.competitor;
+  }
+
+  return alternativeGroups.default;
+}
+
+const selectedSlugs = getAlternativeSlugsForPath(normalizedPath);
+
+const selectedAlternatives = selectedSlugs
+  .map((slug) => allAlternatives.find((item) => item.slug === slug))
+  .filter((item): item is AlternativeCard => Boolean(item))
+  .filter((item) => item.slug !== currentSlug)
+  .slice(0, 4);
+
+const shouldShow =
+  selectedAlternatives.length > 0 &&
+  normalizedPath !== '/' &&
+  normalizedPath !== '/alternatives-logiciels-devis-batiment' &&
+  !normalizedPath.includes('/contact') &&
+  !normalizedPath.includes('/tarifs');
+
+const isAlternativePage =
+  currentSlug.startsWith('alternative-') ||
+  currentSlug.includes('logiciel-devis-avec') ||
+  currentSlug.includes('logiciel-devis-artisan-simple') ||
+  currentSlug.includes('logiciel-devis-mobile-artisan') ||
+  currentSlug.includes('logiciel-devis-specialise-energie');
+
+const title = isAlternativePage
+  ? 'Autres alternatives à comparer'
+  : 'Alternatives logiciels à comparer';
+---
+
+{shouldShow && (
+  <section class="related-alternatives" aria-labelledby="related-alternatives-title">
+    <div class="related-alternatives-shell">
+      <div class="related-alternatives-head">
+        <p>Comparatifs Chiffr</p>
+        <h2 id="related-alternatives-title">{title}</h2>
+        <span>
+          Comparez les logiciels par usage réel : devis bâtiment, facturation,
+          signature, acompte, photos chantier et spécialisation énergie.
+        </span>
+      </div>
+
+      <div class="related-alternatives-grid">
+        {selectedAlternatives.map((item) => (
+          <a href={`/${item.slug}`} class="related-alternative-card">
+            <div>
+              <small>{item.kind}</small>
+              <strong>{item.label}</strong>
+              <span>{item.text}</span>
+            </div>
+
+            <b aria-hidden="true">→</b>
+          </a>
+        ))}
+
+        <a href="/alternatives-logiciels-devis-batiment" class="related-alternative-card all">
+          <div>
+            <small>Toutes les alternatives</small>
+            <strong>Voir les alternatives logiciels devis bâtiment</strong>
+            <span>Obat, Tolteck, Costructor, Batappli, usages métier et guides logiciels.</span>
+          </div>
+
+          <b aria-hidden="true">→</b>
+        </a>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .related-alternatives,
+  .related-alternatives * {
+    box-sizing: border-box;
+  }
+
+  .related-alternatives {
+    padding: 52px 20px;
+    background:
+      radial-gradient(circle at 88% 0%, rgba(18, 63, 61, 0.1), transparent 30%),
+      linear-gradient(180deg, rgba(255, 248, 239, 0.24), rgba(255, 248, 239, 0.74));
+  }
+
+  .related-alternatives-shell {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px;
+    border-radius: 34px;
+    border: 1px solid rgba(18, 63, 61, 0.1);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 253, 249, 0.86)),
+      radial-gradient(circle at top left, rgba(183, 110, 60, 0.1), transparent 38%);
+    box-shadow:
+      0 24px 70px rgba(18, 63, 61, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  }
+
+  .related-alternatives-head {
+    display: grid;
+    gap: 8px;
+    max-width: 760px;
+  }
+
+  .related-alternatives-head p {
+    margin: 0;
+    color: var(--copper);
+    font-size: 14px;
+    font-weight: 950;
+  }
+
+  .related-alternatives-head h2 {
+    margin: 0;
+    color: var(--teal);
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+    font-weight: 950;
+  }
+
+  .related-alternatives-head span {
+    color: #536866;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 750;
+  }
+
+  .related-alternatives-grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .related-alternative-card {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 152px;
+    padding: 20px;
+    border-radius: 24px;
+    color: var(--teal);
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(18, 63, 61, 0.09);
+    box-shadow: 0 14px 34px rgba(18, 63, 61, 0.05);
+    text-decoration: none;
+    transition:
+      transform 180ms ease,
+      background 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .related-alternative-card:hover {
+    transform: translateY(-3px);
+    background: white;
+    border-color: rgba(18, 63, 61, 0.14);
+    box-shadow: 0 22px 56px rgba(18, 63, 61, 0.1);
+  }
+
+  .related-alternative-card small {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(220, 236, 235, 0.76);
+    color: var(--teal);
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 950;
+  }
+
+  .related-alternative-card strong {
+    display: block;
+    color: var(--teal);
+    font-size: 18px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    font-weight: 950;
+  }
+
+  .related-alternative-card div > span {
+    display: block;
+    margin-top: 10px;
+    color: #536866;
+    font-size: 13px;
+    line-height: 1.45;
+    font-weight: 750;
+  }
+
+  .related-alternative-card > b {
+    width: 38px;
+    height: 38px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    align-self: center;
+    border-radius: 999px;
+    background: var(--teal);
+    color: white;
+    font-weight: 950;
+    transition: transform 180ms ease;
+  }
+
+  .related-alternative-card:hover > b {
+    transform: translateX(3px);
+  }
+
+  .related-alternative-card.all {
+    background:
+      radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.12), transparent 38%),
+      linear-gradient(145deg, #123f3d, #0d302e);
+    color: white;
+  }
+
+  .related-alternative-card.all small {
+    background: rgba(255, 255, 255, 0.14);
+    color: #f3dfcf;
+  }
+
+  .related-alternative-card.all strong {
+    color: white;
+  }
+
+  .related-alternative-card.all div > span {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .related-alternative-card.all > b {
+    background: rgba(255, 255, 255, 0.16);
+    color: white;
+  }
+
+  @media (min-width: 760px) {
+    .related-alternatives-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .related-alternatives-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .related-alternative-card {
+      display: grid;
+      align-content: space-between;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .related-alternatives {
+      padding: 38px 16px;
+    }
+
+    .related-alternatives-shell {
+      padding: 22px;
+      border-radius: 28px;
+    }
+
+    .related-alternative-card {
+      min-height: 0;
+    }
+  }
+</style>

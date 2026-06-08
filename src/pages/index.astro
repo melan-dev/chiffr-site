@@ -1,0 +1,1499 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SignatureProofBadge from '../components/SignatureProofBadge.astro';
+
+const title = 'Logiciel devis facture pour artisans énergie | Chiffr';
+const description =
+  'Chiffr aide les artisans PAC, clim, chauffage, CVC, VMC, IRVE et solaire à créer des devis, factures, signatures électroniques, acomptes et PDF premium, avec une organisation pensée pour la facturation électronique 2026-2027.';
+
+const asset = (name: string) => `/images/home/${name}`;
+
+const trades = [
+  {
+    label: 'PAC',
+    detail: 'Pompes à chaleur',
+    href: '/logiciel-devis-pompe-a-chaleur',
+    image: asset('trade-pac.webp'),
+    icon: '✺',
+  },
+  {
+    label: 'Climatisation',
+    detail: 'Monosplit & multisplit',
+    href: '/logiciel-devis-climatisation',
+    image: asset('trade-clim.webp'),
+    icon: '❄',
+  },
+  {
+    label: 'Chauffage',
+    detail: 'Chaudières & radiateurs',
+    href: '/logiciel-devis-chauffagiste',
+    image: asset('trade-chauffage.webp'),
+    icon: '♨',
+  },
+  {
+    label: 'CVC',
+    detail: 'Ventilation & réseaux',
+    href: '/logiciel-devis-frigoriste-cvc',
+    image: asset('trade-cvc.webp'),
+    icon: '≈',
+  },
+  {
+    label: 'VMC',
+    detail: 'Simple & double flux',
+    href: '/logiciel-devis-vmc',
+    image: asset('trade-vmc.webp'),
+    icon: '✽',
+  },
+  {
+    label: 'IRVE',
+    detail: 'Bornes & protections',
+    href: '/logiciel-devis-irve',
+    image: asset('trade-irve.webp'),
+    icon: '↯',
+  },
+  {
+    label: 'Solaire',
+    detail: 'Photovoltaïque',
+    href: '/logiciel-devis-photovoltaique',
+    image: asset('trade-solaire.webp'),
+    icon: '☼',
+  },
+];
+
+const featureBlocks = [
+  {
+    title: 'Devis rapides et professionnels',
+    text:
+      'Modèles métier, lignes fréquentes, prix à compléter et PDF propre : vous partez d’une base claire.',
+    image: asset('clim-installation.webp'),
+    href: '/modeles-devis',
+    icon: '▦',
+  },
+  {
+    title: 'Suivi de chantier simplifié',
+    text:
+      'Photos, notes, plaque machine, accès chantier et historique client restent au même endroit.',
+    image: asset('boiler-service.webp'),
+    href: '/logiciel-devis-avec-photos-chantier',
+    icon: '◷',
+  },
+  {
+    title: 'Acompte, paiement et factures',
+    text:
+      'Après signature, Chiffr vous aide à suivre l’acompte, la facture de solde et le reste à encaisser.',
+    image: asset('irve-installation.webp'),
+    href: '/logiciel-devis-avec-acompte',
+    icon: '↯',
+  },
+  {
+    title: 'Tout votre dossier à portée de main',
+    text:
+      'Clients, devis, photos, relances et factures restent lisibles, sur mobile comme au bureau.',
+    image: asset('solar-roof-tablet.webp'),
+    href: '/fonctionnalites',
+    icon: '▣',
+  },
+];
+
+const trustCards = [
+  {
+    title: 'Pensé pour votre métier',
+    text: 'PAC, clim, chauffage, CVC, VMC, IRVE et solaire : Chiffr parle votre terrain.',
+    icon: '▨',
+  },
+  {
+    title: 'Simple en surface',
+    text: 'L’interface montre la prochaine bonne action sans transformer votre devis en usine à gaz.',
+    icon: '✓',
+  },
+  {
+    title: 'Dossier plus clair',
+    text: 'Devis, photos, signature, acompte, facture et relance restent reliés au client.',
+    icon: '◌',
+  },
+  {
+    title: 'Document premium',
+    text: 'Un PDF propre, rassurant et lisible pour présenter votre travail avec sérieux.',
+    icon: '◇',
+  },
+];
+
+const guideLinks = [
+  ['Comment faire un devis PAC air/eau', '/comment-faire-un-devis-pac-air-eau'],
+  ['Que mettre dans un devis climatisation ?', '/que-mettre-dans-un-devis-climatisation'],
+  ['Facture d’acompte artisan énergie', '/facture-acompte-artisan-energie'],
+  ['Relance devis artisan', '/relance-devis-artisan'],
+];
+
+const faqs = [
+  [
+    'Chiffr est-il seulement pour les installateurs de PAC ?',
+    'Non. Chiffr est pensé pour les artisans énergie : PAC, climatisation, chauffage, CVC, VMC, IRVE, photovoltaïque et chauffe-eau thermodynamique.',
+  ],
+  [
+    'Quelle est la différence avec un logiciel généraliste ?',
+    'Chiffr ne vous donne pas une page blanche. Il prépare des modèles, des lignes et des actions selon le métier choisi.',
+  ],
+  [
+    'Peut-on gérer les photos chantier ?',
+    'Oui. Vous pouvez rattacher les photos importantes au dossier : plaque machine, accès chantier, tableau électrique, emplacement ou croquis.',
+  ],
+  [
+    'Chiffr gère-t-il les acomptes et les factures ?',
+    'Oui. Chiffr est conçu pour suivre le cycle complet : devis, signature électronique, acompte, facture d’acompte, facture de solde, facture finale et relance.',
+  ],
+  [
+    'Chiffr est-il prêt pour la réforme de la facturation électronique ?',
+    'Chiffr est pensé pour préparer la transition 2026–2027 : factures mieux structurées, données client plus propres, acompte, solde, suivi et future connexion aux plateformes agréées.',
+  ],
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer,
+    },
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/" schema={faqSchema}>
+  <section class="home-hero">
+    <div class="home-glow glow-left"></div>
+    <div class="home-glow glow-right"></div>
+
+    <div class="home-shell home-hero-grid">
+      <div class="home-hero-copy">
+        <p class="home-pill">Conçu pour les artisans énergie</p>
+
+        <h1>Le logiciel de devis et factures pensé pour les artisans énergie</h1>
+
+        <p class="home-lead">
+          Chiffr vous aide à gagner du temps, structurer vos devis et suivre vos clients :
+          modèles métier, photos chantier, PDF premium, signature électronique, acompte, factures et transition
+          facturation électronique 2026-2027 réunis dans un outil simple.
+        </p>
+
+        <div class="home-actions">
+          <a class="home-btn primary" href="/contact">
+            Demander un accès
+            <span aria-hidden="true">→</span>
+          </a>
+          <a class="home-btn secondary" href="/modeles-devis">
+            Voir les modèles
+            <span aria-hidden="true">▻</span>
+          </a>
+        </div>
+
+        <div class="home-badge-row">
+          <SignatureProofBadge tone="compact" detail="Sur place ou à distance" />
+          <a class="home-reform-badge" href="/fonctionnalites#facturation-electronique">
+            <strong>Facturation électronique 2026–2027</strong>
+            <small>Préparez vos factures, mentions et données client</small>
+          </a>
+        </div>
+
+        <div class="home-checks">
+          <span>Modèles métier</span>
+          <span>PDF premium</span>
+          <span>Signature électronique</span>
+          <span>Acompte</span>
+          <span>Factures</span>
+          <span>Réforme 2026–2027</span>
+        </div>
+      </div>
+
+      <div class="home-visual" aria-label="Aperçu Chiffr avec chantier et devis">
+        <div class="hero-photo-wrap main-photo">
+          <img
+            src={asset('hero-artisan-tablet-v2.webp')}
+            alt="Artisan énergie utilisant une tablette sur chantier"
+            width="560"
+            height="492"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+
+        <div class="hero-photo-wrap small-photo">
+          <img
+            src={asset('pac-unit-v2.webp')}
+            alt="Unité extérieure de pompe à chaleur"
+            width="390"
+            height="284"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+
+        <div class="home-ui-card quote-card">
+          <div>
+            <small>Devis en préparation</small>
+            <strong>PAC air/eau</strong>
+          </div>
+
+          <p>Total HT</p>
+          <b>4 750,00 €</b>
+
+          <ul>
+            <li>Matériel</li>
+            <li>Main-d’œuvre</li>
+            <li>Déplacements</li>
+            <li>Options</li>
+          </ul>
+        </div>
+
+        <div class="home-ui-card pdf-card">
+          <div class="pdf-head">
+            <span>Devis n° DEV-2026-0042</span>
+            <strong>Votre entreprise</strong>
+          </div>
+
+          <div class="pdf-lines">
+            <p><span>Pompe à chaleur air/eau</span><b>4 250 €</b></p>
+            <p><span>Mise en service</span><b>500 €</b></p>
+          </div>
+
+          <div class="pdf-bottom">
+            <div class="signature-seal" aria-label="Signature électronique">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M17 8h22l10 10v36a4 4 0 0 1-4 4H17a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z" />
+                <path d="M39 8v11h10" />
+                <path d="M20 41c5-9 10-9 9-2-.6 4.2 4.6 2.8 7.1.4 2.7-2.5 4.6-2.7 6.9-.2" />
+                <path d="m37.5 29.5 4.2 4.2 8.6-10" />
+              </svg>
+              <span>
+                <strong>Signature électronique</strong>
+                <small>Validation client</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section home-trades" id="metiers">
+    <div class="home-shell">
+      <div class="home-section-head centered">
+        <p class="home-kicker">Métiers couverts</p>
+        <h2>Un outil complet pour vos chantiers énergie</h2>
+        <span>
+          Chaque métier a ses lignes, ses photos, ses modèles et ses points à vérifier.
+          Chiffr garde cette logique métier dès le départ.
+        </span>
+      </div>
+
+      <div class="trade-photo-grid">
+        {trades.map((trade) => (
+          <a class="trade-photo-card" href={trade.href}>
+            <img src={trade.image} alt={`${trade.label} - ${trade.detail}`} width="220" height="180" loading="lazy" decoding="async" />
+            <span class="trade-icon" aria-hidden="true">{trade.icon}</span>
+            <strong>{trade.label}</strong>
+            <small>{trade.detail}</small>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <div class="home-shell">
+      <div class="home-section-head compact">
+        <p class="home-kicker">Terrain + bureau</p>
+        <h2>Gagnez du temps sur chaque chantier</h2>
+        <span>
+          Moins de texte, plus de concret : Chiffr relie le devis, les photos,
+          la signature, l’acompte et la facture dans un même dossier.
+        </span>
+      </div>
+
+      <div class="feature-photo-grid">
+        {featureBlocks.map((feature) => (
+          <article class="feature-photo-card">
+            <img src={feature.image} alt={feature.title} width="520" height="330" loading="lazy" decoding="async" />
+
+            <div>
+              <span class="feature-icon" aria-hidden="true">{feature.icon}</span>
+              <h3>{feature.title}</h3>
+              <p>{feature.text}</p>
+              <a href={feature.href}>En savoir plus →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section trust-section">
+    <div class="home-shell trust-grid">
+      <div>
+        <div class="home-section-head compact">
+          <p class="home-kicker">Pourquoi Chiffr ?</p>
+          <h2>Un logiciel sérieux, simple et vraiment métier</h2>
+          <span>
+            Chiffr ne cherche pas à devenir un gros outil généraliste. Il vous aide à produire
+            des devis énergie plus vite, plus propres et mieux suivis.
+          </span>
+        </div>
+
+        <div class="trust-card-grid">
+          {trustCards.map((card) => (
+            <article class="trust-card">
+              <span aria-hidden="true">{card.icon}</span>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <figure class="trust-photo">
+        <img
+          src={asset('technicians-tablet.webp')}
+          alt="Deux professionnels consultant un dossier client sur tablette"
+          width="560"
+          height="364"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="home-section home-reform-section" id="facturation-electronique">
+    <div class="home-shell reform-card">
+      <div class="reform-copy">
+        <p class="home-kicker">Réforme 2026–2027</p>
+        <h2>Préparez la facturation électronique sans attendre le dernier moment</h2>
+        <p>
+          Chiffr vous aide à structurer vos clients, vos factures, vos acomptes, vos signatures
+          et vos informations de dossier pour aborder plus sereinement la transition vers la
+          facturation électronique.
+        </p>
+        <div class="reform-tags">
+          <span>Réception dès 2026</span>
+          <span>Émission TPE/PME dès 2027</span>
+          <span>Données client mieux rangées</span>
+        </div>
+      </div>
+
+      <div class="reform-mini-grid">
+        <article>
+          <b>01</b>
+          <strong>Factures mieux structurées</strong>
+          <span>Devis, acompte, solde et facture finale restent reliés au dossier client.</span>
+        </article>
+        <article>
+          <b>02</b>
+          <strong>Mentions à préparer</strong>
+          <span>SIREN client, adresse, opération, paiement : les informations clés sont plus faciles à suivre.</span>
+        </article>
+        <article>
+          <b>03</b>
+          <strong>Transition plus simple</strong>
+          <span>Chiffr est pensé pour accompagner la future connexion aux plateformes agréées.</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section guides-section">
+    <div class="home-shell guides-grid">
+      <div class="home-section-head compact">
+        <p class="home-kicker">Guides pratiques</p>
+        <h2>Des ressources concrètes pour mieux structurer vos devis</h2>
+        <span>
+          PAC, clim, acompte, relance, photos chantier : les guides Chiffr
+          répondent aux questions terrain que les artisans se posent vraiment.
+        </span>
+      </div>
+
+      <div class="guide-link-grid">
+        {guideLinks.map(([label, href]) => (
+          <a href={href} class="guide-link-card">
+            <strong>{label}</strong>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+
+        <a href="/guides-devis-artisans-energie" class="guide-link-card all">
+          <strong>Tous les guides devis artisans énergie</strong>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-final">
+    <div class="home-shell final-card">
+      <div class="final-copy">
+        <p class="home-kicker light">Accès sur demande</p>
+        <h2>Prêt à simplifier vos devis et votre suivi client ?</h2>
+        <ul>
+          <li>Modèles métier prêts à adapter</li>
+          <li>Photos chantier et PDF premium</li>
+          <li>Signature, acompte, factures et relances</li>
+        </ul>
+
+        <div class="home-actions">
+          <a class="home-btn light" href="/contact">
+            Demander un accès
+            <span aria-hidden="true">→</span>
+          </a>
+          <a class="home-btn ghost" href="/fonctionnalites">
+            Voir les fonctionnalités
+            <span aria-hidden="true">▻</span>
+          </a>
+        </div>
+      </div>
+
+      <img
+        src={asset('service-van.webp')}
+        alt="Camion d’artisan équipé pour les interventions énergie"
+        width="710"
+        height="246"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <section class="home-section home-faq">
+    <div class="home-shell faq-grid">
+      <div class="home-section-head compact">
+        <p class="home-kicker">FAQ</p>
+        <h2>Questions fréquentes</h2>
+      </div>
+
+      <div class="faq-list">
+        {faqs.map(([question, answer]) => (
+          <details class="home-faq-card">
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <style is:inline>
+    .home-hero,
+    .home-section,
+    .home-final {
+      position: relative;
+      overflow: hidden;
+      color: var(--ink);
+    }
+
+    .home-shell {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .home-hero {
+      padding: 78px 0 64px;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(183, 110, 60, 0.14), transparent 32%),
+        radial-gradient(circle at 80% 6%, rgba(18, 63, 61, 0.1), transparent 34%),
+        linear-gradient(180deg, rgba(255, 248, 239, 0.92), rgba(255, 248, 239, 0.56));
+    }
+
+    .home-glow {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      filter: blur(24px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .glow-left {
+      left: -90px;
+      top: 70px;
+      background: rgba(183, 110, 60, 0.16);
+    }
+
+    .glow-right {
+      right: 4%;
+      top: 40px;
+      background: rgba(18, 63, 61, 0.12);
+    }
+
+    .home-hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .home-pill,
+    .home-kicker {
+      display: inline-flex;
+      width: fit-content;
+      margin: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(183, 110, 60, 0.13);
+      color: #7d4a2b;
+      border: 1px solid rgba(183, 110, 60, 0.12);
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .home-kicker {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--copper);
+    }
+
+    .home-kicker.light {
+      color: #f3dfcf;
+    }
+
+    .home-hero h1 {
+      margin: 24px 0 0;
+      max-width: 760px;
+      color: var(--teal);
+      font-size: clamp(46px, 5.8vw, 82px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      font-weight: 950;
+    }
+
+    .home-lead {
+      margin: 24px 0 0;
+      max-width: 680px;
+      color: #536866;
+      font-size: 19px;
+      line-height: 1.72;
+      font-weight: 650;
+    }
+
+    .home-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .home-btn {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 22px;
+      border-radius: 999px;
+      font-weight: 950;
+      line-height: 1;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .home-btn.primary {
+      color: white;
+      background: var(--teal);
+      box-shadow: 0 20px 44px rgba(18, 63, 61, 0.2);
+    }
+
+    .home-btn.secondary {
+      color: var(--teal);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      box-shadow: 0 16px 34px rgba(18, 63, 61, 0.06);
+    }
+
+    .home-btn.light {
+      color: var(--teal);
+      background: white;
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.12);
+    }
+
+    .home-btn.ghost {
+      color: white;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .home-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 54px rgba(18, 63, 61, 0.18);
+    }
+
+    .home-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 26px;
+    }
+
+    .home-reform-badge {
+      display: inline-grid;
+      gap: 2px;
+      width: fit-content;
+      max-width: 100%;
+      padding: 12px 15px;
+      border-radius: 999px;
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(47, 143, 107, 0.12), transparent 42%),
+        rgba(255, 255, 255, 0.86);
+      color: var(--teal);
+      box-shadow: 0 16px 38px rgba(18, 63, 61, 0.07);
+    }
+
+    .home-reform-badge strong {
+      color: var(--teal);
+      font-size: 14px;
+      line-height: 1.05;
+      font-weight: 950;
+      letter-spacing: -0.02em;
+    }
+
+    .home-reform-badge small {
+      color: #667977;
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .home-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-top: 24px;
+      color: #536866;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .home-checks span::before {
+      content: "✓";
+      margin-right: 7px;
+      color: var(--success);
+    }
+
+    .home-visual {
+      position: relative;
+      min-height: 540px;
+    }
+
+    .hero-photo-wrap,
+    .home-ui-card,
+    .trade-photo-card,
+    .feature-photo-card,
+    .trust-card,
+    .trust-photo,
+    .guide-link-card,
+    .final-card,
+    .home-faq-card {
+      border: 1px solid rgba(18, 63, 61, 0.1);
+      box-shadow:
+        0 24px 70px rgba(18, 63, 61, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    }
+
+    .hero-photo-wrap {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 34px;
+      background: white;
+    }
+
+    .hero-photo-wrap img,
+    .feature-photo-card img,
+    .trade-photo-card img,
+    .trust-photo img,
+    .final-card > img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .main-photo {
+      right: 72px;
+      top: 0;
+      width: min(430px, 78%);
+      height: 356px;
+    }
+
+    .small-photo {
+      left: 12px;
+      bottom: 72px;
+      width: 230px;
+      height: 168px;
+      border-radius: 26px;
+      z-index: 3;
+    }
+
+    .home-ui-card {
+      position: absolute;
+      z-index: 4;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .quote-card {
+      right: 0;
+      top: 36px;
+      width: 258px;
+      padding: 20px;
+    }
+
+    .quote-card > div {
+      margin: -20px -20px 16px;
+      padding: 16px 20px;
+      border-radius: 22px 22px 0 0;
+      color: white;
+      background: linear-gradient(145deg, #123f3d, #0b302e);
+    }
+
+    .quote-card small,
+    .quote-card strong {
+      display: block;
+    }
+
+    .quote-card small {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .quote-card strong {
+      margin-top: 4px;
+      color: white;
+      font-size: 17px;
+      font-weight: 950;
+    }
+
+    .quote-card p {
+      margin: 0;
+      color: #667977;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .quote-card b {
+      display: block;
+      margin-top: 4px;
+      color: var(--teal);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 950;
+    }
+
+    .quote-card ul {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quote-card li {
+      color: #536866;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .quote-card li::after {
+      content: "";
+      display: block;
+      height: 7px;
+      margin-top: 5px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.08);
+    }
+
+    .pdf-card {
+      right: 22px;
+      bottom: 0;
+      width: 300px;
+      padding: 18px;
+    }
+
+    .pdf-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: #667977;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .pdf-head strong {
+      color: var(--teal);
+      text-align: right;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    .pdf-lines {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pdf-lines p {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0;
+      padding-bottom: 9px;
+      border-bottom: 1px solid rgba(18, 63, 61, 0.08);
+      color: #536866;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .pdf-lines b {
+      color: var(--teal);
+      white-space: nowrap;
+    }
+
+    .pdf-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .signature-seal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px 8px 8px;
+      border-radius: 999px;
+      background: rgba(47, 143, 107, 0.12);
+      color: var(--teal);
+      border: 1px solid rgba(47, 143, 107, 0.16);
+    }
+
+    .signature-seal svg {
+      width: 30px;
+      height: 30px;
+      flex: none;
+      padding: 6px;
+      border-radius: 999px;
+      background: var(--teal);
+      color: white;
+    }
+
+    .signature-seal svg path {
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 3.1;
+    }
+
+    .signature-seal span {
+      display: grid;
+      gap: 1px;
+    }
+
+    .signature-seal strong {
+      color: var(--teal);
+      font-size: 10px;
+      line-height: 1.05;
+      font-weight: 950;
+    }
+
+    .signature-seal small {
+      color: var(--success);
+      font-size: 9px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .home-section {
+      padding: 68px 0;
+    }
+
+    .home-section-head {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .home-section-head.centered {
+      max-width: 860px;
+      margin-inline: auto;
+      text-align: center;
+      justify-items: center;
+    }
+
+    .home-section-head.compact {
+      max-width: 700px;
+    }
+
+    .home-section-head h2,
+    .final-copy h2 {
+      margin: 0;
+      color: var(--teal);
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -0.052em;
+      font-weight: 950;
+    }
+
+    .home-section-head span {
+      color: #536866;
+      font-size: 18px;
+      line-height: 1.65;
+      font-weight: 650;
+    }
+
+    .trade-photo-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .trade-photo-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 244px;
+      padding: 0 0 18px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.78);
+      text-align: center;
+      color: var(--teal);
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .trade-photo-card:hover {
+      transform: translateY(-5px);
+      background: white;
+      box-shadow: 0 28px 70px rgba(18, 63, 61, 0.13);
+    }
+
+    .trade-photo-card img {
+      height: 148px;
+    }
+
+    .trade-icon {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      place-items: center;
+      margin: -27px auto 12px;
+      position: relative;
+      z-index: 2;
+      border-radius: 999px;
+      background: var(--teal);
+      color: white;
+      border: 4px solid rgba(255, 255, 255, 0.86);
+      font-size: 22px;
+      font-weight: 950;
+      box-shadow: 0 16px 34px rgba(18, 63, 61, 0.18);
+    }
+
+    .trade-photo-card strong {
+      display: block;
+      color: var(--teal);
+      font-size: 16px;
+      font-weight: 950;
+    }
+
+    .trade-photo-card small {
+      display: block;
+      margin-top: 5px;
+      padding: 0 12px;
+      color: #667977;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .feature-photo-grid {
+      display: grid;
+      gap: 16px;
+      padding: 24px;
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.1), transparent 38%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 253, 249, 0.82));
+      border: 1px solid rgba(18, 63, 61, 0.08);
+      box-shadow: 0 24px 70px rgba(18, 63, 61, 0.07);
+    }
+
+    .feature-photo-card {
+      display: grid;
+      overflow: hidden;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.86);
+    }
+
+    .feature-photo-card img {
+      min-height: 230px;
+    }
+
+    .feature-photo-card div {
+      padding: 24px;
+    }
+
+    .feature-icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(183, 110, 60, 0.12);
+      color: var(--copper);
+      font-weight: 950;
+    }
+
+    .feature-photo-card h3 {
+      margin: 16px 0 0;
+      color: var(--teal);
+      font-size: 24px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 950;
+    }
+
+    .feature-photo-card p {
+      margin: 12px 0 0;
+      color: #536866;
+      font-size: 15px;
+      line-height: 1.58;
+      font-weight: 700;
+    }
+
+    .feature-photo-card a {
+      display: inline-flex;
+      margin-top: 16px;
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    .trust-section {
+      padding-top: 44px;
+    }
+
+    .trust-grid {
+      display: grid;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .trust-card-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .trust-card {
+      border-radius: 24px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .trust-card span {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(183, 110, 60, 0.12);
+      color: var(--copper);
+      font-weight: 950;
+    }
+
+    .trust-card h3 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: 17px;
+      line-height: 1.16;
+      font-weight: 950;
+    }
+
+    .trust-card p {
+      margin: 8px 0 0;
+      color: #536866;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .trust-photo {
+      overflow: hidden;
+      min-height: 320px;
+      margin: 0;
+      border-radius: 34px;
+      background: white;
+    }
+
+    .guides-section {
+      padding-top: 34px;
+    }
+
+    .guides-grid {
+      display: grid;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .guide-link-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .guide-link-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      min-height: 82px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.84);
+      color: var(--teal);
+      font-weight: 950;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .guide-link-card:hover {
+      transform: translateY(-3px);
+      background: white;
+      box-shadow: 0 20px 54px rgba(18, 63, 61, 0.1);
+    }
+
+    .guide-link-card span {
+      color: var(--copper);
+      font-weight: 950;
+    }
+
+    .guide-link-card.all {
+      background: var(--teal);
+      color: white;
+    }
+
+    .guide-link-card.all span {
+      color: #f3dfcf;
+    }
+
+    .home-reform-section {
+      padding-top: 34px;
+    }
+
+    .reform-card {
+      display: grid;
+      gap: 26px;
+      align-items: center;
+      padding: 28px;
+      border-radius: 36px;
+      border: 1px solid rgba(18, 63, 61, 0.1);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(183, 110, 60, 0.12), transparent 38%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 253, 249, 0.92));
+      box-shadow:
+        0 24px 70px rgba(18, 63, 61, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.88);
+    }
+
+    .reform-copy h2 {
+      margin: 12px 0 0;
+      color: var(--teal);
+      font-size: clamp(32px, 3.6vw, 52px);
+      line-height: 1.04;
+      letter-spacing: -0.052em;
+      font-weight: 950;
+    }
+
+    .reform-copy p {
+      margin: 16px 0 0;
+      color: #536866;
+      font-size: 17px;
+      line-height: 1.62;
+      font-weight: 700;
+    }
+
+    .reform-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .reform-tags span {
+      display: inline-flex;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(220, 236, 235, 0.82);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .reform-mini-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .reform-mini-grid article {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(18, 63, 61, 0.08);
+      box-shadow: 0 16px 40px rgba(18, 63, 61, 0.06);
+    }
+
+    .reform-mini-grid b {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .reform-mini-grid strong {
+      display: block;
+      margin-top: 14px;
+      color: var(--teal);
+      font-size: 17px;
+      line-height: 1.16;
+      font-weight: 950;
+    }
+
+    .reform-mini-grid span {
+      display: block;
+      margin-top: 8px;
+      color: #536866;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .home-final {
+      padding: 54px 0 72px;
+    }
+
+    .final-card {
+      overflow: hidden;
+      display: grid;
+      gap: 0;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.12), transparent 38%),
+        linear-gradient(145deg, #123f3d, #0b302e);
+    }
+
+    .final-copy {
+      padding: 34px;
+      color: white;
+    }
+
+    .final-copy h2 {
+      margin-top: 14px;
+      max-width: 560px;
+      color: white;
+      font-size: clamp(32px, 4vw, 52px);
+    }
+
+    .final-copy ul {
+      display: grid;
+      gap: 9px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 850;
+    }
+
+    .final-copy li::before {
+      content: "✓";
+      margin-right: 9px;
+      color: #f3dfcf;
+    }
+
+    .final-card > img {
+      min-height: 250px;
+    }
+
+    .home-faq {
+      padding-top: 20px;
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .home-faq-card {
+      border-radius: 24px;
+      padding: 20px 22px;
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .home-faq-card summary {
+      cursor: pointer;
+      color: var(--teal);
+      font-size: 17px;
+      line-height: 1.35;
+      font-weight: 950;
+    }
+
+    .home-faq-card p {
+      margin: 12px 0 0;
+      color: #536866;
+      font-size: 15px;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    @media (min-width: 760px) {
+      .trade-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-photo-grid,
+      .trust-card-grid,
+      .guide-link-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .final-card {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+    }
+
+    @media (min-width: 1040px) {
+      .home-hero-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .trade-photo-grid {
+        grid-template-columns: repeat(7, 1fr);
+      }
+
+      .feature-photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-photo-card {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .trust-grid,
+      .guides-grid,
+      .faq-grid {
+        grid-template-columns: 1fr 0.85fr;
+      }
+
+      .reform-card {
+        grid-template-columns: 0.95fr 1.05fr;
+      }
+
+      .reform-mini-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .trust-card-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .home-hero {
+        padding: 52px 0 42px;
+      }
+
+      .home-hero h1 {
+        font-size: clamp(42px, 13vw, 60px);
+      }
+
+      .home-lead,
+      .home-section-head span {
+        font-size: 17px;
+      }
+
+      .home-actions,
+      .home-badge-row {
+        display: grid;
+      }
+
+      .home-btn {
+        width: 100%;
+      }
+
+      .home-visual {
+        min-height: 640px;
+      }
+
+      .main-photo {
+        left: 0;
+        right: auto;
+        width: 100%;
+        height: 310px;
+      }
+
+      .quote-card {
+        top: 246px;
+        right: 10px;
+        width: min(260px, 76%);
+      }
+
+      .small-photo {
+        left: 0;
+        bottom: 104px;
+        width: 48%;
+        height: 150px;
+      }
+
+      .pdf-card {
+        right: 0;
+        bottom: 0;
+        width: 82%;
+      }
+
+      .home-section {
+        padding: 50px 0;
+      }
+
+      .feature-photo-grid {
+        padding: 16px;
+        border-radius: 30px;
+      }
+
+      .final-copy {
+        padding: 28px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .home-hero *,
+      .home-section *,
+      .home-final * {
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -1,0 +1,187 @@
+---
+import { featureVisuals, pageVisuals } from '../../data/visualAssets';
+
+interface Props {
+  variant?: string;
+  eyebrow?: string;
+  title: string;
+  text: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  reversed?: boolean;
+}
+
+const {
+  variant = 'guides',
+  eyebrow = 'Chiffr en situation',
+  title,
+  text,
+  ctaLabel = 'Découvrir Chiffr',
+  ctaHref = '/fonctionnalites',
+  imageSrc,
+  imageAlt,
+  reversed = false,
+} = Astro.props;
+
+const pageMap = pageVisuals as Record<string, { src: string; alt: string }>;
+const featureMap = featureVisuals as Record<string, { src: string; alt: string }>;
+
+const selectedVisual =
+  imageSrc && imageAlt
+    ? { src: imageSrc, alt: imageAlt }
+    : pageMap[variant] ?? featureMap[variant] ?? pageVisuals.guides;
+---
+
+<article class:list={['page-photo-showcase', { reversed }]}>
+  <div class="page-photo-showcase-image">
+    <img
+      src={selectedVisual.src}
+      alt={selectedVisual.alt}
+      width="1600"
+      height="900"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+
+  <div class="page-photo-showcase-copy">
+    <p>{eyebrow}</p>
+    <h2>{title}</h2>
+    <span>{text}</span>
+    <a href={ctaHref}>{ctaLabel} →</a>
+  </div>
+</article>
+
+<style>
+  .page-photo-showcase,
+  .page-photo-showcase * {
+    box-sizing: border-box;
+  }
+
+  .page-photo-showcase {
+    overflow: hidden;
+    display: grid;
+    gap: 0;
+    border-radius: 38px;
+    border: 1px solid rgba(18, 63, 61, 0.1);
+    background:
+      radial-gradient(circle at 10% 0%, rgba(183, 110, 60, 0.11), transparent 34%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.84), rgba(255, 253, 249, 0.9));
+    box-shadow:
+      0 30px 90px rgba(18, 63, 61, 0.11),
+      inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  }
+
+  .page-photo-showcase-image {
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+    background: var(--teal);
+  }
+
+  .page-photo-showcase-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(8, 29, 28, 0.02), rgba(8, 29, 28, 0.18)),
+      radial-gradient(circle at 80% 0%, rgba(183, 110, 60, 0.18), transparent 38%);
+    pointer-events: none;
+  }
+
+  .page-photo-showcase-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    display: block;
+    object-fit: cover;
+    transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .page-photo-showcase:hover .page-photo-showcase-image img {
+    transform: scale(1.025);
+  }
+
+  .page-photo-showcase-copy {
+    display: grid;
+    align-content: center;
+    padding: clamp(24px, 4vw, 44px);
+  }
+
+  .page-photo-showcase-copy p {
+    margin: 0;
+    color: var(--copper);
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 950;
+  }
+
+  .page-photo-showcase-copy h2 {
+    margin: 14px 0 0;
+    color: var(--teal);
+    font-size: clamp(30px, 3.9vw, 54px);
+    line-height: 1.03;
+    letter-spacing: -0.052em;
+    font-weight: 950;
+  }
+
+  .page-photo-showcase-copy span {
+    display: block;
+    margin-top: 16px;
+    color: #536866;
+    font-size: 17px;
+    line-height: 1.66;
+    font-weight: 700;
+  }
+
+  .page-photo-showcase-copy a {
+    display: inline-flex;
+    width: fit-content;
+    margin-top: 22px;
+    padding: 13px 18px;
+    border-radius: 999px;
+    background: var(--teal);
+    color: white;
+    font-weight: 950;
+    box-shadow: 0 18px 38px rgba(18, 63, 61, 0.16);
+  }
+
+  @media (min-width: 900px) {
+    .page-photo-showcase {
+      grid-template-columns: 1.02fr 0.98fr;
+      min-height: 440px;
+    }
+
+    .page-photo-showcase.reversed {
+      grid-template-columns: 0.98fr 1.02fr;
+    }
+
+    .page-photo-showcase.reversed .page-photo-showcase-image {
+      order: 2;
+    }
+
+    .page-photo-showcase-image,
+    .page-photo-showcase-image img {
+      min-height: 440px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .page-photo-showcase {
+      border-radius: 30px;
+    }
+
+    .page-photo-showcase-image,
+    .page-photo-showcase-image img {
+      min-height: 280px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-photo-showcase-image img {
+      transition-duration: 0.001ms !important;
+    }
+  }
+</style>

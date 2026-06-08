@@ -1,0 +1,146 @@
+---
+import TradeLanding from '../components/TradeLanding.astro';
+
+const page = {
+  title: 'Logiciel devis climatisation | Devis clim avec Chiffr',
+  description:
+    'Chiffr aide les installateurs clim à créer des devis clairs : monosplit, multisplit, photos chantier, PDF premium, signature, acompte et factures.',
+  canonicalPath: '/logiciel-devis-climatisation',
+  pill: 'Logiciel devis climatisation',
+  h1: 'Des devis clim plus clairs, plus rapides et mieux suivis',
+  lead:
+    'Chiffr aide les installateurs de climatisation à préparer des devis propres : modèles monosplit et multisplit, lignes fréquentes, photos chantier, PDF premium, signature, acompte, factures et relances client.',
+  checks: ['Monosplit', 'Multisplit', 'Photos chantier', 'Acompte', 'Factures'],
+  appTitle: 'Climatisation',
+  appSubtitle: 'Modèle métier préparé',
+  appBadgeLabel: 'Base',
+  appBadgeValue: 'Clim',
+  appStripLabel: 'Chantier type',
+  appStripText: 'Monosplit ou multisplit → liaisons → mise en service → signature → facture',
+  appSteps: [
+    {
+      title: 'Unité intérieure',
+      text: 'Emplacement, fixation, passage des liaisons.',
+      status: 'prévu',
+    },
+    {
+      title: 'Groupe extérieur',
+      text: 'Support mural ou sol, accès et contraintes.',
+      status: 'à chiffrer',
+    },
+    {
+      title: 'Liaisons et condensats',
+      text: 'Frigorifique, goulotte, évacuation, pompe.',
+      status: 'à vérifier',
+    },
+    {
+      title: 'Mise en service',
+      text: 'Tirage au vide, essais, réglages et client.',
+      status: 'ensuite',
+    },
+  ],
+  appMini: [
+    { label: 'Photos', value: 'Passage liaisons' },
+    { label: 'Client', value: 'Signature' },
+    { label: 'Suivi', value: 'Relance' },
+  ],
+  problemTitle: 'Un devis clim trop vague peut créer des malentendus.',
+  problemText:
+    'Une installation climatisation implique souvent plusieurs éléments visibles : unité intérieure, groupe extérieur, liaisons, goulottes, condensats, électricité, mise en service et parfois entretien. Un devis clair rassure le client.',
+  solutionTitle: 'Une base métier pour structurer chaque installation clim.',
+  solutionText:
+    'Chiffr prépare une structure claire pour les devis clim. L’artisan garde la main sur les prix, les quantités et les choix techniques, mais ne part plus d’un écran vide.',
+  quoteKicker: 'Lignes de devis climatisation',
+  quoteTitle: 'Les postes fréquents à prévoir dans un devis clim',
+  quoteIntro:
+    'Monosplit, multisplit ou remplacement : les lignes changent selon le chantier, mais la structure doit rester claire pour le client.',
+  quoteLines: [
+    { title: 'Visite technique', text: 'Relevé des pièces, emplacement des unités, passage des liaisons et contraintes de pose.' },
+    { title: 'Fourniture clim', text: 'Unité intérieure, groupe extérieur, télécommande, supports, accessoires et options.' },
+    { title: 'Pose', text: 'Installation unité intérieure, fixation groupe extérieur, support mural ou support sol.' },
+    { title: 'Liaisons', text: 'Liaisons frigorifiques, goulottes, condensats, alimentation électrique et perçages.' },
+    { title: 'Électricité', text: 'Protection dédiée, raccordement, disjoncteur, alimentation et vérifications.' },
+    { title: 'Condensats', text: 'Évacuation gravitaire, pompe de relevage, accessoires et test d’écoulement.' },
+    { title: 'Mise en service', text: 'Tirage au vide, contrôle étanchéité, essais, réglages et explication client.' },
+    { title: 'Dossier client', text: 'Photos chantier, plaque machine, PDF premium, signature, acompte et facture finale.' },
+  ],
+  featuresKicker: 'Fonctions Chiffr',
+  featuresTitle: 'Tout le cycle du devis clim reste dans le même suivi',
+  featuresIntro:
+    'Chiffr vous aide à passer du devis au PDF, puis à la signature, l’acompte, la facture et la relance client.',
+  features: [
+    { title: 'Modèles clim', text: 'Des bases de devis adaptées aux installations monosplit, multisplit et remplacement.' },
+    { title: 'Lignes fréquentes', text: 'Unités intérieures, groupe extérieur, liaisons, goulottes, condensats, mise en service.' },
+    { title: 'Photos chantier', text: 'Emplacement unité intérieure, groupe extérieur, passage des liaisons, tableau électrique.' },
+    { title: 'PDF premium', text: 'Un devis clair et rassurant pour un chantier visible chez le client.' },
+    { title: 'Signature', text: 'Validation client sur place ou à distance selon votre façon de vendre.' },
+    { title: 'Acompte', text: 'Demande d’acompte après acceptation et suivi du règlement.' },
+    { title: 'Factures', text: 'Facture d’acompte, solde et finale pour garder un dossier propre.' },
+    { title: 'Relances', text: 'Relance des devis clim envoyés et historique client.' },
+  ],
+  usecaseTitle: 'Les cas clim que Chiffr aide à cadrer',
+  usecaseIntro:
+    'Chiffr s’adapte aux installations simples comme aux dossiers plus complets avec plusieurs unités et options.',
+  useCases: [
+    { title: 'Clim monosplit', text: 'Une unité intérieure, un groupe extérieur, liaisons frigorifiques, goulotte et essais.' },
+    { title: 'Clim multisplit', text: 'Plusieurs unités intérieures, groupe extérieur, longueur de liaisons, évacuation condensats.' },
+    { title: 'Remplacement clim', text: 'Dépose ancienne installation, adaptation des passages, fourniture et remise en service.' },
+    { title: 'Entretien clim', text: 'Nettoyage, contrôle, intervention, remplacement petite pièce et suivi client.' },
+  ],
+  photoTitle: 'Les photos chantier utiles sur un dossier clim',
+  photoIntro:
+    'Les photos permettent de garder le contexte : emplacement des unités, passages, tableau électrique, évacuation des condensats ou plaque machine.',
+  photoItems: [
+    'Emplacement unité intérieure',
+    'Emplacement groupe extérieur',
+    'Passage des liaisons frigorifiques',
+    'Évacuation des condensats',
+    'Tableau électrique ou protection dédiée',
+    'Plaque machine et références matériel',
+  ],
+  internalTitle: 'Continuer avec les pages utiles pour les devis clim',
+  internalIntro:
+    'Reliez cette page aux modèles clim, aux guides pratiques et aux autres métiers énergie.',
+  internalLinks: [
+    { label: 'Modèle devis clim monosplit', href: '/modele-devis-clim-monosplit' },
+    { label: 'Modèle devis clim multisplit', href: '/modele-devis-clim-multisplit' },
+    { label: 'Comment faire un devis climatisation', href: '/comment-faire-un-devis-climatisation' },
+    { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
+    { label: 'Logiciel devis frigoriste / CVC', href: '/logiciel-devis-frigoriste-cvc' },
+    { label: 'Alternative Obat', href: '/alternative-obat' },
+  ],
+  ctaTitle: 'Vous voulez créer des devis clim plus visuels et mieux suivis ?',
+  ctaText:
+    'Chiffr vous aide à partir d’un modèle métier, ajouter les lignes utiles, joindre vos photos, générer un PDF premium, faire signer, demander un acompte et facturer proprement.',
+  faqTitle: 'Questions fréquentes sur les devis climatisation',
+  faqs: [
+    {
+      question: 'Pourquoi utiliser un logiciel de devis pour la climatisation ?',
+      answer:
+        'Un devis climatisation contient souvent plusieurs postes : fourniture, pose, liaisons frigorifiques, goulottes, condensats, électricité, mise en service et parfois entretien. Chiffr aide à structurer tout cela sans repartir d’une page blanche.',
+    },
+    {
+      question: 'Chiffr convient-il aux devis clim monosplit ?',
+      answer:
+        'Oui. Chiffr peut servir à préparer des devis monosplit avec unité intérieure, groupe extérieur, liaisons, support, goulotte, évacuation des condensats et mise en service.',
+    },
+    {
+      question: 'Chiffr convient-il aux devis clim multisplit ?',
+      answer:
+        'Oui. Les devis multisplit demandent souvent plus de lignes : plusieurs unités intérieures, longueur des liaisons, accessoires, condensats et options. Chiffr aide à garder une structure claire.',
+    },
+    {
+      question: 'Peut-on ajouter des photos chantier au dossier clim ?',
+      answer:
+        'Oui. Les photos utiles peuvent être rattachées au dossier : emplacement unité intérieure, groupe extérieur, passage des liaisons, tableau électrique ou contraintes de pose.',
+    },
+    {
+      question: 'Chiffr gère-t-il la signature, l’acompte et les factures ?',
+      answer:
+        'Oui. Chiffr est conçu pour suivre le cycle complet : devis, PDF, signature, acompte, facture d’acompte, facture de solde et relance client.',
+    },
+  ],
+};
+---
+
+<TradeLanding {...page} />

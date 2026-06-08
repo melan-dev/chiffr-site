@@ -1,0 +1,890 @@
+---
+import PagePhotoShowcase from '../components/visuals/PagePhotoShowcase.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { seoGuides } from '../data/seoGuides';
+
+const title = 'Guides devis artisans énergie | PAC, clim, VMC, IRVE | Chiffr';
+const description =
+  'Guides pratiques pour artisans énergie : faire un devis PAC, climatisation, VMC, IRVE, gérer acompte, facture de solde, relance client et photos chantier.';
+
+const mainGuides = seoGuides.slice(0, 6);
+const followGuides = seoGuides.slice(6);
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Guides devis artisans énergie',
+  itemListElement: seoGuides.map((guide, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: guide.h1,
+    url: `/${guide.slug}`,
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Accueil',
+      item: '/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Guides devis artisans énergie',
+      item: '/guides-devis-artisans-energie',
+    },
+  ],
+};
+
+const faqs = [
+  {
+    question: 'À quoi servent les guides Chiffr ?',
+    answer:
+      'Les guides Chiffr aident les artisans énergie à structurer leurs devis, éviter les oublis, préparer les bonnes lignes et mieux suivre la signature, l’acompte, la facture et les relances.',
+  },
+  {
+    question: 'Ces guides remplacent-ils l’expertise de l’artisan ?',
+    answer:
+      'Non. Ils donnent une méthode et une structure. Les prix, quantités, choix techniques, taux de TVA et conditions doivent toujours être vérifiés par l’artisan selon le chantier.',
+  },
+  {
+    question: 'Quels métiers sont concernés ?',
+    answer:
+      'Les guides ciblent surtout les artisans énergie : pompe à chaleur, climatisation, chauffage, CVC, VMC, IRVE, photovoltaïque et chauffe-eau thermodynamique.',
+  },
+  {
+    question: 'Quel lien avec les modèles de devis Chiffr ?',
+    answer:
+      'Les guides expliquent la méthode. Les modèles de devis donnent une structure plus concrète avec des lignes métier déjà préparées pour démarrer plus vite dans Chiffr.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/guides-devis-artisans-energie"
+  schema={[itemListSchema, breadcrumbSchema, faqSchema]}
+>
+  <style is:inline>
+    .guides-hub,
+    .guides-hub * {
+      box-sizing: border-box;
+    }
+
+    .guides-hub {
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    .guides-shell {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .guides-narrow {
+      max-width: 920px;
+    }
+
+    .guides-hero,
+    .guides-section,
+    .guides-cta {
+      position: relative;
+      padding: 72px 20px;
+    }
+
+    .guides-hero {
+      padding-top: 88px;
+      padding-bottom: 76px;
+    }
+
+    .guides-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(183, 110, 60, 0.14), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(18, 63, 61, 0.12), transparent 32%);
+    }
+
+    .guides-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .guides-pill,
+    .guides-kicker {
+      display: inline-flex;
+      width: fit-content;
+      margin: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--teal);
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .guides-kicker {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--copper);
+      font-size: 15px;
+    }
+
+    .guides-hub h1 {
+      margin: 26px 0 0;
+      max-width: 980px;
+      color: var(--teal);
+      font-size: clamp(42px, 5.4vw, 78px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+    }
+
+    .guides-lead {
+      margin: 22px 0 0;
+      max-width: 800px;
+      color: #536866;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .guides-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .guides-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 999px;
+      padding: 16px 24px;
+      font-weight: 950;
+      line-height: 1;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .guides-btn.primary {
+      color: white;
+      background: var(--teal);
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.18);
+    }
+
+    .guides-btn.primary:hover {
+      transform: translateY(-2px);
+      background: #0d302e;
+      box-shadow: 0 24px 48px rgba(18, 63, 61, 0.22);
+    }
+
+    .guides-btn.secondary {
+      color: var(--teal);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(18, 63, 61, 0.14);
+    }
+
+    .guides-btn.secondary:hover {
+      transform: translateY(-2px);
+      background: white;
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.08);
+    }
+
+    .guides-proof {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: #667977;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .guides-proof span::before {
+      content: "✓";
+      margin-right: 6px;
+      color: var(--success);
+    }
+
+    .guides-card,
+    .guide-card,
+    .guides-panel,
+    .guides-step,
+    .guides-faq-card {
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background:
+        linear-gradient(145deg, rgba(255, 253, 249, 0.96), rgba(255, 255, 255, 0.86)),
+        radial-gradient(circle at top right, rgba(183, 110, 60, 0.1), transparent 44%);
+      box-shadow:
+        0 26px 74px rgba(18, 63, 61, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .guides-card {
+      overflow: hidden;
+      border-radius: 36px;
+      padding: 22px;
+    }
+
+    .guides-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .guides-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .guides-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.18);
+    }
+
+    .guides-dots span:nth-child(1) { background: #f3dfcf; }
+    .guides-dots span:nth-child(2) { background: #dceceb; }
+    .guides-dots span:nth-child(3) { background: rgba(47, 143, 107, 0.45); }
+
+    .guides-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.08);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .guides-status span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 6px rgba(47, 143, 107, 0.12);
+    }
+
+    .guides-card-head {
+      padding: 24px;
+      border-radius: 28px;
+      color: white;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.12), transparent 34%),
+        linear-gradient(135deg, #123f3d, #0d302e);
+    }
+
+    .guides-card-head p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .guides-card-head h2 {
+      margin: 8px 0 0;
+      color: white;
+      font-size: 34px;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      font-weight: 950;
+    }
+
+    .guides-card-list {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .guides-card-row {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(18, 63, 61, 0.08);
+    }
+
+    .guides-card-row b {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .guides-card-row strong {
+      color: var(--teal);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .guides-card-row small {
+      color: #667977;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .guides-section-head {
+      max-width: 880px;
+      margin-bottom: 30px;
+    }
+
+    .guides-section-head h2,
+    .guides-panel h2,
+    .guides-cta h2 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: clamp(34px, 3.8vw, 56px);
+      line-height: 1.06;
+      letter-spacing: -0.048em;
+      font-weight: 950;
+    }
+
+    .guides-section-head p,
+    .guides-panel p,
+    .guides-cta p {
+      margin: 14px 0 0;
+      color: #536866;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .guides-grid-list,
+    .guides-step-grid,
+    .guides-faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .guide-card {
+      display: grid;
+      gap: 13px;
+      min-height: 250px;
+      border-radius: 28px;
+      padding: 22px;
+      color: inherit;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-4px);
+      background: white;
+      box-shadow: 0 26px 70px rgba(18, 63, 61, 0.12);
+    }
+
+    .guide-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .guide-card small {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.07);
+      color: var(--teal);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .guide-card h3 {
+      margin: 12px 0 0;
+      color: var(--teal);
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-weight: 950;
+    }
+
+    .guide-card p {
+      margin: 0;
+      color: #536866;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .guide-card-arrow {
+      width: 38px;
+      height: 38px;
+      flex: none;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--teal);
+      color: white;
+      font-weight: 950;
+      transition: transform 180ms ease;
+    }
+
+    .guide-card:hover .guide-card-arrow {
+      transform: translateX(3px);
+    }
+
+    .guide-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .guide-card-tags span {
+      display: inline-flex;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: rgba(220, 236, 235, 0.72);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .guides-split {
+      display: grid;
+      gap: 22px;
+    }
+
+    .guides-panel {
+      border-radius: 34px;
+      padding: 34px;
+    }
+
+    .guides-panel.dark {
+      background: var(--teal);
+      color: white;
+    }
+
+    .guides-panel.dark h2 {
+      color: white;
+    }
+
+    .guides-panel.dark p {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .guides-step {
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .guides-step b {
+      display: inline-grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .guides-step h3 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 950;
+    }
+
+    .guides-step p {
+      margin: 8px 0 0;
+      color: #536866;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .guides-faq-card {
+      border-radius: 26px;
+      padding: 22px 24px;
+    }
+
+    .guides-faq-card summary {
+      cursor: pointer;
+      color: var(--teal);
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      font-weight: 900;
+    }
+
+    .guides-faq-card p {
+      margin: 14px 0 0;
+      color: #536866;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .guides-cta {
+      text-align: center;
+    }
+
+    .guides-cta .guides-shell {
+      padding: 50px 28px;
+      border-radius: 38px;
+      border: 1px solid rgba(18, 63, 61, 0.1);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.13), transparent 36%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 253, 249, 0.86));
+      box-shadow: 0 26px 78px rgba(18, 63, 61, 0.1);
+    }
+
+    .guides-cta .guides-btn {
+      margin-top: 24px;
+    }
+
+    @media (min-width: 760px) {
+      .guides-grid-list,
+      .guides-step-grid,
+      .guides-faq-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1020px) {
+      .guides-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .guides-grid-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .guides-split {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .guides-step-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .guides-hero,
+      .guides-section,
+      .guides-cta {
+        padding: 52px 18px;
+      }
+
+      .guides-hero {
+        padding-top: 58px;
+      }
+
+      .guides-hub h1 {
+        font-size: clamp(40px, 14vw, 58px);
+      }
+
+      .guides-lead {
+        font-size: 18px;
+      }
+
+      .guides-actions {
+        display: grid;
+      }
+
+      .guides-btn {
+        width: 100%;
+      }
+
+      .guides-card-row {
+        grid-template-columns: 36px 1fr;
+      }
+
+      .guides-card-row small {
+        grid-column: 2;
+      }
+
+      .guides-panel {
+        padding: 24px;
+        border-radius: 28px;
+      }
+    }
+  </style>
+
+  <div class="guides-hub">
+    <section class="guides-hero">
+      <div class="guides-shell guides-grid">
+        <div>
+          <p class="guides-pill">Guides devis artisans énergie</p>
+
+          <h1>Des guides pratiques pour faire des devis énergie plus clairs</h1>
+
+          <p class="guides-lead">
+            PAC air/eau, climatisation, VMC, borne de recharge, acompte, facture de solde,
+            relance client ou photos chantier : ces guides aident les artisans énergie à structurer
+            leurs devis sans repartir d’une page blanche.
+          </p>
+
+          <div class="guides-actions">
+            <a href="#guides" class="guides-btn primary">Voir les guides</a>
+            <a href="/modeles-devis" class="guides-btn secondary">Voir les modèles de devis</a>
+          </div>
+
+          <div class="guides-proof">
+            <span>Guides métier</span>
+            <span>PAC · Clim · VMC · IRVE</span>
+            <span>Signature</span>
+            <span>Acompte</span>
+            <span>Factures</span>
+            <span>Relances</span>
+          </div>
+        </div>
+
+        <aside class="guides-card" aria-label="Aperçu des guides Chiffr">
+          <div class="guides-card-top">
+            <div class="guides-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="guides-status"><span></span> Guides connectés</div>
+          </div>
+
+          <div class="guides-card-head">
+            <p>Objectif</p>
+            <h2>Passer du devis vague au dossier clair</h2>
+          </div>
+
+          <div class="guides-card-list">
+            <div class="guides-card-row">
+              <b>01</b>
+              <strong>Comprendre les lignes à prévoir</strong>
+              <small>métier</small>
+            </div>
+            <div class="guides-card-row">
+              <b>02</b>
+              <strong>Éviter les oublis fréquents</strong>
+              <small>contrôle</small>
+            </div>
+            <div class="guides-card-row">
+              <b>03</b>
+              <strong>Relier devis, signature et acompte</strong>
+              <small>suivi</small>
+            </div>
+            <div class="guides-card-row">
+              <b>04</b>
+              <strong>Continuer vers facture et relance</strong>
+              <small>client</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="guides-section">
+      <div class="guides-shell">
+        <PagePhotoShowcase
+          variant="guides"
+          eyebrow="Guides terrain"
+          title="Des guides concrets, illustrés par vos situations chantier"
+          text="Devis PAC, clim, VMC, IRVE, acompte ou relance : les guides Chiffr servent à mieux structurer vos dossiers avant l’envoi au client."
+          ctaLabel="Voir les guides"
+          ctaHref="#guides"
+        />
+      </div>
+    </section>
+
+
+    <section class="guides-section" id="guides">
+      <div class="guides-shell">
+        <div class="guides-section-head">
+          <p class="guides-kicker">Guides métier</p>
+          <h2>Créer un devis PAC, clim, VMC ou IRVE avec une vraie méthode</h2>
+          <p>
+            Ces guides ciblent les recherches concrètes des artisans qui veulent savoir comment structurer
+            un devis et quelles lignes ne pas oublier.
+          </p>
+        </div>
+
+        <div class="guides-grid-list">
+          {mainGuides.map((guide) => (
+            <a href={`/${guide.slug}`} class="guide-card">
+              <div class="guide-card-top">
+                <div>
+                  <small>Guide</small>
+                  <h3>{guide.eyebrow}</h3>
+                </div>
+
+                <span class="guide-card-arrow">→</span>
+              </div>
+
+              <p>{guide.metaDescription}</p>
+
+              <div class="guide-card-tags">
+                <span>Devis</span>
+                <span>Métier</span>
+                <span>Chiffr</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="guides-section">
+      <div class="guides-shell guides-split">
+        <article class="guides-panel dark">
+          <p class="guides-kicker">Méthode Chiffr</p>
+          <h2>Le guide explique, le modèle fait gagner du temps.</h2>
+          <p>
+            Les guides aident à comprendre les postes à prévoir. Les modèles de devis Chiffr permettent
+            ensuite de démarrer plus vite avec une structure métier déjà prête.
+          </p>
+        </article>
+
+        <article class="guides-panel">
+          <p class="guides-kicker">Pourquoi ce hub ?</p>
+          <h2>Un point d’entrée clair pour tout le contenu pratique.</h2>
+          <p>
+            Au lieu de disperser les pages longues traînes, ce hub relie les guides, les modèles,
+            les pages métier et les fonctions importantes de Chiffr.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="guides-section">
+      <div class="guides-shell">
+        <div class="guides-section-head">
+          <p class="guides-kicker">Guides suivi client</p>
+          <h2>Acompte, facture de solde, relance, photos chantier et signature</h2>
+          <p>
+            Ces pages renforcent le SEO autour des moments où les artisans perdent souvent du temps
+            après l’envoi du devis.
+          </p>
+        </div>
+
+        <div class="guides-grid-list">
+          {followGuides.map((guide) => (
+            <a href={`/${guide.slug}`} class="guide-card">
+              <div class="guide-card-top">
+                <div>
+                  <small>Suivi</small>
+                  <h3>{guide.eyebrow}</h3>
+                </div>
+
+                <span class="guide-card-arrow">→</span>
+              </div>
+
+              <p>{guide.metaDescription}</p>
+
+              <div class="guide-card-tags">
+                <span>Signature</span>
+                <span>Acompte</span>
+                <span>Facture</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="guides-section">
+      <div class="guides-shell">
+        <div class="guides-section-head">
+          <p class="guides-kicker">Comment utiliser ces guides</p>
+          <h2>Une méthode simple avant de créer le devis</h2>
+        </div>
+
+        <div class="guides-step-grid">
+          <article class="guides-step">
+            <b>01</b>
+            <h3>Choisir le guide métier</h3>
+            <p>PAC, climatisation, VMC, IRVE ou sujet de suivi client.</p>
+          </article>
+
+          <article class="guides-step">
+            <b>02</b>
+            <h3>Vérifier les lignes utiles</h3>
+            <p>Matériel, main-d’œuvre, raccordements, options, acompte et conditions.</p>
+          </article>
+
+          <article class="guides-step">
+            <b>03</b>
+            <h3>Passer au modèle</h3>
+            <p>Utiliser une page modèle pour partir d’une structure plus concrète.</p>
+          </article>
+
+          <article class="guides-step">
+            <b>04</b>
+            <h3>Finaliser dans Chiffr</h3>
+            <p>PDF premium, signature, acompte, facture et relance client.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guides-cta">
+      <div class="guides-shell guides-narrow">
+        <p class="guides-kicker">Accès sur demande</p>
+        <h2>Vous voulez passer du guide au devis prêt à envoyer ?</h2>
+        <p>
+          Chiffr vous aide à partir d’un modèle métier, ajouter vos lignes, joindre vos photos,
+          générer un PDF premium, faire signer, demander un acompte et facturer proprement.
+        </p>
+
+        <a href="/contact" class="guides-btn primary">Demander un accès</a>
+      </div>
+    </section>
+
+    <section class="guides-section">
+      <div class="guides-shell guides-narrow">
+        <div class="guides-section-head">
+          <p class="guides-kicker">FAQ</p>
+          <h2>Questions fréquentes</h2>
+        </div>
+
+        <div class="guides-faq-list">
+          {faqs.map((item) => (
+            <details class="guides-faq-card">
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

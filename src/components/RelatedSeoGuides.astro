@@ -1,0 +1,346 @@
+---
+import { seoGuides } from '../data/seoGuides';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const normalizedPath =
+  currentPath.endsWith('/') && currentPath !== '/'
+    ? currentPath.slice(0, -1)
+    : currentPath;
+
+const currentSlug = normalizedPath.replace('/', '');
+
+const isGuidePage = seoGuides.some((guide) => guide.slug === currentSlug);
+
+const guideGroups = {
+  pac: [
+    'comment-faire-un-devis-pac-air-eau',
+    'que-mettre-dans-un-devis-pac',
+    'facture-acompte-artisan-energie',
+    'devis-artisan-signature-acompte-facture',
+  ],
+  clim: [
+    'comment-faire-un-devis-climatisation',
+    'que-mettre-dans-un-devis-climatisation',
+    'devis-artisan-photos-chantier',
+    'devis-artisan-prix-a-renseigner',
+  ],
+  vmc: [
+    'comment-faire-un-devis-vmc',
+    'devis-artisan-photos-chantier',
+    'devis-artisan-prix-a-renseigner',
+    'relance-devis-artisan',
+  ],
+  irve: [
+    'comment-faire-un-devis-borne-recharge',
+    'facture-acompte-artisan-energie',
+    'devis-artisan-signature-acompte-facture',
+    'devis-artisan-prix-a-renseigner',
+  ],
+  facture: [
+    'facture-acompte-artisan-energie',
+    'facture-solde-chantier',
+    'devis-artisan-signature-acompte-facture',
+    'relance-devis-artisan',
+  ],
+  suivi: [
+    'relance-devis-artisan',
+    'devis-artisan-signature-acompte-facture',
+    'facture-acompte-artisan-energie',
+    'facture-solde-chantier',
+  ],
+  default: [
+    'comment-faire-un-devis-pac-air-eau',
+    'comment-faire-un-devis-climatisation',
+    'relance-devis-artisan',
+    'facture-acompte-artisan-energie',
+  ],
+};
+
+function getGuideSlugsForPath(path: string) {
+  if (
+    path.includes('pompe-a-chaleur') ||
+    path.includes('pac') ||
+    path.includes('chaudiere')
+  ) {
+    return guideGroups.pac;
+  }
+
+  if (path.includes('clim')) {
+    return guideGroups.clim;
+  }
+
+  if (path.includes('vmc')) {
+    return guideGroups.vmc;
+  }
+
+  if (
+    path.includes('irve') ||
+    path.includes('borne') ||
+    path.includes('recharge')
+  ) {
+    return guideGroups.irve;
+  }
+
+  if (
+    path.includes('facture') ||
+    path.includes('acompte') ||
+    path.includes('solde')
+  ) {
+    return guideGroups.facture;
+  }
+
+  if (
+    path.includes('relance') ||
+    path.includes('signature') ||
+    path.includes('suivi')
+  ) {
+    return guideGroups.suivi;
+  }
+
+  return guideGroups.default;
+}
+
+const selectedSlugs = getGuideSlugsForPath(normalizedPath);
+
+const selectedGuides = selectedSlugs
+  .map((slug) => seoGuides.find((guide) => guide.slug === slug))
+  .filter((guide): guide is (typeof seoGuides)[number] => Boolean(guide))
+  .filter((guide) => guide.slug !== currentSlug)
+  .slice(0, 4);
+
+const shouldShow =
+  selectedGuides.length > 0 &&
+  normalizedPath !== '/' &&
+  normalizedPath !== '/guides-devis-artisans-energie' &&
+  !normalizedPath.includes('/contact') &&
+  !normalizedPath.includes('/tarifs');
+
+const title = isGuidePage
+  ? 'Guides complémentaires'
+  : 'Guides utiles pour artisans énergie';
+---
+
+{shouldShow && (
+  <section class="related-guides" aria-labelledby="related-guides-title">
+    <div class="related-guides-shell">
+      <div class="related-guides-head">
+        <p>Guides Chiffr</p>
+        <h2 id="related-guides-title">{title}</h2>
+        <span>
+          Des pages pratiques pour structurer vos devis, suivre vos clients,
+          gérer les acomptes et éviter les oublis.
+        </span>
+      </div>
+
+      <div class="related-guides-grid">
+        {selectedGuides.map((guide) => (
+          <a href={`/${guide.slug}`} class="related-guide-card">
+            <div>
+              <small>{guide.eyebrow}</small>
+              <strong>{guide.h1}</strong>
+            </div>
+
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+
+        <a href="/guides-devis-artisans-energie" class="related-guide-card all">
+          <div>
+            <small>Tous les guides</small>
+            <strong>Voir les guides devis artisans énergie</strong>
+          </div>
+
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .related-guides,
+  .related-guides * {
+    box-sizing: border-box;
+  }
+
+  .related-guides {
+    padding: 52px 20px;
+    background:
+      radial-gradient(circle at 10% 0%, rgba(183, 110, 60, 0.1), transparent 28%),
+      linear-gradient(180deg, rgba(255, 248, 239, 0.28), rgba(255, 248, 239, 0.72));
+  }
+
+  .related-guides-shell {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px;
+    border-radius: 34px;
+    border: 1px solid rgba(18, 63, 61, 0.1);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 253, 249, 0.86)),
+      radial-gradient(circle at top right, rgba(183, 110, 60, 0.1), transparent 38%);
+    box-shadow:
+      0 24px 70px rgba(18, 63, 61, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  }
+
+  .related-guides-head {
+    display: grid;
+    gap: 8px;
+    max-width: 760px;
+  }
+
+  .related-guides-head p {
+    margin: 0;
+    color: var(--copper);
+    font-size: 14px;
+    font-weight: 950;
+  }
+
+  .related-guides-head h2 {
+    margin: 0;
+    color: var(--teal);
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+    font-weight: 950;
+  }
+
+  .related-guides-head span {
+    color: #536866;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 750;
+  }
+
+  .related-guides-grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .related-guide-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 120px;
+    padding: 20px;
+    border-radius: 24px;
+    color: var(--teal);
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(18, 63, 61, 0.09);
+    box-shadow: 0 14px 34px rgba(18, 63, 61, 0.05);
+    text-decoration: none;
+    transition:
+      transform 180ms ease,
+      background 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .related-guide-card:hover {
+    transform: translateY(-3px);
+    background: white;
+    border-color: rgba(18, 63, 61, 0.14);
+    box-shadow: 0 22px 56px rgba(18, 63, 61, 0.1);
+  }
+
+  .related-guide-card small {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(220, 236, 235, 0.76);
+    color: var(--teal);
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 950;
+  }
+
+  .related-guide-card strong {
+    display: block;
+    color: var(--teal);
+    font-size: 17px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    font-weight: 950;
+  }
+
+  .related-guide-card > span {
+    width: 38px;
+    height: 38px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: var(--teal);
+    color: white;
+    font-weight: 950;
+    transition: transform 180ms ease;
+  }
+
+  .related-guide-card:hover > span {
+    transform: translateX(3px);
+  }
+
+  .related-guide-card.all {
+    background:
+      radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.12), transparent 38%),
+      linear-gradient(145deg, #123f3d, #0d302e);
+    color: white;
+  }
+
+  .related-guide-card.all small {
+    background: rgba(255, 255, 255, 0.14);
+    color: #f3dfcf;
+  }
+
+  .related-guide-card.all strong {
+    color: white;
+  }
+
+  .related-guide-card.all > span {
+    background: rgba(255, 255, 255, 0.16);
+    color: white;
+  }
+
+  @media (min-width: 760px) {
+    .related-guides-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .related-guides-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .related-guide-card {
+      display: grid;
+      align-content: space-between;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .related-guides {
+      padding: 38px 16px;
+    }
+
+    .related-guides-shell {
+      padding: 22px;
+      border-radius: 28px;
+    }
+
+    .related-guide-card {
+      min-height: 0;
+    }
+  }
+</style>

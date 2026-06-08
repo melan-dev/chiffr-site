@@ -1,0 +1,219 @@
+---
+interface Props {
+  label?: string;
+  detail?: string;
+  tone?: 'light' | 'dark' | 'compact';
+}
+
+const {
+  label = 'Signature électronique',
+  detail = 'Validation client claire et traçable',
+  tone = 'light',
+} = Astro.props;
+---
+
+<div class:list={['signature-proof-badge', `tone-${tone}`]}>
+  <span class="signature-proof-logo" aria-hidden="true">
+    <svg viewBox="0 0 72 72" role="img">
+      <defs>
+        <linearGradient id="sigPaper" x1="14" y1="10" x2="56" y2="62" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ffffff" stop-opacity="0.96" />
+          <stop offset="1" stop-color="#f3dfcf" stop-opacity="0.88" />
+        </linearGradient>
+      </defs>
+
+      <rect class="logo-bg" x="4" y="4" width="64" height="64" rx="22" />
+      <path class="logo-glow" d="M16 9h30l10 10v34a7 7 0 0 1-7 7H16a7 7 0 0 1-7-7V16a7 7 0 0 1 7-7Z" />
+      <path class="logo-doc" d="M19 14h25l9 9v31a4 4 0 0 1-4 4H19a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4Z" />
+      <path class="logo-fold" d="M44 14v10h9" />
+      <path class="logo-line" d="M23 29h17" />
+      <path class="logo-line short" d="M23 36h12" />
+      <path class="logo-signature" d="M22 47c4.4-8.4 9.8-8.1 8.9-1.9-.5 3.8 4.2 2.6 6.9.1 2.7-2.5 5.1-2.8 8.7.2" />
+      <circle class="logo-check-bg" cx="51" cy="49" r="12" />
+      <path class="logo-check" d="m45.8 49.5 3.7 3.7 7.2-8.2" />
+    </svg>
+  </span>
+
+  <span class="signature-proof-copy">
+    <strong>{label}</strong>
+    <small>{detail}</small>
+  </span>
+</div>
+
+<style>
+  .signature-proof-badge,
+  .signature-proof-badge * {
+    box-sizing: border-box;
+  }
+
+  .signature-proof-badge {
+    --sig-bg: rgba(255, 255, 255, 0.9);
+    --sig-border: rgba(18, 63, 61, 0.13);
+    --sig-title: var(--teal);
+    --sig-text: #667977;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 10px 16px 10px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--sig-border);
+    background:
+      radial-gradient(circle at 8% 0%, rgba(183, 110, 60, 0.15), transparent 42%),
+      linear-gradient(145deg, var(--sig-bg), rgba(255, 253, 249, 0.78));
+    color: var(--sig-title);
+    box-shadow:
+      0 18px 46px rgba(18, 63, 61, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  }
+
+  .signature-proof-logo {
+    width: 56px;
+    height: 56px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at 70% 0%, rgba(255, 255, 255, 0.22), transparent 36%),
+      linear-gradient(145deg, #123f3d, #0b302e);
+    box-shadow:
+      0 18px 36px rgba(18, 63, 61, 0.22),
+      inset 0 -4px 0 rgba(183, 110, 60, 0.46),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  }
+
+  .signature-proof-logo svg {
+    width: 44px;
+    height: 44px;
+    display: block;
+  }
+
+  .logo-bg {
+    fill: #123f3d;
+  }
+
+  .logo-glow {
+    fill: rgba(255, 255, 255, 0.07);
+  }
+
+  .logo-doc {
+    fill: url(#sigPaper);
+    stroke: rgba(255, 255, 255, 0.35);
+    stroke-width: 1.5;
+  }
+
+  .logo-fold {
+    fill: none;
+    stroke: rgba(18, 63, 61, 0.42);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+  }
+
+  .logo-line {
+    fill: none;
+    stroke: rgba(18, 63, 61, 0.42);
+    stroke-linecap: round;
+    stroke-width: 2.2;
+  }
+
+  .logo-line.short {
+    stroke: rgba(18, 63, 61, 0.3);
+  }
+
+  .logo-signature {
+    fill: none;
+    stroke: #b76e3c;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3.6;
+  }
+
+  .logo-check-bg {
+    fill: #2f8f6b;
+    stroke: white;
+    stroke-width: 3;
+  }
+
+  .logo-check {
+    fill: none;
+    stroke: white;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3.4;
+  }
+
+  .signature-proof-copy {
+    min-width: 0;
+    display: grid;
+    gap: 3px;
+  }
+
+  .signature-proof-copy strong {
+    color: var(--sig-title);
+    font-size: 15px;
+    line-height: 1.05;
+    font-weight: 950;
+    letter-spacing: -0.025em;
+  }
+
+  .signature-proof-copy small {
+    color: var(--sig-text);
+    font-size: 12px;
+    line-height: 1.24;
+    font-weight: 850;
+  }
+
+  .signature-proof-badge.tone-dark {
+    --sig-bg: rgba(255, 255, 255, 0.09);
+    --sig-border: rgba(255, 255, 255, 0.18);
+    --sig-title: #ffffff;
+    --sig-text: rgba(255, 255, 255, 0.72);
+
+    background:
+      radial-gradient(circle at 8% 0%, rgba(255, 255, 255, 0.13), transparent 42%),
+      rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  }
+
+  .signature-proof-badge.tone-dark .signature-proof-logo {
+    background: rgba(255, 255, 255, 0.13);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0 18px 34px rgba(0, 0, 0, 0.12);
+  }
+
+  .signature-proof-badge.tone-compact {
+    gap: 11px;
+    padding: 8px 13px 8px 8px;
+  }
+
+  .signature-proof-badge.tone-compact .signature-proof-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 18px;
+  }
+
+  .signature-proof-badge.tone-compact .signature-proof-logo svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .signature-proof-badge.tone-compact .signature-proof-copy strong {
+    font-size: 14px;
+  }
+
+  .signature-proof-badge.tone-compact .signature-proof-copy small {
+    font-size: 11.5px;
+  }
+
+  @media (max-width: 520px) {
+    .signature-proof-badge {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+</style>

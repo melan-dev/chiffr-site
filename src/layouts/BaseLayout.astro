@@ -1,0 +1,996 @@
+---
+import '../styles/global.css';
+import '../styles/compact.css';
+import '../styles/responsive.css';
+import '../styles/stability.css';
+import SeoHead from '../components/seo/SeoHead.astro';
+import RelatedQuoteModels from '../components/RelatedQuoteModels.astro';
+import RelatedSeoGuides from '../components/RelatedSeoGuides.astro';
+import RelatedAlternatives from '../components/RelatedAlternatives.astro';
+import ContextualPhotoSection from '../components/ContextualPhotoSection.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  schema?: Record<string, any> | Record<string, any>[];
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  ogImage,
+  schema,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { label: 'PAC', href: '/logiciel-devis-pompe-a-chaleur' },
+  { label: 'Climatisation', href: '/logiciel-devis-climatisation' },
+  { label: 'Chauffage', href: '/logiciel-devis-chauffagiste' },
+  { label: 'CVC', href: '/logiciel-devis-frigoriste-cvc' },
+  { label: 'VMC', href: '/logiciel-devis-vmc' },
+  { label: 'IRVE', href: '/logiciel-devis-irve' },
+  { label: 'Solaire', href: '/logiciel-devis-photovoltaique' },
+  { label: 'Tarifs', href: '/tarifs' },
+];
+
+const resourceItems = [
+  { label: 'Modèles de devis', href: '/modeles-devis' },
+  { label: 'Alternatives logiciels', href: '/alternatives-logiciels-devis-batiment' },
+  { label: 'Guides', href: '/guides-devis-artisans-energie' },
+  { label: 'Fonctionnalités', href: '/fonctionnalites' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const footerMetiers = [
+  { label: 'Pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
+  { label: 'Climatisation', href: '/logiciel-devis-climatisation' },
+  { label: 'Chauffagiste', href: '/logiciel-devis-chauffagiste' },
+  { label: 'Frigoriste / CVC', href: '/logiciel-devis-frigoriste-cvc' },
+  { label: 'VMC', href: '/logiciel-devis-vmc' },
+  { label: 'IRVE', href: '/logiciel-devis-irve' },
+  { label: 'Solaire', href: '/logiciel-devis-photovoltaique' },
+];
+
+const footerChiffr = [
+  { label: 'Tarifs', href: '/tarifs' },
+  { label: 'Alternatives logiciels', href: '/alternatives-logiciels-devis-batiment' },
+  { label: 'Guides devis', href: '/guides-devis-artisans-energie' },
+  { label: 'Modèles de devis', href: '/modeles-devis' },
+  { label: 'Fonctionnalités', href: '/fonctionnalites' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Mentions légales', href: '/mentions-legales' },
+  { label: 'Confidentialité', href: '/confidentialite' },
+  { label: 'CGU', href: '/cgu' },
+];
+
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+};
+
+const isResourceActive = resourceItems.some((item) => isActive(item.href));
+
+const legalPaths = ['/mentions-legales', '/confidentialite', '/cgu'];
+const isLegalPath = legalPaths.some(
+  (path) => currentPath === path || currentPath.startsWith(`${path}/`)
+);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <SeoHead
+      title={title}
+      description={description}
+      canonicalPath={canonicalPath}
+      ogImage={ogImage}
+      schema={schema}
+    />
+  </head>
+
+  <body>
+    <header class="site-header" id="top">
+      <div class="header-shell">
+        <a href="/" class="brand-card" aria-label="Accueil Chiffr">
+          <div class="brand-mark" aria-hidden="true">C</div>
+
+          <div class="brand-copy">
+            <div class="brand-name">Chiffr</div>
+            <div class="brand-subtitle">Devis &amp; factures<br />artisans énergie</div>
+          </div>
+        </a>
+
+        <nav class="nav-card" aria-label="Navigation principale">
+          <a
+            href="/"
+            class:list={['home-link', { active: isActive('/') }]}
+            aria-label="Accueil"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 11.4 12 4l8 7.4v8.1a.9.9 0 0 1-.9.9h-4.2v-5.8H9.1v5.8H4.9a.9.9 0 0 1-.9-.9v-8.1Z" />
+            </svg>
+          </a>
+
+          <div class="nav-links">
+            {navItems.map((item) => (
+              <a
+                href={item.href}
+                class:list={['nav-link', { active: isActive(item.href) }]}
+              >
+                {item.label}
+              </a>
+            ))}
+
+            <div class:list={['nav-more', { active: isResourceActive }]} data-nav-more>
+              <button
+                type="button"
+                class="nav-more-button"
+                data-nav-more-button
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                Ressources
+                <span aria-hidden="true">⌄</span>
+              </button>
+
+              <div class="nav-more-panel" data-nav-more-panel>
+                {resourceItems.map((item) => (
+                  <a
+                    href={item.href}
+                    class:list={['nav-more-link', { active: isActive(item.href) }]}
+                  >
+                    <strong>{item.label}</strong>
+                    <span>→</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <a href="/contact" class="header-cta">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M13.6 4.4c2.4-.9 4.4-.8 5.2 0s.9 2.8 0 5.2c-.8 2-2.5 4.4-5 6.9l-.7.7-4.3-4.3.7-.7c2.5-2.5 4.9-4.2 6.9-5Z" />
+              <path d="M8.7 12.9 5.5 13.7 4 18l4.3-1.5.8-3.2" />
+              <path d="M13.2 17.4 11.8 21l3.5-1.4 1.4-3.4" />
+              <path d="M15.8 8.2h.01" />
+            </svg>
+            <span>Demander un accès</span>
+          </a>
+        </nav>
+      </div>
+
+      <a class="header-reform-strip" href="/fonctionnalites#facturation-electronique">
+        <span class="header-reform-icon" aria-hidden="true">✓</span>
+        <strong>Facturation électronique 2026–2027</strong>
+        <span>Chiffr vous aide à préparer vos factures, données client et dossiers.</span>
+      </a>
+
+      <div class="mobile-nav-shell">
+        <div class="mobile-nav-scroll" aria-label="Navigation mobile">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class:list={['mobile-link', { active: isActive(item.href) }]}
+            >
+              {item.label}
+            </a>
+          ))}
+
+          {resourceItems.map((item) => (
+            <a
+              href={item.href}
+              class:list={['mobile-link resource', { active: isActive(item.href) }]}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    {!isLegalPath && (
+      <>
+        <ContextualPhotoSection currentPath={currentPath} />
+        <RelatedQuoteModels currentPath={currentPath} />
+        <RelatedSeoGuides currentPath={currentPath} />
+        <RelatedAlternatives currentPath={currentPath} />
+      </>
+    )}
+
+    <footer class="site-footer">
+      <div class="footer-shell">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo" aria-label="Accueil Chiffr">
+            <div class="brand-mark small" aria-hidden="true">C</div>
+            <div>
+              <strong>Chiffr</strong>
+              <span>Devis &amp; factures artisans énergie</span>
+            </div>
+          </a>
+
+          <p>
+            Logiciel de devis, factures, signature électronique et suivi client pensé pour les artisans PAC, climatisation,
+            chauffage, CVC, VMC, IRVE et solaire. Chiffr aide aussi à préparer la transition vers la facturation électronique 2026–2027.
+          </p>
+
+          <a href="/contact" class="footer-cta">Demander un accès</a>
+        </div>
+
+        <div class="footer-column">
+          <h2>Métiers</h2>
+          {footerMetiers.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </div>
+
+        <div class="footer-column">
+          <h2>Chiffr</h2>
+          {footerChiffr.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© {new Date().getFullYear()} Chiffr. Tous droits réservés.</p>
+        <a href="#top">Retour en haut ↑</a>
+      </div>
+    </footer>
+
+    <style is:inline>
+      .site-header,
+      .site-header * {
+        box-sizing: border-box;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 80;
+        padding: 14px 20px;
+        background:
+          linear-gradient(180deg, rgba(255, 248, 239, 0.96), rgba(255, 248, 239, 0.82)),
+          radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.1), transparent 30%),
+          radial-gradient(circle at 85% 0%, rgba(18, 63, 61, 0.08), transparent 28%);
+        border-bottom: 1px solid rgba(18, 63, 61, 0.08);
+        backdrop-filter: blur(18px);
+      }
+
+      .header-shell {
+        width: 100%;
+        max-width: 1420px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .brand-card {
+        display: grid;
+        grid-template-columns: 54px auto;
+        align-items: center;
+        gap: 14px;
+        min-width: 264px;
+        padding: 11px 14px;
+        border-radius: 26px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(255, 253, 249, 0.72));
+        border: 1px solid rgba(18, 63, 61, 0.08);
+        box-shadow:
+          0 18px 46px rgba(18, 63, 61, 0.06),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      }
+
+      .brand-card:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow:
+          0 22px 56px rgba(18, 63, 61, 0.09),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .brand-mark {
+        position: relative;
+        width: 54px;
+        height: 54px;
+        display: grid;
+        place-items: center;
+        border-radius: 18px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 65% 10%, rgba(255, 255, 255, 0.18), transparent 32%),
+          linear-gradient(145deg, #123f3d, #0b302e);
+        color: white;
+        font-size: 28px;
+        line-height: 1;
+        font-weight: 950;
+        letter-spacing: -0.06em;
+        box-shadow:
+          0 14px 28px rgba(18, 63, 61, 0.18),
+          inset 0 -5px 0 rgba(183, 110, 60, 0.55);
+      }
+
+      .brand-mark.small {
+        width: 44px;
+        height: 44px;
+        border-radius: 15px;
+        font-size: 23px;
+      }
+
+      .brand-name {
+        color: var(--teal);
+        font-size: 23px;
+        line-height: 1;
+        font-weight: 950;
+        letter-spacing: -0.04em;
+      }
+
+      .brand-subtitle {
+        margin-top: 4px;
+        color: #667977;
+        font-size: 13px;
+        line-height: 1.25;
+        font-weight: 800;
+      }
+
+      .nav-card {
+        min-width: 0;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 14px;
+        padding: 10px;
+        border-radius: 30px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 253, 249, 0.78));
+        border: 1px solid rgba(18, 63, 61, 0.1);
+        box-shadow:
+          0 22px 60px rgba(18, 63, 61, 0.09),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .home-link {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        flex: none;
+        border-radius: 18px;
+        color: var(--copper);
+        background: rgba(183, 110, 60, 0.07);
+        border: 1px solid rgba(183, 110, 60, 0.12);
+        transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+      }
+
+      .home-link:hover,
+      .home-link.active {
+        transform: translateY(-1px);
+        background: rgba(183, 110, 60, 0.13);
+        color: #9d552d;
+      }
+
+      .home-link svg,
+      .header-cta svg {
+        width: 21px;
+        height: 21px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .nav-links {
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      .nav-link,
+      .nav-more-button {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 14px;
+        border-radius: 18px;
+        color: #244a47;
+        font-size: 14px;
+        line-height: 1;
+        font-weight: 900;
+        white-space: nowrap;
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          color 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .nav-more-button {
+        border: 0;
+        background: transparent;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .nav-more-button span {
+        margin-left: 7px;
+        color: var(--copper);
+        font-size: 15px;
+        line-height: 1;
+        transition: transform 180ms ease;
+      }
+
+      .nav-link::after,
+      .nav-more-button::after {
+        content: "";
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 7px;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--copper);
+        opacity: 0;
+        transform: scaleX(0.4);
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active,
+      .nav-more.active .nav-more-button,
+      .nav-more.is-open .nav-more-button,
+      .nav-more-button:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 248, 239, 0.9);
+        color: var(--teal);
+        box-shadow: inset 0 0 0 1px rgba(18, 63, 61, 0.06);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after,
+      .nav-more.active .nav-more-button::after,
+      .nav-more.is-open .nav-more-button::after,
+      .nav-more-button:hover::after {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+
+      .nav-more.is-open .nav-more-button span {
+        transform: rotate(180deg);
+      }
+
+      .nav-more {
+        position: relative;
+        display: inline-flex;
+      }
+
+      .nav-more-panel {
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 0;
+        width: 280px;
+        padding: 10px;
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.12), transparent 36%),
+          linear-gradient(145deg, rgba(255, 253, 249, 0.98), rgba(255, 255, 255, 0.94));
+        border: 1px solid rgba(18, 63, 61, 0.12);
+        box-shadow:
+          0 28px 80px rgba(18, 63, 61, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px) scale(0.98);
+        pointer-events: none;
+        transition:
+          opacity 180ms ease,
+          transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+          visibility 180ms ease;
+      }
+
+      .nav-more.is-open .nav-more-panel,
+      .nav-more:focus-within .nav-more-panel {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+
+      .nav-more-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 14px 15px;
+        border-radius: 18px;
+        color: var(--teal);
+        transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      }
+
+      .nav-more-link strong {
+        font-size: 14px;
+        font-weight: 950;
+      }
+
+      .nav-more-link span {
+        color: var(--copper);
+        font-weight: 950;
+      }
+
+      .nav-more-link:hover,
+      .nav-more-link.active {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 14px 34px rgba(18, 63, 61, 0.08);
+      }
+
+      .header-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 24px;
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at 70% 0%, rgba(255, 255, 255, 0.14), transparent 36%),
+          linear-gradient(145deg, #123f3d, #0b302e);
+        color: white;
+        font-size: 14px;
+        line-height: 1;
+        font-weight: 950;
+        white-space: nowrap;
+        box-shadow:
+          0 18px 36px rgba(18, 63, 61, 0.18),
+          inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      }
+
+      .header-cta svg {
+        color: var(--copper-soft);
+      }
+
+      .header-cta:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 24px 46px rgba(18, 63, 61, 0.24),
+          inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+      }
+
+      .header-reform-strip {
+        width: 100%;
+        max-width: 1420px;
+        margin: 10px auto 0;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 9px 14px;
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at 15% 0%, rgba(47, 143, 107, 0.14), transparent 40%),
+          rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(18, 63, 61, 0.1);
+        color: var(--teal);
+        box-shadow: 0 14px 34px rgba(18, 63, 61, 0.05);
+        text-align: center;
+      }
+
+      .header-reform-strip strong {
+        font-size: 13px;
+        line-height: 1.1;
+        font-weight: 950;
+      }
+
+      .header-reform-strip span:not(.header-reform-icon) {
+        color: #667977;
+        font-size: 12px;
+        line-height: 1.2;
+        font-weight: 800;
+      }
+
+      .header-reform-icon {
+        width: 22px;
+        height: 22px;
+        flex: none;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--teal);
+        color: white;
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .header-reform-strip:hover {
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 18px 42px rgba(18, 63, 61, 0.08);
+      }
+
+      .mobile-nav-shell {
+        display: none;
+      }
+
+      .site-footer {
+        background:
+          radial-gradient(circle at 10% 0%, rgba(183, 110, 60, 0.12), transparent 30%),
+          linear-gradient(180deg, #123f3d, #0d302e);
+        color: white;
+        padding: 64px 20px 28px;
+      }
+
+      .footer-shell {
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+        display: grid;
+        gap: 42px;
+      }
+
+      .footer-brand {
+        max-width: 460px;
+      }
+
+      .footer-logo {
+        display: inline-grid;
+        grid-template-columns: 44px auto;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .footer-logo strong {
+        display: block;
+        color: white;
+        font-size: 22px;
+        line-height: 1;
+        font-weight: 950;
+      }
+
+      .footer-logo span {
+        display: block;
+        margin-top: 5px;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 13px;
+        line-height: 1.3;
+        font-weight: 750;
+      }
+
+      .footer-brand p {
+        margin: 24px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .footer-cta {
+        display: inline-flex;
+        margin-top: 24px;
+        padding: 13px 18px;
+        border-radius: 999px;
+        background: white;
+        color: var(--teal);
+        font-weight: 950;
+      }
+
+      .footer-column h2 {
+        margin: 0 0 16px;
+        color: white;
+        font-size: 14px;
+        line-height: 1;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .footer-column a {
+        display: table;
+        margin-top: 12px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 14px;
+        font-weight: 750;
+        transition: color 180ms ease, transform 180ms ease;
+      }
+
+      .footer-column a:hover {
+        color: white;
+        transform: translateX(2px);
+      }
+
+      .footer-bottom {
+        width: 100%;
+        max-width: 1180px;
+        margin: 44px auto 0;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+        font-weight: 750;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+      }
+
+      .footer-bottom a {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .footer-bottom a:hover {
+        color: white;
+      }
+
+      @media (min-width: 820px) {
+        .footer-shell {
+          grid-template-columns: 1.2fr 0.8fr 0.8fr;
+        }
+      }
+
+      @media (max-width: 1240px) {
+        .header-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .brand-card {
+          width: fit-content;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+          overflow-x: auto;
+          scrollbar-width: none;
+          padding-bottom: 2px;
+        }
+
+        .nav-links::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .site-header {
+          padding: 12px 14px 10px;
+        }
+
+        .header-shell {
+          display: flex;
+          justify-content: space-between;
+          gap: 12px;
+        }
+
+        .brand-card {
+          min-width: 0;
+          grid-template-columns: 48px auto;
+          padding: 9px 10px;
+          border-radius: 22px;
+        }
+
+        .brand-mark {
+          width: 48px;
+          height: 48px;
+          border-radius: 16px;
+          font-size: 25px;
+        }
+
+        .brand-name {
+          font-size: 20px;
+        }
+
+        .brand-subtitle {
+          font-size: 11px;
+          line-height: 1.2;
+        }
+
+        .nav-card {
+          display: flex;
+          width: auto;
+          padding: 0;
+          border: 0;
+          background: transparent;
+          box-shadow: none;
+        }
+
+        .home-link,
+        .nav-links {
+          display: none;
+        }
+
+        .header-cta {
+          min-height: 48px;
+          padding: 0 16px;
+          font-size: 13px;
+        }
+
+        .header-cta svg {
+          display: none;
+        }
+
+        .header-reform-strip {
+          justify-content: flex-start;
+          overflow-x: auto;
+          border-radius: 22px;
+        }
+
+        .header-reform-strip span:not(.header-reform-icon) {
+          display: none;
+        }
+
+        .mobile-nav-shell {
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          margin: 10px auto 0;
+          overflow: hidden;
+        }
+
+        .mobile-nav-scroll {
+          display: flex;
+          gap: 8px;
+          overflow-x: auto;
+          padding-bottom: 2px;
+          scrollbar-width: none;
+        }
+
+        .mobile-nav-scroll::-webkit-scrollbar {
+          display: none;
+        }
+
+        .mobile-link {
+          flex: none;
+          display: inline-flex;
+          min-height: 38px;
+          align-items: center;
+          justify-content: center;
+          padding: 0 14px;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.78);
+          border: 1px solid rgba(18, 63, 61, 0.1);
+          color: var(--teal);
+          font-size: 13px;
+          font-weight: 900;
+        }
+
+        .mobile-link.resource {
+          background: rgba(220, 236, 235, 0.76);
+        }
+
+        .mobile-link.active {
+          background: var(--teal);
+          color: white;
+        }
+
+        .footer-bottom {
+          display: grid;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .site-header *,
+        .site-footer * {
+          transition-duration: 0.001ms !important;
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+
+      .reveal,
+      .reveal-card,
+      .reveal.visible,
+      .reveal-card.visible,
+      .pricing-reveal,
+      .pricing-reveal-card,
+      .pricing-reveal.is-visible,
+      .pricing-reveal-card.is-visible {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .hero,
+      .section,
+      .irve-hero,
+      .irve-section,
+      .pricing-hero,
+      .pricing-plans,
+      .pricing-compare,
+      .pricing-proof-section,
+      .pricing-faq,
+      .pricing-cta,
+      .features-hero,
+      .features-section,
+      .features-cta,
+      .qm-hero,
+      .qm-section,
+      .qm-cta,
+      .models-hero,
+      .models-section,
+      .models-cta,
+      .contact-hero,
+      .contact-section,
+      .contact-cta,
+      .guide-hero,
+      .guide-section,
+      .guide-cta,
+      .usecase-hero,
+      .usecase-section,
+      .usecase-cta,
+      .alt-hero,
+      .alt-section,
+      .alt-cta,
+      .alt-hub-hero,
+      .alt-hub-section,
+      .alt-hub-cta {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      a:active,
+      button:active,
+      summary:active,
+      .brand-card:active,
+      .header-cta:active,
+      .nav-link:active,
+      .nav-more-button:active,
+      .home-link:active,
+      .mobile-link:active {
+        transform: none !important;
+      }
+    </style>
+
+    <script is:inline>
+      const moreMenu = document.querySelector('[data-nav-more]');
+      const moreButton = document.querySelector('[data-nav-more-button]');
+
+      function closeMoreMenu() {
+        if (!moreMenu || !moreButton) return;
+        moreMenu.classList.remove('is-open');
+        moreButton.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleMoreMenu(event) {
+        event.stopPropagation();
+
+        if (!moreMenu || !moreButton) return;
+
+        const isOpen = moreMenu.classList.toggle('is-open');
+        moreButton.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      moreButton?.addEventListener('click', toggleMoreMenu);
+
+      document.addEventListener('click', (event) => {
+        if (!moreMenu) return;
+        if (event.target instanceof Node && moreMenu.contains(event.target)) return;
+        closeMoreMenu();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMoreMenu();
+      });
+
+      moreMenu?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMoreMenu);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,976 @@
+---
+import PagePhotoShowcase from '../components/visuals/PagePhotoShowcase.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { quoteModels } from '../data/quoteModels';
+
+const title = 'Modèles de devis artisans énergie | PAC, clim, VMC, IRVE, solaire';
+const description =
+  'Découvrez les modèles de devis Chiffr pour artisans énergie : PAC air/eau, climatisation, VMC, IRVE, solaire, chauffe-eau thermodynamique et chauffage.';
+
+const plannedModels = [
+  'Remplacement chaudière par PAC',
+  'Climatisation monosplit',
+  'Climatisation multisplit',
+  'Chauffe-eau thermodynamique',
+  'VMC simple flux',
+  'VMC double flux',
+  'Borne de recharge 7 kW',
+  'Borne de recharge 22 kW',
+  'Photovoltaïque autoconsommation',
+];
+
+const faqs = [
+  {
+    question: 'Un modèle de devis Chiffr est-il un simple exemple à recopier ?',
+    answer:
+      'Non. L’objectif est d’aider l’artisan à démarrer depuis une structure métier claire, avec les lignes fréquentes, les points à vérifier, les photos chantier, la signature, l’acompte et les factures.',
+  },
+  {
+    question: 'Les modèles affichent-ils des prix ?',
+    answer:
+      'Les pages peuvent indiquer des prix à renseigner ou des prix indicatifs à adapter, mais Chiffr ne doit pas présenter de prix inventés comme une vérité. L’artisan garde toujours le contrôle.',
+  },
+  {
+    question: 'Pourquoi créer des modèles par métier ?',
+    answer:
+      'Un devis PAC, climatisation, VMC, IRVE ou solaire n’a pas les mêmes lignes. Les modèles métier évitent la page blanche et limitent les oublis.',
+  },
+  {
+    question: 'Peut-on partir d’un modèle puis le modifier ?',
+    answer:
+      'Oui. Chiffr propose une base de devis, mais l’artisan adapte les lignes, les prix, les quantités, les options, les conditions et les remarques selon son chantier.',
+  },
+];
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Modèles de devis Chiffr',
+  itemListElement: quoteModels.map((model, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: model.h1,
+    url: `/${model.slug}`,
+  })),
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/modeles-devis"
+  schema={[itemListSchema, faqSchema]}
+>
+  <style is:inline>
+    .models-page,
+    .models-page * {
+      box-sizing: border-box;
+    }
+
+    .models-page {
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    .models-shell {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .models-narrow {
+      max-width: 920px;
+    }
+
+    .models-hero,
+    .models-section,
+    .models-cta {
+      position: relative;
+      padding: 72px 20px;
+    }
+
+    .models-hero {
+      padding-top: 88px;
+      padding-bottom: 76px;
+    }
+
+    .models-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(183, 110, 60, 0.14), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(18, 63, 61, 0.12), transparent 32%);
+    }
+
+    .models-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .models-pill,
+    .models-kicker {
+      display: inline-flex;
+      width: fit-content;
+      margin: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--teal);
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .models-kicker {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--copper);
+      font-size: 15px;
+    }
+
+    .models-kicker.light {
+      color: #f3dfcf;
+    }
+
+    .models-page h1 {
+      margin: 26px 0 0;
+      max-width: 920px;
+      color: var(--teal);
+      font-size: clamp(42px, 5.5vw, 78px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+    }
+
+    .models-lead {
+      margin: 24px 0 0;
+      max-width: 760px;
+      color: #536866;
+      font-size: 20px;
+      line-height: 1.72;
+    }
+
+    .models-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .models-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 999px;
+      padding: 16px 24px;
+      font-weight: 950;
+      line-height: 1;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .models-btn.primary {
+      color: white;
+      background: var(--teal);
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.18);
+    }
+
+    .models-btn.primary:hover {
+      transform: translateY(-2px);
+      background: #0d302e;
+      box-shadow: 0 24px 48px rgba(18, 63, 61, 0.22);
+    }
+
+    .models-btn.secondary {
+      color: var(--teal);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(18, 63, 61, 0.14);
+    }
+
+    .models-btn.secondary:hover {
+      transform: translateY(-2px);
+      background: white;
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.08);
+    }
+
+    .models-proof {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: #667977;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .models-proof span::before {
+      content: "✓";
+      margin-right: 6px;
+      color: var(--success);
+    }
+
+    .models-card,
+    .model-card,
+    .models-panel,
+    .models-step,
+    .models-faq-card {
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background:
+        linear-gradient(145deg, rgba(255, 253, 249, 0.96), rgba(255, 255, 255, 0.86)),
+        radial-gradient(circle at top right, rgba(183, 110, 60, 0.1), transparent 44%);
+      box-shadow:
+        0 26px 74px rgba(18, 63, 61, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .models-card {
+      overflow: hidden;
+      border-radius: 36px;
+      padding: 22px;
+      animation: modelsFloat 5.8s ease-in-out infinite;
+    }
+
+    .models-app-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .models-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .models-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.18);
+    }
+
+    .models-dots span:nth-child(1) {
+      background: #f3dfcf;
+    }
+
+    .models-dots span:nth-child(2) {
+      background: #dceceb;
+    }
+
+    .models-dots span:nth-child(3) {
+      background: rgba(47, 143, 107, 0.45);
+    }
+
+    .models-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.08);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .models-status span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 6px rgba(47, 143, 107, 0.12);
+    }
+
+    .models-app-head {
+      padding: 24px;
+      border-radius: 28px;
+      color: white;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.12), transparent 34%),
+        linear-gradient(135deg, #123f3d, #0d302e);
+    }
+
+    .models-app-head p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .models-app-head h2 {
+      margin: 8px 0 0;
+      color: white;
+      font-size: 34px;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      font-weight: 950;
+    }
+
+    .models-app-list {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .models-app-row {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(18, 63, 61, 0.08);
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .models-app-row:hover {
+      transform: translateX(4px);
+      background: white;
+      box-shadow: 0 14px 34px rgba(18, 63, 61, 0.08);
+    }
+
+    .models-app-row b {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .models-app-row strong {
+      color: var(--teal);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .models-app-row small {
+      color: #667977;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .section-head {
+      max-width: 880px;
+      margin-bottom: 30px;
+    }
+
+    .section-head h2,
+    .models-panel h2,
+    .models-cta h2 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: clamp(34px, 3.8vw, 56px);
+      line-height: 1.06;
+      letter-spacing: -0.048em;
+      font-weight: 950;
+    }
+
+    .section-head p,
+    .models-panel p,
+    .models-cta p {
+      margin: 16px 0 0;
+      color: #536866;
+      font-size: 18px;
+      line-height: 1.68;
+    }
+
+    .models-list-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .model-card {
+      display: grid;
+      gap: 16px;
+      border-radius: 28px;
+      padding: 22px;
+      color: inherit;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .model-card:hover {
+      transform: translateY(-4px);
+      background: white;
+      box-shadow: 0 26px 70px rgba(18, 63, 61, 0.12);
+    }
+
+    .model-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .model-card small {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.07);
+      color: var(--teal);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .model-card h3 {
+      margin: 12px 0 0;
+      color: var(--teal);
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-weight: 950;
+    }
+
+    .model-card p {
+      margin: 0;
+      color: #536866;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .model-card-arrow {
+      width: 38px;
+      height: 38px;
+      flex: none;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--teal);
+      color: white;
+      font-weight: 950;
+      transition: transform 180ms ease;
+    }
+
+    .model-card:hover .model-card-arrow {
+      transform: translateX(3px);
+    }
+
+    .model-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .model-card-meta span {
+      display: inline-flex;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: rgba(220, 236, 235, 0.72);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .models-split {
+      display: grid;
+      gap: 22px;
+    }
+
+    .models-panel {
+      border-radius: 34px;
+      padding: 34px;
+    }
+
+    .models-panel.dark {
+      background: var(--teal);
+      color: white;
+    }
+
+    .models-panel.dark h2 {
+      color: white;
+    }
+
+    .models-panel.dark p {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .models-step-grid,
+    .planned-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .models-step {
+      border-radius: 24px;
+      padding: 20px;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .models-step:hover {
+      transform: translateY(-3px);
+      background: white;
+      box-shadow: 0 18px 46px rgba(18, 63, 61, 0.09);
+    }
+
+    .models-step b {
+      display: inline-grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .models-step h3 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 950;
+    }
+
+    .models-step p {
+      margin: 8px 0 0;
+      color: #536866;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .planned-card {
+      border-radius: 22px;
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(18, 63, 61, 0.1);
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .models-faq-card {
+      border-radius: 26px;
+      padding: 22px 24px;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .models-faq-card:hover {
+      transform: translateY(-2px);
+      background: white;
+      box-shadow: 0 18px 46px rgba(18, 63, 61, 0.08);
+    }
+
+    .models-faq-card summary {
+      cursor: pointer;
+      color: var(--teal);
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      font-weight: 900;
+    }
+
+    .models-faq-card p {
+      margin: 14px 0 0;
+      color: #536866;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .models-cta {
+      text-align: center;
+    }
+
+    .models-cta .models-shell {
+      padding: 50px 28px;
+      border-radius: 38px;
+      border: 1px solid rgba(18, 63, 61, 0.1);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.13), transparent 36%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 253, 249, 0.86));
+      box-shadow: 0 26px 78px rgba(18, 63, 61, 0.1);
+    }
+
+    .models-cta .models-btn {
+      margin-top: 24px;
+    }
+
+    .reveal,
+    .reveal-card {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 620ms ease, transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible,
+    .reveal-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes modelsFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    @media (min-width: 760px) {
+      .models-list-grid,
+      .models-step-grid,
+      .planned-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1020px) {
+      .models-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .models-list-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .models-split {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .models-step-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .planned-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .models-hero,
+      .models-section,
+      .models-cta {
+        padding: 52px 18px;
+      }
+
+      .models-hero {
+        padding-top: 58px;
+      }
+
+      .models-page h1 {
+        font-size: clamp(40px, 14vw, 58px);
+      }
+
+      .models-lead {
+        font-size: 18px;
+      }
+
+      .models-app-row {
+        grid-template-columns: 36px 1fr;
+      }
+
+      .models-app-row small {
+        grid-column: 2;
+      }
+
+      .models-actions {
+        display: grid;
+      }
+
+      .models-btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .models-page *,
+      .models-page *::before,
+      .models-page *::after {
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+      }
+
+      .reveal,
+      .reveal-card {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+
+  <div class="models-page">
+    <section class="models-hero">
+      <div class="models-shell models-grid">
+        <div class="reveal">
+          <p class="models-pill">Modèles de devis artisans énergie</p>
+
+          <h1>Des modèles de devis métier, pas des documents vides à recopier</h1>
+
+          <p class="models-lead">
+            Retrouvez des structures de devis pour PAC, climatisation, VMC, IRVE, solaire,
+            chauffage et chauffe-eau thermodynamique. Chiffr aide à démarrer avec les bonnes
+            lignes, les bons postes et les points à vérifier.
+          </p>
+
+          <div class="models-actions">
+            <a href="#modeles" class="models-btn primary">Voir les modèles</a>
+            <a href="/contact" class="models-btn secondary">Demander un accès</a>
+          </div>
+
+          <div class="models-proof">
+            <span>Lignes métier</span>
+            <span>Prix à renseigner</span>
+            <span>PDF premium</span>
+            <span>Signature</span>
+            <span>Acompte</span>
+            <span>Factures</span>
+          </div>
+        </div>
+
+        <aside class="models-card reveal" aria-label="Aperçu modèles de devis">
+          <div class="models-app-top">
+            <div class="models-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="models-status"><span></span> Modèle guidé</div>
+          </div>
+
+          <div class="models-app-head">
+            <p>Exemple dans Chiffr</p>
+            <h2>Devis PAC air/eau prêt à adapter</h2>
+          </div>
+
+          <div class="models-app-list">
+            <div class="models-app-row">
+              <b>01</b>
+              <strong>Matériel principal</strong>
+              <small>préparé</small>
+            </div>
+            <div class="models-app-row">
+              <b>02</b>
+              <strong>Pose et raccordements</strong>
+              <small>à vérifier</small>
+            </div>
+            <div class="models-app-row">
+              <b>03</b>
+              <strong>Photos chantier</strong>
+              <small>terrain</small>
+            </div>
+            <div class="models-app-row">
+              <b>04</b>
+              <strong>Signature, acompte, facture</strong>
+              <small>suivi</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="models-section">
+      <div class="models-shell">
+        <PagePhotoShowcase
+          variant="modeles"
+          eyebrow="Modèles illustrés"
+          title="Des modèles de devis qui parlent vraiment chantier"
+          text="PAC, clim, chauffage, VMC, IRVE ou solaire : chaque modèle gagne en clarté quand les lignes de devis restent reliées aux photos terrain et au dossier client."
+          ctaLabel="Explorer les modèles"
+          ctaHref="#modeles"
+        />
+      </div>
+    </section>
+
+
+    <section class="models-section" id="modeles">
+      <div class="models-shell">
+        <div class="section-head reveal">
+          <p class="models-kicker">Bibliothèque de modèles</p>
+          <h2>Choisissez un modèle de devis métier</h2>
+          <p>
+            Chaque modèle contient des lignes concrètes, des points à vérifier et un aperçu
+            de devis fictif pour rendre la page plus utile qu’un simple article.
+          </p>
+        </div>
+
+        <div class="models-list-grid">
+          {quoteModels.map((model) => (
+            <a href={`/${model.slug}`} class="model-card reveal-card">
+              <div class="model-card-top">
+                <div>
+                  <small>{model.trade}</small>
+                  <h3>{model.h1.replace('Modèle de devis ', '')}</h3>
+                </div>
+
+                <span class="model-card-arrow">→</span>
+              </div>
+
+              <p>{model.metaDescription}</p>
+
+              <div class="model-card-meta">
+                {model.heroChecks.slice(0, 4).map((check) => (
+                  <span>{check}</span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="models-section">
+      <div class="models-shell models-split">
+        <article class="models-panel dark reveal">
+          <p class="models-kicker light">Pourquoi ces modèles ?</p>
+          <h2>Parce qu’un devis métier ne se résume pas à “fourniture + pose”.</h2>
+          <p>
+            Un devis PAC, clim, VMC, IRVE ou solaire doit rassurer le client, détailler les postes
+            importants, prévoir les options et garder le fil jusqu’à la signature et la facture.
+          </p>
+        </article>
+
+        <article class="models-panel reveal">
+          <p class="models-kicker">La logique Chiffr</p>
+          <h2>Le modèle prépare la structure, l’artisan garde la main.</h2>
+          <p>
+            Chiffr ne remplace pas l’expertise métier. Il prépare une base claire avec les lignes
+            fréquentes, les prix à compléter et les actions suivantes : PDF, signature, acompte,
+            facture et relance.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="models-section">
+      <div class="models-shell">
+        <div class="section-head reveal">
+          <p class="models-kicker">Méthode</p>
+          <h2>Ce qu’un bon modèle de devis doit aider à faire</h2>
+        </div>
+
+        <div class="models-step-grid">
+          <article class="models-step reveal-card">
+            <b>01</b>
+            <h3>Structurer le chantier</h3>
+            <p>Client, adresse, description, contraintes, accès et informations utiles.</p>
+          </article>
+
+          <article class="models-step reveal-card">
+            <b>02</b>
+            <h3>Lister les postes</h3>
+            <p>Matériel, main-d’œuvre, pose, raccordements, options et mise en service.</p>
+          </article>
+
+          <article class="models-step reveal-card">
+            <b>03</b>
+            <h3>Vérifier avant envoi</h3>
+            <p>TVA, prix, quantités, photos, acompte, délais, garanties et conditions.</p>
+          </article>
+
+          <article class="models-step reveal-card">
+            <b>04</b>
+            <h3>Suivre la suite</h3>
+            <p>Signature, acompte, facture d’acompte, facture de solde et relances client.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="models-section">
+      <div class="models-shell">
+        <div class="section-head reveal">
+          <p class="models-kicker">Prochains modèles à ajouter</p>
+          <h2>La bibliothèque va couvrir toutes les recherches métier prioritaires</h2>
+          <p>
+            Ces modèles seront ajoutés dans le fichier de données `quoteModels.ts`.
+            La page hub se mettra à jour automatiquement à chaque nouveau modèle.
+          </p>
+        </div>
+
+        <div class="planned-grid">
+          {plannedModels.map((item) => (
+            <div class="planned-card reveal-card">{item}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="models-cta">
+      <div class="models-shell models-narrow reveal">
+        <p class="models-kicker">Accès sur demande</p>
+        <h2>Vous pouvez recopier un modèle… ou démarrer directement depuis Chiffr.</h2>
+        <p>
+          Chiffr vous aide à préparer un devis métier avec les bonnes lignes, les prix à compléter,
+          les photos chantier, le PDF premium, la signature, l’acompte et les factures.
+        </p>
+
+        <a href="/contact" class="models-btn primary">Demander un accès</a>
+      </div>
+    </section>
+
+    <section class="models-section">
+      <div class="models-shell models-narrow">
+        <div class="section-head reveal">
+          <p class="models-kicker">Questions fréquentes</p>
+          <h2>Modèles de devis Chiffr : les réponses utiles</h2>
+        </div>
+
+        <div class="faq-list">
+          {faqs.map((item) => (
+            <details class="models-faq-card reveal-card">
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = document.querySelectorAll('.reveal, .reveal-card');
+
+    if (reduce) {
+      items.forEach((item) => item.classList.add('visible'));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
+      );
+
+      items.forEach((item) => observer.observe(item));
+    }
+  </script>
+</BaseLayout>

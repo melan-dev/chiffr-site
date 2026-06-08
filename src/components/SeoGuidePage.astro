@@ -1,0 +1,889 @@
+---
+import PageHeroVisual from './visuals/PageHeroVisual.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { SeoGuidePage as SeoGuideData } from '../data/seoGuides';
+
+interface Props {
+  guide: SeoGuideData;
+}
+
+const { guide } = Astro.props;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: guide.faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Accueil',
+      item: '/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Guides devis artisans énergie',
+      item: '/modeles-devis',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: guide.h1,
+      item: `/${guide.slug}`,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={guide.title}
+  description={guide.metaDescription}
+  canonicalPath={`/${guide.slug}`}
+  schema={[faqSchema, breadcrumbSchema]}
+>
+  <style is:inline>
+    .guide-page,
+    .guide-page * {
+      box-sizing: border-box;
+    }
+
+    .guide-page {
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    .guide-shell {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .guide-narrow {
+      max-width: 920px;
+    }
+
+    .guide-hero,
+    .guide-section,
+    .guide-cta {
+      position: relative;
+      padding: 72px 20px;
+    }
+
+    .guide-hero {
+      padding-top: 88px;
+      padding-bottom: 76px;
+    }
+
+    .guide-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(183, 110, 60, 0.14), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(18, 63, 61, 0.12), transparent 32%);
+    }
+
+    .guide-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .guide-pill,
+    .guide-kicker {
+      display: inline-flex;
+      width: fit-content;
+      margin: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--teal);
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .guide-kicker {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--copper);
+      font-size: 15px;
+    }
+
+    .guide-kicker.light {
+      color: #f3dfcf;
+    }
+
+    .guide-page h1 {
+      margin: 26px 0 0;
+      max-width: 940px;
+      color: var(--teal);
+      font-size: clamp(42px, 5.4vw, 78px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      font-weight: 950;
+    }
+
+    .guide-lead {
+      margin: 22px 0 0;
+      max-width: 780px;
+      color: #536866;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .guide-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .guide-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 999px;
+      padding: 16px 24px;
+      font-weight: 950;
+      line-height: 1;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .guide-btn.primary {
+      color: white;
+      background: var(--teal);
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.18);
+    }
+
+    .guide-btn.primary:hover {
+      transform: translateY(-2px);
+      background: #0d302e;
+      box-shadow: 0 24px 48px rgba(18, 63, 61, 0.22);
+    }
+
+    .guide-btn.secondary {
+      color: var(--teal);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(18, 63, 61, 0.14);
+    }
+
+    .guide-btn.secondary:hover {
+      transform: translateY(-2px);
+      background: white;
+      box-shadow: 0 18px 38px rgba(18, 63, 61, 0.08);
+    }
+
+    .guide-proof {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: #667977;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .guide-proof span::before {
+      content: "✓";
+      margin-right: 6px;
+      color: var(--success);
+    }
+
+    .guide-card,
+    .guide-panel,
+    .guide-step,
+    .guide-mini-card,
+    .guide-link-card,
+    .guide-faq-card {
+      border: 1px solid rgba(18, 63, 61, 0.12);
+      background:
+        linear-gradient(145deg, rgba(255, 253, 249, 0.96), rgba(255, 255, 255, 0.86)),
+        radial-gradient(circle at top right, rgba(183, 110, 60, 0.1), transparent 44%);
+      box-shadow:
+        0 26px 74px rgba(18, 63, 61, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .guide-card {
+      overflow: hidden;
+      border-radius: 36px;
+      padding: 22px;
+    }
+
+    .guide-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .guide-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .guide-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.18);
+    }
+
+    .guide-dots span:nth-child(1) {
+      background: #f3dfcf;
+    }
+
+    .guide-dots span:nth-child(2) {
+      background: #dceceb;
+    }
+
+    .guide-dots span:nth-child(3) {
+      background: rgba(47, 143, 107, 0.45);
+    }
+
+    .guide-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(18, 63, 61, 0.08);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .guide-status span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 6px rgba(47, 143, 107, 0.12);
+    }
+
+    .guide-card-head {
+      padding: 24px;
+      border-radius: 28px;
+      color: white;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.12), transparent 34%),
+        linear-gradient(135deg, #123f3d, #0d302e);
+    }
+
+    .guide-card-head p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .guide-card-head h2 {
+      margin: 8px 0 0;
+      color: white;
+      font-size: 34px;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      font-weight: 950;
+    }
+
+    .guide-card-list {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .guide-card-row {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(18, 63, 61, 0.08);
+    }
+
+    .guide-card-row b {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .guide-card-row strong {
+      color: var(--teal);
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .guide-card-row small {
+      color: #667977;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .guide-section-head {
+      max-width: 880px;
+      margin-bottom: 30px;
+    }
+
+    .guide-section-head h2,
+    .guide-panel h2,
+    .guide-cta h2 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: clamp(34px, 3.8vw, 56px);
+      line-height: 1.06;
+      letter-spacing: -0.048em;
+      font-weight: 950;
+    }
+
+    .guide-section-head p,
+    .guide-panel p,
+    .guide-cta p {
+      margin: 14px 0 0;
+      color: #536866;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .guide-split {
+      display: grid;
+      gap: 22px;
+    }
+
+    .guide-panel {
+      border-radius: 34px;
+      padding: 34px;
+    }
+
+    .guide-panel.dark {
+      background: var(--teal);
+      color: white;
+    }
+
+    .guide-panel.dark h2 {
+      color: white;
+    }
+
+    .guide-panel.dark p {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .guide-steps-grid,
+    .guide-list-grid,
+    .guide-benefit-grid,
+    .guide-link-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .guide-step {
+      border-radius: 26px;
+      padding: 22px;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .guide-step:hover {
+      transform: translateY(-3px);
+      background: white;
+      box-shadow: 0 18px 46px rgba(18, 63, 61, 0.09);
+    }
+
+    .guide-step b {
+      display: inline-grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--teal);
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .guide-step h3 {
+      margin: 16px 0 0;
+      color: var(--teal);
+      font-size: 21px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      font-weight: 950;
+    }
+
+    .guide-step p {
+      margin: 9px 0 0;
+      color: #536866;
+      font-size: 15px;
+      line-height: 1.58;
+    }
+
+    .guide-mini-card {
+      border-radius: 24px;
+      padding: 19px 20px;
+      color: var(--teal);
+      font-weight: 900;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .guide-mini-card:hover {
+      transform: translateY(-3px);
+      background: white;
+      box-shadow: 0 18px 46px rgba(18, 63, 61, 0.09);
+    }
+
+    .guide-mini-card::before {
+      content: "✓";
+      display: inline-grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      margin-right: 10px;
+      border-radius: 999px;
+      background: var(--success);
+      color: white;
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .guide-mini-card.warning::before {
+      content: "!";
+      background: rgba(183, 110, 60, 0.2);
+      color: var(--copper);
+    }
+
+    .guide-link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border-radius: 22px;
+      padding: 17px 18px;
+      color: var(--teal);
+      font-weight: 950;
+      text-decoration: none;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .guide-link-card:hover {
+      transform: translateY(-3px);
+      background: white;
+      box-shadow: 0 18px 46px rgba(18, 63, 61, 0.09);
+    }
+
+    .guide-link-card span {
+      color: var(--copper);
+      font-weight: 950;
+    }
+
+    .guide-note {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(220, 236, 235, 0.72);
+      color: #536866;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .guide-cta {
+      text-align: center;
+    }
+
+    .guide-cta .guide-shell {
+      padding: 50px 28px;
+      border-radius: 38px;
+      border: 1px solid rgba(18, 63, 61, 0.1);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(183, 110, 60, 0.13), transparent 36%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 253, 249, 0.86));
+      box-shadow: 0 26px 78px rgba(18, 63, 61, 0.1);
+    }
+
+    .guide-cta .guide-btn {
+      margin-top: 24px;
+    }
+
+    .guide-faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .guide-faq-card {
+      border-radius: 26px;
+      padding: 22px 24px;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .guide-faq-card:hover {
+      transform: translateY(-2px);
+      background: white;
+      box-shadow: 0 18px 46px rgba(18, 63, 61, 0.08);
+    }
+
+    .guide-faq-card summary {
+      cursor: pointer;
+      color: var(--teal);
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      font-weight: 900;
+    }
+
+    .guide-faq-card p {
+      margin: 14px 0 0;
+      color: #536866;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    @media (min-width: 760px) {
+      .guide-steps-grid,
+      .guide-list-grid,
+      .guide-benefit-grid,
+      .guide-link-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1020px) {
+      .guide-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .guide-split {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .guide-steps-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .guide-list-grid,
+      .guide-benefit-grid,
+      .guide-link-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .guide-hero,
+      .guide-section,
+      .guide-cta {
+        padding: 52px 18px;
+      }
+
+      .guide-hero {
+        padding-top: 58px;
+      }
+
+      .guide-page h1 {
+        font-size: clamp(40px, 14vw, 58px);
+      }
+
+      .guide-lead {
+        font-size: 18px;
+      }
+
+      .guide-actions {
+        display: grid;
+      }
+
+      .guide-btn {
+        width: 100%;
+      }
+
+      .guide-card-row {
+        grid-template-columns: 36px 1fr;
+      }
+
+      .guide-card-row small {
+        grid-column: 2;
+      }
+
+      .guide-panel {
+        padding: 24px;
+        border-radius: 28px;
+      }
+    }
+  </style>
+
+  <div class="guide-page">
+    <section class="guide-hero">
+      <div class="guide-shell guide-grid">
+        <div>
+          <p class="guide-pill">{guide.eyebrow}</p>
+
+          <h1>{guide.h1}</h1>
+
+          <p class="guide-lead">{guide.intro}</p>
+
+          <div class="guide-actions">
+            <a href="/contact" class="guide-btn primary">
+              Demander un accès à Chiffr
+            </a>
+            <a href="/modeles-devis" class="guide-btn secondary">
+              Voir les modèles de devis
+            </a>
+          </div>
+
+          <div class="guide-proof">
+            <span>Guide métier</span>
+            <span>PAC · Clim · VMC · IRVE</span>
+            <span>PDF premium</span>
+            <span>Signature</span>
+            <span>Acompte</span>
+            <span>Factures</span>
+          </div>
+        </div>
+
+        <aside class="guide-card" aria-label={`Aperçu guide ${guide.eyebrow}`}>
+          <div class="guide-card-top">
+            <div class="guide-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="guide-status"><span></span> Guide pratique</div>
+          </div>
+
+          <div class="guide-card-head">
+            <p>Intention de recherche</p>
+            <h2>{guide.searchIntent}</h2>
+          </div>
+
+          <div class="guide-card-list">
+            <div class="guide-card-row">
+              <b>01</b>
+              <strong>Structurer le devis</strong>
+              <small>lignes</small>
+            </div>
+            <div class="guide-card-row">
+              <b>02</b>
+              <strong>Vérifier les points terrain</strong>
+              <small>chantier</small>
+            </div>
+            <div class="guide-card-row">
+              <b>03</b>
+              <strong>Éviter les oublis fréquents</strong>
+              <small>contrôle</small>
+            </div>
+            <div class="guide-card-row">
+              <b>04</b>
+              <strong>Signer, encaisser, facturer</strong>
+              <small>suite</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="guide-shell">
+        <PageHeroVisual
+          currentPath={`/${guide.slug}`}
+          eyebrow="Guide illustré"
+          title="Un guide plus concret quand il part du chantier"
+          text="Chaque conseil garde le même objectif : structurer le devis, éviter les oublis, mieux expliquer au client et faciliter la suite du dossier."
+          ctaLabel="Voir les modèles"
+          ctaHref="/modeles-devis"
+        />
+      </div>
+    </section>
+
+
+    <section class="guide-section">
+      <div class="guide-shell guide-split">
+        <article class="guide-panel dark">
+          <p class="guide-kicker light">Le problème</p>
+          <h2>{guide.problemTitle}</h2>
+          <p>{guide.problemText}</p>
+        </article>
+
+        <article class="guide-panel">
+          <p class="guide-kicker">Objectif du guide</p>
+          <h2>Une méthode claire pour avancer sans page blanche</h2>
+          <p>
+            Le but n’est pas de remplacer votre expertise terrain. Le but est de vous donner
+            une structure simple pour préparer un devis clair, complet et plus facile à suivre.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="guide-shell">
+        <div class="guide-section-head">
+          <p class="guide-kicker">Méthode</p>
+          <h2>{guide.stepsTitle}</h2>
+          <p>
+            Une bonne méthode évite de tout reconstruire à chaque devis. Elle permet aussi
+            de mieux expliquer les postes au client.
+          </p>
+        </div>
+
+        <div class="guide-steps-grid">
+          {guide.steps.map((step, index) => (
+            <article class="guide-step">
+              <b>{String(index + 1).padStart(2, '0')}</b>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="guide-shell">
+        <div class="guide-section-head">
+          <p class="guide-kicker">Checklist</p>
+          <h2>{guide.checklistTitle}</h2>
+          <p>
+            Cette liste sert de base de contrôle avant d’envoyer le devis ou de passer
+            à la signature client.
+          </p>
+        </div>
+
+        <div class="guide-list-grid">
+          {guide.checklist.map((item) => (
+            <div class="guide-mini-card">{item}</div>
+          ))}
+        </div>
+
+        <p class="guide-note">
+          Les prix, quantités, choix techniques et taux de TVA doivent toujours être vérifiés
+          selon le chantier, le logement, la nature des travaux et la réglementation applicable.
+        </p>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="guide-shell">
+        <div class="guide-section-head">
+          <p class="guide-kicker">À éviter</p>
+          <h2>{guide.commonMistakesTitle}</h2>
+          <p>
+            Ces erreurs ne sont pas toujours graves, mais elles peuvent faire perdre du temps,
+            créer de la confusion ou compliquer la facturation.
+          </p>
+        </div>
+
+        <div class="guide-list-grid">
+          {guide.commonMistakes.map((item) => (
+            <div class="guide-mini-card warning">{item}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="guide-shell guide-split">
+        <article class="guide-panel">
+          <p class="guide-kicker">Avec Chiffr</p>
+          <h2>{guide.chiffrTitle}</h2>
+          <p>{guide.chiffrText}</p>
+        </article>
+
+        <article class="guide-panel dark">
+          <p class="guide-kicker light">Promesse Chiffr</p>
+          <h2>La structure est préparée, l’artisan garde le contrôle.</h2>
+          <p>
+            Chiffr vous aide à démarrer plus vite, mais vous gardez la main sur les lignes,
+            les prix, les quantités, les options, les photos, les conditions et la suite du dossier.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="guide-shell">
+        <div class="guide-section-head">
+          <p class="guide-kicker">Fonctions utiles</p>
+          <h2>Ce que Chiffr apporte concrètement</h2>
+        </div>
+
+        <div class="guide-benefit-grid">
+          {guide.chiffrBenefits.map((item) => (
+            <div class="guide-mini-card">{item}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="guide-shell">
+        <div class="guide-section-head">
+          <p class="guide-kicker">Pages liées</p>
+          <h2>Continuer avec les pages utiles</h2>
+        </div>
+
+        <div class="guide-link-grid">
+          {guide.relatedLinks.map((item) => (
+            <a href={item.href} class="guide-link-card">
+              {item.label}
+              <span>→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-cta">
+      <div class="guide-shell guide-narrow">
+        <p class="guide-kicker">Accès sur demande</p>
+        <h2>Vous voulez créer des devis plus clairs, sans repartir de zéro ?</h2>
+        <p>
+          Chiffr vous aide à partir d’un modèle métier, ajouter vos lignes, joindre vos photos,
+          générer un PDF premium, faire signer, demander un acompte et facturer proprement.
+        </p>
+
+        <a href="/contact" class="guide-btn primary">Demander un accès</a>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="guide-shell guide-narrow">
+        <div class="guide-section-head">
+          <p class="guide-kicker">FAQ</p>
+          <h2>Questions fréquentes</h2>
+        </div>
+
+        <div class="guide-faq-list">
+          {guide.faqs.map((item) => (
+            <details class="guide-faq-card">
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

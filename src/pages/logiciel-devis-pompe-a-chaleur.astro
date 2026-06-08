@@ -1,0 +1,146 @@
+---
+import TradeLanding from '../components/TradeLanding.astro';
+
+const page = {
+  title: 'Logiciel devis pompe à chaleur | Devis PAC avec Chiffr',
+  description:
+    'Chiffr aide les installateurs de pompe à chaleur à créer des devis PAC clairs : modèles métier, photos chantier, signature, acompte et factures.',
+  canonicalPath: '/logiciel-devis-pompe-a-chaleur',
+  pill: 'Logiciel devis pompe à chaleur',
+  h1: 'Des devis PAC plus rapides, plus propres et mieux suivis',
+  lead:
+    'Chiffr aide les artisans pompe à chaleur à préparer des devis clairs : modèles métier, lignes fréquentes, photos chantier, PDF premium, signature, acompte, factures et relances client.',
+  checks: ['PAC air/eau', 'PAC air/air', 'Photos chantier', 'Acompte', 'Factures'],
+  appTitle: 'Pompe à chaleur',
+  appSubtitle: 'Modèle métier préparé',
+  appBadgeLabel: 'Base',
+  appBadgeValue: 'PAC',
+  appStripLabel: 'Chantier type',
+  appStripText: 'Visite → matériel → raccordements → signature → acompte → facture',
+  appSteps: [
+    {
+      title: 'Dépose et préparation',
+      text: 'Ancien générateur, accès, réseau et contraintes chantier.',
+      status: 'prévu',
+    },
+    {
+      title: 'PAC et accessoires',
+      text: 'Unité extérieure, module hydraulique, support, options.',
+      status: 'à chiffrer',
+    },
+    {
+      title: 'Raccordements',
+      text: 'Hydraulique, électricité, protections et adaptation réseau.',
+      status: 'à vérifier',
+    },
+    {
+      title: 'Mise en service',
+      text: 'Essais, paramétrage, explication client et dossier final.',
+      status: 'ensuite',
+    },
+  ],
+  appMini: [
+    { label: 'Photos', value: 'Plaque machine' },
+    { label: 'Client', value: 'Signature' },
+    { label: 'Suivi', value: 'Acompte' },
+  ],
+  problemTitle: 'Un devis PAC trop vague peut faire perdre confiance.',
+  problemText:
+    'Une installation pompe à chaleur implique souvent dépose, fourniture, hydraulique, électricité, réseau, désembouage, mise en service et suivi de paiement. Si tout est résumé en une ligne, le client comprend moins bien ce qu’il achète.',
+  solutionTitle: 'Chiffr structure le dossier sans vous imposer une usine à gaz.',
+  solutionText:
+    'Vous partez d’une base métier PAC claire, avec les lignes fréquentes, les photos utiles, un PDF premium, la signature, l’acompte et les factures reliées au même client.',
+  quoteKicker: 'Lignes de devis PAC',
+  quoteTitle: 'Les postes fréquents à prévoir dans un devis pompe à chaleur',
+  quoteIntro:
+    'Chaque chantier reste unique, mais une base claire évite les oublis et donne au client une meilleure lecture du prix.',
+  quoteLines: [
+    { title: 'Dépose', text: 'Dépose de l’ancien équipement : chaudière, ballon, radiateurs ou accessoires existants.' },
+    { title: 'Fourniture PAC', text: 'Pompe à chaleur air/eau, PAC air/air, unité extérieure, module hydraulique ou accessoires.' },
+    { title: 'Pose', text: 'Installation de la pompe à chaleur, support, raccordements et protections nécessaires.' },
+    { title: 'Hydraulique', text: 'Raccordements, pot à boues, circulateur, vannes, disconnecteur, vase d’expansion.' },
+    { title: 'Électricité', text: 'Protection dédiée, câblage, raccordement tableau électrique, vérifications.' },
+    { title: 'Réseau', text: 'Désembouage, rinçage, traitement d’eau, équilibrage ou adaptation du réseau.' },
+    { title: 'Mise en service', text: 'Essais, paramétrage, mise en route, explication au client.' },
+    { title: 'Dossier client', text: 'Photos chantier, plaque machine, PDF premium, signature, acompte et facture de solde.' },
+  ],
+  featuresKicker: 'Fonctions Chiffr',
+  featuresTitle: 'Tout le cycle du devis PAC reste dans le même dossier',
+  featuresIntro:
+    'Chiffr ne s’arrête pas à un PDF. Il vous aide à suivre la suite : validation, acompte, facture, relance et historique client.',
+  features: [
+    { title: 'Modèles PAC', text: 'Des bases de devis pensées pour les chantiers pompe à chaleur, pas une page blanche.' },
+    { title: 'Lignes fréquentes', text: 'Dépose, fourniture, raccordements, désembouage, mise en service, options.' },
+    { title: 'Photos chantier', text: 'Ancien équipement, emplacement unité extérieure, tableau électrique, accès, plaque machine.' },
+    { title: 'PDF premium', text: 'Un devis propre, clair et rassurant pour un chantier technique et engageant.' },
+    { title: 'Signature', text: 'Signature client sur place ou à distance selon le contexte commercial.' },
+    { title: 'Acompte', text: 'Demande d’acompte après acceptation et suivi du reste à encaisser.' },
+    { title: 'Factures', text: 'Facture d’acompte, facture de solde et facture finale.' },
+    { title: 'Relances', text: 'Suivi des devis envoyés, relances client et historique commercial.' },
+  ],
+  usecaseTitle: 'Les cas PAC que Chiffr aide à cadrer',
+  usecaseIntro:
+    'Chiffr est pensé pour les dossiers concrets : remplacement, rénovation, PAC air/eau, PAC air/air, acompte et facture de solde.',
+  useCases: [
+    { title: 'PAC air/eau', text: 'Remplacement chaudière, raccordements hydrauliques, désembouage, mise en service.' },
+    { title: 'PAC air/air', text: 'Unités intérieures, groupe extérieur, liaisons frigorifiques, goulottes et essais.' },
+    { title: 'Rénovation chauffage', text: 'Adaptation du réseau existant, remplacement équipement, équilibrage et accessoires.' },
+    { title: 'Chantier avec acompte', text: 'Devis signé, acompte demandé, facture d’acompte, solde puis facture finale.' },
+  ],
+  photoTitle: 'Les photos chantier utiles sur un dossier PAC',
+  photoIntro:
+    'Les photos donnent du contexte au devis et évitent de chercher dans la galerie du téléphone au moment de finaliser le dossier.',
+  photoItems: [
+    'Ancien générateur ou équipement à déposer',
+    'Emplacement de l’unité extérieure',
+    'Plaque machine ou référence matériel',
+    'Tableau électrique et accès chantier',
+    'Réseau hydraulique ou local technique',
+    'Croquis ou contraintes de passage',
+  ],
+  internalTitle: 'Continuer avec les pages utiles pour les devis PAC',
+  internalIntro:
+    'Reliez cette page aux modèles de devis, aux guides et aux autres métiers énergie pour renforcer votre maillage interne.',
+  internalLinks: [
+    { label: 'Modèle devis PAC air/eau', href: '/modele-devis-pac-air-eau' },
+    { label: 'Comment faire un devis PAC air/eau', href: '/comment-faire-un-devis-pac-air-eau' },
+    { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
+    { label: 'Logiciel devis chauffagiste', href: '/logiciel-devis-chauffagiste' },
+    { label: 'Modèles de devis', href: '/modeles-devis' },
+    { label: 'Alternative Obat', href: '/alternative-obat' },
+  ],
+  ctaTitle: 'Vous voulez créer des devis PAC plus clairs sans repartir de zéro ?',
+  ctaText:
+    'Chiffr vous aide à préparer les bonnes lignes, ajouter les photos, générer un PDF premium, faire signer, demander un acompte et facturer proprement.',
+  faqTitle: 'Questions fréquentes sur les devis pompe à chaleur',
+  faqs: [
+    {
+      question: 'Pourquoi utiliser un logiciel spécialisé pour les devis pompe à chaleur ?',
+      answer:
+        'Un devis PAC contient souvent beaucoup de postes : dépose, fourniture, raccordements, réseau hydraulique, électricité, mise en service, photos chantier, acompte et factures. Un outil spécialisé aide à ne pas repartir d’une page blanche.',
+    },
+    {
+      question: 'Chiffr peut-il servir pour les devis PAC air/eau ?',
+      answer:
+        'Oui. Chiffr est pensé pour structurer les devis PAC air/eau avec les lignes fréquentes : remplacement chaudière, raccordements hydrauliques, désembouage, mise en service, acompte et facture de solde.',
+    },
+    {
+      question: 'Peut-on ajouter des photos chantier au devis PAC ?',
+      answer:
+        'Oui. Les photos utiles peuvent être rattachées au dossier : ancien équipement, emplacement de l’unité extérieure, tableau électrique, accès chantier, plaque machine ou croquis.',
+    },
+    {
+      question: 'Chiffr remplace-t-il l’expérience de l’artisan ?',
+      answer:
+        'Non. Chiffr prépare une base claire, mais l’artisan garde la main sur les lignes, les prix, les quantités, les options et les choix techniques.',
+    },
+    {
+      question: 'Peut-on gérer acompte et factures après signature ?',
+      answer:
+        'Oui. Chiffr est conçu pour suivre le cycle complet : devis, signature, acompte, facture d’acompte, facture de solde, facture finale et relances.',
+    },
+  ],
+};
+---
+
+<TradeLanding {...page} />

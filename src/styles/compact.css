@@ -1,0 +1,583 @@
+/* Compact premium layer — Chiffr */
+
+:root {
+  --compact-section-y: clamp(38px, 4vw, 58px);
+  --compact-section-y-small: clamp(30px, 3vw, 46px);
+  --compact-hero-y: clamp(44px, 5vw, 66px);
+  --compact-card-radius: 24px;
+}
+
+/* Sections globales */
+.hero,
+.irve-hero,
+.pricing-hero,
+.features-hero,
+.qm-hero {
+  padding-top: var(--compact-hero-y) !important;
+  padding-bottom: var(--compact-hero-y) !important;
+}
+
+.section,
+.irve-section,
+.pricing-plans,
+.pricing-compare,
+.pricing-proof-section,
+.pricing-faq,
+.pricing-cta,
+.features-section,
+.features-cta,
+.qm-section,
+.qm-cta {
+  padding-top: var(--compact-section-y) !important;
+  padding-bottom: var(--compact-section-y) !important;
+}
+
+/* Titres plus lisibles, moins gigantesques */
+h1,
+.irve-page h1,
+.pricing-page h1,
+.features-page h1,
+.quote-model-page h1 {
+  max-width: 900px !important;
+  font-size: clamp(36px, 4.4vw, 62px) !important;
+  line-height: 1.03 !important;
+  letter-spacing: -0.045em !important;
+}
+
+h2,
+.section-head h2,
+.irve-section-head h2,
+.pricing-section-head h2,
+.pricing-panel h2,
+.pricing-cta h2,
+.features-cta h2,
+.qm-section-head h2,
+.qm-panel h2,
+.qm-cta h2 {
+  font-size: clamp(28px, 3vw, 42px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.04em !important;
+}
+
+/* Textes introductifs moins longs visuellement */
+.lead,
+.irve-lead,
+.pricing-lead,
+.features-lead,
+.qm-lead {
+  margin-top: 18px !important;
+  max-width: 720px !important;
+  font-size: clamp(16px, 1.35vw, 18px) !important;
+  line-height: 1.58 !important;
+}
+
+.section-head,
+.irve-section-head,
+.pricing-section-head,
+.qm-section-head {
+  margin-bottom: 22px !important;
+}
+
+.section-head p,
+.irve-section-head p,
+.pricing-section-head p,
+.pricing-panel p,
+.pricing-cta p,
+.features-cta p,
+.qm-section-head p,
+.qm-panel p,
+.qm-cta p {
+  margin-top: 12px !important;
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+
+/* Boutons et preuves */
+.actions,
+.irve-actions,
+.pricing-actions,
+.features-actions,
+.qm-actions {
+  margin-top: 22px !important;
+}
+
+.checks,
+.irve-proof,
+.pricing-proof,
+.features-proof,
+.qm-checks {
+  margin-top: 18px !important;
+  gap: 8px !important;
+}
+
+/* Cartes plus compactes */
+.app-card,
+.irve-card,
+.pricing-card,
+.qm-card,
+.panel,
+.irve-panel,
+.pricing-panel,
+.dashboard-card,
+.qm-panel,
+.feature-card,
+.irve-mini-card,
+.workflow-card,
+.qm-mini-card,
+.qm-faq-card,
+.pricing-faq-card,
+.faq-card {
+  border-radius: var(--compact-card-radius) !important;
+}
+
+.panel,
+.irve-panel,
+.pricing-panel,
+.dashboard-card,
+.qm-panel {
+  padding: clamp(22px, 2.5vw, 28px) !important;
+}
+
+.app-card,
+.irve-card,
+.qm-card {
+  padding: 18px !important;
+}
+
+/* Grilles plus denses */
+.line-grid,
+.feature-grid,
+.usecase-grid,
+.workflow-grid,
+.trade-grid,
+.qm-list-grid,
+.qm-benefit-grid,
+.qm-related-grid,
+.pricing-plan-grid {
+  gap: 12px !important;
+}
+
+.line-card,
+.feature-card,
+.irve-mini-card,
+.workflow-card,
+.qm-mini-card,
+.trade-card,
+.qm-related-link {
+  padding: 18px !important;
+}
+
+.line-card strong,
+.feature-card h3,
+.irve-mini-card h3,
+.workflow-card h3,
+.qm-mini-card h3,
+.dashboard-card h3 {
+  font-size: 19px !important;
+}
+
+.line-card p,
+.feature-card p,
+.irve-mini-card p,
+.workflow-card p,
+.qm-mini-card p {
+  margin-top: 8px !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Hero cards internes */
+.app-hero,
+.qm-card-head,
+.irve-card-top,
+.pricing-card-head {
+  padding: 20px !important;
+  border-radius: 22px !important;
+}
+
+.app-hero h2,
+.qm-card-head h2,
+.irve-card-top h2,
+.pricing-card-head h2 {
+  font-size: clamp(26px, 3vw, 36px) !important;
+}
+
+.steps,
+.app-list,
+.qm-card-steps,
+.irve-card-body {
+  gap: 8px !important;
+}
+
+.steps > div,
+.app-row,
+.qm-card-step,
+.irve-line {
+  padding: 10px 12px !important;
+  border-radius: 16px !important;
+}
+
+.mini-grid,
+.app-mini,
+.qm-mini-grid,
+.metric-grid {
+  gap: 8px !important;
+}
+
+.mini-grid div,
+.app-mini div,
+.qm-mini-grid div,
+.metric {
+  min-height: 72px !important;
+  padding: 12px !important;
+  border-radius: 16px !important;
+}
+
+/* Page tarifs plus dense */
+.pricing-plan {
+  padding: 16px !important;
+  border-radius: 24px !important;
+}
+
+.pricing-ribbon {
+  margin: -16px -16px 12px !important;
+  padding: 8px 12px !important;
+}
+
+.pricing-plan-top h3 {
+  font-size: 28px !important;
+}
+
+.pricing-plan-top p {
+  min-height: 48px !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+.pricing-price {
+  margin: 14px 0 10px !important;
+}
+
+.pricing-price strong {
+  font-size: 32px !important;
+}
+
+.pricing-unlocks {
+  margin-top: 10px !important;
+  gap: 6px !important;
+}
+
+.pricing-unlocks span {
+  min-height: 30px !important;
+  padding: 7px 9px !important;
+  border-radius: 12px !important;
+}
+
+.pricing-details {
+  margin-top: 10px !important;
+}
+
+.pricing-details summary {
+  padding: 11px 12px !important;
+}
+
+/* Tableaux plus compacts */
+.pricing-table th,
+.pricing-table td,
+.qm-table th,
+.qm-table td {
+  padding: 8px 10px !important;
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+}
+
+.pricing-table-card,
+.qm-line-table-card {
+  border-radius: 22px !important;
+}
+
+/* Aperçu PDF : beaucoup plus compact */
+.pdf-preview-section {
+  margin-top: 22px !important;
+}
+
+.pdf-preview-head {
+  margin-bottom: 16px !important;
+  gap: 16px !important;
+}
+
+.pdf-preview-head h2 {
+  font-size: clamp(28px, 3vw, 40px) !important;
+}
+
+.pdf-preview-head p {
+  margin-top: 10px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+.pdf-preview-wrap {
+  padding: clamp(10px, 2vw, 18px) !important;
+  border-radius: 26px !important;
+}
+
+.fake-pdf {
+  width: min(100%, 820px) !important;
+  min-width: 680px !important;
+  padding: 24px !important;
+  border-radius: 14px !important;
+}
+
+.fake-pdf-header {
+  gap: 18px !important;
+  padding-bottom: 12px !important;
+}
+
+.fake-logo {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 14px !important;
+  font-size: 16px !important;
+}
+
+.fake-company strong {
+  font-size: 19px !important;
+}
+
+.fake-company span {
+  margin-top: 2px !important;
+  font-size: 10.5px !important;
+  line-height: 1.25 !important;
+}
+
+.fake-doc-title span {
+  font-size: 28px !important;
+}
+
+.fake-doc-title strong {
+  font-size: 13px !important;
+}
+
+.fake-doc-title small {
+  font-size: 10.5px !important;
+}
+
+.fake-parties {
+  gap: 18px !important;
+  margin-top: 16px !important;
+}
+
+.fake-object {
+  margin-top: 16px !important;
+  padding: 13px !important;
+  border-radius: 12px !important;
+}
+
+.fake-object h3 {
+  font-size: 15px !important;
+}
+
+.fake-parties p,
+.fake-object p,
+.fake-conditions p {
+  font-size: 10.5px !important;
+  line-height: 1.35 !important;
+}
+
+.fake-lines {
+  margin-top: 16px !important;
+}
+
+.fake-lines th {
+  padding: 7px 8px !important;
+  font-size: 8.5px !important;
+}
+
+.fake-lines td {
+  padding: 7px 8px !important;
+  font-size: 9.5px !important;
+  line-height: 1.22 !important;
+}
+
+.fake-lines td strong {
+  font-size: 10.5px !important;
+}
+
+.fake-lines td span {
+  font-size: 9px !important;
+}
+
+/* L’aperçu PDF reste palpable sans prendre toute la page */
+.fake-lines tbody tr:nth-child(n + 7) {
+  display: none !important;
+}
+
+.fake-bottom {
+  grid-template-columns: 1fr 230px !important;
+  gap: 18px !important;
+  margin-top: 16px !important;
+}
+
+.fake-conditions h4 {
+  font-size: 13px !important;
+}
+
+.fake-signature {
+  margin-top: 12px !important;
+  padding: 11px !important;
+  border-radius: 12px !important;
+}
+
+.fake-signature div {
+  height: 34px !important;
+  margin-top: 8px !important;
+}
+
+.fake-totals div {
+  padding: 8px 10px !important;
+}
+
+.fake-totals span,
+.fake-totals strong {
+  font-size: 10.5px !important;
+}
+
+.fake-totals .deposit strong {
+  font-size: 18px !important;
+}
+
+.fake-footer {
+  margin-top: 14px !important;
+  padding-top: 10px !important;
+  font-size: 9.8px !important;
+  line-height: 1.35 !important;
+}
+
+/* Page modèle : blocs denses */
+.qm-table-head {
+  margin-top: 28px !important;
+}
+
+.qm-warning {
+  padding: 20px !important;
+  border-radius: 24px !important;
+}
+
+.qm-warning-list {
+  gap: 8px !important;
+}
+
+.qm-warning-list span {
+  padding: 11px 13px !important;
+  border-radius: 14px !important;
+  font-size: 13px !important;
+}
+
+/* Navigation un peu plus compacte */
+.site-header {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.brand-card {
+  padding: 8px 11px !important;
+  border-radius: 22px !important;
+}
+
+.brand-mark {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 15px !important;
+  font-size: 24px !important;
+}
+
+.nav-card {
+  padding: 8px !important;
+  border-radius: 26px !important;
+}
+
+.nav-link,
+.nav-more-button {
+  min-height: 40px !important;
+  padding: 0 12px !important;
+  border-radius: 15px !important;
+  font-size: 13px !important;
+}
+
+.home-link {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 15px !important;
+}
+
+.header-cta {
+  min-height: 44px !important;
+  padding: 0 18px !important;
+}
+
+/* Desktop : on exploite mieux la largeur */
+@media (min-width: 1120px) {
+  .hero-grid,
+  .irve-grid,
+  .features-grid,
+  .qm-grid {
+    gap: 38px !important;
+  }
+
+  .usecase-panel,
+  .photo-panel,
+  .resource {
+    gap: 24px !important;
+  }
+}
+
+/* Mobile : plus dense sans casser */
+@media (max-width: 720px) {
+  .hero,
+  .section,
+  .irve-hero,
+  .irve-section,
+  .pricing-hero,
+  .pricing-plans,
+  .pricing-compare,
+  .pricing-proof-section,
+  .pricing-faq,
+  .pricing-cta,
+  .features-hero,
+  .features-section,
+  .features-cta,
+  .qm-hero,
+  .qm-section,
+  .qm-cta {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 38px !important;
+    padding-bottom: 38px !important;
+  }
+
+  h1,
+  .irve-page h1,
+  .pricing-page h1,
+  .features-page h1,
+  .quote-model-page h1 {
+    font-size: clamp(34px, 11vw, 48px) !important;
+  }
+
+  .lead,
+  .irve-lead,
+  .pricing-lead,
+  .features-lead,
+  .qm-lead {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  .fake-pdf {
+    min-width: 640px !important;
+    padding: 20px !important;
+  }
+
+  .fake-bottom {
+    grid-template-columns: 1fr 210px !important;
+  }
+}

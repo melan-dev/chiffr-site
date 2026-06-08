@@ -1,0 +1,179 @@
+/* Chiffr — anti-jump / no-flicker stability layer */
+
+/* Évite les micro-sauts quand la scrollbar apparaît/disparaît */
+html {
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Évite les recalculs brutaux d’ancrage */
+body {
+  overflow-x: hidden;
+  overflow-anchor: none;
+}
+
+/* Ancres internes : évite que le header sticky masque la section */
+[id] {
+  scroll-margin-top: 120px;
+}
+
+/* Supprime le flash blanc / fade au changement de page.
+   Les anciennes animations reveal rendaient le contenu opacity:0 avant JS. */
+.reveal,
+.reveal-card,
+.reveal.visible,
+.reveal-card.visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease !important;
+}
+
+/* Sécurité : aucune page ne doit apparaître transparente au chargement */
+.hero,
+.section,
+.irve-hero,
+.irve-section,
+.pricing-hero,
+.pricing-plans,
+.pricing-compare,
+.pricing-proof-section,
+.pricing-faq,
+.pricing-cta,
+.features-hero,
+.features-section,
+.features-cta,
+.qm-hero,
+.qm-section,
+.qm-cta,
+.models-hero,
+.models-section,
+.models-cta,
+.contact-hero,
+.contact-section,
+.contact-cta {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Les boutons peuvent avoir du hover, mais pas de rebond au clic */
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:active,
+button:active,
+.contact-btn:active,
+.models-btn:active,
+.qm-btn:active,
+.features-btn:active,
+.pricing-btn:active,
+.header-cta:active,
+.nav-link:active,
+.nav-more-button:active,
+.mobile-link:active,
+.btn:active,
+.irve-btn:active {
+  transform: none !important;
+}
+
+/* Focus accessible sans faire bouger le layout */
+a:focus,
+button:focus,
+summary:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(183, 110, 60, 0.35);
+  outline-offset: 3px;
+}
+
+/* Stabilise les grosses cartes animées */
+.app-card,
+.irve-card,
+.models-card,
+.qm-card,
+.contact-card,
+.pricing-card {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Stabilise les cartes cliquables */
+.model-card,
+.contact-link-card,
+.contact-option,
+.trade-card,
+.qm-related-link,
+.pricing-plan,
+.feature-card,
+.workflow-card,
+.qm-mini-card,
+.models-step,
+.contact-faq-card,
+.models-faq-card,
+.qm-faq-card {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Sur tablette/mobile : pas d’animation flottante, plus stable */
+@media (max-width: 860px) {
+  .app-card,
+  .irve-card,
+  .models-card,
+  .qm-card,
+  .contact-card,
+  .pricing-card {
+    animation: none !important;
+  }
+
+  .model-card:hover,
+  .contact-link-card:hover,
+  .contact-option:hover,
+  .trade-card:hover,
+  .qm-related-link:hover,
+  .pricing-plan:hover,
+  .feature-card:hover,
+  .workflow-card:hover,
+  .qm-mini-card:hover,
+  .models-step:hover,
+  .app-row:hover,
+  .qm-card-step:hover,
+  .models-app-row:hover,
+  .contact-app-row:hover {
+    transform: none !important;
+  }
+}
+
+/* Si l’utilisateur préfère moins d’animations */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

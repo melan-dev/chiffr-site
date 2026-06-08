@@ -1,0 +1,646 @@
+---
+import type { QuoteModelPage } from '../data/quoteModels';
+
+interface Props {
+  model: QuoteModelPage;
+}
+
+const { model } = Astro.props;
+
+const previewLines = model.lines.slice(0, 9);
+
+const totals = {
+  subtotal: '12 840,00 €',
+  vat: '1 284,00 €',
+  total: '14 124,00 €',
+  deposit: '4 237,20 €',
+  remaining: '9 886,80 €',
+};
+
+const today = new Date().toLocaleDateString('fr-FR', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+});
+---
+
+<section class="pdf-preview-section">
+  <div class="pdf-preview-head">
+    <div>
+      <p class="pdf-kicker">Exemple de devis complet</p>
+      <h2>Aperçu PDF fictif basé sur ce modèle</h2>
+      <p>
+        Voici un exemple palpable de devis client. Les montants, le SIRET, le client
+        et l’entreprise sont fictifs : l’artisan doit toujours adapter les prix,
+        la TVA, les quantités et les conditions selon son chantier.
+      </p>
+    </div>
+
+    <div class="pdf-actions">
+      <button type="button" class="pdf-action" data-print-preview>
+        Imprimer l’exemple
+      </button>
+      <a href="/contact" class="pdf-action primary">
+        Créer ce devis dans Chiffr
+      </a>
+    </div>
+  </div>
+
+  <div class="pdf-preview-wrap">
+    <article class="fake-pdf" aria-label={`Aperçu PDF ${model.h1}`}>
+      <header class="fake-pdf-header">
+        <div class="fake-company">
+          <div class="fake-logo">EM</div>
+
+          <div>
+            <strong>Énergie Martin</strong>
+            <span>Artisan chauffagiste PAC & CVC</span>
+            <span>12 rue des Artisans, 34000 Montpellier</span>
+            <span>06 00 00 00 00 · contact@energie-martin-exemple.fr</span>
+            <span>SIRET : 000 000 000 00000 · TVA : FR00 000000000</span>
+          </div>
+        </div>
+
+        <div class="fake-doc-title">
+          <span>Devis</span>
+          <strong>DEV-2026-0042</strong>
+          <small>Émis le {today}</small>
+          <small>Validité : 30 jours</small>
+        </div>
+      </header>
+
+      <section class="fake-parties">
+        <div>
+          <span class="fake-label">Client</span>
+          <strong>Mme Claire Dupont</strong>
+          <p>
+            8 avenue du Jardin<br />
+            34000 Montpellier<br />
+            claire.dupont@example.fr
+          </p>
+        </div>
+
+        <div>
+          <span class="fake-label">Chantier</span>
+          <strong>{model.useCase}</strong>
+          <p>
+            Maison individuelle<br />
+            Accès extérieur à vérifier<br />
+            Photos chantier jointes au dossier
+          </p>
+        </div>
+      </section>
+
+      <section class="fake-object">
+        <span class="fake-label">Objet</span>
+        <h3>{model.h1.replace('Modèle de devis ', '').replace(' : les lignes à prévoir pour un devis complet', '')}</h3>
+        <p>
+          Exemple fictif généré pour illustrer la structure d’un devis métier.
+          Les prix ci-dessous ne sont pas des prix de marché : ils servent uniquement
+          à montrer le rendu d’un devis complet.
+        </p>
+      </section>
+
+      <section class="fake-lines">
+        <table>
+          <thead>
+            <tr>
+              <th>Désignation</th>
+              <th>Qté</th>
+              <th>Unité</th>
+              <th>PU HT</th>
+              <th>TVA</th>
+              <th>Total HT</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {previewLines.map((line, index) => (
+              <tr>
+                <td>
+                  <strong>{line.label}</strong>
+                  <span>{line.note}</span>
+                </td>
+                <td>{line.quantity === 'À définir' ? '1' : line.quantity}</td>
+                <td>{line.unit}</td>
+                <td>{index % 3 === 0 ? 'Prix à compléter' : 'Exemple'}</td>
+                <td>À vérifier</td>
+                <td>{index % 3 === 0 ? '—' : 'Exemple'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      <section class="fake-bottom">
+        <div class="fake-conditions">
+          <h4>Conditions</h4>
+          <p>
+            TVA, prix, quantités, délais, garanties et conditions de paiement à vérifier
+            selon le chantier, le logement, la nature des travaux et la réglementation applicable.
+          </p>
+
+          <div class="fake-signature">
+            <span>Bon pour accord</span>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="fake-totals">
+          <div>
+            <span>Total HT exemple</span>
+            <strong>{totals.subtotal}</strong>
+          </div>
+          <div>
+            <span>TVA exemple</span>
+            <strong>{totals.vat}</strong>
+          </div>
+          <div class="grand">
+            <span>Total TTC exemple</span>
+            <strong>{totals.total}</strong>
+          </div>
+          <div class="deposit">
+            <span>Acompte exemple</span>
+            <strong>{totals.deposit}</strong>
+            <small>Reste à régler : {totals.remaining}</small>
+          </div>
+        </div>
+      </section>
+
+      <footer class="fake-footer">
+        <strong>Exemple fictif non contractuel.</strong>
+        Prix, TVA, SIRET, client, entreprise, quantités et conditions à adapter.
+        Chiffr propose la structure, l’artisan garde le contrôle.
+      </footer>
+    </article>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('[data-print-preview]').forEach((button) => {
+    button.addEventListener('click', () => window.print());
+  });
+</script>
+
+<style>
+  .pdf-preview-section,
+  .pdf-preview-section * {
+    box-sizing: border-box;
+  }
+
+  .pdf-preview-section {
+    margin-top: 34px;
+  }
+
+  .pdf-preview-head {
+    display: grid;
+    gap: 22px;
+    align-items: end;
+    margin-bottom: 24px;
+  }
+
+  .pdf-kicker {
+    display: inline-flex;
+    width: fit-content;
+    margin: 0;
+    color: var(--copper);
+    font-size: 15px;
+    font-weight: 900;
+  }
+
+  .pdf-preview-head h2 {
+    margin: 12px 0 0;
+    color: var(--teal);
+    font-size: clamp(32px, 3.4vw, 48px);
+    line-height: 1.06;
+    letter-spacing: -0.045em;
+    font-weight: 950;
+  }
+
+  .pdf-preview-head p {
+    margin: 14px 0 0;
+    max-width: 820px;
+    color: #536866;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .pdf-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pdf-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    border-radius: 999px;
+    border: 1px solid rgba(18, 63, 61, 0.14);
+    padding: 0 18px;
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--teal);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 950;
+    cursor: pointer;
+    transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  }
+
+  .pdf-action.primary {
+    border-color: var(--teal);
+    background: var(--teal);
+    color: white;
+    box-shadow: 0 18px 38px rgba(18, 63, 61, 0.16);
+  }
+
+  .pdf-action:hover {
+    transform: translateY(-2px);
+    background: white;
+    box-shadow: 0 16px 34px rgba(18, 63, 61, 0.08);
+  }
+
+  .pdf-action.primary:hover {
+    background: #0d302e;
+    box-shadow: 0 22px 46px rgba(18, 63, 61, 0.22);
+  }
+
+  .pdf-preview-wrap {
+    padding: clamp(14px, 3vw, 30px);
+    border-radius: 36px;
+    background:
+      radial-gradient(circle at 18% 0%, rgba(183, 110, 60, 0.13), transparent 36%),
+      linear-gradient(145deg, rgba(220, 236, 235, 0.52), rgba(255, 253, 249, 0.9));
+    border: 1px solid rgba(18, 63, 61, 0.1);
+    box-shadow: 0 28px 86px rgba(18, 63, 61, 0.12);
+    overflow-x: auto;
+  }
+
+  .fake-pdf {
+    width: min(100%, 880px);
+    min-width: 760px;
+    margin: 0 auto;
+    padding: 38px;
+    border-radius: 18px;
+    background: #fffdfc;
+    color: #1e2328;
+    box-shadow:
+      0 26px 70px rgba(18, 63, 61, 0.16),
+      inset 0 0 0 1px rgba(232, 222, 210, 0.9);
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+  }
+
+  .fake-pdf-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 26px;
+    padding-bottom: 18px;
+    border-bottom: 3px solid #0c4f57;
+  }
+
+  .fake-company {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .fake-logo {
+    width: 58px;
+    height: 58px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at 70% 0%, rgba(255, 255, 255, 0.14), transparent 36%),
+      linear-gradient(145deg, #123f3d, #0b302e);
+    color: white;
+    font-size: 19px;
+    font-weight: 950;
+    box-shadow: inset 0 -5px 0 rgba(201, 122, 82, 0.58);
+  }
+
+  .fake-company strong {
+    display: block;
+    color: #0c4f57;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 800;
+  }
+
+  .fake-company span {
+    display: block;
+    margin-top: 4px;
+    color: #6f6a64;
+    font-size: 12px;
+    line-height: 1.35;
+    font-weight: 650;
+  }
+
+  .fake-doc-title {
+    min-width: 180px;
+    text-align: right;
+  }
+
+  .fake-doc-title span {
+    display: block;
+    color: #0c4f57;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    line-height: 1;
+    font-weight: 800;
+  }
+
+  .fake-doc-title strong {
+    display: block;
+    margin-top: 7px;
+    color: #1e2328;
+    font-size: 15px;
+    font-weight: 900;
+  }
+
+  .fake-doc-title small {
+    display: block;
+    margin-top: 4px;
+    color: #6f6a64;
+    font-size: 12px;
+    font-weight: 650;
+  }
+
+  .fake-parties {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 22px;
+  }
+
+  .fake-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #c97a52;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  .fake-parties strong {
+    display: block;
+    color: #1e2328;
+    font-size: 14px;
+    font-weight: 900;
+  }
+
+  .fake-parties p,
+  .fake-object p,
+  .fake-conditions p {
+    margin: 6px 0 0;
+    color: #6f6a64;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 650;
+  }
+
+  .fake-object {
+    margin-top: 24px;
+    padding: 18px;
+    border-radius: 16px;
+    background: #f4efe8;
+  }
+
+  .fake-object h3 {
+    margin: 0;
+    color: #0c4f57;
+    font-size: 18px;
+    line-height: 1.15;
+    font-weight: 900;
+  }
+
+  .fake-lines {
+    margin-top: 22px;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid #e8ded2;
+  }
+
+  .fake-lines table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .fake-lines th {
+    padding: 10px 11px;
+    background: #0c4f57;
+    color: white;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .fake-lines th:not(:first-child),
+  .fake-lines td:not(:first-child) {
+    text-align: right;
+  }
+
+  .fake-lines td {
+    padding: 10px 11px;
+    border-bottom: 1px solid #e8ded2;
+    color: #1e2328;
+    font-size: 11px;
+    line-height: 1.35;
+    vertical-align: top;
+  }
+
+  .fake-lines tr:nth-child(even) td {
+    background: #f4efe8;
+  }
+
+  .fake-lines td strong {
+    display: block;
+    color: #1e2328;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .fake-lines td span {
+    display: block;
+    margin-top: 3px;
+    color: #6f6a64;
+    font-size: 10.5px;
+  }
+
+  .fake-lines td:nth-child(4),
+  .fake-lines td:nth-child(5),
+  .fake-lines td:nth-child(6) {
+    color: #a85f3b;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .fake-bottom {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 28px;
+    align-items: start;
+    margin-top: 22px;
+  }
+
+  .fake-conditions h4 {
+    margin: 0;
+    color: #0c4f57;
+    font-size: 15px;
+    font-weight: 900;
+  }
+
+  .fake-signature {
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid #e8ded2;
+    background: white;
+  }
+
+  .fake-signature span {
+    display: block;
+    color: #0c4f57;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .fake-signature div {
+    height: 54px;
+    margin-top: 12px;
+    border-radius: 10px;
+    background:
+      linear-gradient(90deg, rgba(12, 79, 87, 0.12), transparent),
+      #f7f3ee;
+  }
+
+  .fake-totals {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e8ded2;
+    background: white;
+  }
+
+  .fake-totals div {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 11px 13px;
+    border-bottom: 1px solid #e8ded2;
+  }
+
+  .fake-totals span {
+    color: #6f6a64;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .fake-totals strong {
+    color: #1e2328;
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .fake-totals .grand {
+    background: #0c4f57;
+  }
+
+  .fake-totals .grand span,
+  .fake-totals .grand strong {
+    color: white;
+  }
+
+  .fake-totals .deposit {
+    display: grid;
+    gap: 4px;
+    background: #f4efe8;
+    border-left: 4px solid #c97a52;
+  }
+
+  .fake-totals .deposit span {
+    color: #a85f3b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 10px;
+    font-weight: 900;
+  }
+
+  .fake-totals .deposit strong {
+    color: #0c4f57;
+    font-family: Georgia, serif;
+    font-size: 22px;
+  }
+
+  .fake-totals .deposit small {
+    color: #6f6a64;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .fake-footer {
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px solid #e8ded2;
+    color: #6f6a64;
+    font-size: 11px;
+    line-height: 1.45;
+    font-weight: 650;
+  }
+
+  .fake-footer strong {
+    color: #0c4f57;
+    font-weight: 900;
+  }
+
+  @media (min-width: 900px) {
+    .pdf-preview-head {
+      grid-template-columns: 1fr auto;
+    }
+
+    .pdf-actions {
+      justify-content: flex-end;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .fake-pdf {
+      min-width: 720px;
+      padding: 28px;
+    }
+  }
+
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+
+    .fake-pdf,
+    .fake-pdf * {
+      visibility: visible;
+    }
+
+    .fake-pdf {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+import { pageVisuals } from '../../data/visualAssets';
+
+interface Props {
+  title?: string;
+  text?: string;
+  variant?: keyof typeof pageVisuals;
+}
+
+const {
+  title = 'Un guide pensé pour le terrain',
+  text = 'Des conseils concrets pour mieux structurer vos devis, vos photos, vos relances et vos factures.',
+  variant = 'guides',
+} = Astro.props;
+
+const visual = pageVisuals[variant] ?? pageVisuals.guides;
+---
+
+<section class="guide-visual-block">
+  <img src={visual.src} alt={visual.alt} width="1600" height="900" loading="lazy" decoding="async" />
+
+  <div>
+    <p>Guide Chiffr</p>
+    <h2>{title}</h2>
+    <span>{text}</span>
+  </div>
+</section>
+
+<style>
+  .guide-visual-block {
+    display: grid;
+    gap: 0;
+    overflow: hidden;
+    border-radius: 34px;
+    border: 1px solid rgba(18, 63, 61, 0.1);
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: 0 24px 70px rgba(18, 63, 61, 0.1);
+  }
+
+  .guide-visual-block img {
+    width: 100%;
+    height: 100%;
+    min-height: 270px;
+    object-fit: cover;
+  }
+
+  .guide-visual-block div {
+    padding: clamp(22px, 4vw, 36px);
+  }
+
+  .guide-visual-block p {
+    margin: 0;
+    color: var(--copper);
+    font-size: 14px;
+    font-weight: 950;
+  }
+
+  .guide-visual-block h2 {
+    margin: 12px 0 0;
+    color: var(--teal);
+    font-size: clamp(28px, 3.4vw, 46px);
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+    font-weight: 950;
+  }
+
+  .guide-visual-block span {
+    display: block;
+    margin-top: 14px;
+    color: #536866;
+    font-size: 16px;
+    line-height: 1.62;
+    font-weight: 700;
+  }
+
+  @media (min-width: 860px) {
+    .guide-visual-block {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+</style>

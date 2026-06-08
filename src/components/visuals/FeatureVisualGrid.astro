@@ -1,0 +1,171 @@
+---
+import { featureVisuals } from '../../data/visualAssets';
+
+const items = [
+  {
+    title: 'Signature électronique',
+    text: 'Validation client, devis signé et suite du dossier clairement reliés.',
+    image: featureVisuals.signature,
+  },
+  {
+    title: 'Photos chantier',
+    text: 'Plaque machine, accès, tableau, ancien équipement et emplacement au bon endroit.',
+    image: featureVisuals.photosChantier,
+  },
+  {
+    title: 'Factures et acomptes',
+    text: 'Acompte, solde, paiement et reste à encaisser mieux suivis après validation.',
+    image: featureVisuals.acompte,
+  },
+  {
+    title: 'Catalogue et scan',
+    text: 'Références, matériel, scan EAN et lignes fréquentes réutilisables dans vos devis.',
+    image: featureVisuals.scanEan,
+  },
+  {
+    title: 'Relances client',
+    text: 'Les devis envoyés restent visibles, avec les bonnes actions à faire ensuite.',
+    image: featureVisuals.relance,
+  },
+  {
+    title: 'Tableau de bord',
+    text: 'Une vue simple pour savoir quoi signer, facturer, relancer ou encaisser.',
+    image: featureVisuals.dashboard,
+  },
+];
+---
+
+<div class="feature-visual-grid">
+  {items.map((item) => (
+    <article class="feature-visual-card">
+      <img
+        src={item.image.src}
+        alt={item.image.alt}
+        width="1400"
+        height="933"
+        loading="lazy"
+        decoding="async"
+      />
+
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+  .feature-visual-grid,
+  .feature-visual-grid * {
+    box-sizing: border-box;
+  }
+
+  .feature-visual-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .feature-visual-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    display: grid;
+    align-items: end;
+    border-radius: 30px;
+    isolation: isolate;
+    background: var(--teal);
+    border: 1px solid rgba(18, 63, 61, 0.1);
+    box-shadow:
+      0 22px 64px rgba(18, 63, 61, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .feature-visual-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 30px 78px rgba(18, 63, 61, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  }
+
+  .feature-visual-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(8, 29, 28, 0.04), rgba(8, 29, 28, 0.8)),
+      radial-gradient(circle at 88% 0%, rgba(183, 110, 60, 0.18), transparent 38%);
+  }
+
+  .feature-visual-card img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .feature-visual-card:hover img {
+    transform: scale(1.035);
+  }
+
+  .feature-visual-card div {
+    padding: 22px;
+  }
+
+  .feature-visual-card h3 {
+    margin: 0;
+    color: white;
+    font-size: 24px;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    font-weight: 950;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.28);
+  }
+
+  .feature-visual-card p {
+    margin: 9px 0 0;
+    max-width: 34ch;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 760;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
+  }
+
+  @media (min-width: 780px) {
+    .feature-visual-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1120px) {
+    .feature-visual-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .feature-visual-card {
+      min-height: 250px;
+      border-radius: 26px;
+    }
+
+    .feature-visual-card div {
+      padding: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .feature-visual-card,
+    .feature-visual-card img {
+      transition-duration: 0.001ms !important;
+    }
+  }
+</style>
