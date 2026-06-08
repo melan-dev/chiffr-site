@@ -2,139 +2,216 @@
 import TradeLanding from '../components/TradeLanding.astro';
 
 const page = {
-  title: 'Logiciel devis chauffagiste | Devis chauffage avec Chiffr',
-  description:
-    'Chiffr aide les chauffagistes à créer des devis chauffage clairs : chaudière, radiateurs, ballon, désembouage, photos chantier, signature, acompte et factures.',
-  canonicalPath: '/logiciel-devis-chauffagiste',
-  pill: 'Logiciel devis chauffagiste',
-  h1: 'Des devis chauffage plus clairs, plus rapides et mieux suivis',
-  lead:
-    'Chiffr aide les chauffagistes à préparer des devis propres : remplacement chaudière, radiateurs, ballon, désembouage, accessoires, photos chantier, PDF premium, signature, acompte, factures et relances.',
-  checks: ['Chaudière', 'Radiateurs', 'Désembouage', 'Acompte', 'Factures'],
-  appTitle: 'Chauffagiste',
-  appSubtitle: 'Modèle métier préparé',
-  appBadgeLabel: 'Base',
-  appBadgeValue: 'Chauffage',
-  appStripLabel: 'Chantier type',
-  appStripText: 'Remplacement chaudière → adaptation réseau → signature → acompte → facture',
-  appSteps: [
+  "title": "Logiciel devis chauffagiste | Devis chauffage Chiffr",
+  "description": "Logiciel de devis chauffagiste : chaudière, radiateurs, désembouage, ballon, photos chantier, signature, acompte et factures.",
+  "canonicalPath": "/logiciel-devis-chauffagiste",
+  "pill": "Logiciel devis chauffagiste",
+  "h1": "Le logiciel de devis pour chauffagistes qui veulent aller vite sans oublier l’essentiel",
+  "lead": "Chiffr aide les chauffagistes à préparer des devis chauffage plus structurés : remplacement chaudière, radiateurs, ballon, désembouage, raccordements, photos chantier, signature, acompte, factures et relances.",
+  "checks": [
+    "Chaudière",
+    "Radiateurs",
+    "Désembouage",
+    "Ballon",
+    "Factures"
+  ],
+  "appTitle": "Chauffagiste",
+  "appSubtitle": "Modèle métier préparé",
+  "appBadgeLabel": "Base",
+  "appBadgeValue": "Chauffage",
+  "appStripLabel": "Chantier type",
+  "appStripText": "Dépose → matériel chauffage → réseau → traitement → signature → acompte → facture",
+  "appSteps": [
     {
-      title: 'Équipement existant',
-      text: 'Chaudière, ballon, radiateurs, réseau et contraintes.',
-      status: 'relevé',
+      "title": "Équipement existant",
+      "text": "Chaudière, ballon, radiateurs, réseau, accès et état général.",
+      "status": "relevé"
     },
     {
-      title: 'Fourniture chauffage',
-      text: 'Chaudière, ballon, radiateurs, accessoires.',
-      status: 'à chiffrer',
+      "title": "Fourniture chauffage",
+      "text": "Chaudière, ballon, radiateurs, robinetterie, accessoires et options.",
+      "status": "à chiffrer"
     },
     {
-      title: 'Réseau et hydraulique',
-      text: 'Raccordements, vannes, pot à boues, désembouage.',
-      status: 'à vérifier',
+      "title": "Réseau et hydraulique",
+      "text": "Raccordements, vannes, pot à boues, désembouage, purge et traitement.",
+      "status": "à vérifier"
     },
     {
-      title: 'Signature et facture',
-      text: 'PDF premium, acompte, solde et relance.',
-      status: 'ensuite',
-    },
+      "title": "Suivi client",
+      "text": "PDF, signature, acompte, facture de solde et relance.",
+      "status": "ensuite"
+    }
   ],
-  appMini: [
-    { label: 'Photos', value: 'Ancienne chaudière' },
-    { label: 'Client', value: 'Signature' },
-    { label: 'Suivi', value: 'Factures' },
-  ],
-  problemTitle: 'Un devis chauffage trop rapide oublie souvent des postes importants.',
-  problemText:
-    'Un chantier chauffage peut inclure la dépose, la fourniture, les raccordements, l’adaptation du réseau, le désembouage, les accessoires, la mise en service, les photos et la facturation. Tout noter proprement prend du temps.',
-  solutionTitle: 'Chiffr prépare une base claire pour vos devis chauffagiste.',
-  solutionText:
-    'Vous partez d’une structure métier adaptée au chauffage, puis vous ajustez les lignes, quantités, prix et options selon le chantier. Chiffr garde le dossier propre jusqu’au règlement.',
-  quoteKicker: 'Lignes de devis chauffage',
-  quoteTitle: 'Les postes fréquents à prévoir dans un devis chauffagiste',
-  quoteIntro:
-    'Chaque chantier est différent, mais plusieurs postes reviennent souvent dans les devis chauffage, rénovation ou remplacement.',
-  quoteLines: [
-    { title: 'Dépose', text: 'Dépose chaudière, ballon, radiateurs ou ancien équipement.' },
-    { title: 'Fourniture', text: 'Chaudière, ballon ECS, radiateurs, robinetterie, accessoires.' },
-    { title: 'Pose', text: 'Installation, fixation, raccordements, adaptations et protections.' },
-    { title: 'Hydraulique', text: 'Vannes, circulateur, vase d’expansion, pot à boues, disconnecteur.' },
-    { title: 'Réseau', text: 'Désembouage, rinçage, traitement d’eau, équilibrage ou modification.' },
-    { title: 'Électricité', text: 'Raccordement, alimentation, protection, thermostat ou régulation.' },
-    { title: 'Mise en service', text: 'Essais, réglages, contrôle, explication client.' },
-    { title: 'Facturation', text: 'Acompte, facture d’acompte, facture de solde et suivi client.' },
-  ],
-  featuresKicker: 'Fonctions utiles pour chauffagistes',
-  featuresTitle: 'Du devis au règlement final',
-  featuresIntro:
-    'Chiffr regroupe les actions importantes pour que le dossier client reste clair.',
-  features: [
-    { title: 'Modèles chauffage', text: 'Des bases de devis pour chaudière, radiateurs, ballon et réseau.' },
-    { title: 'Lignes fréquentes', text: 'Dépose, fourniture, pose, hydraulique, désembouage, mise en service.' },
-    { title: 'Photos chantier', text: 'Ancien équipement, réseau, tableau, accès, plaque machine.' },
-    { title: 'PDF premium', text: 'Un devis lisible et sérieux pour rassurer le client.' },
-    { title: 'Signature', text: 'Validation client sur place ou à distance.' },
-    { title: 'Acompte', text: 'Demande d’acompte après acceptation.' },
-    { title: 'Factures', text: 'Acompte, solde et facture finale.' },
-    { title: 'Relances', text: 'Suivi des devis envoyés et actions à faire.' },
-  ],
-  usecaseTitle: 'Chiffr s’adapte aux devis chauffage les plus courants',
-  usecaseIntro:
-    'Chaudière, ballon, radiateurs ou rénovation réseau : l’objectif est de partir d’une bonne base, sans figer votre façon de travailler.',
-  useCases: [
-    { title: 'Remplacement chaudière', text: 'Dépose, fourniture, raccordements, évacuation et mise en service.' },
-    { title: 'Ballon ECS', text: 'Fourniture, pose, raccordements, sécurité, évacuation et essais.' },
-    { title: 'Radiateurs', text: 'Fourniture, pose, robinets, raccordements et équilibrage.' },
-    { title: 'Désembouage', text: 'Traitement réseau, rinçage, pot à boues, remise en service.' },
-  ],
-  photoTitle: 'Les photos utiles pour sécuriser un devis chauffage',
-  photoIntro:
-    'Les photos permettent de retrouver les contraintes du chantier au moment de chiffrer ou de facturer.',
-  photoItems: [
-    'Ancienne chaudière ou équipement existant',
-    'Ballon, radiateurs ou accessoires à remplacer',
-    'Réseau hydraulique et local technique',
-    'Tableau électrique, thermostat ou régulation',
-    'Accès chantier et contraintes de pose',
-    'Plaque machine, références et croquis terrain',
-  ],
-  internalTitle: 'Continuer vers les pages liées aux devis chauffage',
-  internalIntro:
-    'Cette page cible le métier chauffagiste. Elle peut ensuite envoyer vers PAC, clim, modèles de devis et comparatifs.',
-  internalLinks: [
-    { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
-    { label: 'Logiciel devis PAC air/eau', href: '/logiciel-devis-pac-air-eau' },
-    { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
-    { label: 'Modèles de devis', href: '/modeles-devis' },
-    { label: 'Alternative Obat', href: '/alternative-obat' },
-    { label: 'Contact Chiffr', href: '/contact' },
-  ],
-  ctaTitle: 'Vos devis chauffage méritent mieux qu’une page blanche.',
-  ctaText:
-    'Chiffr prépare une base métier claire et vous aide à suivre le dossier jusqu’à la signature, l’acompte et la facture finale.',
-  faqTitle: 'Logiciel devis chauffagiste : les questions courantes',
-  faqs: [
+  "appMini": [
     {
-      question: 'Chiffr est-il adapté aux chauffagistes ?',
-      answer:
-        'Oui. Chiffr est pensé pour les artisans énergie, dont les chauffagistes : devis chaudière, radiateurs, ballon, réseau, désembouage, acompte et factures.',
+      "label": "Photos",
+      "value": "Ancienne chaudière"
     },
     {
-      question: 'Peut-on créer un devis de remplacement chaudière ?',
-      answer:
-        'Oui. Chiffr aide à structurer le devis avec dépose, fourniture, raccordements, adaptations, mise en service et facturation.',
+      "label": "Client",
+      "value": "Signature"
     },
     {
-      question: 'Peut-on ajouter des photos chantier ?',
-      answer:
-        'Oui. Vous pouvez conserver des photos de l’ancien équipement, du réseau, du tableau électrique, de l’accès ou des plaques machines.',
-    },
-    {
-      question: 'Chiffr gère-t-il les factures d’acompte et de solde ?',
-      answer:
-        'Oui. Chiffr est conçu pour suivre le devis signé, l’acompte, la facture d’acompte, le solde et la facture finale.',
-    },
+      "label": "Suivi",
+      "value": "Factures"
+    }
   ],
+  "problemTitle": "Un devis chauffage doit expliquer beaucoup de postes techniques.",
+  "problemText": "Entre la dépose, les raccordements, la sécurité, le réseau, le désembouage, les radiateurs et la facturation, un devis chauffagiste peut vite devenir flou pour le client.",
+  "solutionTitle": "Chiffr donne une base claire au devis chauffagiste.",
+  "solutionText": "Chiffr prépare les lignes fréquentes, les actions de suivi et les éléments de dossier utiles. L’artisan ajuste les prestations, les prix et les quantités selon son chantier.",
+  "quoteKicker": "Lignes de devis chauffage",
+  "quoteTitle": "Les postes fréquents à prévoir dans un devis chauffagiste",
+  "quoteIntro": "Une structure claire permet d’expliquer le prix et d’éviter les oublis avant signature.",
+  "quoteLines": [
+    {
+      "title": "Dépose et évacuation",
+      "text": "Ancienne chaudière, ballon, radiateurs, accessoires, neutralisation et évacuation."
+    },
+    {
+      "title": "Fourniture chaudière ou générateur",
+      "text": "Chaudière, PAC, ballon, module, accessoires, régulation et options."
+    },
+    {
+      "title": "Raccordements hydrauliques",
+      "text": "Tuyauteries, vannes, purgeurs, circulateur, pot à boues et adaptation réseau."
+    },
+    {
+      "title": "Radiateurs et émetteurs",
+      "text": "Pose, remplacement, robinets thermostatiques, équilibrage et raccords."
+    },
+    {
+      "title": "Désembouage",
+      "text": "Rinçage, produit, protection du réseau, remise en service et contrôle."
+    },
+    {
+      "title": "Sécurité et conformité",
+      "text": "Évacuation, ventilation, alimentation, protections et vérifications nécessaires."
+    },
+    {
+      "title": "Mise en service",
+      "text": "Essais, réglages, purge, explications client et dossier final."
+    },
+    {
+      "title": "Acompte et factures",
+      "text": "Acompte, facture d’acompte, solde, finale, relance et suivi du reste à encaisser."
+    }
+  ],
+  "featuresKicker": "Fonctions utiles",
+  "featuresTitle": "Devis, photos, signature et factures dans le même dossier",
+  "featuresIntro": "Chiffr relie les étapes commerciales et administratives autour du client.",
+  "features": [
+    {
+      "title": "Modèles chauffage",
+      "text": "Bases pour remplacement chaudière, radiateurs, ballon, désembouage ou intervention."
+    },
+    {
+      "title": "Catalogue adapté",
+      "text": "Ajoutez vos fournitures, forfaits, accessoires et prestations récurrentes."
+    },
+    {
+      "title": "Photos chantier",
+      "text": "Ancienne chaudière, réseau, accès, plaque machine ou tableau."
+    },
+    {
+      "title": "Signature",
+      "text": "Validation client plus simple, sur place ou à distance selon votre organisation."
+    },
+    {
+      "title": "Acompte",
+      "text": "Demandez un acompte et gardez une trace dans le dossier."
+    },
+    {
+      "title": "Factures",
+      "text": "Acompte, solde, finale et relance restent liés au devis initial."
+    }
+  ],
+  "usecaseTitle": "Cas fréquents chauffagiste",
+  "usecaseIntro": "Chiffr aide à garder un devis lisible même quand le chantier mélange plusieurs postes.",
+  "useCases": [
+    {
+      "title": "Remplacement chaudière",
+      "text": "Dépose, fourniture, raccordements, sécurité, mise en service et facture."
+    },
+    {
+      "title": "Radiateurs et réseau",
+      "text": "Ajout ou remplacement, vannes, équilibrage, purge et finitions."
+    },
+    {
+      "title": "Désembouage",
+      "text": "Diagnostic, traitement, rinçage, remise en eau et contrôle."
+    },
+    {
+      "title": "Ballon ou eau chaude",
+      "text": "Fourniture, raccordements, sécurité, évacuation et mise en service."
+    }
+  ],
+  "photoTitle": "Des photos pour clarifier l’état du chauffage existant",
+  "photoIntro": "Les photos rendent visible le réseau, la chaudière, l’accès et les contraintes qui justifient le devis.",
+  "photoItems": [
+    "Ancienne chaudière",
+    "Réseau et raccordements",
+    "Radiateurs ou ballon",
+    "Accès, sécurité et plaque machine"
+  ],
+  "internalTitle": "Pages utiles pour les chauffagistes",
+  "internalIntro": "Continuez avec les modèles chauffage, PAC et les pages de comparaison logiciel.",
+  "internalLinks": [
+    {
+      "label": "Modèle devis désembouage chauffage",
+      "href": "/modele-devis-desembouage-chauffage"
+    },
+    {
+      "label": "Modèle devis plomberie chauffage",
+      "href": "/modele-devis-desembouage-chauffage"
+    },
+    {
+      "label": "Logiciel devis pompe à chaleur",
+      "href": "/logiciel-devis-pompe-a-chaleur"
+    },
+    {
+      "label": "Facture acompte artisan énergie",
+      "href": "/logiciel-devis-avec-facture-acompte"
+    },
+    {
+      "label": "Voir les tarifs Chiffr",
+      "href": "/tarifs"
+    },
+    {
+      "label": "Comparer les alternatives logiciels devis",
+      "href": "/alternatives-logiciels-devis-batiment"
+    },
+    {
+      "label": "Explorer les modèles de devis",
+      "href": "/modeles-devis"
+    },
+    {
+      "label": "Demander un accès",
+      "href": "/contact"
+    }
+  ],
+  "ctaTitle": "Structurer vos devis chauffage avec Chiffr",
+  "ctaText": "Demandez un accès pour découvrir une façon plus simple de préparer devis, photos, signature, acompte et factures.",
+  "faqTitle": "Logiciel devis chauffagiste : questions fréquentes",
+  "faqs": [
+    {
+      "question": "Chiffr convient-il aux chauffagistes ?",
+      "answer": "Oui. Chiffr est pensé pour les artisans énergie, dont les chauffagistes qui gèrent devis, photos, signature, acompte et factures."
+    },
+    {
+      "question": "Peut-on préparer un devis de remplacement chaudière ?",
+      "answer": "Oui. La structure peut inclure dépose, fourniture, raccordements, sécurité, mise en service et suivi client."
+    },
+    {
+      "question": "Peut-on ajouter un désembouage ?",
+      "answer": "Oui. L’artisan peut ajouter ou adapter les lignes liées au traitement et à la protection du réseau."
+    },
+    {
+      "question": "Chiffr gère-t-il les factures ?",
+      "answer": "Oui. Chiffr prévoit les factures d’acompte, de solde ou finales selon le suivi du dossier."
+    }
+  ]
 };
 ---
 

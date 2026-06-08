@@ -2,123 +2,216 @@
 import TradeLanding from '../components/TradeLanding.astro';
 
 const page = {
-  title: 'Logiciel devis photovoltaïque | Devis solaire avec Chiffr',
-  description:
-    'Chiffr aide les installateurs photovoltaïques à créer des devis solaires clairs : panneaux, onduleur, coffret, batterie, photos chantier et factures.',
-  canonicalPath: '/logiciel-devis-photovoltaique',
-  pill: 'Logiciel devis photovoltaïque',
-  h1: 'Des devis photovoltaïques plus clairs, plus rapides et mieux suivis',
-  lead:
-    'Chiffr aide les installateurs solaires à préparer des devis propres : panneaux photovoltaïques, onduleur, micro-onduleurs, coffrets, batterie, raccordement, photos chantier, PDF premium, signature, acompte et factures.',
-  checks: ['Panneaux', 'Onduleur', 'Coffrets', 'Batterie', 'Factures'],
-  appTitle: 'Photovoltaïque',
-  appSubtitle: 'Modèle métier préparé',
-  appBadgeLabel: 'Base',
-  appBadgeValue: 'Solaire',
-  appStripLabel: 'Chantier type',
-  appStripText: 'Relevé toiture → panneaux → onduleur → coffrets → raccordement → facture',
-  appSteps: [
-    { title: 'Relevé toiture', text: 'Surface, orientation, accès, contraintes et photos.', status: 'relevé' },
-    { title: 'Matériel solaire', text: 'Panneaux, onduleur, micro-onduleurs, batterie.', status: 'à chiffrer' },
-    { title: 'Électricité', text: 'Coffrets, protections, câbles et raccordements.', status: 'à vérifier' },
-    { title: 'Dossier client', text: 'PDF, signature, acompte, solde et relance.', status: 'ensuite' },
+  "title": "Logiciel devis photovoltaïque | Devis solaire Chiffr",
+  "description": "Logiciel devis photovoltaïque : panneaux solaires, onduleur, coffrets, batterie, photos chantier, signature, acompte et factures.",
+  "canonicalPath": "/logiciel-devis-photovoltaique",
+  "pill": "Logiciel devis photovoltaïque",
+  "h1": "Le logiciel de devis photovoltaïque pour structurer vos installations solaires",
+  "lead": "Chiffr aide les installateurs photovoltaïques à préparer des devis solaires plus clairs : panneaux, onduleur, micro-onduleurs, coffrets, batterie, raccordement, photos chantier, signature, acompte et factures.",
+  "checks": [
+    "Panneaux",
+    "Onduleur",
+    "Coffrets",
+    "Batterie",
+    "Factures"
   ],
-  appMini: [
-    { label: 'Photos', value: 'Toiture' },
-    { label: 'Client', value: 'Signature' },
-    { label: 'Suivi', value: 'Factures' },
-  ],
-  problemTitle: 'Un devis photovoltaïque doit rester clair malgré beaucoup de postes.',
-  problemText:
-    'Un chantier solaire peut mélanger panneaux, fixation, onduleur, micro-onduleurs, coffrets, câbles, batterie, raccordement, options et démarches. Un devis flou peut vite faire perdre la confiance du client.',
-  solutionTitle: 'Chiffr prépare une base propre pour vos devis solaires.',
-  solutionText:
-    'Chiffr aide à structurer le devis photovoltaïque, rattacher les photos du chantier, produire un PDF sérieux, faire signer, suivre l’acompte et facturer.',
-  quoteKicker: 'Lignes de devis photovoltaïque',
-  quoteTitle: 'Les postes fréquents à prévoir dans un devis solaire',
-  quoteIntro:
-    'Un devis photovoltaïque clair doit détailler les éléments techniques sans devenir illisible.',
-  quoteLines: [
-    { title: 'Relevé', text: 'Toiture, exposition, accès, tableau électrique, contraintes.' },
-    { title: 'Panneaux', text: 'Modules photovoltaïques, puissance, quantité, fixation.' },
-    { title: 'Onduleur', text: 'Onduleur central, micro-onduleurs, optimiseurs ou accessoires.' },
-    { title: 'Coffrets', text: 'Coffret AC, coffret DC, protections, sectionnement.' },
-    { title: 'Câblage', text: 'Câbles, chemins, gaines, raccordements et passages.' },
-    { title: 'Batterie', text: 'Stockage, coffret, accessoires, raccordements si prévu.' },
-    { title: 'Mise en service', text: 'Contrôles, essais, paramétrage, explication client.' },
-    { title: 'Facturation', text: 'Acompte, facture d’acompte, solde et facture finale.' },
-  ],
-  featuresKicker: 'Fonctions utiles pour installateurs solaires',
-  featuresTitle: 'Du relevé toiture au règlement final',
-  featuresIntro:
-    'Chiffr aide à garder un dossier clair sur des projets souvent complexes et engageants.',
-  features: [
-    { title: 'Modèles solaire', text: 'Bases de devis pour panneaux, onduleur, coffrets et batterie.' },
-    { title: 'Photos chantier', text: 'Toiture, tableau, coffrets, accès, contraintes et croquis.' },
-    { title: 'Lignes fréquentes', text: 'Modules, fixations, onduleur, câbles, coffrets, mise en service.' },
-    { title: 'PDF premium', text: 'Un devis sérieux pour un investissement important.' },
-    { title: 'Signature', text: 'Validation client simple et traçable.' },
-    { title: 'Acompte', text: 'Demande d’acompte après signature.' },
-    { title: 'Factures', text: 'Acompte, solde et facture finale.' },
-    { title: 'Relances', text: 'Suivi des devis solaires envoyés.' },
-  ],
-  usecaseTitle: 'Chiffr s’adapte aux devis photovoltaïques courants',
-  usecaseIntro:
-    'Autoconsommation, batterie, micro-onduleurs ou installation simple : chaque dossier peut partir d’une base claire.',
-  useCases: [
-    { title: 'Autoconsommation', text: 'Panneaux, onduleur, coffrets, raccordement et mise en service.' },
-    { title: 'Micro-onduleurs', text: 'Modules, micro-onduleurs, câblage, protections et suivi.' },
-    { title: 'Avec batterie', text: 'Stockage, raccordement, coffret, paramétrage et options.' },
-    { title: 'Rénovation / extension', text: 'Adaptation existant, ajout panneaux, coffrets et suivi client.' },
-  ],
-  photoTitle: 'Les photos utiles pour sécuriser un devis photovoltaïque',
-  photoIntro:
-    'Les photos permettent de conserver les contraintes toiture, tableau et raccordement.',
-  photoItems: [
-    'Toiture, orientation, pente et surface disponible',
-    'Accès toiture et contraintes de sécurité',
-    'Tableau électrique existant',
-    'Emplacement coffrets et onduleur',
-    'Cheminement des câbles',
-    'Local technique, batterie, croquis ou remarques terrain',
-  ],
-  internalTitle: 'Continuer vers les pages liées aux devis solaires',
-  internalIntro:
-    'Cette page cible le photovoltaïque. Elle peut ensuite envoyer vers IRVE, modèles de devis, blog solaire et comparatifs.',
-  internalLinks: [
-    { label: 'Logiciel devis borne IRVE', href: '/logiciel-devis-borne-recharge-irve' },
-    { label: 'Modèles de devis', href: '/modeles-devis' },
-    { label: 'Alternative Obat', href: '/alternative-obat' },
-    { label: 'Accueil Chiffr', href: '/' },
-    { label: 'Contact Chiffr', href: '/contact' },
-    { label: 'Logiciel devis chauffagiste', href: '/logiciel-devis-chauffagiste' },
-  ],
-  ctaTitle: 'Vos devis photovoltaïques doivent inspirer confiance.',
-  ctaText:
-    'Chiffr prépare une base claire, vous gardez la main, et le dossier reste propre jusqu’à la signature, l’acompte et la facture finale.',
-  faqTitle: 'Logiciel devis photovoltaïque : les questions courantes',
-  faqs: [
+  "appTitle": "Photovoltaïque",
+  "appSubtitle": "Modèle métier préparé",
+  "appBadgeLabel": "Base",
+  "appBadgeValue": "Solaire",
+  "appStripLabel": "Chantier type",
+  "appStripText": "Relevé toiture → panneaux → onduleur → coffrets → raccordement → facture",
+  "appSteps": [
     {
-      question: 'Chiffr est-il adapté aux devis photovoltaïques ?',
-      answer:
-        'Oui. Chiffr peut aider à structurer les devis solaires avec panneaux, onduleur, coffrets, câblage, batterie, mise en service, photos et factures.',
+      "title": "Relevé toiture",
+      "text": "Surface, orientation, accès, contraintes, photos et besoin client.",
+      "status": "relevé"
     },
     {
-      question: 'Peut-on ajouter des photos de toiture ?',
-      answer:
-        'Oui. Les photos toiture, tableau électrique, accès, coffrets, onduleur et cheminement peuvent être rattachées au dossier.',
+      "title": "Matériel solaire",
+      "text": "Panneaux, onduleur, micro-onduleurs, batterie, fixations.",
+      "status": "à chiffrer"
     },
     {
-      question: 'Chiffr peut-il gérer acompte et solde ?',
-      answer:
-        'Oui. Chiffr est conçu pour suivre devis signé, acompte, facture d’acompte, solde et facture finale.',
+      "title": "Électricité",
+      "text": "Coffrets, protections, câbles, raccordements et options.",
+      "status": "à vérifier"
     },
     {
-      question: 'Chiffr remplace-t-il l’étude technique solaire ?',
-      answer:
-        'Non. Chiffr aide à structurer le devis et le dossier client. L’artisan garde la main sur l’étude, les choix techniques et les prix.',
-    },
+      "title": "Dossier client",
+      "text": "PDF, signature, acompte, solde, facture et relance.",
+      "status": "ensuite"
+    }
   ],
+  "appMini": [
+    {
+      "label": "Photos",
+      "value": "Toiture"
+    },
+    {
+      "label": "Client",
+      "value": "Signature"
+    },
+    {
+      "label": "Suivi",
+      "value": "Factures"
+    }
+  ],
+  "problemTitle": "Un devis photovoltaïque doit rester lisible malgré beaucoup de postes.",
+  "problemText": "Panneaux, fixation, onduleur, micro-onduleurs, coffrets, câbles, batterie, raccordement et options peuvent vite rendre le devis difficile à lire.",
+  "solutionTitle": "Chiffr aide à présenter le solaire avec une structure claire.",
+  "solutionText": "Chiffr prépare les postes fréquents et relie photos, signature, acompte et factures au même dossier client. L’installateur garde la main sur le dimensionnement et les prix.",
+  "quoteKicker": "Lignes de devis solaire",
+  "quoteTitle": "Les postes fréquents d’un devis photovoltaïque",
+  "quoteIntro": "Un devis solaire doit expliquer le matériel, la pose, les protections électriques et le suivi.",
+  "quoteLines": [
+    {
+      "title": "Relevé et étude",
+      "text": "Toiture, orientation, surface, accès, photos et besoin client."
+    },
+    {
+      "title": "Panneaux photovoltaïques",
+      "text": "Modules, puissance, quantité, garantie, options et accessoires."
+    },
+    {
+      "title": "Système de fixation",
+      "text": "Rails, crochets, lestage, toiture, étanchéité et contraintes."
+    },
+    {
+      "title": "Onduleur ou micro-onduleurs",
+      "text": "Onduleur central, micro-onduleurs, passerelle, monitoring et accessoires."
+    },
+    {
+      "title": "Coffrets et protections",
+      "text": "Coffret AC/DC, disjoncteur, parafoudre, câbles et raccordements."
+    },
+    {
+      "title": "Batterie ou option",
+      "text": "Stockage, monitoring, optimisation ou équipement complémentaire."
+    },
+    {
+      "title": "Pose et mise en service",
+      "text": "Installation, essais, paramétrage, explication client et photos finales."
+    },
+    {
+      "title": "Acompte et factures",
+      "text": "Acompte, solde, facture finale et suivi des paiements."
+    }
+  ],
+  "featuresKicker": "Fonctions utiles",
+  "featuresTitle": "Un logiciel devis solaire qui garde le dossier client clair",
+  "featuresIntro": "Chiffr aide à relier technique, photos, PDF et suivi de facturation.",
+  "features": [
+    {
+      "title": "Modèles solaires",
+      "text": "Bases pour autoconsommation, panneaux, batterie, coffrets ou options."
+    },
+    {
+      "title": "Photos toiture",
+      "text": "Gardez les accès, toiture, tableau, coffrets et contraintes visibles."
+    },
+    {
+      "title": "Catalogue",
+      "text": "Réutilisez vos panneaux, onduleurs, coffrets, accessoires et prestations."
+    },
+    {
+      "title": "PDF premium",
+      "text": "Présentez un devis clair pour un chantier à forte valeur."
+    },
+    {
+      "title": "Signature",
+      "text": "Validation client avant commande ou planification."
+    },
+    {
+      "title": "Facturation",
+      "text": "Acompte, solde, facture finale et relances intégrées."
+    }
+  ],
+  "usecaseTitle": "Cas fréquents photovoltaïque",
+  "usecaseIntro": "Chiffr s’adapte aux installations solaires simples ou plus complètes.",
+  "useCases": [
+    {
+      "title": "Autoconsommation",
+      "text": "Panneaux, onduleur, coffrets, pose, raccordement et suivi."
+    },
+    {
+      "title": "Micro-onduleurs",
+      "text": "Modules, micro-onduleurs, passerelle, câblage et monitoring."
+    },
+    {
+      "title": "Batterie",
+      "text": "Stockage, raccordement, paramétrage et explication client."
+    },
+    {
+      "title": "Reprise ou extension",
+      "text": "Ajout de panneaux, remplacement équipement, photos et facture."
+    }
+  ],
+  "photoTitle": "Des photos pour sécuriser le devis solaire",
+  "photoIntro": "Les photos de toiture, accès, tableau et coffrets rendent le dossier plus clair.",
+  "photoItems": [
+    "Toiture et accès",
+    "Tableau électrique",
+    "Emplacement onduleur",
+    "Coffrets et finitions"
+  ],
+  "internalTitle": "Pages utiles pour les installateurs solaires",
+  "internalIntro": "Continuez avec les modèles photovoltaïques, tarifs et pages de devis énergie.",
+  "internalLinks": [
+    {
+      "label": "Modèle devis photovoltaïque autoconsommation",
+      "href": "/modele-devis-photovoltaique-autoconsommation"
+    },
+    {
+      "label": "Modèle devis panneaux solaires",
+      "href": "/modele-devis-photovoltaique-autoconsommation"
+    },
+    {
+      "label": "Logiciel devis IRVE",
+      "href": "/logiciel-devis-irve"
+    },
+    {
+      "label": "Logiciel devis avec facture acompte",
+      "href": "/logiciel-devis-avec-facture-acompte"
+    },
+    {
+      "label": "Voir les tarifs Chiffr",
+      "href": "/tarifs"
+    },
+    {
+      "label": "Comparer les alternatives logiciels devis",
+      "href": "/alternatives-logiciels-devis-batiment"
+    },
+    {
+      "label": "Explorer les modèles de devis",
+      "href": "/modeles-devis"
+    },
+    {
+      "label": "Demander un accès",
+      "href": "/contact"
+    }
+  ],
+  "ctaTitle": "Présenter vos devis photovoltaïques avec plus de clarté",
+  "ctaText": "Demandez un accès à Chiffr pour structurer vos devis solaires avec photos, signature, acompte et factures.",
+  "faqTitle": "Logiciel devis photovoltaïque : questions fréquentes",
+  "faqs": [
+    {
+      "question": "Chiffr convient-il aux installateurs photovoltaïques ?",
+      "answer": "Oui. Chiffr aide à structurer les devis solaires avec matériel, pose, protections, photos et facturation."
+    },
+    {
+      "question": "Peut-on chiffrer panneaux, onduleur et coffrets ?",
+      "answer": "Oui. Les lignes peuvent être adaptées au matériel, aux quantités, aux options et à vos prix."
+    },
+    {
+      "question": "Peut-on joindre des photos de toiture ?",
+      "answer": "Oui. Les photos peuvent documenter l’accès, la toiture, le tableau, les coffrets et les contraintes."
+    },
+    {
+      "question": "Chiffr gère-t-il l’acompte ?",
+      "answer": "Oui. Le suivi peut inclure demande d’acompte, facture d’acompte, solde et facture finale."
+    }
+  ]
 };
 ---
 

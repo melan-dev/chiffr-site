@@ -2,123 +2,216 @@
 import TradeLanding from '../components/TradeLanding.astro';
 
 const page = {
-  title: 'Logiciel devis frigoriste CVC | Chiffr',
-  description:
-    'Chiffr aide les frigoristes et artisans CVC à créer des devis clairs : froid, climatisation, ventilation, dépannage, photos, signature et factures.',
-  canonicalPath: '/logiciel-devis-frigoriste-cvc',
-  pill: 'Logiciel devis frigoriste / CVC',
-  h1: 'Des devis CVC plus structurés pour le froid, la clim et la ventilation',
-  lead:
-    'Chiffr aide les frigoristes et artisans CVC à préparer des devis clairs : intervention, maintenance, froid, climatisation, ventilation, photos chantier, PDF premium, signature, acompte, factures et relances.',
-  checks: ['Froid', 'Clim', 'Ventilation', 'Maintenance', 'Factures'],
-  appTitle: 'Frigoriste / CVC',
-  appSubtitle: 'Modèle métier préparé',
-  appBadgeLabel: 'Base',
-  appBadgeValue: 'CVC',
-  appStripLabel: 'Chantier type',
-  appStripText: 'Diagnostic → intervention CVC → photos → devis → signature → facture',
-  appSteps: [
-    { title: 'Diagnostic terrain', text: 'Équipement, panne, accès, contraintes, photos.', status: 'relevé' },
-    { title: 'Prestation CVC', text: 'Dépannage, remplacement, maintenance ou installation.', status: 'à chiffrer' },
-    { title: 'Fournitures', text: 'Pièces, accessoires, consommables, fluide ou options.', status: 'à vérifier' },
-    { title: 'Suivi client', text: 'PDF, signature, facture, relance et historique.', status: 'ensuite' },
+  "title": "Logiciel devis frigoriste CVC | Froid clim ventilation Chiffr",
+  "description": "Logiciel devis frigoriste CVC : froid, clim, ventilation, dépannage, maintenance, photos chantier, signature, acompte et factures.",
+  "canonicalPath": "/logiciel-devis-frigoriste-cvc",
+  "pill": "Logiciel devis frigoriste / CVC",
+  "h1": "Le logiciel de devis pour frigoristes et artisans CVC",
+  "lead": "Chiffr aide les frigoristes et professionnels CVC à structurer les devis de froid, climatisation, ventilation, maintenance ou dépannage avec photos, PDF premium, signature, acompte, factures et relances.",
+  "checks": [
+    "Froid",
+    "Clim",
+    "Ventilation",
+    "Maintenance",
+    "Factures"
   ],
-  appMini: [
-    { label: 'Photos', value: 'Équipement' },
-    { label: 'Client', value: 'Validation' },
-    { label: 'Suivi', value: 'Historique' },
-  ],
-  problemTitle: 'Les devis CVC mélangent souvent technique, intervention et suivi.',
-  problemText:
-    'Un frigoriste ou artisan CVC doit souvent gérer diagnostic, dépannage, fournitures, maintenance, photos, rapport client, devis, facture et relance. Sans structure claire, le dossier devient vite dispersé.',
-  solutionTitle: 'Chiffr centralise le devis, les photos et la suite client.',
-  solutionText:
-    'Chiffr prépare une base adaptée aux métiers CVC, avec des lignes claires et les actions suivantes : envoyer, faire signer, facturer ou relancer.',
-  quoteKicker: 'Lignes de devis CVC',
-  quoteTitle: 'Les postes fréquents à prévoir dans un devis frigoriste / CVC',
-  quoteIntro:
-    'Installation, dépannage ou maintenance : Chiffr aide à garder une structure propre, sans transformer le devis en bloc illisible.',
-  quoteLines: [
-    { title: 'Diagnostic', text: 'Recherche panne, contrôle, relevés, constat et photos.' },
-    { title: 'Main-d’œuvre', text: 'Intervention, déplacement, temps technicien, urgence ou maintenance.' },
-    { title: 'Fournitures', text: 'Pièces, composants, accessoires, consommables et protections.' },
-    { title: 'Froid', text: 'Groupe froid, évaporateur, condenseur, détendeur, raccordements.' },
-    { title: 'Climatisation', text: 'Unités, liaisons, supports, condensats, mise en service.' },
-    { title: 'Ventilation', text: 'Gaines, bouches, caisson, équilibrage, nettoyage.' },
-    { title: 'Essais', text: 'Contrôles, réglages, tests, remise en route, explications.' },
-    { title: 'Facturation', text: 'Acompte, facture, solde, suivi client et relances.' },
-  ],
-  featuresKicker: 'Fonctions utiles pour frigoristes et CVC',
-  featuresTitle: 'Un dossier clair, même quand l’intervention est technique',
-  featuresIntro:
-    'Chiffr aide à relier devis, photos, signature, facturation et suivi client.',
-  features: [
-    { title: 'Modèles CVC', text: 'Bases de devis pour froid, clim, ventilation et maintenance.' },
-    { title: 'Photos chantier', text: 'Équipement, plaque machine, accès, armoire, réseau.' },
-    { title: 'Catalogue adapté', text: 'Prestations, pièces, consommables et lignes fréquentes.' },
-    { title: 'PDF premium', text: 'Un devis clair pour intervention technique.' },
-    { title: 'Signature', text: 'Validation client sur place ou à distance.' },
-    { title: 'Acompte', text: 'Demande d’acompte ou paiement selon le dossier.' },
-    { title: 'Factures', text: 'Facture d’intervention, acompte, solde ou finale.' },
-    { title: 'Relances', text: 'Suivi des devis CVC envoyés et actions à faire.' },
-  ],
-  usecaseTitle: 'Chiffr s’adapte aux cas fréquents des frigoristes et CVC',
-  usecaseIntro:
-    'Le but est de garder un devis clair, que le chantier soit une installation, une maintenance ou un dépannage.',
-  useCases: [
-    { title: 'Dépannage froid', text: 'Diagnostic, main-d’œuvre, pièces, essais et facture.' },
-    { title: 'Maintenance CVC', text: 'Contrôle, nettoyage, relevés, photos et suivi client.' },
-    { title: 'Installation clim/CVC', text: 'Fourniture, pose, raccordements, condensats et mise en service.' },
-    { title: 'Ventilation', text: 'Caisson, gaines, bouches, équilibrage et accessoires.' },
-  ],
-  photoTitle: 'Les photos utiles pour sécuriser un devis CVC',
-  photoIntro:
-    'Sur un dossier technique, les photos permettent de comprendre rapidement l’équipement et les contraintes.',
-  photoItems: [
-    'Plaque machine et références',
-    'Équipement froid, clim ou ventilation',
-    'Armoire électrique ou protections',
-    'Accès chantier et contraintes d’intervention',
-    'Réseau, gaines, liaisons ou composants',
-    'Photos avant/après intervention',
-  ],
-  internalTitle: 'Continuer vers les pages liées aux devis CVC',
-  internalIntro:
-    'Cette page cible les frigoristes et CVC. Elle peut envoyer vers climatisation, VMC, PAC, modèles et comparatifs.',
-  internalLinks: [
-    { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
-    { label: 'Logiciel devis VMC', href: '/logiciel-devis-vmc' },
-    { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
-    { label: 'Modèles de devis', href: '/modeles-devis' },
-    { label: 'Alternative Obat', href: '/alternative-obat' },
-    { label: 'Contact Chiffr', href: '/contact' },
-  ],
-  ctaTitle: 'Vos devis CVC doivent rester clairs, même quand le chantier est technique.',
-  ctaText:
-    'Chiffr aide à structurer vos devis, rattacher les photos et garder la suite client propre.',
-  faqTitle: 'Logiciel devis frigoriste / CVC : les questions courantes',
-  faqs: [
+  "appTitle": "Frigoriste / CVC",
+  "appSubtitle": "Modèle métier préparé",
+  "appBadgeLabel": "Base",
+  "appBadgeValue": "CVC",
+  "appStripLabel": "Chantier type",
+  "appStripText": "Diagnostic → intervention CVC → fournitures → photos → devis → signature → facture",
+  "appSteps": [
     {
-      question: 'Chiffr est-il adapté aux frigoristes ?',
-      answer:
-        'Oui. Chiffr est pensé pour les artisans énergie et CVC : froid, climatisation, ventilation, intervention, photos, devis, factures et suivi client.',
+      "title": "Diagnostic terrain",
+      "text": "Équipement, panne, accès, plaques, photos et contraintes.",
+      "status": "relevé"
     },
     {
-      question: 'Peut-on suivre les photos d’un équipement CVC ?',
-      answer:
-        'Oui. Vous pouvez rattacher des photos d’équipement, plaque machine, armoire électrique, accès et contraintes au dossier client.',
+      "title": "Intervention",
+      "text": "Dépannage, remplacement, maintenance, installation ou adaptation.",
+      "status": "à chiffrer"
     },
     {
-      question: 'Chiffr peut-il servir pour la maintenance ?',
-      answer:
-        'Oui. Chiffr peut structurer les devis et dossiers liés à la maintenance, aux interventions et au suivi client.',
+      "title": "Fournitures",
+      "text": "Pièces, accessoires, consommables, supports, options et prestations.",
+      "status": "à vérifier"
     },
     {
-      question: 'Chiffr gère-t-il la facturation ?',
-      answer:
-        'Oui. Chiffr est conçu pour gérer facture d’acompte, facture de solde, facture finale et suivi du règlement.',
-    },
+      "title": "Suivi",
+      "text": "PDF, signature, acompte, facture, relance et historique client.",
+      "status": "ensuite"
+    }
   ],
+  "appMini": [
+    {
+      "label": "Photos",
+      "value": "Équipement"
+    },
+    {
+      "label": "Client",
+      "value": "Validation"
+    },
+    {
+      "label": "Suivi",
+      "value": "Historique"
+    }
+  ],
+  "problemTitle": "Les devis CVC mélangent souvent diagnostic, technique et administratif.",
+  "problemText": "Un frigoriste peut devoir gérer une panne, des pièces, une maintenance, des photos, un devis, une facture et une relance. Sans structure, le dossier devient vite dispersé.",
+  "solutionTitle": "Chiffr centralise le devis CVC et les actions utiles.",
+  "solutionText": "Chiffr aide à passer du diagnostic terrain au devis clair, puis au suivi client. Les postes techniques restent adaptés par l’artisan, sans jargon inutile pour le client.",
+  "quoteKicker": "Lignes de devis CVC",
+  "quoteTitle": "Les postes fréquents d’un devis frigoriste ou CVC",
+  "quoteIntro": "Le devis doit expliquer la prestation, les fournitures et le suivi sans perdre le client dans la technique.",
+  "quoteLines": [
+    {
+      "title": "Diagnostic ou déplacement",
+      "text": "Relevé, recherche panne, accès, photos, contrôle visuel et compte rendu."
+    },
+    {
+      "title": "Main-d’œuvre technique",
+      "text": "Dépannage, maintenance, remplacement, pose, réglage ou intervention spécifique."
+    },
+    {
+      "title": "Pièces et fournitures",
+      "text": "Composants, accessoires, supports, consommables, filtres ou éléments de remplacement."
+    },
+    {
+      "title": "Froid et climatisation",
+      "text": "Équipements, liaisons, raccordements, essais, mise en service et contrôles."
+    },
+    {
+      "title": "Ventilation",
+      "text": "Caisson, gaines, bouches, réglages, nettoyage ou adaptation réseau."
+    },
+    {
+      "title": "Photos et preuve d’intervention",
+      "text": "Plaque machine, état initial, panne, emplacement et résultat après intervention."
+    },
+    {
+      "title": "Signature et accord client",
+      "text": "Validation du devis, historique de relance et prochaine action."
+    },
+    {
+      "title": "Facturation",
+      "text": "Facture d’acompte, solde, finale, reste à encaisser et suivi administratif."
+    }
+  ],
+  "featuresKicker": "Fonctions utiles",
+  "featuresTitle": "Un dossier client CVC plus clair du devis à la facture",
+  "featuresIntro": "Chiffr relie devis, photos, signature, paiement et facturation dans un parcours plus simple.",
+  "features": [
+    {
+      "title": "Modèles CVC",
+      "text": "Bases pour dépannage, maintenance, froid, climatisation ou ventilation."
+    },
+    {
+      "title": "Photos machine",
+      "text": "Plaque, équipement, accès, état initial et preuves d’intervention."
+    },
+    {
+      "title": "Catalogue personnel",
+      "text": "Pièces, prestations, forfaits et consommables réutilisables."
+    },
+    {
+      "title": "PDF lisible",
+      "text": "Présentation claire pour rassurer le client même sur un sujet technique."
+    },
+    {
+      "title": "Relances",
+      "text": "Gardez la trace des devis envoyés et des clients à recontacter."
+    },
+    {
+      "title": "Factures",
+      "text": "Suivez l’acompte, le solde, la facture finale et les restes à encaisser."
+    }
+  ],
+  "usecaseTitle": "Cas fréquents pour frigoristes et CVC",
+  "usecaseIntro": "La page garde une structure claire pour les interventions terrain et les devis plus complets.",
+  "useCases": [
+    {
+      "title": "Dépannage froid",
+      "text": "Diagnostic, pièce, intervention, photos et facture."
+    },
+    {
+      "title": "Maintenance CVC",
+      "text": "Forfait, contrôle, consommables, rapport photo et suivi client."
+    },
+    {
+      "title": "Remplacement équipement",
+      "text": "Dépose, fourniture, pose, raccordements, essais et validation."
+    },
+    {
+      "title": "Ventilation ou clim",
+      "text": "Gaines, unités, réglages, mise en service et facture."
+    }
+  ],
+  "photoTitle": "Des photos utiles pour les dossiers CVC",
+  "photoIntro": "Les photos aident à justifier les diagnostics, les pièces, l’accès et les choix techniques.",
+  "photoItems": [
+    "Plaque machine",
+    "Équipement ou panne visible",
+    "Accès technique",
+    "Résultat ou zone après intervention"
+  ],
+  "internalTitle": "Pages liées aux devis CVC",
+  "internalIntro": "Poursuivez avec clim, VMC, modèles et alternatives logiciels devis.",
+  "internalLinks": [
+    {
+      "label": "Logiciel devis climatisation",
+      "href": "/logiciel-devis-climatisation"
+    },
+    {
+      "label": "Logiciel devis VMC",
+      "href": "/logiciel-devis-vmc"
+    },
+    {
+      "label": "Modèle devis entretien climatisation",
+      "href": "/modele-devis-entretien-climatisation"
+    },
+    {
+      "label": "Logiciel devis avec photos chantier",
+      "href": "/logiciel-devis-avec-photos-chantier"
+    },
+    {
+      "label": "Voir les tarifs Chiffr",
+      "href": "/tarifs"
+    },
+    {
+      "label": "Comparer les alternatives logiciels devis",
+      "href": "/alternatives-logiciels-devis-batiment"
+    },
+    {
+      "label": "Explorer les modèles de devis",
+      "href": "/modeles-devis"
+    },
+    {
+      "label": "Demander un accès",
+      "href": "/contact"
+    }
+  ],
+  "ctaTitle": "Garder vos devis CVC plus structurés",
+  "ctaText": "Demandez un accès à Chiffr pour découvrir un logiciel pensé pour les interventions techniques, les photos, la signature, l’acompte et les factures.",
+  "faqTitle": "Logiciel devis frigoriste CVC : questions fréquentes",
+  "faqs": [
+    {
+      "question": "Chiffr convient-il aux frigoristes ?",
+      "answer": "Oui. Chiffr aide à structurer les devis de froid, climatisation, ventilation, dépannage et maintenance."
+    },
+    {
+      "question": "Peut-on suivre les photos d’un équipement ?",
+      "answer": "Oui. Les photos peuvent documenter la plaque machine, la panne, l’accès ou l’état de l’équipement."
+    },
+    {
+      "question": "Chiffr remplace-t-il un logiciel de maintenance complet ?",
+      "answer": "Chiffr est d’abord centré sur devis, factures, signature, acompte et suivi client simple. Il vise la clarté plutôt qu’un outil lourd."
+    },
+    {
+      "question": "Peut-on facturer après signature ?",
+      "answer": "Oui. Le dossier peut avancer du devis vers l’acompte, le solde et les factures."
+    }
+  ]
 };
 ---
 
