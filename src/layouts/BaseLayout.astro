@@ -485,6 +485,10 @@ const isLegalPath = legalPaths.some(
         display: none;
       }
 
+      .mobile-menu-backdrop {
+        display: none !important;
+      }
+
       .site-footer {
         margin-top: 0;
         background:
@@ -726,20 +730,6 @@ const isLegalPath = legalPaths.some(
           display: none;
         }
 
-        .mobile-menu-backdrop {
-          position: fixed;
-          inset: 0;
-          z-index: 1090;
-          display: block;
-          background: rgba(8, 29, 28, 0.46);
-          opacity: 0;
-          transition: opacity 180ms ease;
-        }
-
-        .mobile-menu-backdrop.is-visible {
-          opacity: 1;
-        }
-
         .mobile-menu-panel {
           position: fixed;
           top: 0;
@@ -950,6 +940,61 @@ const isLegalPath = legalPaths.some(
         }
       }
 
+
+      /* Menu mobile hors du header : <dialog> natif pour éviter les bugs de z-index/stacking context. */
+      .mobile-menu-dialog {
+        position: fixed;
+        inset: 0 0 0 auto;
+        z-index: 2147483647;
+        width: min(390px, 88vw);
+        height: 100dvh;
+        max-width: none;
+        max-height: none;
+        margin: 0 0 0 auto;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+        background: transparent;
+        color: inherit;
+      }
+
+      .mobile-menu-dialog:not([open]) {
+        display: none;
+      }
+
+      .mobile-menu-dialog[open] {
+        display: block;
+      }
+
+      .mobile-menu-dialog::backdrop {
+        background: rgba(8, 29, 28, 0.46);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+      }
+
+      .mobile-menu-dialog .mobile-menu-panel {
+        position: relative;
+        z-index: 1;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        transform: translateX(104%);
+      }
+
+      .mobile-menu-dialog .mobile-menu-panel.is-open {
+        transform: translateX(0);
+      }
+
+      @media (min-width: 861px) {
+        .mobile-menu-dialog[open] {
+          display: none;
+        }
+      }
+
+
       @media (prefers-reduced-motion: reduce) {
         .site-header *,
         .site-footer *,
@@ -1111,14 +1156,18 @@ const isLegalPath = legalPaths.some(
         <span>Chiffr vous aide à préparer vos factures, données client et dossiers.</span>
       </a>
 
-      <div class="mobile-menu-backdrop" data-mobile-menu-backdrop hidden></div>
+    </header>
 
-      <aside
+    <dialog
+      id="mobile-menu-dialog"
+      class="mobile-menu-dialog"
+      data-mobile-menu-dialog
+      aria-label="Menu mobile Chiffr"
+    >
+        <div
         id="mobile-menu"
         class="mobile-menu-panel"
         data-mobile-menu-panel
-        aria-label="Menu mobile Chiffr"
-        aria-hidden="true"
       >
         <div class="mobile-menu-head">
           <a href="/" class="mobile-menu-logo" aria-label="Accueil Chiffr">
@@ -1178,8 +1227,8 @@ const isLegalPath = legalPaths.some(
             <span>Préparer vos factures, mentions et dossiers client.</span>
           </a>
         </div>
-      </aside>
-    </header>
+        </div>
+    </dialog>
 
     <main>
       <slot />
@@ -1254,47 +1303,65 @@ const isLegalPath = legalPaths.some(
       });
 
       const mobileMenuButton = document.querySelector('[data-mobile-menu-button]');
+      const mobileMenuDialog = document.querySelector('[data-mobile-menu-dialog]');
       const mobileMenuPanel = document.querySelector('[data-mobile-menu-panel]');
-      const mobileMenuBackdrop = document.querySelector('[data-mobile-menu-backdrop]');
       const mobileMenuClose = document.querySelector('[data-mobile-menu-close]');
 
       function setMobileMenu(open) {
-        if (!mobileMenuButton || !mobileMenuPanel || !mobileMenuBackdrop) return;
-
-        document.body.classList.toggle('mobile-menu-open', open);
-        mobileMenuButton.classList.toggle('is-open', open);
-        mobileMenuButton.setAttribute('aria-expanded', String(open));
-        mobileMenuPanel.setAttribute('aria-hidden', String(!open));
+        if (!mobileMenuButton || !mobileMenuDialog || !mobileMenuPanel) return;
 
         if (open) {
-          mobileMenuBackdrop.hidden = false;
+          document.body.classList.add('mobile-menu-open');
+          mobileMenuButton.classList.add('is-open');
+          mobileMenuButton.setAttribute('aria-expanded', 'true');
+
+          if (typeof mobileMenuDialog.showModal === 'function') {
+            if (!mobileMenuDialog.open) mobileMenuDialog.showModal();
+          } else {
+            mobileMenuDialog.setAttribute('open', '');
+          }
+
           window.requestAnimationFrame(() => {
-            mobileMenuBackdrop.classList.add('is-visible');
             mobileMenuPanel.classList.add('is-open');
           });
-        } else {
-          mobileMenuBackdrop.classList.remove('is-visible');
-          mobileMenuPanel.classList.remove('is-open');
-          window.setTimeout(() => {
-            mobileMenuBackdrop.hidden = true;
-          }, 180);
+
+          return;
         }
+
+        mobileMenuPanel.classList.remove('is-open');
+        mobileMenuButton.classList.remove('is-open');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('mobile-menu-open');
+
+        window.setTimeout(() => {
+          if (mobileMenuDialog.open && typeof mobileMenuDialog.close === 'function') {
+            mobileMenuDialog.close();
+          } else {
+            mobileMenuDialog.removeAttribute('open');
+          }
+        }, 170);
       }
 
       mobileMenuButton?.addEventListener('click', () => {
-        const isOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        const isOpen = mobileMenuDialog?.open === true;
         setMobileMenu(!isOpen);
       });
 
       mobileMenuClose?.addEventListener('click', () => setMobileMenu(false));
-      mobileMenuBackdrop?.addEventListener('click', () => setMobileMenu(false));
+
+      mobileMenuDialog?.addEventListener('click', (event) => {
+        if (event.target === mobileMenuDialog) setMobileMenu(false);
+      });
+
+      mobileMenuDialog?.addEventListener('close', () => {
+        mobileMenuPanel?.classList.remove('is-open');
+        mobileMenuButton?.classList.remove('is-open');
+        mobileMenuButton?.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('mobile-menu-open');
+      });
 
       mobileMenuPanel?.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', () => setMobileMenu(false));
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') setMobileMenu(false);
       });
     </script>
   </body>
