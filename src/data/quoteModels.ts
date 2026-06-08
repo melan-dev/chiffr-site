@@ -38,2984 +38,2396 @@ export type QuoteModelPage = {
 
 export const quoteModels: QuoteModelPage[] = [
   {
-    slug: 'modele-devis-pac-air-eau',
-    title: 'Modèle devis PAC air/eau : lignes à prévoir',
-    metaDescription:
-      'Exemple de structure pour un devis PAC air/eau : matériel, pose, raccordements, mise en service, acompte, photos chantier et points à vérifier.',
-    h1: 'Modèle de devis PAC air/eau : les lignes à prévoir pour un devis complet',
-    intro:
-      'Vous préparez un devis de pompe à chaleur air/eau ? Ce type de chantier demande plus qu’une simple ligne “installation PAC”. Il faut détailler le matériel, la dépose éventuelle, les raccordements hydrauliques, l’électricité, la mise en service, les options, l’acompte et les points à vérifier avant envoi.',
-    trade: 'Pompe à chaleur',
-    useCase: 'Installation ou remplacement par pompe à chaleur air/eau',
-    heroChecks: [
-      'Matériel PAC',
-      'Pose',
-      'Raccordements',
-      'Mise en service',
-      'Acompte',
-      'Photos chantier',
-      'Factures',
+    "slug": "modele-devis-pac-air-eau",
+    "title": "Modèle devis PAC air/eau : exemple et lignes à prévoir",
+    "metaDescription": "Modèle de devis PAC air/eau pour installateur : dépose, fourniture, hydraulique, électricité, désembouage, mise en service, acompte et facture.",
+    "h1": "Modèle de devis PAC air/eau : les lignes à prévoir pour un devis complet",
+    "intro": "Un devis de pompe à chaleur air/eau doit être clair dès la première lecture. Le client doit comprendre ce qui est fourni, ce qui est posé, ce qui est repris sur l’existant et ce qui sera facturé. Ce modèle aide à structurer les lignes essentielles : visite, dépose, PAC, raccordements, traitement réseau, mise en service, acompte et solde.",
+    "trade": "Pompe à chaleur",
+    "useCase": "Installation ou remplacement par pompe à chaleur air/eau",
+    "heroChecks": [
+      "PAC air/eau",
+      "Dépose",
+      "Hydraulique",
+      "Électricité",
+      "Mise en service",
+      "Acompte",
+      "Facture"
     ],
-    forWho: [
-      'Artisan pompe à chaleur',
-      'Chauffagiste',
-      'Plombier-chauffagiste',
-      'Entreprise CVC',
-      'Rénovation de maison individuelle',
-      'Remplacement de chaudière gaz, fioul ou électrique',
-      'Installation avec radiateurs existants ou plancher chauffant',
+    "forWho": [
+      "Installateur PAC",
+      "Chauffagiste",
+      "Plombier-chauffagiste",
+      "Entreprise CVC",
+      "Artisan rénovation énergétique",
+      "Remplacement chaudière gaz, fioul ou électrique"
     ],
-    contains: [
-      'Informations client et adresse du chantier',
-      'Description claire du projet',
-      'Matériel principal : PAC, module hydraulique, accessoires',
-      'Dépose éventuelle de l’ancien générateur',
-      'Raccordements hydrauliques',
-      'Raccordements électriques',
-      'Options : désembouage, ballon tampon, filtre, régulation',
-      'Mise en service et essais',
-      'TVA à vérifier selon le chantier',
-      'Acompte, conditions de paiement et signature',
+    "contains": [
+      "Coordonnées client et chantier",
+      "Description de l’existant",
+      "Dépose éventuelle",
+      "Fourniture PAC et accessoires",
+      "Raccordements hydrauliques",
+      "Protection électrique",
+      "Désembouage ou traitement réseau",
+      "Mise en service",
+      "Photos chantier",
+      "Acompte et conditions de paiement"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique et relevé chantier',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Permet de vérifier l’existant, l’accès, le réseau et l’emplacement.',
+        "label": "Visite technique et relevé chantier",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Relevé de l’existant, accès, réseau, emplacement et contraintes."
       },
       {
-        label: 'Dépose ancienne chaudière',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon chaudière gaz, fioul, électrique ou autre générateur.',
+        "label": "Dépose ancien générateur",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Chaudière gaz, fioul, électrique ou autre équipement existant."
       },
       {
-        label: 'Évacuation ancien équipement',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Prévoir manutention, accès et évacuation selon contraintes.',
+        "label": "Évacuation ancien équipement",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Manutention, accès, protection et évacuation à adapter."
       },
       {
-        label: 'Fourniture pompe à chaleur air/eau',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Marque, modèle et puissance à adapter au besoin du logement.',
+        "label": "Fourniture pompe à chaleur air/eau",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Marque, modèle, puissance et options à compléter par l’artisan."
       },
       {
-        label: 'Module hydraulique intérieur',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Selon configuration de la PAC et installation existante.',
+        "label": "Module hydraulique ou unité intérieure",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Selon configuration de la PAC et réseau existant."
       },
       {
-        label: 'Support unité extérieure',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Support mural, sol, dalle ou plots selon emplacement.',
+        "label": "Support unité extérieure",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Support mural, support sol, dalle ou plots antivibratiles."
       },
       {
-        label: 'Liaisons hydrauliques',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Longueur, isolation et passage à vérifier.',
+        "label": "Liaisons hydrauliques isolées",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Longueur, passage et calorifuge à vérifier sur place."
       },
       {
-        label: 'Raccordements hydrauliques',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Connexion au réseau existant, vannes, purge, remplissage.',
+        "label": "Raccordements au réseau de chauffage",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Vannes, purge, remplissage, adaptation réseau et accessoires."
       },
       {
-        label: 'Protection électrique dédiée',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À vérifier selon tableau, puissance et norme applicable.',
+        "label": "Protection électrique dédiée",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Disjoncteur, câblage et protection selon tableau et puissance."
       },
       {
-        label: 'Raccordement électrique',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Distance tableau vers équipement à prendre en compte.',
+        "label": "Désembouage ou rinçage réseau",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "À prévoir selon état du réseau, radiateurs ou plancher chauffant."
       },
       {
-        label: 'Désembouage du réseau',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Option / prix à renseigner',
-        note: 'Dépend fortement de l’état du réseau existant.',
+        "label": "Mise en service et réglages",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Essais, paramétrage, contrôle, explication client et photos finales."
       },
       {
-        label: 'Filtre magnétique ou pot à boues',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Utile pour protéger l’installation selon configuration.',
-      },
-      {
-        label: 'Ballon tampon',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À prévoir selon volume d’eau, réseau et recommandations techniques.',
-      },
-      {
-        label: 'Régulation ou thermostat',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Selon besoin client et configuration de chauffage.',
-      },
-      {
-        label: 'Mise en service et essais',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Contrôle, réglages, essais de fonctionnement et explication client.',
-      },
-      {
-        label: 'Photos chantier avant / après',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Utile pour justifier l’intervention et garder une trace client.',
-      },
-      {
-        label: 'Forfait déplacement',
-        type: 'Déplacement',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon zone d’intervention.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À préciser clairement dans les conditions du devis.',
-      },
+        "label": "Dossier client et facture de solde",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Signature, acompte, facture d’acompte, solde et reste à encaisser."
+      }
     ],
-    checkpoints: [
-      'Puissance de la PAC adaptée au logement',
-      'État du réseau de chauffage existant',
-      'Compatibilité radiateurs ou plancher chauffant',
-      'Emplacement de l’unité extérieure',
-      'Longueur des liaisons hydrauliques',
-      'Accès chantier et manutention',
-      'Tableau électrique et protection dédiée',
-      'Dépose et évacuation de l’ancien générateur',
-      'TVA à vérifier selon le logement et la nature des travaux',
-      'Acompte et conditions de paiement',
-      'Photos chantier utiles au dossier client',
+    "checkpoints": [
+      "Vérifier l’accès à l’unité extérieure.",
+      "Contrôler l’état du réseau et la nécessité d’un désembouage.",
+      "Photographier l’ancien générateur et l’emplacement prévu.",
+      "Vérifier la protection électrique et la puissance disponible.",
+      "Préciser acompte, délai, validité du devis et conditions de paiement."
     ],
-    chiffrBenefits: [
-      'Modèle PAC air/eau prêt à adapter',
-      'Lignes fréquentes déjà structurées',
-      'Prix à renseigner clairement signalés',
-      'Options métier : désembouage, ballon tampon, filtre, régulation',
-      'Photos chantier liées au devis',
-      'PDF premium prêt à envoyer',
-      'Signature client sur place ou à distance',
-      'Demande d’acompte après validation',
-      'Facture d’acompte, de solde ou finale',
-      'Suivi client et relances au bon moment',
+    "chiffrBenefits": [
+      "Prépare une base PAC air/eau sans page blanche.",
+      "Relie photos chantier, lignes de devis, signature et acompte.",
+      "Aide à suivre facture d’acompte, solde, finale et relances.",
+      "Garde un dossier client clair pour le bureau et le terrain."
     ],
-    blankPageRisks: [
-      'Oublier une prestation de dépose',
-      'Ne pas détailler les raccordements',
-      'Sous-estimer la longueur des liaisons',
-      'Oublier une protection électrique',
-      'Ne pas prévoir le désembouage si le réseau le nécessite',
-      'Oublier l’acompte ou les conditions de paiement',
-      'Produire un PDF peu lisible pour le client',
-      'Perdre le suivi entre devis, signature, acompte et facture',
+    "blankPageRisks": [
+      "Oublier la dépose ou l’évacuation.",
+      "Sous-estimer les raccordements hydrauliques ou électriques.",
+      "Ne pas expliquer le désembouage au client.",
+      "Envoyer un devis difficile à comparer ou à signer."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
-      { label: 'Modèle devis remplacement chaudière par PAC', href: '/modele-devis-remplacement-chaudiere-pac' },
-      { label: 'Modèle devis chauffe-eau thermodynamique', href: '/modele-devis-chauffe-eau-thermodynamique' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-      { label: 'Tarifs Chiffr', href: '/tarifs' },
+    "relatedPages": [
+      {
+        "label": "Logiciel devis pompe à chaleur",
+        "href": "/logiciel-devis-pompe-a-chaleur"
+      },
+      {
+        "label": "Modèle remplacement chaudière par PAC",
+        "href": "/modele-devis-remplacement-chaudiere-pac"
+      },
+      {
+        "label": "Que mettre dans un devis PAC",
+        "href": "/que-mettre-dans-un-devis-pac"
+      },
+      {
+        "label": "Facture acompte artisan énergie",
+        "href": "/facture-acompte-artisan-energie"
+      },
+      {
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
+      },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
-    faqs: [
+    "faqs": [
       {
-        question: 'Que doit contenir un devis PAC air/eau ?',
-        answer:
-          'Un devis PAC air/eau doit généralement contenir les informations client, la description du chantier, la fourniture de la pompe à chaleur, les accessoires, la pose, les raccordements hydrauliques et électriques, la mise en service, les options, les conditions de paiement, la TVA à vérifier et la signature client.',
+        "question": "Quelles lignes mettre dans un devis PAC air/eau ?",
+        "answer": "Un devis PAC air/eau doit généralement détailler la visite, la dépose, la fourniture PAC, les raccordements hydrauliques, la protection électrique, la mise en service, les options, l’acompte et les factures."
       },
       {
-        question: 'Faut-il indiquer la marque et le modèle de la PAC ?',
-        answer:
-          'Oui, c’est recommandé. Le client doit comprendre quel équipement est proposé. La marque, le modèle, la puissance et les principales caractéristiques doivent être adaptés au chantier et vérifiés par l’artisan.',
+        "question": "Faut-il afficher des prix automatiques dans un modèle de devis PAC ?",
+        "answer": "Non. Le modèle sert à ne pas oublier les postes. Les prix doivent être renseignés par l’artisan selon ses fournisseurs, sa marge, le chantier et la TVA applicable."
       },
       {
-        question: 'Faut-il prévoir une ligne de dépose de l’ancienne chaudière ?',
-        answer:
-          'Oui, si le chantier consiste à remplacer un ancien générateur. La dépose, l’évacuation et les adaptations nécessaires doivent être clairement prévues dans le devis.',
+        "question": "Peut-on ajouter des photos chantier au devis ?",
+        "answer": "Oui. Les photos de l’ancien équipement, de l’emplacement, du tableau ou du réseau aident à justifier les lignes techniques."
       },
       {
-        question: 'Le désembouage doit-il être inclus dans le devis ?',
-        answer:
-          'Cela dépend de l’état du réseau. Sur un remplacement ou une rénovation, le désembouage peut être nécessaire ou recommandé. Il peut être intégré au devis ou présenté comme option, selon le diagnostic de l’artisan.',
-      },
-      {
-        question: 'Quelle TVA appliquer sur une PAC air/eau ?',
-        answer:
-          'Le taux de TVA doit être vérifié selon le logement, la nature des travaux, l’ancienneté du bâtiment et la réglementation applicable. Il ne faut pas appliquer un taux automatiquement sans contrôle.',
-      },
-      {
-        question: 'Faut-il demander un acompte sur un devis PAC ?',
-        answer:
-          'Un acompte est fréquent sur ce type de chantier, notamment parce que le matériel représente une part importante du devis. Le montant ou le pourcentage doit être clairement indiqué dans les conditions de paiement.',
-      },
-      {
-        question: 'Peut-on ajouter des photos chantier au devis ?',
-        answer:
-          'Oui. Les photos de l’ancien équipement, du local technique, de l’emplacement extérieur, du tableau électrique ou des accès permettent de garder une trace claire du chantier et de mieux justifier certaines lignes.',
-      },
-      {
-        question: 'Chiffr remplace-t-il le choix technique de l’artisan ?',
-        answer:
-          'Non. Chiffr aide à préparer une structure de devis claire et complète, mais l’artisan garde toujours la main sur les choix techniques, les prix, les quantités, les options et les conditions.',
-      },
-    ],
+        "question": "Chiffr gère-t-il la facture d’acompte après le devis ?",
+        "answer": "Oui. Le devis peut être suivi par une demande d’acompte, une facture d’acompte, une facture de solde ou une facture finale."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-remplacement-chaudiere-pac',
-    title: 'Modèle devis remplacement chaudière par PAC',
-    metaDescription:
-      'Exemple de devis pour remplacer une chaudière par une PAC : dépose, évacuation, hydraulique, électricité, désembouage, mise en service et acompte.',
-    h1: 'Modèle de devis remplacement chaudière par PAC : les lignes à prévoir',
-    intro:
-      'Le remplacement d’une chaudière par une pompe à chaleur demande un devis clair : dépose de l’ancien générateur, évacuation, adaptation hydraulique, PAC, protection électrique, options, mise en service, acompte et facture. Ce modèle aide à structurer le devis sans partir d’une page blanche.',
-    trade: 'Chauffage / PAC',
-    useCase: 'Remplacement de chaudière par pompe à chaleur',
-    heroChecks: [
-      'Dépose chaudière',
-      'Évacuation',
-      'PAC air/eau',
-      'Hydraulique',
-      'Électricité',
-      'Désembouage',
-      'Mise en service',
+    "slug": "modele-devis-remplacement-chaudiere-pac",
+    "title": "Modèle devis remplacement chaudière par PAC | Chiffr",
+    "metaDescription": "Exemple de devis remplacement chaudière par pompe à chaleur : dépose, évacuation, PAC, adaptation réseau, désembouage, électricité et factures.",
+    "h1": "Modèle de devis remplacement chaudière par pompe à chaleur",
+    "intro": "Un remplacement de chaudière par PAC demande d’expliquer l’existant, la dépose, l’adaptation du réseau, la fourniture, les raccordements et la mise en service. Ce modèle aide à présenter un devis plus clair, sans oublier les postes souvent sensibles.",
+    "trade": "Pompe à chaleur",
+    "useCase": "Remplacement chaudière gaz, fioul ou électrique par PAC",
+    "heroChecks": [
+      "Dépose chaudière",
+      "Évacuation",
+      "PAC",
+      "Réseau",
+      "Désembouage",
+      "Acompte",
+      "Solde"
     ],
-    forWho: [
-      'Chauffagiste',
-      'Plombier-chauffagiste',
-      'Installateur pompe à chaleur',
-      'Entreprise CVC',
-      'Rénovation énergétique',
-      'Remplacement chaudière gaz',
-      'Remplacement chaudière fioul',
-      'Maison individuelle avec réseau existant',
+    "forWho": [
+      "Installateur PAC",
+      "Chauffagiste",
+      "Plombier-chauffagiste",
+      "Rénovation énergétique",
+      "Remplacement chaudière fioul ou gaz"
     ],
-    contains: [
-      'Informations client et adresse du chantier',
-      'Description de l’ancien générateur à déposer',
-      'Dépose et évacuation de la chaudière existante',
-      'Fourniture de la PAC et accessoires',
-      'Adaptation hydraulique au réseau existant',
-      'Protection et raccordement électrique',
-      'Désembouage ou nettoyage réseau si nécessaire',
-      'Mise en service, essais et explication client',
-      'TVA, acompte et conditions à vérifier',
-      'Signature et facture d’acompte ou de solde',
+    "contains": [
+      "État de l’ancien générateur",
+      "Dépose et évacuation",
+      "Fourniture PAC",
+      "Adaptation hydraulique",
+      "Traitement réseau",
+      "Protection électrique",
+      "Mise en service",
+      "Dossier client",
+      "Paiement et factures"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique remplacement chaudière',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Relevé de l’existant, chaudière actuelle, réseau chauffage, accès et contraintes.',
+        "label": "Relevé chaudière existante",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Photos, puissance, réseau, accès et contraintes."
       },
       {
-        label: 'Dépose chaudière existante',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon chaudière gaz, fioul, murale, sol ou électrique.',
+        "label": "Dépose chaudière existante",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Déconnexion, protection et démontage."
       },
       {
-        label: 'Mise en sécurité ancienne installation',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Selon énergie existante, configuration et intervention nécessaire.',
+        "label": "Évacuation et mise en déchetterie",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Selon accès, poids et type d’équipement."
       },
       {
-        label: 'Évacuation ancien générateur',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Prévoir manutention, accès, poids, escalier ou évacuation spécifique.',
+        "label": "Neutralisation ou reprise des raccordements",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "À adapter selon gaz, fioul, eau ou électricité."
       },
       {
-        label: 'Fourniture pompe à chaleur air/eau',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Modèle, puissance et marque à choisir selon dimensionnement.',
+        "label": "Fourniture pompe à chaleur",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Modèle, puissance et accessoires à compléter."
       },
       {
-        label: 'Module hydraulique ou unité intérieure',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Dépend de la PAC choisie et de la configuration intérieure.',
+        "label": "Module intérieur ou hydraulique",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Selon installation et type de PAC."
       },
       {
-        label: 'Adaptation hydraulique réseau existant',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Vannes, raccords, purge, remplissage et adaptation à l’ancien réseau.',
+        "label": "Adaptation réseau chauffage",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Vannes, raccords, purgeurs, pot à boues ou accessoires."
       },
       {
-        label: 'Liaisons hydrauliques isolées',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Longueur et passage à vérifier entre unité extérieure et module intérieur.',
+        "label": "Désembouage / rinçage du réseau",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Recommandé selon l’état du circuit existant."
       },
       {
-        label: 'Protection électrique dédiée PAC',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À vérifier selon tableau électrique, puissance et distance.',
+        "label": "Protection électrique dédiée",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "À vérifier selon tableau et puissance."
       },
       {
-        label: 'Raccordement électrique PAC',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Prévoir câblage, protection et contrôle selon installation.',
+        "label": "Mise en service et essais",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Réglages, contrôle, explication client."
       },
       {
-        label: 'Désembouage réseau chauffage',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À recommander ou intégrer selon état du réseau et diagnostic.',
+        "label": "Photos avant / après",
+        "type": "Dossier",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Ancien équipement, pose et finitions."
       },
       {
-        label: 'Filtre magnétique / pot à boues',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Protection utile pour une installation en rénovation.',
-      },
-      {
-        label: 'Support ou dalle unité extérieure',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Dépend de l’emplacement, du sol, du mur et des contraintes acoustiques.',
-      },
-      {
-        label: 'Mise en service PAC',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Réglages, essais, contrôle et explication client.',
-      },
-      {
-        label: 'Nettoyage zone d’intervention',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Peut être indiqué pour rassurer le client sur la finition du chantier.',
-      },
-      {
-        label: 'Photos chantier avant / après',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Ancienne chaudière, emplacement PAC, réseau et tableau électrique.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À préciser dans les conditions de paiement du devis.',
-      },
+        "label": "Facture acompte et solde",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Suivi de paiement lié au devis."
+      }
     ],
-    checkpoints: [
-      'Type de chaudière existante',
-      'Dépose et évacuation possibles sans contrainte majeure',
-      'État du réseau de chauffage',
-      'Nécessité d’un désembouage',
-      'Compatibilité radiateurs ou plancher chauffant',
-      'Emplacement unité extérieure',
-      'Distance et passage des liaisons',
-      'Tableau électrique et puissance disponible',
-      'TVA à vérifier selon le chantier',
-      'Acompte et conditions de règlement',
-      'Photos de l’ancien équipement et du local technique',
+    "checkpoints": [
+      "Identifier le type de chaudière à déposer.",
+      "Vérifier l’accès et l’évacuation.",
+      "Contrôler le réseau hydraulique.",
+      "Prévoir le traitement réseau si nécessaire.",
+      "Expliquer clairement le reste à payer après acompte."
     ],
-    chiffrBenefits: [
-      'Modèle remplacement chaudière par PAC prêt à adapter',
-      'Lignes de dépose et évacuation déjà prévues',
-      'Options rénovation : désembouage, filtre, adaptation réseau',
-      'Prix à compléter clairement signalés',
-      'Photos chantier liées au dossier client',
-      'PDF premium pour rassurer le client',
-      'Signature sur place ou à distance',
-      'Acompte après validation',
-      'Facture d’acompte et facture de solde',
-      'Relances et suivi client',
+    "chiffrBenefits": [
+      "Structure les postes de remplacement.",
+      "Garde les photos de l’existant dans le dossier.",
+      "Aide à générer acompte, solde et facture finale.",
+      "Relie devis et suivi client sans outil lourd."
     ],
-    blankPageRisks: [
-      'Oublier la dépose de l’ancienne chaudière',
-      'Ne pas prévoir l’évacuation',
-      'Sous-estimer l’adaptation hydraulique',
-      'Oublier la protection électrique',
-      'Ne pas prévoir le désembouage si nécessaire',
-      'Mal expliquer les options au client',
-      'Oublier l’acompte',
-      'Perdre le fil entre devis accepté et facture de solde',
+    "blankPageRisks": [
+      "Oublier l’évacuation.",
+      "Ne pas chiffrer l’adaptation réseau.",
+      "Sous-estimer le traitement d’eau.",
+      "Envoyer un devis trop court pour un chantier complexe."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
-      { label: 'Logiciel devis chauffagiste', href: '/logiciel-devis-chauffagiste' },
-      { label: 'Modèle devis PAC air/eau', href: '/modele-devis-pac-air-eau' },
-      { label: 'Modèle devis désembouage chauffage', href: '/modele-devis-desembouage-chauffage' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
+    "relatedPages": [
+      {
+        "label": "Logiciel devis pompe à chaleur",
+        "href": "/logiciel-devis-pompe-a-chaleur"
+      },
+      {
+        "label": "Modèle devis PAC air/eau",
+        "href": "/modele-devis-pac-air-eau"
+      },
+      {
+        "label": "Comment faire un devis PAC air/eau",
+        "href": "/comment-faire-un-devis-pac-air-eau"
+      },
+      {
+        "label": "Logiciel devis avec facture acompte",
+        "href": "/logiciel-devis-avec-facture-acompte"
+      },
+      {
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
+      },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
-    faqs: [
+    "faqs": [
       {
-        question: 'Que doit contenir un devis remplacement chaudière par PAC ?',
-        answer:
-          'Il doit généralement contenir la dépose de l’ancien générateur, l’évacuation, la fourniture de la PAC, les adaptations hydrauliques, le raccordement électrique, la mise en service, les options, la TVA à vérifier, l’acompte et les conditions de paiement.',
+        "question": "Que doit contenir un devis de remplacement chaudière par PAC ?",
+        "answer": "Il doit détailler l’existant, la dépose, l’évacuation, la fourniture PAC, l’adaptation réseau, l’électricité, la mise en service, les conditions de paiement et les factures."
       },
       {
-        question: 'Faut-il prévoir une ligne pour l’évacuation de l’ancienne chaudière ?',
-        answer:
-          'Oui, c’est recommandé si l’artisan prend en charge l’évacuation. La manutention, l’accès, le poids et les contraintes peuvent modifier le devis.',
+        "question": "Faut-il prévoir une ligne désembouage ?",
+        "answer": "C’est souvent pertinent si le réseau est ancien ou encrassé. L’artisan doit vérifier sur place et expliquer cette ligne au client."
       },
       {
-        question: 'Le désembouage est-il obligatoire dans ce type de devis ?',
-        answer:
-          'Cela dépend de l’état du réseau. En rénovation, il peut être nécessaire ou recommandé. L’artisan doit vérifier le réseau avant de l’inclure ou de le proposer en option.',
+        "question": "Peut-on facturer un acompte sur ce type de devis ?",
+        "answer": "Oui. Le devis peut prévoir un acompte, puis une facture d’acompte et une facture de solde."
       },
       {
-        question: 'Faut-il indiquer la PAC proposée ?',
-        answer:
-          'Oui. La marque, le modèle, la puissance et la configuration doivent être précisés ou clairement identifiables pour que le client comprenne le matériel proposé.',
-      },
-      {
-        question: 'Quelle TVA appliquer ?',
-        answer:
-          'Le taux de TVA doit être vérifié selon le logement, l’ancienneté, la nature des travaux et la réglementation applicable. Il ne doit pas être appliqué automatiquement sans contrôle.',
-      },
-      {
-        question: 'Peut-on demander un acompte ?',
-        answer:
-          'Oui. Sur un chantier avec matériel important, un acompte est fréquent. Le montant ou pourcentage doit être écrit clairement dans le devis.',
-      },
-      {
-        question: 'Pourquoi utiliser Chiffr pour ce devis ?',
-        answer:
-          'Chiffr aide à démarrer depuis une structure métier, avec les lignes fréquentes, les options à vérifier, les photos chantier, le PDF premium, la signature, l’acompte et la facturation.',
-      },
-    ],
+        "question": "Chiffr remplace-t-il le calcul technique de dimensionnement ?",
+        "answer": "Non. Chiffr structure le devis et le suivi. L’artisan reste responsable des choix techniques, des quantités et du dimensionnement."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-clim-monosplit',
-    title: 'Modèle devis clim monosplit : exemple complet',
-    metaDescription:
-      'Structure de devis pour une clim monosplit : unité intérieure, groupe extérieur, liaison frigorifique, condensats, pose, mise en service et options.',
-    h1: 'Modèle de devis clim monosplit : les lignes à prévoir pour une installation claire',
-    intro:
-      'Un devis de climatisation monosplit doit détailler l’unité intérieure, le groupe extérieur, les liaisons frigorifiques, l’évacuation des condensats, la pose, le raccordement électrique, la mise en service et les options. Ce modèle aide à préparer un devis plus clair et plus rassurant.',
-    trade: 'Climatisation',
-    useCase: 'Installation climatisation monosplit',
-    heroChecks: [
-      'Unité intérieure',
-      'Groupe extérieur',
-      'Liaison frigo',
-      'Condensats',
-      'Pose',
-      'Mise en service',
-      'PDF client',
+    "slug": "modele-devis-clim-monosplit",
+    "title": "Modèle devis clim monosplit : exemple de lignes",
+    "metaDescription": "Modèle de devis clim monosplit : unité intérieure, groupe extérieur, liaisons frigorifiques, condensats, électricité, mise en service et acompte.",
+    "h1": "Modèle de devis clim monosplit : les lignes à prévoir",
+    "intro": "Une pose de clim monosplit paraît simple, mais le devis doit détailler le matériel, la pose, les liaisons, les condensats, le support, l’électricité et la mise en service. Ce modèle aide l’installateur à présenter un devis clair et rassurant.",
+    "trade": "Climatisation",
+    "useCase": "Installation climatisation monosplit",
+    "heroChecks": [
+      "Unité intérieure",
+      "Groupe extérieur",
+      "Liaisons",
+      "Condensats",
+      "Mise en service",
+      "Signature"
     ],
-    forWho: [
-      'Installateur climatisation',
-      'Frigoriste',
-      'Entreprise CVC',
-      'Artisan énergie',
-      'Pose clim maison',
-      'Pose clim appartement',
-      'Remplacement d’une ancienne clim monosplit',
+    "forWho": [
+      "Installateur clim",
+      "Frigoriste",
+      "Artisan CVC",
+      "Pose résidentielle",
+      "Pose bureau ou local"
     ],
-    contains: [
-      'Informations client et adresse du chantier',
-      'Description de la pièce à climatiser',
-      'Unité intérieure et groupe extérieur',
-      'Support mural, goulotte et accessoires',
-      'Liaisons frigorifiques et longueur prévue',
-      'Évacuation des condensats',
-      'Raccordement électrique',
-      'Percements, passage et finitions',
-      'Mise en service et essais',
-      'TVA, acompte, conditions et signature',
+    "contains": [
+      "Unité intérieure",
+      "Groupe extérieur",
+      "Support",
+      "Liaisons frigorifiques",
+      "Goulottes",
+      "Condensats",
+      "Alimentation électrique",
+      "Tirage au vide",
+      "Mise en service"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique clim monosplit',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Vérification pièce, emplacement unité intérieure, groupe extérieur et passage des liaisons.',
+        "label": "Relevé et implantation",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Emplacement, mur, accès, longueur liaisons et évacuation."
       },
       {
-        label: 'Fourniture unité intérieure murale',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Puissance, marque et modèle à adapter à la pièce.',
+        "label": "Fourniture unité intérieure",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Type mural, console ou autre selon besoin."
       },
       {
-        label: 'Fourniture groupe extérieur',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À choisir selon puissance, niveau sonore et configuration.',
+        "label": "Fourniture groupe extérieur",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Puissance, marque et modèle à compléter."
       },
       {
-        label: 'Support groupe extérieur',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Support mural, support sol, plots ou console selon emplacement.',
+        "label": "Support groupe extérieur",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Support mural, sol ou plots antivibratiles."
       },
       {
-        label: 'Liaison frigorifique',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Longueur et cheminement à vérifier sur place.',
+        "label": "Liaisons frigorifiques",
+        "type": "Matériel + pose",
+        "unit": "Mètre",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Longueur selon chantier, isolation comprise."
       },
       {
-        label: 'Goulotte et accessoires de finition',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Permet une finition propre en intérieur ou extérieur.',
+        "label": "Goulotte et finitions",
+        "type": "Matériel + pose",
+        "unit": "Mètre",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Cheminement propre et finition visible."
       },
       {
-        label: 'Percement mur et passage liaison',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon mur, accès et difficulté.',
+        "label": "Évacuation condensats",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Pente naturelle ou pompe à prévoir si nécessaire."
       },
       {
-        label: 'Évacuation condensats',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Gravitaire ou pompe de relevage selon configuration.',
+        "label": "Alimentation électrique",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Protection et raccordement selon tableau."
       },
       {
-        label: 'Pompe de relevage condensats',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À prévoir si l’évacuation gravitaire n’est pas possible.',
+        "label": "Tirage au vide et mise en service",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Essais, réglages, explication client."
       },
       {
-        label: 'Raccordement électrique',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Alimentation, protection et distance à vérifier.',
-      },
-      {
-        label: 'Tirage au vide et contrôle étanchéité',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Étape importante avant mise en service.',
-      },
-      {
-        label: 'Mise en service clim monosplit',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Essais, réglages, contrôle fonctionnement et explication client.',
-      },
-      {
-        label: 'Nettoyage et finitions',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Finitions visibles importantes pour le client.',
-      },
-      {
-        label: 'Photos chantier avant / après',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Emplacement intérieur, groupe extérieur, passage liaison et finition.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À indiquer clairement dans les conditions de paiement.',
-      },
+        "label": "Photos et dossier final",
+        "type": "Dossier",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Photos avant/après et validation client."
+      }
     ],
-    checkpoints: [
-      'Surface et usage de la pièce',
-      'Puissance adaptée',
-      'Emplacement unité intérieure',
-      'Emplacement groupe extérieur',
-      'Longueur des liaisons frigorifiques',
-      'Évacuation des condensats',
-      'Besoin ou non d’une pompe de relevage',
-      'Passage des goulottes et esthétique',
-      'Accès chantier et percement',
-      'Protection électrique',
-      'TVA à vérifier',
-      'Photos chantier avant envoi',
+    "checkpoints": [
+      "Vérifier la longueur réelle des liaisons.",
+      "Contrôler l’évacuation des condensats.",
+      "Prévoir le support du groupe.",
+      "Photographier l’emplacement et le passage.",
+      "Préciser les conditions d’acompte et de solde."
     ],
-    chiffrBenefits: [
-      'Modèle clim monosplit prêt à adapter',
-      'Lignes fréquentes déjà structurées',
-      'Longueur de liaison à compléter',
-      'Options comme pompe de relevage ou support',
-      'Photos chantier liées au dossier',
-      'PDF premium clair pour le client',
-      'Signature sur place ou à distance',
-      'Acompte et suivi du solde',
-      'Facture d’acompte ou finale',
-      'Relance client si devis en attente',
+    "chiffrBenefits": [
+      "Prépare les lignes fréquentes d’un monosplit.",
+      "Ajoute photos et signature au dossier.",
+      "Aide à suivre acompte, solde et facture.",
+      "Évite une ligne unique trop vague."
     ],
-    blankPageRisks: [
-      'Oublier l’évacuation des condensats',
-      'Sous-estimer la longueur des liaisons',
-      'Oublier la pompe de relevage si nécessaire',
-      'Ne pas détailler le support extérieur',
-      'Ne pas prévoir le percement ou la goulotte',
-      'Oublier la mise en service',
-      'Créer un devis trop vague pour le client',
-      'Oublier l’acompte ou la suite de facturation',
+    "blankPageRisks": [
+      "Oublier la pompe de relevage.",
+      "Sous-estimer la longueur des liaisons.",
+      "Ne pas préciser le support extérieur.",
+      "Envoyer un devis peu rassurant."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
-      { label: 'Modèle devis clim multisplit', href: '/modele-devis-clim-multisplit' },
-      { label: 'Modèle devis mise en service PAC clim', href: '/modele-devis-mise-en-service-pac-clim' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-      { label: 'Tarifs Chiffr', href: '/tarifs' },
+    "relatedPages": [
+      {
+        "label": "Logiciel devis climatisation",
+        "href": "/logiciel-devis-climatisation"
+      },
+      {
+        "label": "Modèle devis clim multisplit",
+        "href": "/modele-devis-clim-multisplit"
+      },
+      {
+        "label": "Comment faire un devis climatisation",
+        "href": "/comment-faire-un-devis-climatisation"
+      },
+      {
+        "label": "Que mettre dans un devis climatisation",
+        "href": "/que-mettre-dans-un-devis-climatisation"
+      },
+      {
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
+      },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
-    faqs: [
+    "faqs": [
       {
-        question: 'Que doit contenir un devis clim monosplit ?',
-        answer:
-          'Il doit généralement contenir l’unité intérieure, le groupe extérieur, les liaisons frigorifiques, l’évacuation des condensats, le support, la pose, le raccordement électrique, la mise en service, les options, la TVA à vérifier et les conditions de paiement.',
+        "question": "Quelles lignes mettre dans un devis clim monosplit ?",
+        "answer": "Il faut généralement prévoir unité intérieure, groupe extérieur, support, liaisons, goulottes, condensats, électricité et mise en service."
       },
       {
-        question: 'Faut-il préciser la longueur des liaisons frigorifiques ?',
-        answer:
-          'Oui. La longueur des liaisons, le passage et les finitions peuvent fortement influencer le devis. Il faut les mesurer ou les estimer clairement selon le chantier.',
+        "question": "Faut-il chiffrer les liaisons au mètre ?",
+        "answer": "Cela dépend de l’organisation de l’artisan. Le modèle peut prévoir une quantité à compléter selon le chantier."
       },
       {
-        question: 'Faut-il prévoir une pompe de relevage ?',
-        answer:
-          'Seulement si l’évacuation gravitaire des condensats n’est pas possible ou adaptée. Elle peut être intégrée au devis ou proposée en option.',
+        "question": "Peut-on ajouter des photos au devis clim ?",
+        "answer": "Oui. Les photos de l’emplacement, du passage des liaisons et du groupe extérieur renforcent la clarté."
       },
       {
-        question: 'La mise en service doit-elle être une ligne séparée ?',
-        answer:
-          'C’est souvent préférable pour que le client comprenne qu’elle inclut les contrôles, essais, réglages et explications.',
-      },
-      {
-        question: 'Peut-on ajouter des photos chantier ?',
-        answer:
-          'Oui. Les photos de l’emplacement intérieur, du groupe extérieur, du cheminement et des finitions aident à préparer et justifier le devis.',
-      },
-      {
-        question: 'Chiffr peut-il aider à créer ce devis ?',
-        answer:
-          'Oui. Chiffr prépare une structure de devis clim monosplit avec les lignes fréquentes, les prix à renseigner, les photos chantier, le PDF, la signature, l’acompte et la facturation.',
-      },
-    ],
+        "question": "Chiffr gère-t-il l’acompte ?",
+        "answer": "Oui. Le dossier peut inclure demande d’acompte, facture d’acompte, solde et relance."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-clim-multisplit',
-    title: 'Modèle devis clim multisplit : lignes et postes',
-    metaDescription:
-      'Exemple de devis clim multisplit avec unités intérieures, groupe extérieur, liaisons, supports, condensats, mise en service et vérifications.',
-    h1: 'Modèle de devis clim multisplit : les lignes à prévoir pour un devis complet',
-    intro:
-      'Un devis de climatisation multisplit doit être très clair : plusieurs unités intérieures, un groupe extérieur, des liaisons frigorifiques plus longues, des condensats à gérer, plusieurs percements, la mise en service et les options. Ce modèle aide à structurer le devis pièce par pièce.',
-    trade: 'Climatisation',
-    useCase: 'Installation climatisation multisplit',
-    heroChecks: [
-      'Multi-pièces',
-      'Groupe extérieur',
-      'Unités intérieures',
-      'Liaisons',
-      'Condensats',
-      'Mise en service',
-      'Suivi client',
+    "slug": "modele-devis-clim-multisplit",
+    "title": "Modèle devis clim multisplit : structure complète",
+    "metaDescription": "Modèle devis clim multisplit : plusieurs unités intérieures, groupe extérieur, liaisons, condensats, pompe, électricité, mise en service et factures.",
+    "h1": "Modèle de devis clim multisplit : structurer plusieurs unités sans perdre le client",
+    "intro": "Un devis multisplit doit rester lisible même avec plusieurs pièces, plusieurs unités et des longueurs de liaisons différentes. Ce modèle aide à expliquer les postes et options sans noyer le client.",
+    "trade": "Climatisation",
+    "useCase": "Installation climatisation multisplit",
+    "heroChecks": [
+      "Plusieurs unités",
+      "Groupe extérieur",
+      "Liaisons",
+      "Condensats",
+      "Mise en service",
+      "Acompte"
     ],
-    forWho: [
-      'Installateur climatisation',
-      'Frigoriste',
-      'Entreprise CVC',
-      'Artisan énergie',
-      'Maison avec plusieurs pièces',
-      'Petit local professionnel',
-      'Installation avec plusieurs unités intérieures',
+    "forWho": [
+      "Installateur clim",
+      "Frigoriste",
+      "Entreprise CVC",
+      "Maison individuelle",
+      "Bureaux ou local professionnel"
     ],
-    contains: [
-      'Informations client et adresse du chantier',
-      'Liste des pièces à équiper',
-      'Nombre d’unités intérieures',
-      'Groupe extérieur adapté',
-      'Supports, goulottes et accessoires',
-      'Liaisons frigorifiques par zone',
-      'Évacuation des condensats',
-      'Percements et cheminements',
-      'Raccordement électrique',
-      'Mise en service de l’ensemble',
-      'Acompte, TVA à vérifier et signature',
+    "contains": [
+      "Nombre d’unités",
+      "Groupe extérieur",
+      "Liaisons par zone",
+      "Goulottes",
+      "Condensats",
+      "Pompe si nécessaire",
+      "Électricité",
+      "Mise en service pièce par pièce"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique clim multisplit',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Relevé des pièces, emplacements, passages, longueurs et accès.',
+        "label": "Relevé zones à climatiser",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Pièces, puissances, longueurs, passages et contraintes."
       },
       {
-        label: 'Fourniture groupe extérieur multisplit',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Puissance et nombre de sorties à adapter aux unités intérieures.',
+        "label": "Fourniture groupe extérieur multisplit",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Puissance et nombre de sorties à préciser."
       },
       {
-        label: 'Unité intérieure pièce principale',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Puissance à adapter à la surface et à l’usage.',
+        "label": "Fourniture unité intérieure séjour",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Modèle, puissance et finition selon pièce."
       },
       {
-        label: 'Unité intérieure chambre ou zone secondaire',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'Quantité à adapter au nombre de pièces à équiper.',
+        "label": "Fourniture unité intérieure chambre",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "À dupliquer selon nombre de pièces."
       },
       {
-        label: 'Support groupe extérieur',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Support mural, sol ou console selon emplacement.',
+        "label": "Liaisons frigorifiques par unité",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Longueurs et cheminements à détailler."
       },
       {
-        label: 'Liaisons frigorifiques par unité',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Longueur totale à vérifier pour chaque unité intérieure.',
+        "label": "Goulottes et passages",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Finitions visibles et percements."
       },
       {
-        label: 'Goulottes et accessoires',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Finitions et cheminement visibles à détailler.',
+        "label": "Condensats par unité",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Évacuation, pompe ou pente selon pièce."
       },
       {
-        label: 'Percements et passages',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'Nombre de percements et difficulté à adapter.',
+        "label": "Alimentation et protections",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Raccordement et vérifications tableau."
       },
       {
-        label: 'Évacuation condensats',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'À prévoir pour chaque unité selon configuration.',
+        "label": "Mise en service complète",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Essais et réglages de chaque unité."
       },
       {
-        label: 'Pompe de relevage condensats',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À prévoir si une évacuation gravitaire n’est pas possible.',
-      },
-      {
-        label: 'Raccordement électrique',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À vérifier selon tableau, protection et distance.',
-      },
-      {
-        label: 'Tirage au vide et contrôle étanchéité',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Contrôle de l’installation avant mise en service.',
-      },
-      {
-        label: 'Mise en service multisplit',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Essais de chaque unité, réglages et explication client.',
-      },
-      {
-        label: 'Photos chantier et repérage unités',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Utile pour suivre les zones, liaisons et finitions.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À préciser dans le devis avant acceptation.',
-      },
+        "label": "Dossier client et facturation",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Signature, acompte, solde et relance."
+      }
     ],
-    checkpoints: [
-      'Nombre de pièces à équiper',
-      'Puissance par pièce',
-      'Compatibilité groupe extérieur / unités intérieures',
-      'Longueur totale des liaisons',
-      'Passage des goulottes',
-      'Gestion des condensats par unité',
-      'Nombre de percements',
-      'Emplacement groupe extérieur',
-      'Accès chantier',
-      'Raccordement électrique',
-      'TVA à vérifier',
-      'Acompte et conditions de paiement',
+    "checkpoints": [
+      "Lister chaque pièce et chaque unité.",
+      "Séparer les longueurs de liaison si utile.",
+      "Vérifier les condensats pièce par pièce.",
+      "Prévoir le temps de mise en service.",
+      "Joindre des photos des passages."
     ],
-    chiffrBenefits: [
-      'Modèle clim multisplit structuré par postes',
-      'Lignes pour plusieurs unités intérieures',
-      'Longueurs et quantités à compléter clairement',
-      'Options comme pompe de relevage ou support',
-      'Photos chantier et repérage par zone',
-      'PDF premium plus lisible pour le client',
-      'Signature sur place ou à distance',
-      'Acompte et suivi du solde',
-      'Factures reliées au devis',
-      'Relance client après envoi',
+    "chiffrBenefits": [
+      "Organise les unités par zone.",
+      "Permet d’ajouter photos, options et quantités.",
+      "Garde le devis lisible malgré plusieurs postes.",
+      "Relie signature, acompte et factures."
     ],
-    blankPageRisks: [
-      'Oublier une unité intérieure',
-      'Sous-estimer les longueurs de liaisons',
-      'Oublier une évacuation condensats',
-      'Ne pas compter tous les percements',
-      'Ne pas détailler les supports et goulottes',
-      'Oublier la mise en service complète',
-      'Créer un devis difficile à comprendre',
-      'Perdre le suivi entre devis et facture',
+    "blankPageRisks": [
+      "Mélanger toutes les unités en une ligne.",
+      "Oublier une pompe ou une goulotte.",
+      "Ne pas détailler les longueurs.",
+      "Créer un devis difficile à comprendre."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
-      { label: 'Modèle devis clim monosplit', href: '/modele-devis-clim-monosplit' },
-      { label: 'Modèle devis entretien climatisation', href: '/modele-devis-entretien-climatisation' },
-      { label: 'Modèle devis mise en service PAC clim', href: '/modele-devis-mise-en-service-pac-clim' },
-      { label: 'Tarifs Chiffr', href: '/tarifs' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis clim multisplit ?',
-        answer:
-          'Un devis clim multisplit doit généralement détailler le groupe extérieur, les unités intérieures, les liaisons frigorifiques, les condensats, les supports, les percements, le raccordement électrique, la mise en service et les conditions de paiement.',
+        "label": "Logiciel devis climatisation",
+        "href": "/logiciel-devis-climatisation"
       },
       {
-        question: 'Faut-il détailler chaque unité intérieure ?',
-        answer:
-          'Oui. Pour un devis clair, il est préférable de préciser le nombre d’unités, leur emplacement, leur puissance et les prestations liées.',
+        "label": "Modèle devis clim monosplit",
+        "href": "/modele-devis-clim-monosplit"
       },
       {
-        question: 'Les longueurs de liaison doivent-elles être indiquées ?',
-        answer:
-          'Oui. Elles ont un impact important sur le matériel, la pose et le temps d’intervention. Elles doivent être mesurées ou clairement estimées.',
+        "label": "Modèle entretien climatisation",
+        "href": "/modele-devis-entretien-climatisation"
       },
       {
-        question: 'Faut-il prévoir une mise en service pour chaque unité ?',
-        answer:
-          'La mise en service concerne l’ensemble de l’installation. Le devis peut préciser les contrôles et essais réalisés sur chaque unité.',
+        "label": "Logiciel devis frigoriste CVC",
+        "href": "/logiciel-devis-frigoriste-cvc"
       },
       {
-        question: 'Chiffr aide-t-il pour les devis multisplit ?',
-        answer:
-          'Oui. Chiffr aide à structurer les lignes, les unités, les quantités, les photos chantier, le PDF, la signature, l’acompte et les factures.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Comment présenter un devis clim multisplit ?",
+        "answer": "Il est conseillé de séparer le groupe extérieur, les unités intérieures, les liaisons, les condensats, l’électricité et la mise en service."
+      },
+      {
+        "question": "Faut-il détailler chaque unité intérieure ?",
+        "answer": "Oui, surtout si les pièces, puissances ou longueurs sont différentes."
+      },
+      {
+        "question": "Peut-on ajouter plusieurs photos chantier ?",
+        "answer": "Oui. Les photos aident à documenter les passages, unités, contraintes et accès."
+      },
+      {
+        "question": "Chiffr peut-il gérer l’acompte sur un devis multisplit ?",
+        "answer": "Oui. Le devis peut être suivi par acompte, facture d’acompte, solde et relance."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-chauffe-eau-thermodynamique',
-    title: 'Modèle devis chauffe-eau thermodynamique',
-    metaDescription:
-      'Les postes à prévoir pour un devis chauffe-eau thermodynamique : fourniture, dépose, raccordements, évacuation condensats, mise en service et facture.',
-    h1: 'Modèle de devis chauffe-eau thermodynamique : les lignes à prévoir',
-    intro:
-      'Un devis de chauffe-eau thermodynamique doit détailler la fourniture de l’équipement, la dépose de l’ancien ballon si besoin, les raccordements hydrauliques et électriques, l’évacuation des condensats, la mise en service, les options et les conditions de paiement.',
-    trade: 'Chauffe-eau thermodynamique',
-    useCase: 'Installation ou remplacement de chauffe-eau thermodynamique',
-    heroChecks: [
-      'Fourniture CET',
-      'Dépose ballon',
-      'Hydraulique',
-      'Électricité',
-      'Condensats',
-      'Mise en service',
-      'Facture',
+    "slug": "modele-devis-chauffe-eau-thermodynamique",
+    "title": "Modèle devis chauffe-eau thermodynamique | Chiffr",
+    "metaDescription": "Modèle devis chauffe-eau thermodynamique : dépose ballon, fourniture, raccordements eau, électricité, condensats, mise en service et factures.",
+    "h1": "Modèle de devis chauffe-eau thermodynamique : lignes à prévoir",
+    "intro": "Un devis de chauffe-eau thermodynamique doit expliquer la dépose, la fourniture, les raccordements, l’évacuation des condensats et la mise en service. Ce modèle aide à chiffrer proprement sans oublier les contraintes du local.",
+    "trade": "Chauffe-eau thermodynamique",
+    "useCase": "Remplacement ou installation d’un ballon thermodynamique",
+    "heroChecks": [
+      "Dépose",
+      "Ballon thermo",
+      "Raccordements",
+      "Condensats",
+      "Mise en service",
+      "Factures"
     ],
-    forWho: [
-      'Plombier-chauffagiste',
-      'Artisan énergie',
-      'Installateur chauffe-eau thermodynamique',
-      'Entreprise CVC',
-      'Remplacement ancien ballon électrique',
-      'Rénovation énergétique',
-      'Maison individuelle',
+    "forWho": [
+      "Chauffagiste",
+      "Plombier-chauffagiste",
+      "Artisan énergie",
+      "Entreprise rénovation énergétique"
     ],
-    contains: [
-      'Informations client et chantier',
-      'Description de l’ancien ballon',
-      'Fourniture du chauffe-eau thermodynamique',
-      'Dépose et évacuation éventuelle',
-      'Raccordements eau chaude et eau froide',
-      'Raccordement électrique',
-      'Évacuation condensats',
-      'Accessoires et sécurité',
-      'Mise en service et explication client',
-      'TVA, acompte, conditions et signature',
+    "contains": [
+      "Dépose ancien ballon",
+      "Fourniture CET",
+      "Raccordements eau",
+      "Groupe de sécurité",
+      "Électricité",
+      "Condensats",
+      "Gaines ou air",
+      "Essais",
+      "Paiement"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique chauffe-eau thermodynamique',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Vérification emplacement, volume disponible, évacuation et accès.',
+        "label": "Vidange et dépose ancien ballon",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Selon accessibilité et volume."
       },
       {
-        label: 'Dépose ancien ballon',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon capacité, accès et état de l’installation existante.',
+        "label": "Évacuation ancien ballon",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Manutention et évacuation à adapter."
       },
       {
-        label: 'Évacuation ancien ballon',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Prévoir manutention, poids, escalier ou accès difficile.',
+        "label": "Fourniture chauffe-eau thermodynamique",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Capacité, marque et modèle à compléter."
       },
       {
-        label: 'Fourniture chauffe-eau thermodynamique',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Capacité, marque et modèle à adapter au besoin du foyer.',
+        "label": "Groupe de sécurité et accessoires",
+        "type": "Matériel",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Accessoires hydrauliques nécessaires."
       },
       {
-        label: 'Groupe de sécurité',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À prévoir selon l’installation et les règles de pose.',
+        "label": "Raccordement eau froide / eau chaude",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Adaptation des arrivées et sorties."
       },
       {
-        label: 'Raccordements hydrauliques',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Eau chaude, eau froide, raccords, vannes et adaptation éventuelle.',
+        "label": "Raccordement électrique",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Alimentation et protection à vérifier."
       },
       {
-        label: 'Raccordement électrique',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À vérifier selon alimentation existante, protection et distance.',
+        "label": "Évacuation condensats",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Pente, pompe ou raccord selon configuration."
       },
       {
-        label: 'Évacuation des condensats',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À prévoir selon emplacement et évacuation disponible.',
+        "label": "Gaines ou prise d’air",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "À prévoir selon type d’appareil et local."
       },
       {
-        label: 'Accessoires de pose',
-        type: 'Matériel',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Raccords, flexibles, fixations, sécurité et consommables.',
+        "label": "Mise en service",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Essais, réglage température, explication client."
       },
       {
-        label: 'Adaptation plomberie existante',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'À prévoir si les arrivées ou sorties doivent être modifiées.',
-      },
-      {
-        label: 'Mise en service chauffe-eau thermodynamique',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Remplissage, contrôle, réglage, essais et explication client.',
-      },
-      {
-        label: 'Nettoyage et finitions',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Permet de clarifier la fin de chantier.',
-      },
-      {
-        label: 'Photos chantier avant / après',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Ancien ballon, nouvel emplacement, raccordements et finitions.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À préciser dans les conditions du devis.',
-      },
+        "label": "Facture acompte et solde",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Suivi de paiement et dossier final."
+      }
     ],
-    checkpoints: [
-      'Capacité adaptée au foyer',
-      'Emplacement disponible',
-      'Accès pour manutention',
-      'Ventilation ou configuration selon appareil',
-      'Évacuation condensats possible',
-      'Raccordements eau chaude et eau froide',
-      'Protection électrique',
-      'Dépose et évacuation ancien ballon',
-      'TVA à vérifier selon chantier',
-      'Acompte et conditions de paiement',
-      'Photos avant et après travaux',
+    "checkpoints": [
+      "Vérifier le volume et l’accès.",
+      "Prévoir l’évacuation des condensats.",
+      "Contrôler l’alimentation électrique.",
+      "Photographier l’ancien ballon et l’emplacement.",
+      "Préciser les conditions de paiement."
     ],
-    chiffrBenefits: [
-      'Modèle chauffe-eau thermodynamique prêt à adapter',
-      'Lignes de dépose, fourniture et raccordements prévues',
-      'Prix à compléter clairement signalés',
-      'Photos chantier liées au dossier',
-      'PDF premium pour le client',
-      'Signature sur place ou à distance',
-      'Demande d’acompte',
-      'Facture d’acompte ou finale',
-      'Suivi client après devis',
-      'Relance si devis en attente',
+    "chiffrBenefits": [
+      "Prépare les lignes du devis CET.",
+      "Garde les photos et contraintes dans le dossier.",
+      "Aide à générer signature, acompte et factures.",
+      "Rend le devis plus compréhensible pour le client."
     ],
-    blankPageRisks: [
-      'Oublier la dépose de l’ancien ballon',
-      'Ne pas prévoir l’évacuation',
-      'Oublier les condensats',
-      'Sous-estimer l’adaptation plomberie',
-      'Oublier le raccordement électrique',
-      'Ne pas préciser la capacité ou le modèle',
-      'Oublier l’acompte',
-      'Produire un devis trop vague',
+    "blankPageRisks": [
+      "Oublier les condensats.",
+      "Ne pas prévoir l’évacuation de l’ancien ballon.",
+      "Sous-estimer l’électricité.",
+      "Envoyer un devis trop court."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis chauffagiste', href: '/logiciel-devis-chauffagiste' },
-      { label: 'Modèle devis PAC air/eau', href: '/modele-devis-pac-air-eau' },
-      { label: 'Modèle devis remplacement chaudière par PAC', href: '/modele-devis-remplacement-chaudiere-pac' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-      { label: 'Tarifs Chiffr', href: '/tarifs' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis chauffe-eau thermodynamique ?',
-        answer:
-          'Il doit généralement contenir la fourniture du chauffe-eau thermodynamique, la dépose éventuelle de l’ancien ballon, les raccordements hydrauliques, le raccordement électrique, l’évacuation des condensats, la mise en service, la TVA à vérifier et les conditions de paiement.',
+        "label": "Logiciel devis chauffe-eau thermodynamique",
+        "href": "/logiciel-devis-chauffe-eau-thermodynamique"
       },
       {
-        question: 'Faut-il prévoir l’évacuation de l’ancien ballon ?',
-        answer:
-          'Oui, si l’artisan prend en charge cette prestation. Elle peut dépendre de l’accès, du poids et des contraintes du chantier.',
+        "label": "Logiciel devis chauffagiste",
+        "href": "/logiciel-devis-chauffagiste"
       },
       {
-        question: 'Faut-il indiquer la capacité du chauffe-eau ?',
-        answer:
-          'Oui. La capacité doit être adaptée au foyer et au besoin client. Elle doit être indiquée ou clairement identifiable dans le devis.',
+        "label": "Logiciel devis avec facture acompte",
+        "href": "/logiciel-devis-avec-facture-acompte"
       },
       {
-        question: 'L’évacuation des condensats doit-elle être prévue ?',
-        answer:
-          'Oui, elle doit être vérifiée selon l’emplacement de l’appareil et les évacuations disponibles.',
+        "label": "Logiciel devis avec photos chantier",
+        "href": "/logiciel-devis-avec-photos-chantier"
       },
       {
-        question: 'Chiffr peut-il générer ce type de devis ?',
-        answer:
-          'Chiffr aide à préparer une structure de devis métier avec les lignes fréquentes, les prix à renseigner, les photos chantier, le PDF, la signature, l’acompte et les factures.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Que mettre dans un devis chauffe-eau thermodynamique ?",
+        "answer": "Dépose, fourniture, raccordements eau, électricité, condensats, mise en service, acompte et factures."
+      },
+      {
+        "question": "Faut-il prévoir les condensats ?",
+        "answer": "Oui, l’évacuation des condensats doit être vérifiée et expliquée dans le devis."
+      },
+      {
+        "question": "Peut-on joindre des photos ?",
+        "answer": "Oui, les photos de l’ancien ballon, de l’accès et de l’emplacement sont utiles."
+      },
+      {
+        "question": "Chiffr gère-t-il les factures ?",
+        "answer": "Oui, le devis peut être suivi par facture d’acompte, solde ou finale."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-vmc-simple-flux',
-    title: 'Modèle devis VMC simple flux : exemple artisan',
-    metaDescription:
-      'Structure de devis VMC simple flux : groupe, bouches, gaines, extraction, pose, raccordement électrique, essais et points à vérifier.',
-    h1: 'Modèle de devis VMC simple flux : les lignes à prévoir pour une pose claire',
-    intro:
-      'Un devis de VMC simple flux doit détailler le groupe, les bouches d’extraction, les gaines, les accessoires, la pose, le raccordement électrique, les essais et les finitions. Ce modèle aide à présenter un devis clair sans oublier les postes importants.',
-    trade: 'VMC',
-    useCase: 'Installation ou remplacement de VMC simple flux',
-    heroChecks: [
-      'Groupe VMC',
-      'Bouches',
-      'Gaines',
-      'Extraction',
-      'Raccordement',
-      'Essais',
-      'Photos',
+    "slug": "modele-devis-vmc-simple-flux",
+    "title": "Modèle devis VMC simple flux : lignes à prévoir",
+    "metaDescription": "Modèle devis VMC simple flux : caisson, gaines, bouches, sorties, dépose, réglages, photos chantier, signature, acompte et factures.",
+    "h1": "Modèle de devis VMC simple flux : exemple de structure",
+    "intro": "Un devis VMC simple flux doit rendre visibles des postes souvent cachés : combles, gaines, bouches, sortie toiture, raccordements et réglages. Ce modèle aide à présenter le travail de ventilation clairement.",
+    "trade": "VMC",
+    "useCase": "Installation ou remplacement VMC simple flux",
+    "heroChecks": [
+      "Caisson",
+      "Gaines",
+      "Bouches",
+      "Sortie",
+      "Réglages",
+      "Photos"
     ],
-    forWho: [
-      'Installateur VMC',
-      'Chauffagiste',
-      'Électricien',
-      'Plombier-chauffagiste',
-      'Entreprise CVC',
-      'Rénovation de logement',
-      'Remplacement d’une VMC existante',
+    "forWho": [
+      "Artisan VMC",
+      "Électricien",
+      "Plombier-chauffagiste",
+      "Entreprise CVC",
+      "Rénovation logement"
     ],
-    contains: [
-      'Informations client et adresse du chantier',
-      'Type de logement et pièces concernées',
-      'Fourniture du groupe VMC simple flux',
-      'Bouches d’extraction cuisine, salle de bain ou WC',
-      'Gaines, colliers, raccords et accessoires',
-      'Dépose éventuelle de l’ancien groupe',
-      'Raccordement électrique',
-      'Essais de fonctionnement',
-      'Photos chantier et accès combles si utile',
-      'TVA à vérifier, acompte et signature',
+    "contains": [
+      "Relevé logement",
+      "Dépose ancien caisson",
+      "Fourniture VMC",
+      "Gaines",
+      "Bouches",
+      "Sortie toiture",
+      "Raccordement électrique",
+      "Essais"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique VMC simple flux',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Vérification des pièces humides, accès combles, gaines existantes et rejet extérieur.',
+        "label": "Relevé ventilation logement",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Pièces, accès combles, réseau existant et photos."
       },
       {
-        label: 'Dépose ancien groupe VMC',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À prévoir en remplacement si un groupe existant doit être retiré.',
+        "label": "Dépose ancien caisson VMC",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Si remplacement ou reprise existante."
       },
       {
-        label: 'Fourniture groupe VMC simple flux',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Modèle autoréglable ou hygroréglable selon besoin et configuration.',
+        "label": "Fourniture caisson VMC simple flux",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Standard ou hygroréglable selon projet."
       },
       {
-        label: 'Bouche extraction cuisine',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon type de bouche et réseau existant.',
+        "label": "Fourniture gaines",
+        "type": "Matériel",
+        "unit": "Mètre",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Longueur et type selon accès."
       },
       {
-        label: 'Bouches extraction sanitaires',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'Salle de bain, WC, buanderie ou autres pièces humides.',
+        "label": "Pose gaines et raccordements",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Passage, fixation, raccordement caisson."
       },
       {
-        label: 'Gaines souples ou rigides',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Longueur, diamètre, isolation et cheminement à vérifier.',
+        "label": "Fourniture bouches d’extraction",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Cuisine, salle de bain, WC."
       },
       {
-        label: 'Accessoires de raccordement',
-        type: 'Matériel',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Colliers, raccords, suspentes, manchettes, adhésif et consommables.',
+        "label": "Sortie toiture ou murale",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Chapeau, traversée, raccordement."
       },
       {
-        label: 'Rejet extérieur ou sortie toiture',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'À vérifier selon configuration du logement et évacuation disponible.',
+        "label": "Raccordement électrique",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Alimentation et protection."
       },
       {
-        label: 'Raccordement électrique VMC',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Alimentation et protection à vérifier selon installation.',
+        "label": "Essais et réglages",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Contrôle aspiration, bruit, explication client."
       },
       {
-        label: 'Mise en route et essais',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Contrôle aspiration, bruit, fonctionnement et explication client.',
-      },
-      {
-        label: 'Nettoyage zone de pose',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Finitions et remise en état de la zone d’intervention.',
-      },
-      {
-        label: 'Photos chantier avant / après',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Groupe existant, combles, gaines, bouches et rejet extérieur.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À préciser dans les conditions de paiement.',
-      },
+        "label": "Dossier et facture",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Photos, acompte, solde et facture finale."
+      }
     ],
-    checkpoints: [
-      'Type de VMC : autoréglable ou hygroréglable',
-      'Nombre de pièces humides',
-      'Accès aux combles ou faux-plafond',
-      'État des gaines existantes',
-      'Longueur et diamètre des gaines',
-      'Rejet extérieur disponible',
-      'Alimentation électrique',
-      'Bruit et emplacement du groupe',
-      'Dépose de l’ancien matériel',
-      'TVA à vérifier selon chantier',
-      'Photos des accès et gaines',
+    "checkpoints": [
+      "Vérifier l’accès aux combles.",
+      "Compter les bouches par pièce.",
+      "Photographier l’ancien caisson.",
+      "Prévoir sortie toiture ou murale.",
+      "Expliquer les réglages au client."
     ],
-    chiffrBenefits: [
-      'Modèle VMC simple flux prêt à adapter',
-      'Lignes pour groupe, bouches, gaines et accessoires',
-      'Quantités et longueurs à compléter clairement',
-      'Photos chantier liées au dossier',
-      'PDF premium pour expliquer le devis',
-      'Signature sur place ou à distance',
-      'Acompte et conditions de paiement',
-      'Facture finale ou facture de solde',
-      'Suivi client et relances',
-      'Historique des interventions par client',
+    "chiffrBenefits": [
+      "Structure les lignes VMC.",
+      "Rend visibles les postes cachés.",
+      "Associe photos et devis.",
+      "Relie signature, acompte et factures."
     ],
-    blankPageRisks: [
-      'Oublier une bouche d’extraction',
-      'Sous-estimer la longueur des gaines',
-      'Ne pas prévoir le rejet extérieur',
-      'Oublier la dépose de l’ancien groupe',
-      'Ne pas détailler les accessoires',
-      'Oublier le raccordement électrique',
-      'Créer un devis trop vague',
-      'Oublier la signature ou l’acompte',
+    "blankPageRisks": [
+      "Oublier les bouches.",
+      "Sous-estimer les gaines.",
+      "Ne pas prévoir la sortie.",
+      "Ne pas expliquer les réglages."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis VMC', href: '/logiciel-devis-vmc' },
-      { label: 'Modèle devis VMC double flux', href: '/modele-devis-vmc-double-flux' },
-      { label: 'Logiciel devis chauffagiste', href: '/logiciel-devis-chauffagiste' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-      { label: 'Tarifs Chiffr', href: '/tarifs' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis VMC simple flux ?',
-        answer:
-          'Il doit généralement contenir le groupe VMC, les bouches d’extraction, les gaines, les accessoires, le raccordement électrique, les essais, la TVA à vérifier, les conditions de paiement et la signature client.',
+        "label": "Logiciel devis VMC",
+        "href": "/logiciel-devis-vmc"
       },
       {
-        question: 'Faut-il détailler les bouches d’extraction ?',
-        answer:
-          'Oui. Il est préférable de préciser les bouches prévues par pièce : cuisine, salle de bain, WC, buanderie ou autres pièces humides.',
+        "label": "Modèle VMC double flux",
+        "href": "/modele-devis-vmc-double-flux"
       },
       {
-        question: 'Faut-il prévoir la dépose de l’ancienne VMC ?',
-        answer:
-          'Oui si un ancien groupe doit être retiré. Cette prestation peut être intégrée au devis ou indiquée en option selon le chantier.',
+        "label": "Comment faire un devis VMC",
+        "href": "/comment-faire-un-devis-vmc"
       },
       {
-        question: 'Les longueurs de gaines doivent-elles être indiquées ?',
-        answer:
-          'Oui, surtout si le chantier demande un nouveau réseau ou une modification importante. Les longueurs et diamètres doivent être vérifiés sur place.',
+        "label": "Logiciel devis avec photos chantier",
+        "href": "/logiciel-devis-avec-photos-chantier"
       },
       {
-        question: 'Chiffr aide-t-il pour les devis VMC ?',
-        answer:
-          'Oui. Chiffr aide à préparer les lignes fréquentes, les quantités à compléter, les photos chantier, le PDF premium, la signature, l’acompte et la facture.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Quelles lignes mettre dans un devis VMC simple flux ?",
+        "answer": "Caisson, gaines, bouches, sortie, raccordement électrique, essais, réglages et factures."
+      },
+      {
+        "question": "Faut-il détailler les bouches ?",
+        "answer": "Oui, cela aide à expliquer les pièces concernées et les quantités."
+      },
+      {
+        "question": "Pourquoi ajouter des photos ?",
+        "answer": "Les photos des combles, gaines ou caisson rendent le devis plus compréhensible."
+      },
+      {
+        "question": "Chiffr convient-il à un artisan VMC ?",
+        "answer": "Oui, Chiffr aide à structurer les devis ventilation et le suivi client."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-vmc-double-flux',
-    title: 'Modèle devis VMC double flux : lignes à prévoir',
-    metaDescription:
-      'Exemple de devis VMC double flux : centrale, réseau, bouches, équilibrage, évacuation condensats, pose et mise en service.',
-    h1: 'Modèle de devis VMC double flux : les lignes à prévoir pour un devis complet',
-    intro:
-      'Une VMC double flux demande un devis plus structuré qu’une VMC simple flux : centrale, réseau d’insufflation et d’extraction, bouches, gaines, équilibrage, évacuation des condensats, mise en service et points de contrôle.',
-    trade: 'VMC',
-    useCase: 'Installation VMC double flux',
-    heroChecks: [
-      'Centrale double flux',
-      'Réseau',
-      'Bouches',
-      'Condensats',
-      'Équilibrage',
-      'Mise en service',
-      'PDF premium',
+    "slug": "modele-devis-vmc-double-flux",
+    "title": "Modèle devis VMC double flux : exemple complet",
+    "metaDescription": "Modèle devis VMC double flux : caisson, échangeur, gaines isolées, bouches, équilibrage, photos, mise en service et factures.",
+    "h1": "Modèle de devis VMC double flux : structurer un chantier plus technique",
+    "intro": "Une VMC double flux nécessite une structure de devis plus détaillée : caisson, réseau, gaines isolées, bouches, traversées, équilibrage et mise en service. Ce modèle aide à expliquer le prix et les étapes.",
+    "trade": "VMC",
+    "useCase": "Installation VMC double flux",
+    "heroChecks": [
+      "Double flux",
+      "Gaines isolées",
+      "Bouches",
+      "Équilibrage",
+      "Mise en service",
+      "Factures"
     ],
-    forWho: [
-      'Installateur VMC',
-      'Entreprise CVC',
-      'Chauffagiste',
-      'Artisan énergie',
-      'Rénovation globale',
-      'Maison individuelle performante',
-      'Projet avec réseau d’insufflation et extraction',
+    "forWho": [
+      "Artisan VMC",
+      "Entreprise CVC",
+      "Rénovation énergétique",
+      "Logement performant",
+      "Maison individuelle"
     ],
-    contains: [
-      'Informations client et chantier',
-      'Description du logement ou des zones',
-      'Fourniture centrale VMC double flux',
-      'Réseau d’insufflation et d’extraction',
-      'Bouches, plénums et accessoires',
-      'Isolation des gaines si nécessaire',
-      'Évacuation des condensats',
-      'Raccordement électrique',
-      'Réglages, équilibrage et essais',
-      'TVA, acompte, conditions et signature',
+    "contains": [
+      "Relevé",
+      "Caisson double flux",
+      "Réseau de gaines",
+      "Bouches insufflation/extraction",
+      "Prises d’air",
+      "Équilibrage",
+      "Mise en service",
+      "Photos"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Étude et relevé VMC double flux',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Relevé des pièces, passages possibles, emplacement centrale et rejets.',
+        "label": "Étude et relevé ventilation",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Pièces, volumes, passages, accès et contraintes."
       },
       {
-        label: 'Fourniture centrale VMC double flux',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Modèle et débit à adapter au logement et au projet.',
+        "label": "Fourniture caisson VMC double flux",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Modèle et débit à compléter."
       },
       {
-        label: 'Kit bouches insufflation',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'Pièces de vie, chambres ou zones à traiter selon plan.',
+        "label": "Accessoires et échangeur",
+        "type": "Matériel",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Filtres, supports, condensats selon équipement."
       },
       {
-        label: 'Kit bouches extraction',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'Cuisine, salle de bain, WC, buanderie ou pièces humides.',
+        "label": "Gaines isolées",
+        "type": "Matériel",
+        "unit": "Mètre",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Longueurs et diamètres à vérifier."
       },
       {
-        label: 'Réseau de gaines insufflation',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Longueur, diamètre, isolation et cheminement à vérifier.',
+        "label": "Pose réseau de gaines",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Cheminement, fixation et raccordements."
       },
       {
-        label: 'Réseau de gaines extraction',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'À détailler selon plan de réseau et accès.',
+        "label": "Bouches extraction",
+        "type": "Matériel + pose",
+        "unit": "Pièce",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Cuisine, sanitaires, pièces humides."
       },
       {
-        label: 'Plénums, caissons et accessoires',
-        type: 'Matériel',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Accessoires nécessaires au réseau et aux raccordements.',
+        "label": "Bouches insufflation",
+        "type": "Matériel + pose",
+        "unit": "Pièce",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Pièces de vie et chambres."
       },
       {
-        label: 'Entrée air neuf et rejet extérieur',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À vérifier selon façade, toiture, traversée et configuration.',
+        "label": "Prises d’air et rejet",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Traversées, sorties, accessoires et étanchéité."
       },
       {
-        label: 'Évacuation des condensats',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À prévoir selon emplacement de la centrale.',
+        "label": "Équilibrage et mise en service",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Contrôle, réglages, explication client."
       },
       {
-        label: 'Raccordement électrique centrale',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Alimentation, protection et commande à vérifier.',
-      },
-      {
-        label: 'Pose centrale et réseau',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Temps de pose dépendant de l’accès, du réseau et des finitions.',
-      },
-      {
-        label: 'Équilibrage et réglages',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Réglage des débits et contrôle du fonctionnement.',
-      },
-      {
-        label: 'Mise en service VMC double flux',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Essais, explication client et consignes d’entretien.',
-      },
-      {
-        label: 'Photos chantier et réseau',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Centrale, gaines, bouches, accès et finitions.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À préciser dans les conditions de paiement.',
-      },
+        "label": "Dossier et facturation",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Photos, signature, acompte et facture."
+      }
     ],
-    checkpoints: [
-      'Emplacement de la centrale double flux',
-      'Passage des gaines insufflation et extraction',
-      'Nombre de bouches par zone',
-      'Accès combles ou faux-plafond',
-      'Entrée air neuf et rejet extérieur',
-      'Évacuation des condensats',
-      'Niveau sonore et emplacement',
-      'Raccordement électrique',
-      'Équilibrage des débits',
-      'TVA à vérifier selon chantier',
-      'Photos du réseau et des accès',
+    "checkpoints": [
+      "Vérifier les passages de gaines.",
+      "Séparer extraction et insufflation.",
+      "Prévoir équilibrage.",
+      "Documenter les accès par photos.",
+      "Expliquer l’entretien des filtres."
     ],
-    chiffrBenefits: [
-      'Modèle VMC double flux prêt à adapter',
-      'Lignes réseau, bouches, centrale et accessoires structurées',
-      'Quantités et longueurs à compléter clairement',
-      'Points de contrôle avant envoi',
-      'Photos chantier liées au dossier',
-      'PDF premium lisible pour un devis technique',
-      'Signature sur place ou à distance',
-      'Acompte et conditions de paiement',
-      'Facture d’acompte ou finale',
-      'Suivi client et relances',
+    "chiffrBenefits": [
+      "Structure un devis technique.",
+      "Rend les lignes plus lisibles.",
+      "Garde photos et options dans le dossier.",
+      "Suit acompte, solde et relance."
     ],
-    blankPageRisks: [
-      'Oublier une partie du réseau',
-      'Sous-estimer les longueurs de gaines',
-      'Ne pas prévoir l’évacuation des condensats',
-      'Oublier l’équilibrage des débits',
-      'Ne pas détailler les bouches par zone',
-      'Oublier l’entrée air neuf ou le rejet extérieur',
-      'Créer un devis trop technique mais peu lisible',
-      'Oublier l’acompte ou le suivi client',
+    "blankPageRisks": [
+      "Mélanger extraction et insufflation.",
+      "Oublier l’équilibrage.",
+      "Sous-estimer les gaines isolées.",
+      "Ne pas expliquer les traversées."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis VMC', href: '/logiciel-devis-vmc' },
-      { label: 'Modèle devis VMC simple flux', href: '/modele-devis-vmc-simple-flux' },
-      { label: 'Logiciel devis frigoriste / CVC', href: '/logiciel-devis-frigoriste-cvc' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-      { label: 'Tarifs Chiffr', href: '/tarifs' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis VMC double flux ?',
-        answer:
-          'Il doit généralement contenir la centrale double flux, les réseaux d’insufflation et d’extraction, les bouches, les accessoires, les condensats, le raccordement électrique, l’équilibrage, la mise en service et les conditions de paiement.',
+        "label": "Logiciel devis VMC",
+        "href": "/logiciel-devis-vmc"
       },
       {
-        question: 'Faut-il détailler les réseaux de gaines ?',
-        answer:
-          'Oui. Les longueurs, diamètres, passages et accessoires peuvent modifier le temps de pose et le coût du chantier. Ils doivent être vérifiés sur place.',
+        "label": "Modèle VMC simple flux",
+        "href": "/modele-devis-vmc-simple-flux"
       },
       {
-        question: 'L’équilibrage doit-il apparaître dans le devis ?',
-        answer:
-          'C’est recommandé. L’équilibrage et les réglages font partie des points qui rendent le devis plus clair pour le client.',
+        "label": "Logiciel devis frigoriste CVC",
+        "href": "/logiciel-devis-frigoriste-cvc"
       },
       {
-        question: 'Faut-il prévoir l’évacuation des condensats ?',
-        answer:
-          'Oui, elle doit être vérifiée selon l’emplacement de la centrale et les évacuations disponibles.',
+        "label": "Comment faire un devis VMC",
+        "href": "/comment-faire-un-devis-vmc"
       },
       {
-        question: 'Chiffr est-il adapté aux devis VMC double flux ?',
-        answer:
-          'Oui. Chiffr aide à structurer les lignes, les quantités, les photos chantier, le PDF, la signature, l’acompte et les factures.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Que doit contenir un devis VMC double flux ?",
+        "answer": "Caisson, gaines isolées, bouches extraction et insufflation, prises d’air, équilibrage, mise en service et factures."
+      },
+      {
+        "question": "Faut-il prévoir une ligne équilibrage ?",
+        "answer": "Oui, c’est un poste important pour expliquer la mise en service."
+      },
+      {
+        "question": "Peut-on joindre des photos des combles ?",
+        "answer": "Oui, les photos aident à comprendre les passages et contraintes."
+      },
+      {
+        "question": "Chiffr permet-il d’adapter les lignes ?",
+        "answer": "Oui. L’artisan modifie les quantités, options et prix selon son chantier."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-borne-recharge-7kw',
-    title: 'Modèle devis borne de recharge 7 kW',
-    metaDescription:
-      'Exemple de devis IRVE pour borne 7,4 kW : visite, protections, câblage, pose, raccordement, tests, mise en service et acompte.',
-    h1: 'Modèle de devis borne de recharge 7 kW : les lignes à prévoir',
-    intro:
-      'Un devis de borne de recharge 7 kW doit préciser la visite technique, la borne, la protection électrique dédiée, le câblage, le cheminement, la pose, le raccordement, les tests, la mise en service et les conditions de paiement.',
-    trade: 'IRVE',
-    useCase: 'Installation borne de recharge 7,4 kW en résidentiel',
-    heroChecks: [
-      'Borne 7,4 kW',
-      'Protection dédiée',
-      'Câblage',
-      'Pose murale',
-      'Tests',
-      'Mise en service',
-      'Acompte',
+    "slug": "modele-devis-borne-recharge-7kw",
+    "title": "Modèle devis borne recharge 7 kW | IRVE Chiffr",
+    "metaDescription": "Modèle devis borne de recharge 7 kW : tableau, protection dédiée, câble, pose, mise en service, photos, acompte et facture.",
+    "h1": "Modèle de devis borne de recharge 7 kW : lignes à prévoir",
+    "intro": "Un devis de borne 7 kW doit rassurer le client sur la sécurité électrique, le cheminement, la protection dédiée et la mise en service. Ce modèle aide à structurer une installation IRVE résidentielle.",
+    "trade": "IRVE",
+    "useCase": "Installation borne de recharge 7 kW",
+    "heroChecks": [
+      "Borne 7 kW",
+      "Tableau",
+      "Protection",
+      "Câble",
+      "Mise en service",
+      "Facture"
     ],
-    forWho: [
-      'Installateur IRVE',
-      'Électricien',
-      'Artisan énergie',
-      'Entreprise spécialisée borne de recharge',
-      'Maison individuelle',
-      'Garage ou parking privé',
-      'Installation résidentielle monophasée',
+    "forWho": [
+      "Installateur IRVE",
+      "Électricien",
+      "Artisan énergie",
+      "Maison individuelle",
+      "Garage ou parking privé"
     ],
-    contains: [
-      'Informations client et adresse du chantier',
-      'Visite technique et relevé électrique',
-      'Fourniture de la borne 7,4 kW',
-      'Protection différentielle et disjoncteur adaptés',
-      'Câblage et cheminement',
-      'Goulotte, gaine, percement et accessoires',
-      'Pose murale ou support',
-      'Raccordement au tableau',
-      'Tests, paramétrage et mise en service',
-      'TVA à vérifier, acompte et signature',
+    "contains": [
+      "Visite technique",
+      "Borne 7 kW",
+      "Protection dédiée",
+      "Câble",
+      "Cheminement",
+      "Pose murale",
+      "Paramétrage",
+      "Photos"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique IRVE',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Relevé tableau, emplacement borne, distance, accès et cheminement.',
+        "label": "Visite technique IRVE",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Tableau, puissance, distance, accès et photos."
       },
       {
-        label: 'Fourniture borne de recharge 7,4 kW',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Marque, modèle, connectivité et options à adapter au besoin client.',
+        "label": "Fourniture borne de recharge 7 kW",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Modèle, options et connectivité à compléter."
       },
       {
-        label: 'Protection différentielle dédiée',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À vérifier selon borne, tableau et installation existante.',
+        "label": "Protection électrique dédiée",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Disjoncteur, différentiel, accessoires selon installation."
       },
       {
-        label: 'Disjoncteur dédié borne',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Calibre à vérifier selon configuration et protection requise.',
+        "label": "Câble d’alimentation",
+        "type": "Matériel",
+        "unit": "Mètre",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Section et longueur à vérifier."
       },
       {
-        label: 'Câble alimentation borne',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Longueur tableau vers borne à mesurer sur place.',
+        "label": "Cheminement et gaine",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Passage, percement, protection et finition."
       },
       {
-        label: 'Gaine, goulotte et accessoires',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Cheminement intérieur ou extérieur à détailler.',
+        "label": "Pose murale borne",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Fixation, raccordement et finitions."
       },
       {
-        label: 'Percement et passage câble',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'À prévoir selon mur, gaine technique, garage ou extérieur.',
+        "label": "Paramétrage et mise en service",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Essais, réglages et explication client."
       },
       {
-        label: 'Pose murale de la borne',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Fixation, raccordement et finition propre.',
+        "label": "Photos tableau et borne posée",
+        "type": "Dossier",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Documentation du dossier client."
       },
       {
-        label: 'Raccordement au tableau électrique',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Connexion, repérage, protection et contrôle.',
-      },
-      {
-        label: 'Option délestage ou pilotage',
-        type: 'Option',
-        unit: 'Forfait',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À proposer selon puissance disponible et besoin client.',
-      },
-      {
-        label: 'Tests et paramétrage borne',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Essais de charge, réglages et vérification du fonctionnement.',
-      },
-      {
-        label: 'Mise en service et explication client',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Présentation du fonctionnement, application ou badge si prévu.',
-      },
-      {
-        label: 'Photos chantier et tableau électrique',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Tableau, cheminement, emplacement borne et installation finale.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À préciser dans les conditions de paiement du devis.',
-      },
+        "label": "Facture acompte et solde",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Suivi du paiement et validation."
+      }
     ],
-    checkpoints: [
-      'Puissance disponible au tableau',
-      'Distance tableau vers borne',
-      'Cheminement câble intérieur ou extérieur',
-      'Type de pose : murale ou pied',
-      'Protection électrique dédiée',
-      'Option délestage si nécessaire',
-      'Accès garage ou parking',
-      'Passage et percements',
-      'TVA à vérifier selon chantier',
-      'Acompte et conditions de paiement',
-      'Photos tableau et cheminement',
+    "checkpoints": [
+      "Vérifier la puissance disponible.",
+      "Photographier le tableau.",
+      "Mesurer la distance réelle.",
+      "Préciser la protection dédiée.",
+      "Documenter la mise en service."
     ],
-    chiffrBenefits: [
-      'Modèle IRVE 7 kW prêt à adapter',
-      'Lignes borne, protection, câble et pose déjà structurées',
-      'Longueurs et prix à compléter clairement',
-      'Photos tableau et cheminement liées au devis',
-      'PDF premium pour rassurer le client',
-      'Signature sur place ou à distance',
-      'Acompte après validation',
-      'Facture d’acompte ou finale',
-      'Suivi client et relances',
-      'Historique du dossier IRVE',
+    "chiffrBenefits": [
+      "Structure le devis IRVE 7 kW.",
+      "Relie photos du tableau et du cheminement.",
+      "Garde signature, acompte et factures.",
+      "Aide à présenter la sécurité électrique simplement."
     ],
-    blankPageRisks: [
-      'Oublier la visite technique',
-      'Ne pas détailler la protection dédiée',
-      'Sous-estimer la longueur de câble',
-      'Oublier les goulottes ou percements',
-      'Ne pas prévoir le délestage si nécessaire',
-      'Oublier les tests et la mise en service',
-      'Créer un devis trop vague pour un chantier électrique',
-      'Oublier l’acompte et la facture d’acompte',
+    "blankPageRisks": [
+      "Oublier la protection dédiée.",
+      "Sous-estimer la distance de câble.",
+      "Ne pas expliquer le cheminement.",
+      "Envoyer un devis trop vague."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis IRVE', href: '/logiciel-devis-irve' },
-      { label: 'Modèle devis borne recharge 22 kW', href: '/modele-devis-borne-recharge-22kw' },
-      { label: 'Modèle devis photovoltaïque autoconsommation', href: '/modele-devis-photovoltaique-autoconsommation' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-      { label: 'Tarifs Chiffr', href: '/tarifs' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis borne de recharge 7 kW ?',
-        answer:
-          'Il doit généralement contenir la visite technique, la fourniture de la borne, la protection électrique dédiée, le câblage, le cheminement, la pose, le raccordement, les tests, la mise en service, la TVA à vérifier et les conditions de paiement.',
+        "label": "Logiciel devis IRVE",
+        "href": "/logiciel-devis-irve"
       },
       {
-        question: 'Faut-il détailler la protection électrique ?',
-        answer:
-          'Oui. La protection dédiée fait partie des éléments importants d’un devis IRVE. Elle doit être vérifiée selon le tableau et la borne proposée.',
+        "label": "Modèle borne recharge 22 kW",
+        "href": "/modele-devis-borne-recharge-22kw"
       },
       {
-        question: 'La longueur du câble doit-elle être indiquée ?',
-        answer:
-          'Oui. Elle peut fortement influencer le devis. Elle doit être mesurée ou estimée clairement selon le cheminement réel.',
+        "label": "Comment faire un devis borne recharge",
+        "href": "/comment-faire-un-devis-borne-recharge"
       },
       {
-        question: 'Faut-il prévoir une option délestage ?',
-        answer:
-          'Cela dépend de la puissance disponible, de l’installation électrique et du besoin client. Elle peut être intégrée au devis ou proposée en option.',
+        "label": "Logiciel devis avec acompte",
+        "href": "/logiciel-devis-avec-acompte"
       },
       {
-        question: 'Chiffr est-il adapté aux devis IRVE ?',
-        answer:
-          'Oui. Chiffr aide à structurer les devis de borne de recharge avec les bonnes lignes, les photos chantier, le PDF, la signature, l’acompte et les factures.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Que mettre dans un devis borne 7 kW ?",
+        "answer": "Borne, protection dédiée, câble, cheminement, pose, paramétrage, mise en service et factures."
+      },
+      {
+        "question": "Faut-il photographier le tableau ?",
+        "answer": "Oui, c’est utile pour documenter la protection, l’accès et la configuration."
+      },
+      {
+        "question": "Le prix doit-il être automatique ?",
+        "answer": "Non. Le modèle aide à structurer, mais l’artisan renseigne ses prix selon matériel et chantier."
+      },
+      {
+        "question": "Chiffr convient-il aux installateurs IRVE ?",
+        "answer": "Oui. Chiffr aide à créer des devis IRVE avec photos, signature, acompte et factures."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-borne-recharge-22kw',
-    title: 'Modèle devis borne de recharge 22 kW',
-    metaDescription:
-      'Structure de devis pour borne IRVE 22 kW : triphasé, protection dédiée, câblage, pose, essais, options et points à vérifier.',
-    h1: 'Modèle de devis borne de recharge 22 kW : les lignes à prévoir',
-    intro:
-      'Un devis de borne de recharge 22 kW demande une attention particulière : alimentation triphasée, protection adaptée, câble, cheminement, pose, tests, paramétrage, options de pilotage et mise en service. Ce modèle aide à structurer un devis IRVE plus technique.',
-    trade: 'IRVE',
-    useCase: 'Installation borne de recharge 22 kW en triphasé',
-    heroChecks: [
-      'Borne 22 kW',
-      'Triphasé',
-      'Protection',
-      'Câblage',
-      'Pilotage',
-      'Tests',
-      'Mise en service',
+    "slug": "modele-devis-borne-recharge-22kw",
+    "title": "Modèle devis borne recharge 22 kW | IRVE Chiffr",
+    "metaDescription": "Modèle devis borne de recharge 22 kW : puissance, protections, câblage, pose, paramétrage, photos chantier, acompte et factures.",
+    "h1": "Modèle de devis borne de recharge 22 kW : les postes à détailler",
+    "intro": "Une borne 22 kW implique plus de vigilance sur la puissance, la protection, le câblage et la configuration du site. Ce modèle aide l’installateur IRVE à présenter un devis clair et professionnel.",
+    "trade": "IRVE",
+    "useCase": "Installation borne de recharge 22 kW",
+    "heroChecks": [
+      "Borne 22 kW",
+      "Puissance",
+      "Protection",
+      "Câblage",
+      "Paramétrage",
+      "Factures"
     ],
-    forWho: [
-      'Installateur IRVE',
-      'Électricien qualifié',
-      'Entreprise énergie',
-      'Borne entreprise ou résidence',
-      'Installation triphasée',
-      'Parking professionnel',
-      'Client avec besoin de charge plus rapide',
+    "forWho": [
+      "Installateur IRVE",
+      "Électricien",
+      "Entreprise énergie",
+      "TPE avec parking",
+      "Garage ou site professionnel"
     ],
-    contains: [
-      'Informations client et adresse du chantier',
-      'Relevé tableau et disponibilité triphasée',
-      'Fourniture borne 22 kW',
-      'Protection électrique dédiée adaptée',
-      'Câble, gaine et cheminement',
-      'Pose murale ou sur pied',
-      'Option délestage, badge ou pilotage',
-      'Raccordement et repérage tableau',
-      'Tests, paramétrage et mise en service',
-      'TVA à vérifier, acompte et signature',
+    "contains": [
+      "Relevé puissance",
+      "Borne 22 kW",
+      "Protection dédiée",
+      "Câblage adapté",
+      "Pose murale ou sur pied",
+      "Paramétrage",
+      "Essais",
+      "Photos"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique borne 22 kW',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Vérification tableau, triphasé, puissance disponible et distance.',
+        "label": "Relevé électrique et puissance",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Tableau, abonnement, distance, accès et contraintes."
       },
       {
-        label: 'Fourniture borne de recharge 22 kW',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Modèle, communication, badge et options à adapter au besoin.',
+        "label": "Fourniture borne 22 kW",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Modèle, options, connectivité et paramétrage."
       },
       {
-        label: 'Protection différentielle dédiée triphasée',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À vérifier selon borne, tableau et configuration électrique.',
+        "label": "Protection dédiée adaptée",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Différentiel, disjoncteur et accessoires selon site."
       },
       {
-        label: 'Disjoncteur dédié borne 22 kW',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Calibre et protection à confirmer selon installation.',
+        "label": "Câblage adapté à la puissance",
+        "type": "Matériel",
+        "unit": "Mètre",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Section et longueur à vérifier."
       },
       {
-        label: 'Câble alimentation triphasé',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Longueur, section et cheminement à vérifier sur site.',
+        "label": "Cheminement câble",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Gaine, passage, percement, fixation et finition."
       },
       {
-        label: 'Gaine, goulotte et accessoires',
-        type: 'Matériel + pose',
-        unit: 'Mètre linéaire',
-        quantity: 'À mesurer',
-        priceMode: 'Prix à renseigner',
-        note: 'Passage intérieur, extérieur, parking ou local technique.',
+        "label": "Pose borne ou pied",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Murale, pied ou support selon emplacement."
       },
       {
-        label: 'Pose borne murale ou sur pied',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Support à adapter selon emplacement et usage.',
+        "label": "Paramétrage puissance",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Réglage, essais, explication client."
       },
       {
-        label: 'Support sur pied ou socle',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À prévoir si la pose murale n’est pas adaptée.',
+        "label": "Photos et dossier IRVE",
+        "type": "Dossier",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Tableau, cheminement, borne et résultat final."
       },
       {
-        label: 'Raccordement au tableau électrique',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Connexion, repérage, protection et contrôle.',
-      },
-      {
-        label: 'Option délestage / gestion de charge',
-        type: 'Option',
-        unit: 'Forfait',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'Utile selon puissance disponible et usage professionnel.',
-      },
-      {
-        label: 'Option badge ou accès utilisateur',
-        type: 'Option',
-        unit: 'Forfait',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À prévoir pour entreprise, copropriété ou usage partagé.',
-      },
-      {
-        label: 'Tests de charge et paramétrage',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Contrôle fonctionnement, réglages et vérification sécurité.',
-      },
-      {
-        label: 'Mise en service et explication client',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Explication utilisation, application, badge ou accès selon matériel.',
-      },
-      {
-        label: 'Photos chantier et repérage',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Tableau, cheminement, borne, support et finition.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À préciser dans les conditions du devis.',
-      },
+        "label": "Factures et suivi paiement",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Acompte, solde, finale et relance."
+      }
     ],
-    checkpoints: [
-      'Présence et disponibilité du triphasé',
-      'Puissance électrique disponible',
-      'Protection adaptée à la borne',
-      'Section et longueur du câble',
-      'Cheminement intérieur ou extérieur',
-      'Pose murale ou sur pied',
-      'Besoin de délestage ou gestion de charge',
-      'Usage privé, entreprise ou partagé',
-      'Accès chantier et percements',
-      'TVA à vérifier selon chantier',
-      'Photos tableau et emplacement borne',
+    "checkpoints": [
+      "Confirmer la puissance disponible.",
+      "Vérifier la section de câble.",
+      "Préciser le type de pose.",
+      "Prévoir le paramétrage.",
+      "Garder les photos du tableau et du cheminement."
     ],
-    chiffrBenefits: [
-      'Modèle IRVE 22 kW prêt à adapter',
-      'Lignes triphasé, protection, câble et pose structurées',
-      'Options délestage, badge et support prévues',
-      'Quantités et prix à compléter clairement',
-      'Photos chantier liées au dossier',
-      'PDF premium pour devis technique',
-      'Signature sur place ou à distance',
-      'Acompte et factures reliées',
-      'Suivi client et relances',
-      'Historique du dossier IRVE',
+    "chiffrBenefits": [
+      "Structure les postes électriques sensibles.",
+      "Aide à expliquer la différence avec une installation plus simple.",
+      "Garde les photos dans le dossier client.",
+      "Suit signature, acompte et facturation."
     ],
-    blankPageRisks: [
-      'Oublier la vérification du triphasé',
-      'Sous-estimer la section ou longueur du câble',
-      'Ne pas détailler la protection dédiée',
-      'Oublier le support sur pied si nécessaire',
-      'Ne pas prévoir la gestion de charge',
-      'Oublier les options d’accès utilisateur',
-      'Produire un devis trop vague pour une installation technique',
-      'Oublier acompte, signature ou facture',
+    "blankPageRisks": [
+      "Sous-estimer le câblage.",
+      "Ne pas expliquer la puissance.",
+      "Oublier le support ou le pied.",
+      "Ne pas prévoir le paramétrage."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis IRVE', href: '/logiciel-devis-irve' },
-      { label: 'Modèle devis borne recharge 7 kW', href: '/modele-devis-borne-recharge-7kw' },
-      { label: 'Modèle devis photovoltaïque autoconsommation', href: '/modele-devis-photovoltaique-autoconsommation' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-      { label: 'Tarifs Chiffr', href: '/tarifs' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis borne de recharge 22 kW ?',
-        answer:
-          'Il doit généralement contenir la visite technique, la borne 22 kW, la vérification du triphasé, la protection dédiée, le câble, la pose, le raccordement, les options de pilotage, les tests, la mise en service et les conditions de paiement.',
+        "label": "Logiciel devis IRVE",
+        "href": "/logiciel-devis-irve"
       },
       {
-        question: 'Faut-il vérifier le triphasé avant d’envoyer le devis ?',
-        answer:
-          'Oui. Une borne 22 kW dépend de la configuration électrique disponible. L’artisan doit vérifier le tableau, la puissance, la protection et le cheminement.',
+        "label": "Modèle borne recharge 7 kW",
+        "href": "/modele-devis-borne-recharge-7kw"
       },
       {
-        question: 'Faut-il prévoir une gestion de charge ?',
-        answer:
-          'Cela dépend de la puissance disponible, de l’usage et du contexte client. Elle peut être prévue comme option ou intégrée au devis.',
+        "label": "Comment faire un devis borne recharge",
+        "href": "/comment-faire-un-devis-borne-recharge"
       },
       {
-        question: 'Une borne 22 kW peut-elle être posée sur pied ?',
-        answer:
-          'Oui, si la pose murale n’est pas adaptée. Le support sur pied, le socle et la fixation doivent alors être prévus dans le devis.',
+        "label": "Logiciel devis mobile artisan",
+        "href": "/logiciel-devis-mobile-artisan"
       },
       {
-        question: 'Chiffr aide-t-il à structurer un devis IRVE 22 kW ?',
-        answer:
-          'Oui. Chiffr prépare une structure métier avec les lignes fréquentes, les options, les prix à compléter, les photos chantier, le PDF, la signature, l’acompte et les factures.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Que doit contenir un devis borne 22 kW ?",
+        "answer": "Puissance, borne, protection dédiée, câblage adapté, pose, paramétrage, essais et factures."
+      },
+      {
+        "question": "Faut-il détailler le câblage ?",
+        "answer": "Oui. La longueur, la section et le cheminement influencent fortement le devis."
+      },
+      {
+        "question": "Peut-on suivre l’acompte ?",
+        "answer": "Oui. Chiffr permet de relier devis, acompte, solde et factures."
+      },
+      {
+        "question": "Le modèle remplace-t-il la vérification électrique ?",
+        "answer": "Non. L’artisan doit vérifier la configuration réelle et adapter ses lignes."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-photovoltaique-autoconsommation',
-    title: 'Modèle devis photovoltaïque autoconsommation',
-    metaDescription:
-      'Les lignes à prévoir pour un devis solaire en autoconsommation : panneaux, onduleur, pose, raccordement, monitoring et mise en service.',
-    h1: 'Modèle de devis photovoltaïque autoconsommation : les lignes à prévoir',
-    intro:
-      'Un devis photovoltaïque en autoconsommation doit détailler les panneaux, la structure de fixation, l’onduleur ou les micro-onduleurs, les protections, le câblage, la pose, le raccordement, le monitoring, la mise en service et les conditions de paiement.',
-    trade: 'Photovoltaïque',
-    useCase: 'Installation solaire en autoconsommation',
-    heroChecks: [
-      'Panneaux solaires',
-      'Onduleur',
-      'Fixation',
-      'Câblage',
-      'Protections',
-      'Monitoring',
-      'Mise en service',
+    "slug": "modele-devis-photovoltaique-autoconsommation",
+    "title": "Modèle devis photovoltaïque autoconsommation | Chiffr",
+    "metaDescription": "Modèle devis photovoltaïque autoconsommation : panneaux, fixation, onduleur, micro-onduleurs, coffrets, raccordement, photos et factures.",
+    "h1": "Modèle de devis photovoltaïque autoconsommation : les lignes à prévoir",
+    "intro": "Un devis photovoltaïque doit rester lisible malgré les nombreux postes : panneaux, fixation, onduleur, coffrets, câbles, raccordement, mise en service et options. Ce modèle aide à structurer un devis solaire pour l’autoconsommation.",
+    "trade": "Photovoltaïque",
+    "useCase": "Installation solaire en autoconsommation",
+    "heroChecks": [
+      "Panneaux",
+      "Fixation",
+      "Onduleur",
+      "Coffrets",
+      "Raccordement",
+      "Acompte"
     ],
-    forWho: [
-      'Installateur photovoltaïque',
-      'Artisan énergie',
-      'Électricien solaire',
-      'Entreprise CVC / énergie',
-      'Maison individuelle',
-      'Autoconsommation résidentielle',
-      'Petit projet professionnel',
+    "forWho": [
+      "Installateur photovoltaïque",
+      "Artisan solaire",
+      "Entreprise énergie",
+      "Maison individuelle",
+      "Autoconsommation résidentielle"
     ],
-    contains: [
-      'Informations client et adresse du chantier',
-      'Description de la toiture ou zone de pose',
-      'Fourniture panneaux photovoltaïques',
-      'Onduleur ou micro-onduleurs',
-      'Structure de fixation',
-      'Câblage DC / AC et protections',
-      'Raccordement électrique',
-      'Monitoring ou passerelle de suivi',
-      'Pose, essais et mise en service',
-      'TVA à vérifier, acompte, conditions et signature',
+    "contains": [
+      "Relevé toiture",
+      "Panneaux",
+      "Système de fixation",
+      "Onduleur ou micro-onduleurs",
+      "Coffrets",
+      "Câblage",
+      "Monitoring",
+      "Mise en service"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique photovoltaïque',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Relevé toiture, orientation, accès, tableau électrique et contraintes.',
+        "label": "Relevé toiture et accès",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Orientation, surface, accès, photos et contraintes."
       },
       {
-        label: 'Fourniture panneaux photovoltaïques',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'Nombre, puissance et marque à adapter au projet.',
+        "label": "Fourniture panneaux photovoltaïques",
+        "type": "Matériel",
+        "unit": "Pièce",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Puissance, quantité et modèle à compléter."
       },
       {
-        label: 'Structure de fixation toiture',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon type de couverture, inclinaison et support.',
+        "label": "Système de fixation",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Rails, crochets, lestage ou fixation selon toiture."
       },
       {
-        label: 'Onduleur central',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'Selon architecture choisie : onduleur central ou micro-onduleurs.',
+        "label": "Onduleur ou micro-onduleurs",
+        "type": "Matériel",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Selon architecture retenue."
       },
       {
-        label: 'Micro-onduleurs',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: 'Selon projet',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À prévoir si l’installation est conçue en micro-onduleurs.',
+        "label": "Coffrets AC/DC et protections",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Protections, parafoudre, disjoncteurs et accessoires."
       },
       {
-        label: 'Câblage photovoltaïque DC',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Câbles, connecteurs, cheminement et protections à vérifier.',
+        "label": "Câblage et raccordements",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Cheminement, câbles, gaines et finitions."
       },
       {
-        label: 'Câblage AC et raccordement tableau',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Connexion au tableau, protection et repérage.',
+        "label": "Monitoring ou passerelle",
+        "type": "Matériel + pose",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Option de suivi production si prévue."
       },
       {
-        label: 'Coffret de protection photovoltaïque',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'Protections à adapter selon architecture et configuration.',
+        "label": "Mise en service",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Essais, paramétrage, explication client."
       },
       {
-        label: 'Passage câbles et goulottes',
-        type: 'Matériel + pose',
-        unit: 'Forfait',
-        quantity: 'Selon projet',
-        priceMode: 'Prix à renseigner',
-        note: 'Cheminement toiture vers local technique ou tableau.',
+        "label": "Photos toiture et coffrets",
+        "type": "Dossier",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Avant/après, tableau, coffrets et finitions."
       },
       {
-        label: 'Pose panneaux photovoltaïques',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Main-d’œuvre selon nombre de panneaux, accès et toiture.',
-      },
-      {
-        label: 'Monitoring ou passerelle de suivi',
-        type: 'Matériel + service',
-        unit: 'Pièce',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À prévoir selon solution de suivi de production.',
-      },
-      {
-        label: 'Mise en service photovoltaïque',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Essais, contrôles, paramétrage et explication client.',
-      },
-      {
-        label: 'Photos chantier avant / après',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Toiture, passage câbles, tableau, coffrets et installation finale.',
-      },
-      {
-        label: 'Acompte à la signature',
-        type: 'Paiement',
-        unit: '% ou montant',
-        quantity: 'À définir',
-        priceMode: 'À renseigner',
-        note: 'À préciser dans les conditions du devis.',
-      },
+        "label": "Acompte et facture finale",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Suivi du paiement lié au devis."
+      }
     ],
-    checkpoints: [
-      'Orientation et inclinaison de la toiture',
-      'Type de couverture et système de fixation',
-      'Accès chantier et sécurité de pose',
-      'Nombre et puissance des panneaux',
-      'Choix onduleur central ou micro-onduleurs',
-      'Cheminement câbles toiture vers tableau',
-      'Protections électriques adaptées',
-      'Monitoring ou suivi production',
-      'Raccordement électrique',
-      'TVA à vérifier selon chantier',
-      'Photos toiture, tableau et cheminements',
+    "checkpoints": [
+      "Photographier toiture et accès.",
+      "Préciser la quantité de panneaux.",
+      "Vérifier emplacement onduleur/coffrets.",
+      "Détailler câblage et raccordement.",
+      "Clarifier les conditions de paiement."
     ],
-    chiffrBenefits: [
-      'Modèle photovoltaïque autoconsommation prêt à adapter',
-      'Lignes panneaux, fixation, onduleur et protections structurées',
-      'Quantités et prix à compléter clairement',
-      'Options monitoring ou micro-onduleurs prévues',
-      'Photos chantier liées au dossier',
-      'PDF premium pour présenter le projet',
-      'Signature sur place ou à distance',
-      'Acompte et factures reliées',
-      'Suivi client et relances',
-      'Historique du dossier solaire',
+    "chiffrBenefits": [
+      "Structure les postes solaires.",
+      "Garde photos toiture et coffrets.",
+      "Relie devis, signature, acompte et factures.",
+      "Aide à garder un PDF lisible pour un chantier à forte valeur."
     ],
-    blankPageRisks: [
-      'Oublier la structure de fixation',
-      'Ne pas détailler onduleur ou micro-onduleurs',
-      'Sous-estimer le passage de câbles',
-      'Oublier les protections électriques',
-      'Ne pas prévoir le monitoring si vendu au client',
-      'Oublier les contraintes d’accès toiture',
-      'Créer un devis solaire difficile à comprendre',
-      'Oublier acompte, signature ou facture',
+    "blankPageRisks": [
+      "Oublier les coffrets.",
+      "Sous-estimer les fixations.",
+      "Ne pas détailler le câblage.",
+      "Mélanger matériel et main-d’œuvre."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis photovoltaïque', href: '/logiciel-devis-photovoltaique' },
-      { label: 'Modèle devis borne recharge 7 kW', href: '/modele-devis-borne-recharge-7kw' },
-      { label: 'Modèle devis borne recharge 22 kW', href: '/modele-devis-borne-recharge-22kw' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-      { label: 'Tarifs Chiffr', href: '/tarifs' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis photovoltaïque en autoconsommation ?',
-        answer:
-          'Il doit généralement contenir les panneaux, la structure de fixation, l’onduleur ou les micro-onduleurs, les protections, le câblage, la pose, le raccordement, le monitoring, la mise en service, la TVA à vérifier et les conditions de paiement.',
+        "label": "Logiciel devis photovoltaïque",
+        "href": "/logiciel-devis-photovoltaique"
       },
       {
-        question: 'Faut-il préciser le nombre de panneaux solaires ?',
-        answer:
-          'Oui. Le nombre, la puissance et le type de panneaux doivent être indiqués ou clairement identifiables pour que le client comprenne le projet.',
+        "label": "Logiciel devis IRVE",
+        "href": "/logiciel-devis-irve"
       },
       {
-        question: 'Faut-il détailler l’onduleur ou les micro-onduleurs ?',
-        answer:
-          'Oui. L’architecture choisie doit être claire dans le devis, car elle influence le matériel, la pose et le suivi de production.',
+        "label": "Logiciel devis avec facture acompte",
+        "href": "/logiciel-devis-avec-facture-acompte"
       },
       {
-        question: 'Les protections électriques doivent-elles être indiquées ?',
-        answer:
-          'Oui. Les protections et coffrets font partie des postes importants d’un devis photovoltaïque et doivent être adaptés au projet.',
+        "label": "Logiciel devis avec photos chantier",
+        "href": "/logiciel-devis-avec-photos-chantier"
       },
       {
-        question: 'Chiffr peut-il aider pour un devis solaire ?',
-        answer:
-          'Oui. Chiffr aide à structurer les lignes d’un devis photovoltaïque, à garder les photos chantier, à générer un PDF premium, à faire signer, demander l’acompte et suivre les factures.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Quelles lignes mettre dans un devis photovoltaïque ?",
+        "answer": "Panneaux, fixations, onduleur, coffrets, câblage, raccordement, mise en service, photos et factures."
+      },
+      {
+        "question": "Faut-il détailler panneaux et onduleur séparément ?",
+        "answer": "Oui, cela rend le devis plus lisible et plus facile à comprendre."
+      },
+      {
+        "question": "Peut-on ajouter des photos de toiture ?",
+        "answer": "Oui, les photos aident à documenter l’accès, la toiture et les contraintes."
+      },
+      {
+        "question": "Chiffr convient-il aux installateurs solaires ?",
+        "answer": "Oui. Chiffr aide à créer des devis solaires structurés avec photos, signature, acompte et factures."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-entretien-climatisation',
-    title: 'Modèle devis entretien climatisation : lignes à prévoir',
-    metaDescription:
-      'Exemple de structure pour un devis d’entretien climatisation : nettoyage, contrôle, condensats, essais, photos chantier, déplacement et points à vérifier.',
-    h1: 'Modèle de devis entretien climatisation : les lignes à prévoir',
-    intro:
-      'Vous préparez un devis d’entretien climatisation ? Même pour une intervention courte, le devis doit rester clair : type d’équipement, nettoyage, contrôle visuel, filtres, condensats, essais, déplacement, options éventuelles et conditions de paiement.',
-    trade: 'Climatisation',
-    useCase: 'Entretien préventif ou ponctuel d’une climatisation',
-    heroChecks: [
-      'Nettoyage',
-      'Contrôle',
-      'Filtres',
-      'Condensats',
-      'Essais',
-      'Photos chantier',
-      'Suivi client',
+    "slug": "modele-devis-entretien-climatisation",
+    "title": "Modèle devis entretien climatisation | Chiffr",
+    "metaDescription": "Modèle devis entretien climatisation : nettoyage filtres, contrôle unités, désinfection, condensats, photos, intervention et facture.",
+    "h1": "Modèle de devis entretien climatisation : intervention, nettoyage et contrôle",
+    "intro": "Un devis d’entretien climatisation doit détailler le déplacement, le nettoyage, les contrôles, les consommables éventuels et le compte rendu. Ce modèle aide à présenter une intervention simple mais professionnelle.",
+    "trade": "Climatisation",
+    "useCase": "Entretien ou maintenance climatisation",
+    "heroChecks": [
+      "Nettoyage",
+      "Contrôle",
+      "Condensats",
+      "Photos",
+      "Facture"
     ],
-    forWho: [
-      'Installateur climatisation',
-      'Frigoriste',
-      'Entreprise CVC',
-      'Artisan maintenance clim',
-      'Intervention résidentielle ou petit tertiaire',
-      'Client avec monosplit, multisplit ou clim réversible',
+    "forWho": [
+      "Installateur clim",
+      "Frigoriste",
+      "Artisan CVC",
+      "Maintenance résidentielle",
+      "Maintenance tertiaire légère"
     ],
-    contains: [
-      'Informations client et adresse d’intervention',
-      'Type d’équipement concerné',
-      'Nombre d’unités intérieures et extérieures',
-      'Nettoyage des filtres et unités',
-      'Contrôle visuel de l’installation',
-      'Contrôle évacuation condensats',
-      'Essais de fonctionnement',
-      'Photos chantier si utile',
-      'Forfait déplacement',
-      'Conditions de règlement et validité du devis',
+    "contains": [
+      "Déplacement",
+      "Nettoyage filtres",
+      "Contrôle unités",
+      "Condensats",
+      "Désinfection",
+      "Compte rendu",
+      "Photos",
+      "Facture"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Forfait déplacement entretien climatisation',
-        type: 'Déplacement',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon zone d’intervention et temps de trajet.',
+        "label": "Déplacement intervention",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Zone, accès et conditions à préciser."
       },
       {
-        label: 'Diagnostic visuel de l’installation',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Contrôle général des unités, fixations, état apparent et accès.',
+        "label": "Nettoyage filtres unité intérieure",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Selon nombre d’unités."
       },
       {
-        label: 'Nettoyage filtres unité intérieure',
-        type: 'Service',
-        unit: 'Unité',
-        quantity: 'Selon nombre d’unités',
-        priceMode: 'Prix à renseigner',
-        note: 'Quantité à adapter selon monosplit ou multisplit.',
+        "label": "Contrôle unité intérieure",
+        "type": "Service",
+        "unit": "Pièce",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Température, bruit, état général."
       },
       {
-        label: 'Nettoyage façade et échangeur accessible',
-        type: 'Service',
-        unit: 'Unité',
-        quantity: 'Selon nombre d’unités',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon accessibilité et état de l’équipement.',
+        "label": "Contrôle groupe extérieur",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "État, accès, fixations et propreté."
       },
       {
-        label: 'Contrôle évacuation condensats',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Vérification écoulement, bac à condensats et pompe si présente.',
+        "label": "Nettoyage échangeur ou façade",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Selon état et accessibilité."
       },
       {
-        label: 'Contrôle unité extérieure',
-        type: 'Service',
-        unit: 'Unité',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Contrôle visuel, accès, fixation, état général et ventilation.',
+        "label": "Contrôle évacuation condensats",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Pente, écoulement, pompe si présente."
       },
       {
-        label: 'Essais de fonctionnement chaud / froid',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Essais simples et relevés à adapter selon intervention.',
+        "label": "Désinfection ou traitement",
+        "type": "Consommable",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Produit ou prestation selon besoin."
       },
       {
-        label: 'Nettoyage approfondi ou désinfection',
-        type: 'Option',
-        unit: 'Unité',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À prévoir si l’état de l’unité nécessite une prestation complémentaire.',
+        "label": "Compte rendu photo",
+        "type": "Dossier",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Photos avant/après et observations."
       },
       {
-        label: 'Remplacement consommable ou petite pièce',
-        type: 'Matériel',
-        unit: 'Pièce',
-        quantity: 'Selon besoin',
-        priceMode: 'Prix à renseigner',
-        note: 'Ne pas inventer de prix : à compléter selon pièce réellement prévue.',
-      },
-      {
-        label: 'Photos intervention avant / après',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Utile pour garder une trace client et documenter l’entretien.',
-      },
-      {
-        label: 'Compte rendu d’intervention',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Synthèse simple des points vérifiés et éventuelles recommandations.',
-      },
+        "label": "Facture intervention",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Facture finale et suivi client."
+      }
     ],
-    checkpoints: [
-      'Nombre d’unités intérieures',
-      'Nombre d’unités extérieures',
-      'Accessibilité des unités',
-      'État des filtres',
-      'État des condensats',
-      'Présence d’une pompe de relevage',
-      'Essais chaud / froid',
-      'Photos utiles avant / après',
-      'Éventuelles pièces à remplacer',
-      'TVA à vérifier selon chantier',
-      'Conditions de paiement',
+    "checkpoints": [
+      "Compter le nombre d’unités.",
+      "Prévoir l’accès au groupe extérieur.",
+      "Photographier avant/après.",
+      "Vérifier les condensats.",
+      "Noter les recommandations futures."
     ],
-    chiffrBenefits: [
-      'Modèle entretien climatisation prêt à adapter',
-      'Lignes nettoyage, contrôle, condensats et essais structurées',
-      'Prix à compléter clairement signalés',
-      'Photos intervention liées au client',
-      'PDF premium même pour les petites interventions',
-      'Signature si nécessaire',
-      'Facture reliée au devis',
-      'Relance client pour entretien futur',
-      'Historique client pour maintenance récurrente',
+    "chiffrBenefits": [
+      "Crée un modèle d’entretien réutilisable.",
+      "Relie photos, observations et facture.",
+      "Permet de suivre relances et client.",
+      "Évite un devis d’intervention trop vague."
     ],
-    blankPageRisks: [
-      'Oublier le nombre d’unités à entretenir',
-      'Ne pas préciser ce qui est inclus dans l’entretien',
-      'Oublier le contrôle des condensats',
-      'Ne pas prévoir les options ou pièces éventuelles',
-      'Créer un devis trop vague pour le client',
-      'Perdre les photos avant / après',
-      'Oublier la facture ou le suivi d’entretien',
+    "blankPageRisks": [
+      "Oublier le nombre d’unités.",
+      "Ne pas préciser les contrôles.",
+      "Ne pas documenter les photos.",
+      "Facturer sans compte rendu lisible."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
-      { label: 'Modèle devis clim monosplit', href: '/modele-devis-clim-monosplit' },
-      { label: 'Modèle devis clim multisplit', href: '/modele-devis-clim-multisplit' },
-      { label: 'Modèle devis mise en service PAC clim', href: '/modele-devis-mise-en-service-pac-clim' },
-      { label: 'Logiciel devis avec photos chantier', href: '/logiciel-devis-avec-photos-chantier' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis d’entretien climatisation ?',
-        answer:
-          'Il doit généralement préciser le client, le site, le nombre d’unités, les opérations de nettoyage, les contrôles, les condensats, les essais, le déplacement, les options éventuelles, la TVA à vérifier et les conditions de paiement.',
+        "label": "Logiciel devis climatisation",
+        "href": "/logiciel-devis-climatisation"
       },
       {
-        question: 'Faut-il distinguer monosplit et multisplit dans le devis ?',
-        answer:
-          'Oui. Le nombre d’unités intérieures et extérieures influence la durée, les lignes et le prix à renseigner.',
+        "label": "Logiciel devis frigoriste CVC",
+        "href": "/logiciel-devis-frigoriste-cvc"
       },
       {
-        question: 'Peut-on ajouter des photos à un devis d’entretien clim ?',
-        answer:
-          'Oui. Les photos avant / après peuvent aider à garder une trace de l’état de l’équipement et du travail réalisé.',
+        "label": "Modèle devis clim monosplit",
+        "href": "/modele-devis-clim-monosplit"
       },
       {
-        question: 'Faut-il prévoir les pièces dans le devis d’entretien ?',
-        answer:
-          'Si des pièces ou consommables sont prévus, ils doivent être indiqués clairement avec un prix à renseigner ou une option à valider.',
+        "label": "Logiciel devis avec relance client",
+        "href": "/logiciel-devis-avec-relance-client"
       },
       {
-        question: 'Chiffr peut-il aider pour les entretiens climatisation ?',
-        answer:
-          'Oui. Chiffr aide à structurer les lignes, joindre des photos, générer un PDF premium, facturer et garder l’historique client.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Que mettre dans un devis entretien climatisation ?",
+        "answer": "Déplacement, nettoyage, contrôles, condensats, désinfection éventuelle, compte rendu photo et facture."
+      },
+      {
+        "question": "Faut-il détailler le nombre d’unités ?",
+        "answer": "Oui, c’est important pour expliquer le temps et le prix."
+      },
+      {
+        "question": "Peut-on ajouter un compte rendu photo ?",
+        "answer": "Oui, les photos avant/après renforcent la confiance du client."
+      },
+      {
+        "question": "Chiffr convient-il aux interventions d’entretien ?",
+        "answer": "Oui. Chiffr peut servir pour les devis, interventions, factures et relances client."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-mise-en-service-pac-clim',
-    title: 'Modèle devis mise en service PAC clim : lignes à prévoir',
-    metaDescription:
-      'Exemple de structure pour un devis de mise en service PAC ou clim : contrôles, essais, tirage au vide, réglages, explication client et points à vérifier.',
-    h1: 'Modèle de devis mise en service PAC / clim : les lignes à prévoir',
-    intro:
-      'Vous préparez un devis de mise en service pour une pompe à chaleur ou une climatisation ? Cette prestation doit préciser le type d’équipement, les contrôles réalisés, les essais, les réglages, les éventuelles réserves et les conditions d’intervention.',
-    trade: 'PAC / climatisation',
-    useCase: 'Mise en service d’une PAC, climatisation ou installation CVC légère',
-    heroChecks: [
-      'Contrôles',
-      'Essais',
-      'Réglages',
-      'Mise en route',
-      'Explication client',
-      'Photos chantier',
-      'Compte rendu',
+    "slug": "modele-devis-mise-en-service-pac-clim",
+    "title": "Modèle devis mise en service PAC clim | Chiffr",
+    "metaDescription": "Modèle devis mise en service PAC ou clim : contrôles, tirage au vide, essais, réglages, photos, compte rendu, signature et facture.",
+    "h1": "Modèle de devis mise en service PAC ou clim : contrôles, essais et dossier client",
+    "intro": "Une mise en service doit être présentée comme une vraie prestation : contrôles, essais, réglages, photos, explication client et compte rendu. Ce modèle aide à structurer un devis ou une intervention facturable.",
+    "trade": "PAC / Climatisation",
+    "useCase": "Mise en service PAC, clim ou équipement CVC",
+    "heroChecks": [
+      "Contrôles",
+      "Essais",
+      "Réglages",
+      "Photos",
+      "Compte rendu",
+      "Facture"
     ],
-    forWho: [
-      'Installateur pompe à chaleur',
-      'Installateur climatisation',
-      'Frigoriste',
-      'Entreprise CVC',
-      'Artisan intervenant après pose',
-      'Client résidentiel ou petit tertiaire',
+    "forWho": [
+      "Installateur PAC",
+      "Installateur clim",
+      "Frigoriste",
+      "Entreprise CVC",
+      "Intervention de contrôle"
     ],
-    contains: [
-      'Informations client et adresse d’intervention',
-      'Type d’équipement concerné',
-      'Contrôles préalables',
-      'Essais de fonctionnement',
-      'Réglages et paramétrage',
-      'Contrôle liaisons ou raccordements selon équipement',
-      'Compte rendu de mise en service',
-      'Réserves éventuelles',
-      'Photos chantier',
-      'Conditions de paiement',
+    "contains": [
+      "Contrôle installation",
+      "Vérification raccordements",
+      "Tirage au vide si clim",
+      "Essais",
+      "Réglages",
+      "Explication client",
+      "Photos",
+      "Facture"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Forfait déplacement mise en service',
-        type: 'Déplacement',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon zone, urgence et accès chantier.',
+        "label": "Déplacement et prise en charge",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Intervention de mise en service."
       },
       {
-        label: 'Contrôle visuel de l’installation',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Vérification générale avant mise en route.',
+        "label": "Contrôle visuel installation",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Raccordements, supports, accès et sécurité."
       },
       {
-        label: 'Contrôle raccordements électriques',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon tableau, protections et équipement.',
+        "label": "Vérification électrique",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Alimentation, protection et contrôle de base."
       },
       {
-        label: 'Contrôle raccordements hydrauliques',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: 'Selon équipement',
-        priceMode: 'Prix à renseigner',
-        note: 'Pertinent pour PAC air/eau ou installation hydraulique.',
+        "label": "Contrôle hydraulique ou frigorifique",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Selon PAC, clim ou équipement."
       },
       {
-        label: 'Contrôle liaisons frigorifiques',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: 'Selon équipement',
-        priceMode: 'Prix à renseigner',
-        note: 'Pertinent pour climatisation ou PAC selon configuration.',
+        "label": "Tirage au vide",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Si installation clim ou liaison frigorifique concernée."
       },
       {
-        label: 'Tirage au vide et contrôle étanchéité',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: 'Selon installation',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon règles métier et type d’installation.',
+        "label": "Essais fonctionnement",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Démarrage, contrôle, température, bruit et paramètres."
       },
       {
-        label: 'Mise en route de l’équipement',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Démarrage, premiers contrôles et vérification fonctionnement.',
+        "label": "Réglages et paramétrage",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Ajustements selon installation."
       },
       {
-        label: 'Réglages et paramétrage',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Température, loi d’eau, télécommande, régulation ou paramètres disponibles.',
+        "label": "Explication client",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Utilisation, précautions, entretien et recommandations."
       },
       {
-        label: 'Essais chaud / froid',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Selon équipement et conditions d’essai possibles.',
+        "label": "Compte rendu photo",
+        "type": "Dossier",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Photos machine, plaque, pose et résultat."
       },
       {
-        label: 'Explication utilisateur',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Présentation rapide du fonctionnement, réglages et bonnes pratiques.',
-      },
-      {
-        label: 'Compte rendu de mise en service',
-        type: 'Document',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Indiquer les contrôles réalisés, réserves et observations.',
-      },
-      {
-        label: 'Photos chantier et plaque machine',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Plaque signalétique, unité extérieure, tableau, raccordements ou état final.',
-      },
+        "label": "Facture intervention",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Facture finale ou solde si lié à un devis."
+      }
     ],
-    checkpoints: [
-      'Type exact d’équipement',
-      'Marque et modèle',
-      'Plaque signalétique',
-      'Raccordements électriques',
-      'Raccordements hydrauliques si PAC air/eau',
-      'Liaisons frigorifiques si clim ou PAC concernée',
-      'Accès aux unités',
-      'Conditions permettant les essais',
-      'Réserves éventuelles',
-      'Compte rendu',
-      'TVA à vérifier selon chantier',
+    "checkpoints": [
+      "Vérifier le type d’équipement.",
+      "Photographier la plaque machine.",
+      "Noter les essais réalisés.",
+      "Expliquer les réglages au client.",
+      "Conserver le compte rendu dans le dossier."
     ],
-    chiffrBenefits: [
-      'Modèle mise en service PAC / clim prêt à adapter',
-      'Lignes contrôles, essais et réglages structurées',
-      'Photo plaque machine liée au dossier',
-      'Photos chantier classées',
-      'Prix à renseigner clairement',
-      'PDF premium pour formaliser la prestation',
-      'Signature si nécessaire',
-      'Facture reliée au devis',
-      'Historique client et équipement',
+    "chiffrBenefits": [
+      "Structure une prestation courte mais importante.",
+      "Ajoute photos et observations.",
+      "Crée la facture liée à l’intervention.",
+      "Garde l’historique client."
     ],
-    blankPageRisks: [
-      'Oublier le type d’équipement concerné',
-      'Ne pas préciser les contrôles réalisés',
-      'Oublier les réserves éventuelles',
-      'Ne pas conserver la plaque machine',
-      'Créer un devis trop flou sur la prestation',
-      'Oublier le compte rendu',
-      'Perdre le lien entre intervention et facture',
+    "blankPageRisks": [
+      "Facturer sans détail.",
+      "Oublier les contrôles réalisés.",
+      "Ne pas garder de preuve photo.",
+      "Ne pas expliquer les réglages."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
-      { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
-      { label: 'Modèle devis PAC air/eau', href: '/modele-devis-pac-air-eau' },
-      { label: 'Modèle devis clim monosplit', href: '/modele-devis-clim-monosplit' },
-      { label: 'Modèle devis entretien climatisation', href: '/modele-devis-entretien-climatisation' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis de mise en service PAC ou clim ?',
-        answer:
-          'Il doit généralement préciser l’équipement concerné, les contrôles préalables, les essais, les réglages, les réserves éventuelles, le compte rendu, les photos utiles et les conditions de paiement.',
+        "label": "Logiciel devis pompe à chaleur",
+        "href": "/logiciel-devis-pompe-a-chaleur"
       },
       {
-        question: 'Faut-il indiquer la marque et le modèle ?',
-        answer:
-          'Oui. La marque, le modèle et la plaque signalétique permettent de garder une trace claire de l’équipement mis en service.',
+        "label": "Logiciel devis climatisation",
+        "href": "/logiciel-devis-climatisation"
       },
       {
-        question: 'La mise en service est-elle la même pour PAC et clim ?',
-        answer:
-          'Non. Les contrôles dépendent du type d’équipement, du chantier et des règles métier applicables. Le devis doit donc rester adaptable.',
+        "label": "Modèle devis entretien climatisation",
+        "href": "/modele-devis-entretien-climatisation"
       },
       {
-        question: 'Peut-on ajouter des réserves dans le dossier ?',
-        answer:
-          'Oui. Si des réserves ou observations existent, elles doivent être notées clairement pour garder une trace professionnelle.',
+        "label": "Logiciel devis avec photos chantier",
+        "href": "/logiciel-devis-avec-photos-chantier"
       },
       {
-        question: 'Chiffr peut-il aider pour une mise en service ?',
-        answer:
-          'Oui. Chiffr aide à préparer les lignes, conserver les photos, générer un PDF premium, facturer et garder l’historique client.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Que mettre dans un devis de mise en service PAC ou clim ?",
+        "answer": "Contrôles, essais, réglages, photos, explication client, compte rendu et facture."
+      },
+      {
+        "question": "La mise en service peut-elle être facturée seule ?",
+        "answer": "Oui, selon l’organisation de l’artisan et le contexte de l’intervention."
+      },
+      {
+        "question": "Pourquoi prendre des photos ?",
+        "answer": "Les photos documentent l’équipement, la plaque, les raccordements et l’état final."
+      },
+      {
+        "question": "Chiffr garde-t-il l’historique client ?",
+        "answer": "Oui. Les devis, photos, factures et relances sont liés au client."
+      }
+    ]
   },
-
   {
-    slug: 'modele-devis-desembouage-chauffage',
-    title: 'Modèle devis désembouage chauffage : lignes à prévoir',
-    metaDescription:
-      'Exemple de structure pour un devis de désembouage chauffage : diagnostic, protection, produit, rinçage, contrôle réseau, photos chantier et points à vérifier.',
-    h1: 'Modèle de devis désembouage chauffage : les lignes à prévoir',
-    intro:
-      'Vous préparez un devis de désembouage chauffage ? Cette intervention doit préciser le réseau concerné, le nombre d’émetteurs, la méthode prévue, les produits, le rinçage, les contrôles, les protections et les éventuelles options.',
-    trade: 'Chauffage',
-    useCase: 'Désembouage d’un réseau de chauffage existant',
-    heroChecks: [
-      'Diagnostic',
-      'Réseau chauffage',
-      'Rinçage',
-      'Produit',
-      'Contrôle',
-      'Photos chantier',
-      'Facture',
+    "slug": "modele-devis-desembouage-chauffage",
+    "title": "Modèle devis désembouage chauffage | Chiffr",
+    "metaDescription": "Modèle devis désembouage chauffage : diagnostic, rinçage, traitement réseau, radiateurs, inhibiteur, photos, facture et suivi client.",
+    "h1": "Modèle de devis désembouage chauffage : diagnostic, traitement et suivi",
+    "intro": "Un devis de désembouage doit expliquer le diagnostic, le rinçage, le traitement, les produits et les contrôles réalisés. Ce modèle aide le chauffagiste à rendre la prestation compréhensible pour le client.",
+    "trade": "Chauffage",
+    "useCase": "Désembouage ou traitement d’un réseau de chauffage",
+    "heroChecks": [
+      "Diagnostic",
+      "Rinçage",
+      "Traitement",
+      "Radiateurs",
+      "Photos",
+      "Facture"
     ],
-    forWho: [
-      'Chauffagiste',
-      'Plombier-chauffagiste',
-      'Installateur PAC',
-      'Entreprise CVC',
-      'Artisan intervenant avant remplacement générateur',
-      'Client avec radiateurs ou plancher chauffant',
+    "forWho": [
+      "Chauffagiste",
+      "Plombier-chauffagiste",
+      "Installateur PAC",
+      "Entretien réseau chauffage",
+      "Rénovation énergétique"
     ],
-    contains: [
-      'Informations client et adresse du chantier',
-      'Description du réseau concerné',
-      'Nombre approximatif de radiateurs ou zones',
-      'Diagnostic ou contrôle préalable',
-      'Méthode de désembouage prévue',
-      'Produit de traitement si utilisé',
-      'Rinçage et remise en eau',
-      'Contrôle final',
-      'Photos chantier si utile',
-      'Conditions de paiement',
+    "contains": [
+      "Diagnostic réseau",
+      "Nombre de radiateurs",
+      "Rinçage",
+      "Produit désembouant",
+      "Inhibiteur",
+      "Contrôle",
+      "Photos",
+      "Facture"
     ],
-    lines: [
+    "lines": [
       {
-        label: 'Visite technique réseau chauffage',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Permet d’identifier le réseau, les accès, les émetteurs et contraintes.',
+        "label": "Diagnostic réseau chauffage",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "État réseau, symptômes, photos et relevé."
       },
       {
-        label: 'Protection zone d’intervention',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Protection sols, accès, local technique ou zones sensibles.',
+        "label": "Protection zone intervention",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Préparation, accès et protection."
       },
       {
-        label: 'Mise en place matériel de désembouage',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Installation pompe, raccordement et préparation intervention.',
+        "label": "Rinçage réseau chauffage",
+        "type": "Main-d’œuvre",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Selon nombre de radiateurs ou circuits."
       },
       {
-        label: 'Désembouage réseau radiateurs',
-        type: 'Service',
-        unit: 'Radiateur ou forfait',
-        quantity: 'Selon installation',
-        priceMode: 'Prix à renseigner',
-        note: 'Quantité à adapter selon nombre d’émetteurs et accessibilité.',
+        "label": "Traitement désembouant",
+        "type": "Consommable",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Produit et dosage à adapter."
       },
       {
-        label: 'Désembouage plancher chauffant',
-        type: 'Service',
-        unit: 'Zone ou forfait',
-        quantity: 'Selon installation',
-        priceMode: 'Option / prix à renseigner',
-        note: 'À utiliser si le réseau comprend un plancher chauffant.',
+        "label": "Nettoyage radiateurs",
+        "type": "Main-d’œuvre",
+        "unit": "Pièce",
+        "quantity": "À définir",
+        "priceMode": "Prix à renseigner",
+        "note": "Quantité selon installation."
       },
       {
-        label: 'Produit de désembouage',
-        type: 'Consommable',
-        unit: 'Forfait',
-        quantity: 'Selon réseau',
-        priceMode: 'Prix à renseigner',
-        note: 'Produit et quantité à adapter selon réseau et méthode.',
+        "label": "Rinçage final",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Évacuation boues et contrôle de l’eau."
       },
       {
-        label: 'Rinçage du réseau',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Rinçage jusqu’à obtention d’un état satisfaisant selon intervention.',
+        "label": "Inhibiteur ou traitement de protection",
+        "type": "Consommable",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Protection du réseau après intervention."
       },
       {
-        label: 'Remise en eau et purge',
-        type: 'Main-d’œuvre',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Remplissage, purge et remise en pression à adapter.',
+        "label": "Remise en service et purge",
+        "type": "Service",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Remplissage, purge, essais et contrôle."
       },
       {
-        label: 'Contrôle circulation et température',
-        type: 'Service',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'Contrôles simples après intervention selon installation.',
+        "label": "Photos et compte rendu",
+        "type": "Dossier",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Avant/après, eau, équipement et observations."
       },
       {
-        label: 'Pose filtre magnétique ou pot à boues',
-        type: 'Matériel + pose',
-        unit: 'Pièce',
-        quantity: 'Option',
-        priceMode: 'Option / prix à renseigner',
-        note: 'Option utile pour protéger le réseau, à valider selon chantier.',
-      },
-      {
-        label: 'Photos intervention avant / après',
-        type: 'Dossier',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Inclus ou à renseigner',
-        note: 'Photos eau de rinçage, local technique, réseau ou équipement.',
-      },
-      {
-        label: 'Forfait déplacement',
-        type: 'Déplacement',
-        unit: 'Forfait',
-        quantity: '1',
-        priceMode: 'Prix à renseigner',
-        note: 'À adapter selon zone d’intervention.',
-      },
+        "label": "Facture intervention",
+        "type": "Administratif",
+        "unit": "Forfait",
+        "quantity": "1",
+        "priceMode": "Prix à renseigner",
+        "note": "Facture finale et recommandations client."
+      }
     ],
-    checkpoints: [
-      'Type de réseau chauffage',
-      'Nombre de radiateurs',
-      'Présence plancher chauffant',
-      'Accès aux points de raccordement',
-      'État du réseau',
-      'Générateur existant ou futur remplacement',
-      'Besoin filtre magnétique ou pot à boues',
-      'Protection chantier',
-      'Temps d’intervention estimé',
-      'TVA à vérifier selon chantier',
-      'Photos utiles et compte rendu',
+    "checkpoints": [
+      "Compter radiateurs ou circuits.",
+      "Photographier l’état initial.",
+      "Expliquer le produit utilisé.",
+      "Prévoir purge et remise en service.",
+      "Noter les recommandations après intervention."
     ],
-    chiffrBenefits: [
-      'Modèle désembouage chauffage prêt à adapter',
-      'Lignes diagnostic, produit, rinçage et contrôle structurées',
-      'Options filtre ou pot à boues prévues',
-      'Quantités et prix à compléter clairement',
-      'Photos chantier liées au devis',
-      'PDF premium pour expliquer l’intervention',
-      'Signature et acompte si nécessaire',
-      'Facture reliée au dossier',
-      'Historique client et relances',
+    "chiffrBenefits": [
+      "Transforme une prestation technique en devis lisible.",
+      "Garde photos et compte rendu.",
+      "Permet de relier intervention et facture.",
+      "Aide à relancer pour travaux complémentaires."
     ],
-    blankPageRisks: [
-      'Oublier le nombre d’émetteurs',
-      'Ne pas préciser la méthode ou le périmètre',
-      'Oublier les produits ou consommables',
-      'Sous-estimer l’accès chantier',
-      'Ne pas prévoir remise en eau et purge',
-      'Oublier l’option filtre magnétique',
-      'Créer un devis difficile à expliquer au client',
-      'Perdre les photos d’intervention',
+    "blankPageRisks": [
+      "Ne pas expliquer la prestation.",
+      "Oublier les produits.",
+      "Sous-estimer le nombre de radiateurs.",
+      "Facturer sans compte rendu."
     ],
-    relatedPages: [
-      { label: 'Logiciel devis chauffagiste', href: '/logiciel-devis-chauffagiste' },
-      { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
-      { label: 'Modèle devis PAC air/eau', href: '/modele-devis-pac-air-eau' },
-      { label: 'Modèle remplacement chaudière par PAC', href: '/modele-devis-remplacement-chaudiere-pac' },
-      { label: 'Logiciel devis avec photos chantier', href: '/logiciel-devis-avec-photos-chantier' },
-      { label: 'Fonctionnalités Chiffr', href: '/fonctionnalites' },
-    ],
-    faqs: [
+    "relatedPages": [
       {
-        question: 'Que doit contenir un devis de désembouage chauffage ?',
-        answer:
-          'Il doit généralement préciser le réseau concerné, le nombre d’émetteurs, la méthode, les produits, le rinçage, la remise en eau, les contrôles, les options éventuelles, la TVA à vérifier et les conditions de paiement.',
+        "label": "Logiciel devis chauffagiste",
+        "href": "/logiciel-devis-chauffagiste"
       },
       {
-        question: 'Faut-il indiquer le nombre de radiateurs ?',
-        answer:
-          'Oui. Le nombre d’émetteurs ou de zones influence la durée et les lignes du devis.',
+        "label": "Logiciel devis pompe à chaleur",
+        "href": "/logiciel-devis-pompe-a-chaleur"
       },
       {
-        question: 'Peut-on ajouter un filtre magnétique au devis ?',
-        answer:
-          'Oui. Le filtre magnétique ou pot à boues peut être prévu en option selon l’état du réseau et les recommandations de l’artisan.',
+        "label": "Logiciel devis avec photos chantier",
+        "href": "/logiciel-devis-avec-photos-chantier"
       },
       {
-        question: 'Faut-il prendre des photos pendant un désembouage ?',
-        answer:
-          'Oui, c’est utile pour documenter l’intervention, garder une trace du réseau et rassurer le client.',
+        "label": "Facture solde chantier",
+        "href": "/facture-solde-chantier"
       },
       {
-        question: 'Chiffr peut-il aider pour un devis de désembouage ?',
-        answer:
-          'Oui. Chiffr aide à structurer les lignes, gérer les options, joindre les photos, générer un PDF premium, faire signer et facturer.',
+        "label": "Voir les tarifs Chiffr",
+        "href": "/tarifs"
       },
+      {
+        "label": "Comparer les alternatives logiciels devis",
+        "href": "/alternatives-logiciels-devis-batiment"
+      },
+      {
+        "label": "Demander un accès",
+        "href": "/contact"
+      }
     ],
+    "faqs": [
+      {
+        "question": "Que mettre dans un devis de désembouage ?",
+        "answer": "Diagnostic, rinçage, traitement, produit, nombre de radiateurs, remise en service, photos et facture."
+      },
+      {
+        "question": "Faut-il compter les radiateurs ?",
+        "answer": "Oui, le nombre de radiateurs ou circuits peut influencer le temps et la méthode."
+      },
+      {
+        "question": "Peut-on ajouter un compte rendu photo ?",
+        "answer": "Oui, c’est utile pour montrer l’état du réseau et rassurer le client."
+      },
+      {
+        "question": "Chiffr convient-il aux chauffagistes ?",
+        "answer": "Oui. Chiffr aide les chauffagistes à préparer devis, photos, factures et relances."
+      }
+    ]
   }
 ];
-
-export function getQuoteModelBySlug(slug: string) {
-  return quoteModels.find((model) => model.slug === slug);
-}
