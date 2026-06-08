@@ -730,6 +730,20 @@ const isLegalPath = legalPaths.some(
           display: none;
         }
 
+        .mobile-menu-backdrop {
+          position: sticky;
+          inset: 0;
+          z-index: 1090;
+          display: block;
+          background: rgba(8, 29, 28, 0.46);
+          opacity: 0;
+          transition: opacity 180ms ease;
+        }
+
+        .mobile-menu-backdrop.is-visible {
+          opacity: 1;
+        }
+
         .mobile-menu-panel {
           position: fixed;
           top: 0;
@@ -945,7 +959,6 @@ const isLegalPath = legalPaths.some(
       .mobile-menu-dialog {
         position: fixed;
         inset: 0 0 0 auto;
-        z-index: 2147483647;
         width: min(390px, 88vw);
         height: 100dvh;
         max-width: none;
@@ -974,7 +987,6 @@ const isLegalPath = legalPaths.some(
 
       .mobile-menu-dialog .mobile-menu-panel {
         position: relative;
-        z-index: 1;
         top: auto;
         right: auto;
         bottom: auto;

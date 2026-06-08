@@ -38,6 +38,7 @@ const defaultRelatedLinks: UseCaseAlternativeLink[] = [
   { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
   { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
   { label: 'Logiciel devis IRVE', href: '/logiciel-devis-irve' },
+  { label: 'Demander un accès', href: '/contact' },
 ];
 
 const defaultEnergyUseCases = [
@@ -114,7 +115,7 @@ const defaultFaqs = (topic: string): UseCaseAlternativeFaq[] => [
 export const useCaseAlternatives: UseCaseAlternativePage[] = [
   {
     slug: 'alternative-logiciel-devis-batiment',
-    title: 'Alternative logiciel devis bâtiment | Chiffr énergie',
+    title: 'Alternative logiciel devis bâtiment | Chiffr artisans énergie',
     metaDescription:
       'Vous cherchez une alternative à un logiciel de devis bâtiment généraliste ? Chiffr aide les artisans énergie à créer des devis PAC, clim, VMC, IRVE et solaire.',
     h1: 'Alternative logiciel devis bâtiment pour artisans énergie',

@@ -6,7 +6,7 @@ const contactEmail = 'melan@livdapps.com';
 
 const title = 'Contact Chiffr | Logiciel devis facture artisans énergie';
 const description =
-  'Contactez Chiffr ou démarrez l’essai : logiciel de devis, factures, modèles métier, signature, acompte et suivi client pour artisans énergie.';
+  'Contactez Chiffr et demandez un accès : logiciel de devis, factures, modèles métier, signature, acompte et suivi client pour artisans énergie.';
 
 const trades = [
   'Pompe à chaleur',
@@ -49,9 +49,9 @@ const faqs = [
       'Chiffr est pensé pour les artisans énergie : pompe à chaleur, climatisation, chauffage, CVC, VMC, IRVE, photovoltaïque et chauffe-eau thermodynamique.',
   },
   {
-    question: 'Puis-je tester Chiffr ?',
+    question: 'Comment demander un accès à Chiffr ?',
     answer:
-      'Oui. Le site renvoie vers l’app Chiffr pour démarrer l’essai quand elle est disponible.',
+      'Oui. Écrivez-nous depuis la page contact pour demander un accès et préciser votre métier, vos besoins de devis et vos priorités terrain.',
   },
   {
     question: 'Les modèles de devis sont-ils modifiables ?',
@@ -678,8 +678,8 @@ const faqSchema = {
           </div>
 
           <div class="contact-actions">
-            <a href="mailto:melan@livdapps.com" class="contact-btn primary">
-              Écrire à Chiffr
+            <a href="/contact" class="contact-btn primary">
+              Demander un accès Chiffr
             </a>
 
             <a href={`mailto:${contactEmail}?subject=Question%20sur%20Chiffr`} class="contact-btn secondary">
@@ -840,14 +840,13 @@ const faqSchema = {
 
     <section class="contact-cta">
       <div class="contact-shell contact-narrow reveal">
-        <p class="contact-kicker">Accéder à Chiffr</p>
-        <h2>Le plus simple est de commencer avec un modèle métier.</h2>
+        <p class="contact-kicker">Demander un accès</p>
+        <h2>Préparez votre arrivée sur Chiffr.</h2>
         <p>
-          Choisissez votre métier, partez d’un devis adapté, ajoutez vos lignes,
-          vos photos, puis envoyez un PDF clair à votre client.
+          Indiquez votre métier, vos priorités et les modèles dont vous avez besoin. Nous pourrons préparer l’accès autour de vos usages réels : PAC, clim, chauffage, CVC, VMC, IRVE ou solaire.
         </p>
 
-        <a href="mailto:melan@livdapps.com" class="contact-btn primary">
+        <a href={`mailto:${contactEmail}?subject=Demande%20d%27acc%C3%A8s%20Chiffr`} class="contact-btn primary">
           Écrire à Chiffr
         </a>
       </div>

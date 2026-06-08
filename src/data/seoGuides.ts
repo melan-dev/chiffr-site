@@ -43,6 +43,7 @@ const defaultRelatedLinks: SeoGuideLink[] = [
   { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
   { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
   { label: 'Logiciel devis IRVE', href: '/logiciel-devis-irve' },
+  { label: 'Demander un accès', href: '/contact' },
 ];
 
 const defaultChiffrBenefits = [
@@ -298,7 +299,7 @@ export const seoGuides: SeoGuidePage[] = [
 
   {
     slug: 'comment-faire-un-devis-borne-recharge',
-    title: 'Devis borne recharge IRVE | Guide artisan Chiffr',
+    title: 'Comment faire un devis borne de recharge IRVE | Guide artisan',
     metaDescription:
       'Guide pour faire un devis borne de recharge IRVE : borne 7 kW ou 22 kW, protections, câblage, pose, mise en service et points à vérifier.',
     h1: 'Comment faire un devis borne de recharge IRVE ?',
@@ -515,7 +516,7 @@ export const seoGuides: SeoGuidePage[] = [
 
   {
     slug: 'facture-acompte-artisan-energie',
-    title: 'Facture acompte artisan énergie | Guide Chiffr',
+    title: 'Facture acompte artisan énergie | Devis, signature et paiement',
     metaDescription:
       'Guide pour gérer une facture d’acompte artisan énergie : devis signé, acompte, paiement, facture de solde et suivi client.',
     h1: 'Facture d’acompte artisan énergie : comment garder un dossier propre ?',

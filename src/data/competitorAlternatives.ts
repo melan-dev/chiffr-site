@@ -49,6 +49,7 @@ const defaultRelatedLinks: AlternativeLink[] = [
   { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
   { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
   { label: 'Logiciel devis IRVE', href: '/logiciel-devis-irve' },
+  { label: 'Demander un accès', href: '/contact' },
 ];
 
 const defaultChiffrDifferences = [
@@ -106,7 +107,7 @@ const defaultFaqs = (competitorName: string): AlternativeFaq[] => [
   {
     question: 'Chiffr gère-t-il la signature, l’acompte et les factures ?',
     answer:
-      'Oui. Chiffr est pensé pour accompagner le dossier après l’envoi du devis : signature, acompte, paiement, facture d’acompte, facture de solde ou finale, relances et suivi client.',
+      'Oui. Chiffr est pensé pour accompagner le dossier après l’envoi du devis : signature, acompte, paiement, facture d’acompte, facture de solde ou finale, relances et suivi client. Vous pouvez demander un accès depuis la page contact.',
   },
 ];
 
@@ -123,7 +124,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Obat',
     sourceUrl: 'https://www.obat.fr/',
     sourceSummary:
-      'Obat met en avant un logiciel de devis et factures en ligne pour le bâtiment, avec des fonctionnalités comme devis, factures, acomptes, avoirs, situations et usage mobile.',
+      'Obat met en avant un logiciel de devis et factures en ligne pour le bâtiment, avec devis, factures, acomptes, avoirs, situations de travaux, personnalisation des documents et usage mobile.',
     goodFit: [
       'Artisans du bâtiment qui veulent un outil généraliste de devis et factures.',
       'TPE BTP qui veulent centraliser plusieurs tâches administratives.',
@@ -150,7 +151,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Tolteck',
     sourceUrl: 'https://www.tolteck.com/',
     sourceSummary:
-      'Tolteck communique sur des devis et factures professionnels en quelques minutes, le suivi des documents et clients, des bases d’ouvrages, un tableau de bord et un fonctionnement multi-support.',
+      'Tolteck communique sur la création de devis et factures, le suivi des documents et clients, les bases d’ouvrages, les tableaux de bord et un fonctionnement multi-support.',
     goodFit: [
       'Artisans qui veulent une solution simple pour devis et factures.',
       'Utilisateurs qui cherchent une prise en main rapide.',
@@ -177,7 +178,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Costructor',
     sourceUrl: 'https://costructor.co/',
     sourceSummary:
-      'Costructor communique sur la création de devis et factures, la gestion et planification de chantiers, la rentabilité, une compatibilité mobile et des sujets de facturation électronique.',
+      'Costructor communique sur la création de devis et factures BTP, la conversion en facture, les relances, la gestion chantier, la rentabilité et la facturation électronique.',
     goodFit: [
       'Entreprises BTP qui veulent suivre chantiers, planning et rentabilité.',
       'Artisans qui cherchent un outil moderne et mobile.',
@@ -204,7 +205,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Batappli',
     sourceUrl: 'https://www.batappli.fr/',
     sourceSummary:
-      'Batappli met en avant devis, facturation, suivi chantier, calcul de marge, bibliothèque de prix BTP, conversion de documents et fonctions liées au bâtiment.',
+      'Batappli met en avant des fonctions bâtiment comme devis, facturation, suivi chantier, bibliothèque de prix BTP, planning, relances et centralisation des données clients.',
     goodFit: [
       'Artisans qui veulent un logiciel bâtiment complet.',
       'Entreprises qui utilisent des bibliothèques d’ouvrages BTP.',
@@ -231,7 +232,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'ProGBat',
     sourceUrl: 'https://www.progbat.com/',
     sourceSummary:
-      'ProGBat communique sur les devis, factures, acomptes, factures d’avancement, suivi des paiements, gestion chantier, signature électronique et bibliothèques comme Batichiffrage.',
+      'ProGBat communique sur les devis, factures, acomptes, factures d’avancement, suivi des paiements, gestion chantier, tableaux de suivi et bibliothèques comme Batichiffrage.',
     goodFit: [
       'Entreprises BTP qui veulent un outil tout-en-un.',
       'Artisans qui ont besoin de fonctions chantier et gestion plus larges.',
@@ -258,7 +259,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Sage Batigest',
     sourceUrl: 'https://www.sage.com/fr-fr/produits/sage-batigest-connect/',
     sourceSummary:
-      'Sage présente Batigest Connect comme un logiciel de gestion BTP pour artisans et PME, couvrant gestion commerciale, devis, facturation, chantiers, stocks et achats selon les offres.',
+      'Sage présente Batigest Connect comme un logiciel de gestion BTP pour artisans et PME, couvrant devis, facturation, suivi de chantier et gestion commerciale selon les offres.',
     goodFit: [
       'PME BTP qui veulent une gestion complète.',
       'Entreprises avec plusieurs utilisateurs et plusieurs chantiers.',
@@ -285,7 +286,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'EBP Bâtiment',
     sourceUrl: 'https://www.ebp.com/logiciel-devis-facture-batiment/',
     sourceSummary:
-      'EBP met en avant des logiciels de facturation BTP pour créer et chiffrer des devis bâtiment, facturer plus vite, automatiser devis/factures et suivre les chantiers.',
+      'EBP met en avant des logiciels de facturation BTP pour créer et chiffrer des devis bâtiment, facturer, suivre les chantiers, gérer les règlements et piloter l’activité selon les offres.',
     goodFit: [
       'Artisans ou PME qui veulent un logiciel bâtiment plus complet.',
       'Entreprises qui cherchent des outils de chiffrage, suivi chantier et rentabilité.',
@@ -312,7 +313,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Henrri',
     sourceUrl: 'https://www.henrri.com/',
     sourceSummary:
-      'Henrri communique sur la création de devis, factures, avoirs, personnalisation des documents, paiement en ligne, comptabilité, reporting, relances et facturation électronique.',
+      'Henrri communique sur la création de devis, factures et avoirs, la personnalisation des documents, l’envoi, le paiement en ligne, la comptabilité, le reporting, les relances et la facturation électronique.',
     goodFit: [
       'TPE qui cherchent un outil de facturation généraliste.',
       'Entrepreneurs qui veulent créer devis, factures et avoirs simplement.',
@@ -339,7 +340,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Axonaut',
     sourceUrl: 'https://axonaut.com/',
     sourceSummary:
-      'Axonaut met en avant la création de devis, factures et avoirs, le suivi de lecture, le paiement en ligne, la facturation récurrente, les relances et des fonctions de gestion plus larges.',
+      'Axonaut met en avant la création de devis, factures et avoirs, le suivi de lecture, le paiement en ligne, la facturation récurrente, les relances, les contacts et des fonctions de gestion plus larges.',
     goodFit: [
       'TPE/PME qui cherchent une gestion commerciale globale.',
       'Entreprises qui veulent devis, factures, relances, paiement et contacts.',
@@ -366,7 +367,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Abby',
     sourceUrl: 'https://abby.fr/',
     sourceSummary:
-      'Abby communique sur la facturation illimitée, la facturation électronique, l’e-signature de devis, le paiement en ligne et des fonctions liées aux indépendants comme les déclarations URSSAF.',
+      'Abby communique sur la facturation pour indépendants, avec devis et factures, e-signature, paiement en ligne, facturation électronique et fonctions liées aux déclarations URSSAF.',
     goodFit: [
       'Indépendants qui veulent gérer facturation et obligations administratives.',
       'Micro-entrepreneurs qui veulent un outil simple de devis/factures.',
@@ -393,7 +394,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Evoliz',
     sourceUrl: 'https://www.evoliz.com/',
     sourceSummary:
-      'Evoliz communique sur la création de devis et factures, leur envoi, le suivi du statut, la transformation en facture, les rappels de paiement et le suivi des impayés.',
+      'Evoliz communique sur la création de devis et factures, l’envoi, le suivi de statut, la transformation en facture, les rappels de paiement, le suivi des impayés et la gestion en ligne.',
     goodFit: [
       'Entreprises qui veulent une facturation en ligne généraliste.',
       'TPE qui veulent suivre devis, factures et impayés.',
@@ -420,7 +421,7 @@ export const competitorAlternatives: CompetitorAlternative[] = [
     sourceName: 'Artinove',
     sourceUrl: 'https://www.artinove.fr/',
     sourceSummary:
-      'Artinove communique sur une application de gestion 360° pour artisans, indépendants et TPE, avec devis, factures, relances, gestion centralisée et accès web/mobile.',
+      'Artinove communique sur une application de gestion pour artisans, indépendants et TPE, avec devis, factures, relances, clients, gestion centralisée et accès web/mobile.',
     goodFit: [
       'Artisans qui cherchent une application de gestion généraliste.',
       'Indépendants qui veulent centraliser devis, factures et relances.',
