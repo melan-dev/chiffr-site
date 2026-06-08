@@ -96,16 +96,8 @@ const isLegalPath = legalPaths.some(
     />
 
     <style is:inline>
-      :root {
-        --chiffr-header-height: 132px;
-      }
-
       html {
-        scroll-padding-top: calc(var(--chiffr-header-height) + 18px);
-      }
-
-      body {
-        padding-top: var(--chiffr-header-height);
+        scroll-padding-top: 132px;
       }
 
       body.mobile-menu-open {
@@ -113,7 +105,7 @@ const isLegalPath = legalPaths.some(
       }
 
       [id] {
-        scroll-margin-top: calc(var(--chiffr-header-height) + 18px);
+        scroll-margin-top: 132px;
       }
 
       .site-header,
@@ -124,10 +116,8 @@ const isLegalPath = legalPaths.some(
       }
 
       .site-header {
-        position: fixed;
+        position: sticky;
         top: 0;
-        right: 0;
-        left: 0;
         z-index: 1000;
         padding: 14px 20px 10px;
         background:
@@ -634,10 +624,6 @@ const isLegalPath = legalPaths.some(
       }
 
       @media (max-width: 860px) {
-        :root {
-          --chiffr-header-height: 112px;
-        }
-
         .site-header {
           padding: 10px 12px 8px;
         }
@@ -1249,26 +1235,6 @@ const isLegalPath = legalPaths.some(
     </footer>
 
     <script is:inline>
-      const siteHeader = document.querySelector('[data-site-header]');
-
-      function updateHeaderHeight() {
-        if (!siteHeader) return;
-
-        document.documentElement.style.setProperty(
-          '--chiffr-header-height',
-          `${Math.ceil(siteHeader.getBoundingClientRect().height)}px`
-        );
-      }
-
-      updateHeaderHeight();
-      window.addEventListener('load', updateHeaderHeight);
-      window.addEventListener('resize', updateHeaderHeight);
-
-      if ('ResizeObserver' in window && siteHeader) {
-        const headerObserver = new ResizeObserver(updateHeaderHeight);
-        headerObserver.observe(siteHeader);
-      }
-
       const resourcesMenu = document.querySelector('[data-nav-resources]');
 
       document.addEventListener('click', (event) => {
