@@ -1,22 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Chiffr">
   <defs>
-    <linearGradient id="teal" x1="64" y1="32" x2="448" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#0B5A63"/>
-      <stop offset="0.52" stop-color="#064E56"/>
-      <stop offset="1" stop-color="#083C43"/>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A5049"/>
+      <stop offset="1" stop-color="#063835"/>
     </linearGradient>
-    <radialGradient id="warm" cx="38%" cy="24%" r="70%">
-      <stop offset="0" stop-color="#F7EBDD" stop-opacity="0.22"/>
-      <stop offset="0.48" stop-color="#C97A52" stop-opacity="0.06"/>
-      <stop offset="1" stop-color="#083C43" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#021F23" flood-opacity="0.30"/>
-    </filter>
   </defs>
-  <rect x="0" y="0" width="512" height="512" rx="112" fill="url(#teal)"/>
-  <rect x="0" y="0" width="512" height="512" rx="112" fill="url(#warm)"/>
-  <path d="M314 44 146 281h105l-39 187 154-236H257l57-188Z" fill="#C97A52" filter="url(#softShadow)"/>
-  <path d="M290 78 176 259h91l-23 117 92-156h-91l45-142Z" fill="#F8F4EE" fill-opacity="0.96"/>
-  <path d="M314 44 146 281h105l-39 187 154-236H257l57-188Z" fill="none" stroke="#F7EBDD" stroke-opacity="0.25" stroke-width="10" stroke-linejoin="round"/>
+  <rect x="36" y="54" width="440" height="440" rx="112" fill="#AC693A"/>
+  <rect x="36" y="36" width="440" height="440" rx="112" fill="url(#g)"/>
+  <rect x="58" y="58" width="396" height="396" rx="92" fill="none" stroke="#FFF7E8" stroke-opacity=".14" stroke-width="7"/>
+  <text x="256" y="325" text-anchor="middle" font-family="Inter, Arial, Helvetica, sans-serif" font-size="295" font-weight="800" fill="#F6EFE0">C</text>
 </svg>
