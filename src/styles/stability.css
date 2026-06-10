@@ -165,7 +165,7 @@ summary:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid rgba(183, 110, 60, 0.35);
+  outline: 3px solid rgba(185, 97, 52, 0.35);
   outline-offset: 3px;
 }
 
