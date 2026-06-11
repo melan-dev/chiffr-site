@@ -127,15 +127,15 @@ const isLegalPath = legalPaths.some(
         position: sticky;
         top: 0;
         z-index: 1000;
-        padding: 12px 20px 10px;
+        padding: 14px 20px 10px;
         background:
-          radial-gradient(circle at 12% 0%, rgba(6, 72, 80, 0.36), transparent 34%),
-          radial-gradient(circle at 92% 0%, rgba(185, 97, 52, 0.22), transparent 32%),
-          linear-gradient(180deg, rgba(12, 20, 32, 0.985), rgba(16, 27, 40, 0.965));
+          radial-gradient(circle at 14% 0%, rgba(6, 72, 80, 0.42), transparent 34%),
+          radial-gradient(circle at 88% 0%, rgba(185, 97, 52, 0.20), transparent 32%),
+          linear-gradient(180deg, rgba(12, 20, 32, 0.98), rgba(16, 27, 40, 0.96));
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
-        box-shadow: 0 18px 58px rgba(12, 20, 32, 0.28);
+        box-shadow: 0 18px 58px rgba(12, 20, 32, 0.22);
       }
 
       .header-shell {
@@ -143,58 +143,54 @@ const isLegalPath = legalPaths.some(
         max-width: 1420px;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: 286px minmax(0, 1fr);
-        gap: 14px;
+        grid-template-columns: auto 1fr;
+        gap: 18px;
         align-items: center;
       }
 
       .brand-card {
         display: grid;
-        grid-template-columns: 52px auto;
+        grid-template-columns: 54px auto;
         align-items: center;
-        gap: 13px;
-        min-width: 0;
-        padding: 10px 12px;
-        border-radius: 24px;
+        gap: 14px;
+        min-width: 264px;
+        padding: 11px 14px;
+        border-radius: 26px;
         background:
-          radial-gradient(circle at 22% 0%, rgba(6, 72, 80, 0.34), transparent 38%),
-          linear-gradient(145deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.035));
-        border: 1px solid rgba(255, 255, 255, 0.12);
+          linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(255, 252, 247, 0.72));
+        border: 1px solid rgba(12, 20, 32, 0.08);
         box-shadow:
-          0 18px 46px rgba(0, 0, 0, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.10);
-        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+          0 18px 46px rgba(12, 20, 32, 0.06),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
       }
 
       .brand-card:hover {
         transform: translateY(-1px);
-        border-color: rgba(255, 255, 255, 0.18);
-        background:
-          radial-gradient(circle at 22% 0%, rgba(6, 72, 80, 0.42), transparent 38%),
-          linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05));
+        background: rgba(255, 255, 255, 0.92);
         box-shadow:
-          0 22px 56px rgba(0, 0, 0, 0.24),
-          inset 0 1px 0 rgba(255, 255, 255, 0.12);
+          0 22px 56px rgba(12, 20, 32, 0.09),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
       }
 
       .brand-mark {
         position: relative;
-        width: 52px;
-        height: 52px;
+        width: 54px;
+        height: 54px;
         display: grid;
         place-items: center;
-        border-radius: 17px;
+        border-radius: 18px;
         overflow: hidden;
         background:
-          radial-gradient(circle at 65% 10%, rgba(255, 255, 255, 0.2), transparent 32%),
-          linear-gradient(145deg, #064850, #0C1420);
+          radial-gradient(circle at 65% 10%, rgba(255, 255, 255, 0.18), transparent 32%),
+          linear-gradient(145deg, #0C1420, #101B28);
         color: white;
-        font-size: 27px;
+        font-size: 28px;
         line-height: 1;
         font-weight: 950;
         letter-spacing: -0.06em;
         box-shadow:
-          0 14px 32px rgba(6, 72, 80, 0.34),
+          0 14px 28px rgba(12, 20, 32, 0.18),
           inset 0 -5px 0 rgba(185, 97, 52, 0.55);
       }
 
@@ -206,7 +202,7 @@ const isLegalPath = legalPaths.some(
       }
 
       .brand-name {
-        color: #FFFFFF;
+        color: var(--teal);
         font-size: 23px;
         line-height: 1;
         font-weight: 950;
@@ -215,7 +211,7 @@ const isLegalPath = legalPaths.some(
 
       .brand-subtitle {
         margin-top: 4px;
-        color: rgba(255, 255, 255, 0.62);
+        color: #5F6673;
         font-size: 13px;
         line-height: 1.25;
         font-weight: 800;
@@ -226,15 +222,15 @@ const isLegalPath = legalPaths.some(
         display: grid;
         grid-template-columns: auto minmax(0, 1fr) auto;
         align-items: center;
-        gap: 12px;
-        padding: 9px;
-        border-radius: 28px;
+        gap: 14px;
+        padding: 10px;
+        border-radius: 30px;
         background:
-          linear-gradient(145deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.045));
-        border: 1px solid rgba(255, 255, 255, 0.12);
+          linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 252, 247, 0.78));
+        border: 1px solid rgba(12, 20, 32, 0.1);
         box-shadow:
-          0 22px 60px rgba(0, 0, 0, 0.20),
-          inset 0 1px 0 rgba(255, 255, 255, 0.10);
+          0 22px 60px rgba(12, 20, 32, 0.09),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
       }
 
       .home-link {
@@ -244,18 +240,17 @@ const isLegalPath = legalPaths.some(
         place-items: center;
         flex: none;
         border-radius: 18px;
-        color: rgba(255, 255, 255, 0.82);
-        background: rgba(255, 255, 255, 0.07);
-        border: 1px solid rgba(255, 255, 255, 0.10);
-        transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+        color: var(--copper);
+        background: rgba(185, 97, 52, 0.07);
+        border: 1px solid rgba(185, 97, 52, 0.12);
+        transition: transform 180ms ease, background 180ms ease, color 180ms ease;
       }
 
       .home-link:hover,
       .home-link.active {
         transform: translateY(-1px);
-        background: rgba(6, 72, 80, 0.72);
-        border-color: rgba(230, 241, 240, 0.22);
-        color: #FFFFFF;
+        background: rgba(185, 97, 52, 0.13);
+        color: #8F4524;
       }
 
       .home-link svg,
@@ -286,7 +281,7 @@ const isLegalPath = legalPaths.some(
         min-height: 44px;
         padding: 0 11px;
         border-radius: 17px;
-        color: rgba(255, 255, 255, 0.76);
+        color: #111827;
         font-size: 13px;
         line-height: 1;
         font-weight: 950;
@@ -344,9 +339,9 @@ const isLegalPath = legalPaths.some(
       .nav-more[open] .nav-more-button,
       .nav-more-button:hover {
         transform: translateY(-1px);
-        background: rgba(6, 72, 80, 0.56);
-        color: #FFFFFF;
-        box-shadow: inset 0 0 0 1px rgba(230, 241, 240, 0.16);
+        background: rgba(250, 248, 242, 0.9);
+        color: var(--teal);
+        box-shadow: inset 0 0 0 1px rgba(12, 20, 32, 0.06);
       }
 
       .nav-link:hover::after,
@@ -370,12 +365,12 @@ const isLegalPath = legalPaths.some(
         padding: 10px;
         border-radius: 24px;
         background:
-          radial-gradient(circle at 20% 0%, rgba(6, 72, 80, 0.38), transparent 36%),
-          linear-gradient(145deg, rgba(16, 27, 40, 0.98), rgba(12, 20, 32, 0.98));
-        border: 1px solid rgba(255, 255, 255, 0.12);
+          radial-gradient(circle at 20% 0%, rgba(185, 97, 52, 0.12), transparent 36%),
+          linear-gradient(145deg, rgba(255, 252, 247, 0.98), rgba(255, 255, 255, 0.94));
+        border: 1px solid rgba(12, 20, 32, 0.12);
         box-shadow:
-          0 28px 80px rgba(0, 0, 0, 0.34),
-          inset 0 1px 0 rgba(255, 255, 255, 0.10);
+          0 28px 80px rgba(12, 20, 32, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px) scale(0.98);
@@ -400,7 +395,7 @@ const isLegalPath = legalPaths.some(
         gap: 14px;
         padding: 14px 15px;
         border-radius: 18px;
-        color: rgba(255, 255, 255, 0.86);
+        color: var(--teal);
         transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
       }
 
@@ -417,8 +412,8 @@ const isLegalPath = legalPaths.some(
       .nav-more-link:hover,
       .nav-more-link.active {
         transform: translateY(-2px);
-        background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 14px 34px rgba(12, 20, 32, 0.08);
       }
 
       .header-cta {
@@ -430,33 +425,29 @@ const isLegalPath = legalPaths.some(
         padding: 0 22px;
         border-radius: 999px;
         background:
-          radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.92), transparent 44%),
-          linear-gradient(145deg, #FFFFFF, #FFFCF7);
-        color: #0C1420;
+          radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.14), transparent 36%),
+          linear-gradient(145deg, #0C1420, #043840);
+        color: white;
         font-size: 14px;
         font-weight: 950;
         white-space: nowrap;
         box-shadow:
-          0 18px 42px rgba(0, 0, 0, 0.26),
-          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          0 18px 42px rgba(12, 20, 32, 0.22),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12);
         transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
       }
 
       .header-cta:hover {
         transform: translateY(-1px);
         box-shadow:
-          0 22px 50px rgba(0, 0, 0, 0.32),
-          inset 0 1px 0 rgba(255, 255, 255, 0.95);
-      }
-
-      .header-cta svg {
-        color: #064850;
+          0 22px 50px rgba(12, 20, 32, 0.27),
+          inset 0 1px 0 rgba(255, 255, 255, 0.14);
       }
 
       .header-reform-strip {
         width: 100%;
         max-width: 1420px;
-        min-height: 38px;
+        min-height: 40px;
         margin: 10px auto 0;
         display: flex;
         align-items: center;
@@ -464,13 +455,13 @@ const isLegalPath = legalPaths.some(
         gap: 10px;
         padding: 8px 16px;
         border-radius: 999px;
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--teal);
         background:
-          linear-gradient(90deg, rgba(6, 72, 80, 0.62), rgba(16, 27, 40, 0.54));
-        border: 1px solid rgba(255, 255, 255, 0.10);
+          linear-gradient(90deg, rgba(230, 241, 240, 0.78), rgba(255, 255, 255, 0.78));
+        border: 1px solid rgba(12, 20, 32, 0.1);
         box-shadow:
-          0 16px 40px rgba(0, 0, 0, 0.14),
-          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          0 16px 40px rgba(12, 20, 32, 0.06),
+          inset 0 1px 0 rgba(255, 255, 255, 0.7);
         font-size: 13px;
         line-height: 1.25;
         font-weight: 850;
@@ -483,8 +474,8 @@ const isLegalPath = legalPaths.some(
         place-items: center;
         flex: none;
         border-radius: 999px;
-        background: rgba(230, 241, 240, 0.95);
-        color: #064850;
+        background: var(--teal);
+        color: white;
         font-size: 13px;
       }
 
@@ -493,7 +484,7 @@ const isLegalPath = legalPaths.some(
       }
 
       .header-reform-strip span:last-child {
-        color: rgba(255, 255, 255, 0.64);
+        color: #5F6673;
       }
 
       .mobile-menu-toggle,
@@ -703,13 +694,13 @@ const isLegalPath = legalPaths.some(
           align-items: center;
           justify-content: center;
           gap: 6px;
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          border: 1px solid rgba(12, 20, 32, 0.1);
           border-radius: 18px;
-          background: rgba(255, 255, 255, 0.08);
-          color: #FFFFFF;
+          background: rgba(255, 255, 255, 0.82);
+          color: var(--teal);
           box-shadow:
-            0 16px 36px rgba(0, 0, 0, 0.18),
-            inset 0 1px 0 rgba(255, 255, 255, 0.10);
+            0 16px 36px rgba(12, 20, 32, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
           cursor: pointer;
         }
 
@@ -771,11 +762,10 @@ const isLegalPath = legalPaths.some(
           display: flex;
           flex-direction: column;
           background:
-            radial-gradient(circle at 100% 0%, rgba(185, 97, 52, 0.20), transparent 34%),
-            radial-gradient(circle at 0% 0%, rgba(6, 72, 80, 0.34), transparent 36%),
-            linear-gradient(180deg, rgba(12, 20, 32, 0.99), rgba(16, 27, 40, 0.99));
-          border-left: 1px solid rgba(255, 255, 255, 0.12);
-          box-shadow: -28px 0 80px rgba(0, 0, 0, 0.34);
+            radial-gradient(circle at 100% 0%, rgba(185, 97, 52, 0.12), transparent 34%),
+            linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(247, 247, 244, 0.98));
+          border-left: 1px solid rgba(12, 20, 32, 0.12);
+          box-shadow: -28px 0 80px rgba(12, 20, 32, 0.22);
           transform: translateX(104%);
           transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -790,14 +780,14 @@ const isLegalPath = legalPaths.some(
           justify-content: space-between;
           gap: 14px;
           padding: 18px 18px 14px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+          border-bottom: 1px solid rgba(12, 20, 32, 0.08);
         }
 
         .mobile-menu-logo {
           display: flex;
           align-items: center;
           gap: 12px;
-          color: #FFFFFF;
+          color: var(--teal);
         }
 
         .mobile-menu-logo strong {
@@ -811,7 +801,7 @@ const isLegalPath = legalPaths.some(
         .mobile-menu-logo span {
           display: block;
           margin-top: 4px;
-          color: rgba(255, 255, 255, 0.62);
+          color: #5F6673;
           font-size: 11px;
           line-height: 1.2;
           font-weight: 800;
@@ -823,10 +813,10 @@ const isLegalPath = legalPaths.some(
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          border: 1px solid rgba(12, 20, 32, 0.1);
           border-radius: 16px;
-          background: rgba(255, 255, 255, 0.08);
-          color: #FFFFFF;
+          background: rgba(255, 255, 255, 0.8);
+          color: var(--teal);
           font-size: 32px;
           line-height: 1;
           cursor: pointer;
@@ -857,10 +847,10 @@ const isLegalPath = legalPaths.some(
 
         .mobile-menu-link,
         .mobile-menu-row {
-          color: rgba(255, 255, 255, 0.86);
-          border: 1px solid rgba(255, 255, 255, 0.10);
-          background: rgba(255, 255, 255, 0.07);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          color: var(--teal);
+          border: 1px solid rgba(12, 20, 32, 0.1);
+          background: rgba(255, 255, 255, 0.78);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         .mobile-menu-link {
@@ -876,8 +866,8 @@ const isLegalPath = legalPaths.some(
 
         .mobile-menu-link.active,
         .mobile-menu-row.active {
-          border-color: rgba(230, 241, 240, 0.22);
-          background: #064850;
+          border-color: rgba(12, 20, 32, 0.2);
+          background: var(--teal);
           color: white;
         }
 
@@ -926,9 +916,9 @@ const isLegalPath = legalPaths.some(
           gap: 6px;
           padding: 16px;
           border-radius: 20px;
-          background: rgba(6, 72, 80, 0.42);
-          border: 1px solid rgba(255, 255, 255, 0.10);
-          color: #FFFFFF;
+          background: rgba(230, 241, 240, 0.68);
+          border: 1px solid rgba(12, 20, 32, 0.1);
+          color: var(--teal);
         }
 
         .mobile-menu-reform strong {
@@ -937,7 +927,7 @@ const isLegalPath = legalPaths.some(
         }
 
         .mobile-menu-reform span {
-          color: rgba(255, 255, 255, 0.64);
+          color: #5F6673;
           font-size: 13px;
           line-height: 1.35;
           font-weight: 760;
