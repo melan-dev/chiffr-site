@@ -17,52 +17,40 @@ interface Props {
   schema?: Record<string, any> | Record<string, any>[];
 }
 
-const {
-  title,
-  description,
-  canonicalPath,
-  ogImage,
-  schema,
-} = Astro.props;
+const { title, description, canonicalPath, ogImage, schema } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 
-const navItems = [
-  { label: 'PAC', href: '/logiciel-devis-pompe-a-chaleur' },
-  { label: 'Clim', href: '/logiciel-devis-climatisation' },
-  { label: 'Chauffage', href: '/logiciel-devis-chauffagiste' },
-  { label: 'CVC', href: '/logiciel-devis-frigoriste-cvc' },
-  { label: 'VMC', href: '/logiciel-devis-vmc' },
-  { label: 'IRVE', href: '/logiciel-devis-irve' },
-  { label: 'Solaire', href: '/logiciel-devis-photovoltaique' },
-  { label: 'Tarifs', href: '/tarifs' },
+const metierItems = [
+  { label: 'Pompe à chaleur', detail: 'PAC air/eau & air/air', href: '/logiciel-devis-pompe-a-chaleur' },
+  { label: 'Climatisation', detail: 'Monosplit & multisplit', href: '/logiciel-devis-climatisation' },
+  { label: 'Chauffage', detail: 'Chaudières & radiateurs', href: '/logiciel-devis-chauffagiste' },
+  { label: 'CVC / Froid', detail: 'Frigoriste & ventilation', href: '/logiciel-devis-frigoriste-cvc' },
+  { label: 'VMC', detail: 'Simple & double flux', href: '/logiciel-devis-vmc' },
+  { label: 'IRVE', detail: 'Bornes de recharge', href: '/logiciel-devis-irve' },
+  { label: 'Solaire', detail: 'Photovoltaïque', href: '/logiciel-devis-photovoltaique' },
+  { label: 'Eau chaude', detail: 'Chauffe-eau thermodynamique', href: '/logiciel-devis-chauffe-eau-thermodynamique' },
 ];
 
 const resourceItems = [
-  { label: 'Fonctionnalités', href: '/fonctionnalites' },
-  { label: 'Modèles de devis', href: '/modeles-devis' },
-  { label: 'Guides', href: '/guides-devis-artisans-energie' },
-  { label: 'Alternatives logiciels', href: '/alternatives-logiciels-devis-batiment' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Modèles de devis', detail: 'Exemples concrets par métier', href: '/modeles-devis' },
+  { label: 'Guides devis', detail: 'Conseils pratiques terrain', href: '/guides-devis-artisans-energie' },
+  { label: 'Alternatives logiciels', detail: 'Comparatifs détaillés', href: '/alternatives-logiciels-devis-batiment' },
+  { label: 'Contact', detail: 'Demander un accès', href: '/contact' },
 ];
 
-const footerMetiers = [
-  { label: 'Pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
-  { label: 'Climatisation', href: '/logiciel-devis-climatisation' },
-  { label: 'Chauffagiste', href: '/logiciel-devis-chauffagiste' },
-  { label: 'Frigoriste / CVC', href: '/logiciel-devis-frigoriste-cvc' },
-  { label: 'VMC', href: '/logiciel-devis-vmc' },
-  { label: 'IRVE', href: '/logiciel-devis-irve' },
-  { label: 'Solaire', href: '/logiciel-devis-photovoltaique' },
-];
+const footerMetiers = metierItems.map(({ label, href }) => ({ label, href }));
 
 const footerChiffr = [
-  { label: 'Tarifs', href: '/tarifs' },
-  { label: 'Alternatives logiciels', href: '/alternatives-logiciels-devis-batiment' },
-  { label: 'Guides devis', href: '/guides-devis-artisans-energie' },
-  { label: 'Modèles de devis', href: '/modeles-devis' },
   { label: 'Fonctionnalités', href: '/fonctionnalites' },
+  { label: 'Tarifs', href: '/tarifs' },
+  { label: 'Modèles de devis', href: '/modeles-devis' },
+  { label: 'Guides devis', href: '/guides-devis-artisans-energie' },
+  { label: 'Alternatives logiciels', href: '/alternatives-logiciels-devis-batiment' },
   { label: 'Contact', href: '/contact' },
+];
+
+const footerLegal = [
   { label: 'Mentions légales', href: '/mentions-legales' },
   { label: 'Confidentialité', href: '/confidentialite' },
   { label: 'CGU', href: '/cgu' },
@@ -73,6 +61,7 @@ const isActive = (href: string) => {
   return currentPath === href || currentPath.startsWith(`${href}/`);
 };
 
+const isMetierActive = metierItems.some((item) => isActive(item.href));
 const isResourceActive = resourceItems.some((item) => isActive(item.href));
 
 const legalPaths = ['/mentions-legales', '/confidentialite', '/cgu'];
@@ -105,1105 +94,640 @@ const isLegalPath = legalPaths.some(
 
     <style is:inline>
       html {
-        scroll-padding-top: 132px;
+        scroll-padding-top: 92px;
+      }
+
+      [id] {
+        scroll-margin-top: 92px;
       }
 
       body.mobile-menu-open {
         overflow: hidden;
       }
 
-      [id] {
-        scroll-margin-top: 132px;
-      }
-
-      .site-header,
-      .site-header *,
-      .site-footer,
-      .site-footer * {
+      .ch-header,
+      .ch-header *,
+      .ch-footer,
+      .ch-footer * {
         box-sizing: border-box;
       }
 
-      .site-header {
+      /* ===== Header ===== */
+      .ch-header {
         position: sticky;
         top: 0;
         z-index: 1000;
-        padding: 14px 20px 10px;
-        background:
-          radial-gradient(circle at 10% 0%, rgba(6, 72, 80, 0.44), transparent 34%),
-          radial-gradient(circle at 86% 0%, rgba(185, 97, 52, 0.18), transparent 30%),
-          linear-gradient(180deg, #0C1420 0%, #101B28 100%);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        box-shadow: 0 18px 54px rgba(12, 20, 32, 0.20);
+        background: var(--chiffr-navy);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       }
 
-      .header-shell {
-        width: 100%;
-        max-width: 1420px;
+      .ch-header-shell {
+        width: min(1280px, 100% - 48px);
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: auto 1fr;
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+      }
+
+      .ch-brand {
+        display: flex;
+        align-items: center;
         gap: 12px;
-        align-items: center;
-        padding: 10px;
-        border-radius: 30px;
-        background:
-          radial-gradient(circle at 8% 0%, rgba(6, 72, 80, 0.46), transparent 34%),
-          radial-gradient(circle at 92% 0%, rgba(185, 97, 52, 0.15), transparent 30%),
-          rgba(255, 255, 255, 0.045);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.10),
-          0 18px 44px rgba(0, 0, 0, 0.16);
-      }
-
-      .brand-card {
-        display: grid;
-        grid-template-columns: 54px auto;
-        align-items: center;
-        gap: 14px;
-        min-width: 264px;
-        padding: 7px 12px;
-        border-radius: 22px;
-        background: transparent;
-        border: 0;
-        box-shadow: none;
-        transition: transform 180ms ease, background 180ms ease;
-      }
-
-      .brand-card:hover {
-        transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.07);
-      }
-
-      .brand-mark {
-        position: relative;
-        width: 54px;
-        height: 54px;
-        display: grid;
-        place-items: center;
-        border-radius: 18px;
-        overflow: hidden;
-        background:
-          radial-gradient(circle at 65% 10%, rgba(255, 255, 255, 0.18), transparent 32%),
-          linear-gradient(145deg, #0C1420, #101B28);
-        color: white;
-        font-size: 28px;
-        line-height: 1;
-        font-weight: 950;
-        letter-spacing: -0.06em;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        box-shadow:
-          0 14px 28px rgba(0, 0, 0, 0.22),
-          inset 0 -5px 0 rgba(185, 97, 52, 0.55);
-      }
-
-      .brand-mark.small {
-        width: 44px;
-        height: 44px;
-        border-radius: 15px;
-        font-size: 23px;
-      }
-
-      .brand-name {
-        color: #FFFFFF !important;
-        font-size: 23px;
-        line-height: 1;
-        font-weight: 950;
-        letter-spacing: -0.04em;
-      }
-
-      .brand-subtitle {
-        margin-top: 4px;
-        color: rgba(255, 255, 255, 0.78) !important;
-        font-size: 13px;
-        line-height: 1.25;
-        font-weight: 800;
-      }
-
-      .nav-card {
-        min-width: 0;
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr) auto;
-        align-items: center;
-        gap: 14px;
-        padding: 0;
-        border-radius: 24px;
-        background: transparent;
-        border: 0;
-        box-shadow: none;
-      }
-
-      .home-link {
-        width: 46px;
-        height: 46px;
-        display: grid;
-        place-items: center;
         flex: none;
-        border-radius: 18px;
-        color: rgba(255, 255, 255, 0.90);
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.10);
-        transition: transform 180ms ease, background 180ms ease, color 180ms ease;
-      }
-
-      .home-link:hover,
-      .home-link.active {
-        transform: translateY(-1px);
-        background: rgba(6, 72, 80, 0.56);
         color: #FFFFFF;
       }
 
-      .home-link svg,
-      .header-cta svg {
-        width: 21px;
-        height: 21px;
+      .ch-brand-mark {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 11px;
+        background: linear-gradient(160deg, #0A5049, #043840);
+        box-shadow: inset 0 -3px 0 rgba(185, 97, 52, 0.5);
+        color: #F6EFE0;
+        font-family: var(--font-display);
+        font-size: 21px;
+        line-height: 1;
+        font-weight: 600;
+      }
+
+      .ch-brand-name {
+        font-family: var(--font-display);
+        font-size: 23px;
+        line-height: 1;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: #FFFFFF;
+      }
+
+      .ch-brand-tagline {
+        margin-left: 14px;
+        padding-left: 16px;
+        border-left: 1px solid rgba(255, 255, 255, 0.16);
+        color: rgba(255, 255, 255, 0.56);
+        font-size: 13px;
+        line-height: 1.3;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .ch-nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        min-width: 0;
+      }
+
+      .ch-nav-link,
+      .ch-nav-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        min-height: 40px;
+        padding: 0 14px;
+        border-radius: 10px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 14.5px;
+        line-height: 1;
+        font-weight: 550;
+        white-space: nowrap;
+        transition: color 160ms ease, background 160ms ease;
+      }
+
+      .ch-nav-link:hover,
+      .ch-nav-link.active,
+      .ch-nav-trigger:hover,
+      .ch-nav-item[open] .ch-nav-trigger,
+      .ch-nav-item.active .ch-nav-trigger {
+        color: #FFFFFF;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .ch-nav-item {
+        position: relative;
+      }
+
+      .ch-nav-trigger {
+        border: 0;
+        background: transparent;
+        font-family: inherit;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .ch-nav-trigger::-webkit-details-marker {
+        display: none;
+      }
+
+      .ch-nav-trigger svg {
+        width: 13px;
+        height: 13px;
         fill: none;
         stroke: currentColor;
         stroke-width: 2;
         stroke-linecap: round;
         stroke-linejoin: round;
+        opacity: 0.7;
+        transition: transform 160ms ease;
       }
 
-      .nav-links {
-        min-width: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 3px;
-      }
-
-      .nav-link,
-      .nav-more-button {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        padding: 0 11px;
-        border-radius: 17px;
-        color: rgba(255, 255, 255, 0.90) !important;
-        font-size: 13px;
-        line-height: 1;
-        font-weight: 950;
-        white-space: nowrap;
-        transition:
-          transform 180ms ease,
-          background 180ms ease,
-          color 180ms ease,
-          box-shadow 180ms ease;
-      }
-
-      .nav-more {
-        position: relative;
-        display: inline-flex;
-      }
-
-      .nav-more-button {
-        border: 0;
-        background: transparent;
-        font: inherit;
-        cursor: pointer;
-        list-style: none;
-      }
-
-      .nav-more-button::-webkit-details-marker {
-        display: none;
-      }
-
-      .nav-more-button span {
-        margin-left: 7px;
-        color: var(--copper);
-        font-size: 15px;
-        line-height: 1;
-        transition: transform 180ms ease;
-      }
-
-      .nav-link::after,
-      .nav-more-button::after {
-        content: "";
-        position: absolute;
-        left: 18px;
-        right: 18px;
-        bottom: 7px;
-        height: 3px;
-        border-radius: 999px;
-        background: var(--copper);
-        opacity: 0;
-        transform: scaleX(0.4);
-        transition: opacity 180ms ease, transform 180ms ease;
-      }
-
-      .nav-link:hover,
-      .nav-link.active,
-      .nav-more.active .nav-more-button,
-      .nav-more[open] .nav-more-button,
-      .nav-more-button:hover {
-        transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.08);
-        color: #FFFFFF;
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-      }
-
-      .nav-link:hover::after,
-      .nav-link.active::after,
-      .nav-more.active .nav-more-button::after,
-      .nav-more[open] .nav-more-button::after,
-      .nav-more-button:hover::after {
-        opacity: 1;
-        transform: scaleX(1);
-      }
-
-      .nav-more[open] .nav-more-button span {
+      .ch-nav-item[open] .ch-nav-trigger svg {
         transform: rotate(180deg);
       }
 
-      .nav-more-panel {
+      .ch-nav-panel {
         position: absolute;
-        top: calc(100% + 12px);
-        right: 0;
-        width: 292px;
-        padding: 10px;
-        border-radius: 24px;
-        background:
-          radial-gradient(circle at 20% 0%, rgba(185, 97, 52, 0.12), transparent 36%),
-          linear-gradient(145deg, rgba(255, 252, 247, 0.98), rgba(255, 255, 255, 0.94));
-        border: 1px solid rgba(12, 20, 32, 0.12);
-        box-shadow:
-          0 28px 80px rgba(12, 20, 32, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.9);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px) scale(0.98);
-        pointer-events: none;
-        transition:
-          opacity 180ms ease,
-          transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
-          visibility 180ms ease;
+        top: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px;
+        border-radius: 16px;
+        background: var(--chiffr-surface-warm);
+        border: 1px solid var(--chiffr-border);
+        box-shadow: 0 24px 64px rgba(12, 20, 32, 0.22);
       }
 
-      .nav-more[open] .nav-more-panel {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
-        pointer-events: auto;
+      .ch-nav-panel.metiers {
+        width: 460px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
       }
 
-      .nav-more-link {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 14px;
-        padding: 14px 15px;
-        border-radius: 18px;
-        color: var(--teal);
-        transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      .ch-nav-panel.ressources {
+        width: 280px;
+        display: grid;
+        gap: 2px;
       }
 
-      .nav-more-link strong {
+      .ch-nav-panel a {
+        display: grid;
+        gap: 3px;
+        padding: 11px 13px;
+        border-radius: 11px;
+        transition: background 140ms ease;
+      }
+
+      .ch-nav-panel a:hover,
+      .ch-nav-panel a.active {
+        background: #F1EDE5;
+      }
+
+      .ch-nav-panel strong {
+        color: var(--chiffr-text);
         font-size: 14px;
-        font-weight: 950;
+        line-height: 1.2;
+        font-weight: 600;
       }
 
-      .nav-more-link span {
-        color: var(--copper);
-        font-weight: 950;
+      .ch-nav-panel small {
+        color: var(--chiffr-text-soft);
+        font-size: 12.5px;
+        line-height: 1.3;
+        font-weight: 450;
       }
 
-      .nav-more-link:hover,
-      .nav-more-link.active {
-        transform: translateY(-2px);
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 14px 34px rgba(12, 20, 32, 0.08);
-      }
-
-      .header-cta {
+      .ch-header-cta {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        min-height: 50px;
-        padding: 0 22px;
-        border-radius: 999px;
-        background:
-          radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.14), transparent 36%),
-          linear-gradient(145deg, #064850, #043840);
-        color: white;
-        font-size: 14px;
-        font-weight: 950;
-        white-space: nowrap;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        box-shadow:
-          0 18px 42px rgba(0, 0, 0, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.12);
-        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-      }
-
-      .header-cta:hover {
-        transform: translateY(-1px);
-        box-shadow:
-          0 22px 50px rgba(12, 20, 32, 0.27),
-          inset 0 1px 0 rgba(255, 255, 255, 0.14);
-      }
-
-      .header-reform-strip {
-        width: 100%;
-        max-width: 1420px;
-        min-height: 40px;
-        margin: 10px auto 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 8px 16px;
-        border-radius: 999px;
-        color: rgba(255, 255, 255, 0.92);
-        background:
-          linear-gradient(90deg, rgba(6, 72, 80, 0.72), rgba(255, 255, 255, 0.08));
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow:
-          0 14px 34px rgba(0, 0, 0, 0.14),
-          inset 0 1px 0 rgba(255, 255, 255, 0.10);
-        font-size: 13px;
-        line-height: 1.25;
-        font-weight: 850;
-      }
-
-      .header-reform-icon {
-        width: 24px;
-        height: 24px;
-        display: inline-grid;
-        place-items: center;
         flex: none;
-        border-radius: 999px;
-        background: #E6F1F0;
-        color: #064850;
-        font-size: 13px;
+        min-height: 44px;
+        padding: 0 22px;
+        border-radius: 11px;
+        background: linear-gradient(160deg, #075058, var(--chiffr-teal-dark));
+        color: #FFFFFF;
+        font-size: 14.5px;
+        font-weight: 600;
+        white-space: nowrap;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 24px rgba(4, 56, 64, 0.35);
+        transition: filter 160ms ease, box-shadow 160ms ease;
       }
 
-      .header-reform-strip strong {
-        font-weight: 950;
+      .ch-header-cta:hover {
+        filter: brightness(1.12);
+        box-shadow: 0 14px 30px rgba(4, 56, 64, 0.45);
       }
 
-      .header-reform-strip span:last-child {
-        color: rgba(255, 255, 255, 0.74);
-      }
-
-      .mobile-menu-toggle,
-      .mobile-menu-backdrop,
-      .mobile-menu-panel {
+      .ch-menu-button {
         display: none;
       }
 
-      .mobile-menu-backdrop {
-        display: none !important;
-      }
-
-      .site-footer {
-        margin-top: 0;
-        background:
-          radial-gradient(circle at 15% 0%, rgba(185, 97, 52, 0.16), transparent 38%),
-          linear-gradient(180deg, #0C1420, #101B28);
-        color: white;
-      }
-
-      .footer-shell {
-        width: min(1180px, calc(100% - 40px));
-        margin: 0 auto;
-        padding: 62px 0 46px;
-        display: grid;
-        gap: 36px;
-      }
-
-      .footer-logo {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        color: white;
-      }
-
-      .footer-logo strong {
-        display: block;
-        font-size: 24px;
-        line-height: 1;
-        font-weight: 950;
-        letter-spacing: -0.04em;
-      }
-
-      .footer-logo span {
-        display: block;
-        margin-top: 4px;
-        color: rgba(255, 255, 255, 0.68);
-        font-size: 12px;
-        font-weight: 780;
-      }
-
-      .footer-brand p {
-        max-width: 550px;
-        margin: 20px 0 0;
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 15px;
-        line-height: 1.7;
-        font-weight: 650;
-      }
-
-      .footer-cta {
-        width: fit-content;
-        min-height: 48px;
-        margin-top: 24px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 22px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        font-weight: 950;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-      }
-
-      .footer-column {
-        display: grid;
-        align-content: start;
-        gap: 12px;
-      }
-
-      .footer-column h2 {
-        margin: 0 0 8px;
-        color: white;
-        font-size: 14px;
-        font-weight: 950;
-      }
-
-      .footer-column a {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 14px;
-        font-weight: 720;
-      }
-
-      .footer-column a:hover {
-        color: white;
-      }
-
-      .footer-bottom {
-        width: min(1180px, calc(100% - 40px));
-        margin: 0 auto;
-        padding: 20px 0 30px;
-        display: flex;
-        justify-content: space-between;
-        gap: 18px;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        color: rgba(255, 255, 255, 0.58);
-        font-size: 13px;
-        font-weight: 680;
-      }
-
-      .footer-bottom p {
-        margin: 0;
-      }
-
-      .footer-bottom a {
-        color: rgba(255, 255, 255, 0.7);
-      }
-
-      .footer-bottom a:hover {
-        color: white;
-      }
-
-      @media (min-width: 820px) {
-        .footer-shell {
-          grid-template-columns: 1.2fr 0.8fr 0.8fr;
-        }
-      }
-
-      @media (max-width: 1240px) {
-        .header-shell {
-          grid-template-columns: 1fr;
-        }
-
-        .brand-card {
-          width: fit-content;
-        }
-
-        .nav-links {
-          justify-content: flex-start;
-          overflow-x: auto;
-          scrollbar-width: none;
-          padding-bottom: 2px;
-        }
-
-        .nav-links::-webkit-scrollbar {
+      @media (max-width: 1180px) {
+        .ch-brand-tagline {
           display: none;
         }
       }
 
-      @media (max-width: 860px) {
-        .site-header {
-          padding: 10px 12px 8px;
+      @media (max-width: 980px) {
+        .ch-header-shell {
+          width: min(1280px, 100% - 36px);
+          min-height: 64px;
         }
 
-        .header-shell {
-          display: flex;
+        .ch-nav,
+        .ch-header-cta {
+          display: none;
+        }
+
+        .ch-menu-button {
+          display: inline-flex;
+          flex-direction: column;
           align-items: center;
-          justify-content: space-between;
-          gap: 10px;
-        }
-
-        .brand-card {
-          min-width: 0;
-          grid-template-columns: 44px auto;
-          gap: 10px;
-          padding: 8px 10px;
-          border-radius: 20px;
-        }
-
-        .brand-mark {
+          justify-content: center;
+          gap: 5px;
           width: 44px;
           height: 44px;
-          border-radius: 15px;
-          font-size: 23px;
-        }
-
-        .brand-name {
-          font-size: 20px;
-        }
-
-        .brand-subtitle {
-          font-size: 10.5px;
-          line-height: 1.18;
-        }
-
-        .nav-card {
-          width: auto;
-          display: flex;
-          padding: 0;
-          border: 0;
-          background: transparent;
-          box-shadow: none;
-        }
-
-        .home-link,
-        .nav-links,
-        .header-cta {
-          display: none !important;
-        }
-
-        .mobile-menu-toggle {
-          width: 52px;
-          height: 52px;
-          display: inline-flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-          border: 1px solid rgba(12, 20, 32, 0.1);
-          border-radius: 18px;
-          background: rgba(255, 255, 255, 0.82);
-          color: var(--teal);
-          box-shadow:
-            0 16px 36px rgba(12, 20, 32, 0.08),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          border-radius: 11px;
+          background: rgba(255, 255, 255, 0.05);
           cursor: pointer;
         }
 
-        .mobile-menu-toggle span {
-          width: 21px;
+        .ch-menu-button span {
+          width: 18px;
           height: 2px;
           border-radius: 999px;
-          background: currentColor;
-          transition: transform 180ms ease, opacity 180ms ease;
-        }
-
-        .mobile-menu-toggle.is-open span:nth-child(1) {
-          transform: translateY(8px) rotate(45deg);
-        }
-
-        .mobile-menu-toggle.is-open span:nth-child(2) {
-          opacity: 0;
-        }
-
-        .mobile-menu-toggle.is-open span:nth-child(3) {
-          transform: translateY(-8px) rotate(-45deg);
-        }
-
-        .header-reform-strip {
-          min-height: 34px;
-          margin-top: 8px;
-          justify-content: center;
-          border-radius: 18px;
-          overflow: hidden;
-          white-space: nowrap;
-          font-size: 12px;
-        }
-
-        .header-reform-strip span:not(.header-reform-icon) {
-          display: none;
-        }
-
-        .mobile-menu-backdrop {
-          position: sticky;
-          inset: 0;
-          z-index: 1090;
-          display: block;
-          background: rgba(8, 29, 28, 0.46);
-          opacity: 0;
-          transition: opacity 180ms ease;
-        }
-
-        .mobile-menu-backdrop.is-visible {
-          opacity: 1;
-        }
-
-        .mobile-menu-panel {
-          position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 1100;
-          width: min(390px, 88vw);
-          display: flex;
-          flex-direction: column;
-          background:
-            radial-gradient(circle at 100% 0%, rgba(185, 97, 52, 0.12), transparent 34%),
-            linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(247, 247, 244, 0.98));
-          border-left: 1px solid rgba(12, 20, 32, 0.12);
-          box-shadow: -28px 0 80px rgba(12, 20, 32, 0.22);
-          transform: translateX(104%);
-          transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .mobile-menu-panel.is-open {
-          transform: translateX(0);
-        }
-
-        .mobile-menu-head {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 14px;
-          padding: 18px 18px 14px;
-          border-bottom: 1px solid rgba(12, 20, 32, 0.08);
-        }
-
-        .mobile-menu-logo {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          color: var(--teal);
-        }
-
-        .mobile-menu-logo strong {
-          display: block;
-          font-size: 22px;
-          line-height: 1;
-          font-weight: 950;
-          letter-spacing: -0.04em;
-        }
-
-        .mobile-menu-logo span {
-          display: block;
-          margin-top: 4px;
-          color: #5F6673;
-          font-size: 11px;
-          line-height: 1.2;
-          font-weight: 800;
-        }
-
-        .mobile-menu-close {
-          width: 46px;
-          height: 46px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid rgba(12, 20, 32, 0.1);
-          border-radius: 16px;
-          background: rgba(255, 255, 255, 0.8);
-          color: var(--teal);
-          font-size: 32px;
-          line-height: 1;
-          cursor: pointer;
-        }
-
-        .mobile-menu-body {
-          display: grid;
-          gap: 18px;
-          padding: 18px;
-          overflow-y: auto;
-        }
-
-        .mobile-menu-group p {
-          margin: 0 0 10px;
-          color: var(--copper);
-          font-size: 12px;
-          line-height: 1;
-          font-weight: 950;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-        }
-
-        .mobile-menu-grid {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 9px;
-        }
-
-        .mobile-menu-link,
-        .mobile-menu-row {
-          color: var(--teal);
-          border: 1px solid rgba(12, 20, 32, 0.1);
-          background: rgba(255, 255, 255, 0.78);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-
-        .mobile-menu-link {
-          min-height: 46px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 0 12px;
-          border-radius: 17px;
-          font-size: 13px;
-          font-weight: 950;
-        }
-
-        .mobile-menu-link.active,
-        .mobile-menu-row.active {
-          border-color: rgba(12, 20, 32, 0.2);
-          background: var(--teal);
-          color: white;
-        }
-
-        .mobile-menu-list {
-          display: grid;
-          gap: 9px;
-        }
-
-        .mobile-menu-row {
-          min-height: 52px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 14px;
-          padding: 0 15px;
-          border-radius: 18px;
-          font-size: 15px;
-          font-weight: 950;
-        }
-
-        .mobile-menu-row strong {
-          color: var(--copper);
-          font-size: 18px;
-        }
-
-        .mobile-menu-row.active strong {
-          color: white;
-        }
-
-        .mobile-menu-cta {
-          min-height: 56px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          border-radius: 999px;
-          background: var(--teal);
-          color: white;
-          font-size: 15px;
-          font-weight: 950;
-          box-shadow: 0 18px 44px rgba(12, 20, 32, 0.18);
-        }
-
-        .mobile-menu-reform {
-          display: grid;
-          gap: 6px;
-          padding: 16px;
-          border-radius: 20px;
-          background: rgba(230, 241, 240, 0.68);
-          border: 1px solid rgba(12, 20, 32, 0.1);
-          color: var(--teal);
-        }
-
-        .mobile-menu-reform strong {
-          font-size: 14px;
-          font-weight: 950;
-        }
-
-        .mobile-menu-reform span {
-          color: #5F6673;
-          font-size: 13px;
-          line-height: 1.35;
-          font-weight: 760;
-        }
-
-        .footer-bottom {
-          display: grid;
+          background: rgba(255, 255, 255, 0.9);
         }
       }
 
-      @media (max-width: 420px) {
-        .brand-card {
-          grid-template-columns: 40px auto;
-          padding: 8px;
-        }
-
-        .brand-mark {
-          width: 40px;
-          height: 40px;
-          border-radius: 14px;
-          font-size: 21px;
-        }
-
-        .brand-name {
-          font-size: 19px;
-        }
-
-        .mobile-menu-toggle {
-          width: 48px;
-          height: 48px;
-          border-radius: 17px;
-        }
-      }
-
-
-      /* Menu mobile hors du header : <dialog> natif pour éviter les bugs de z-index/stacking context. */
-      .mobile-menu-dialog {
+      /* ===== Menu mobile ===== */
+      .ch-mobile-dialog {
         position: fixed;
         inset: 0 0 0 auto;
-        width: min(390px, 88vw);
+        width: min(400px, 92vw);
         height: 100dvh;
         max-width: none;
         max-height: none;
         margin: 0 0 0 auto;
         padding: 0;
         border: 0;
-        overflow: visible;
         background: transparent;
         color: inherit;
+        overflow: visible;
       }
 
-      .mobile-menu-dialog:not([open]) {
+      .ch-mobile-dialog:not([open]) {
         display: none;
       }
 
-      .mobile-menu-dialog[open] {
-        display: block;
-      }
-
-      .mobile-menu-dialog::backdrop {
-        background: rgba(8, 29, 28, 0.46);
+      .ch-mobile-dialog::backdrop {
+        background: rgba(12, 20, 32, 0.55);
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
       }
 
-      .mobile-menu-dialog .mobile-menu-panel {
-        position: relative;
-        top: auto;
-        right: auto;
-        bottom: auto;
+      .ch-mobile-panel {
         width: 100%;
         height: 100%;
         display: flex;
+        flex-direction: column;
+        background: var(--chiffr-bg-warm);
+        border-left: 1px solid var(--chiffr-border);
         transform: translateX(104%);
+        transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      .mobile-menu-dialog .mobile-menu-panel.is-open {
+      .ch-mobile-panel.is-open {
         transform: translateX(0);
       }
 
-      @media (min-width: 861px) {
-        .mobile-menu-dialog[open] {
-          display: none;
+      .ch-mobile-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--chiffr-border);
+      }
+
+      .ch-mobile-head .ch-brand {
+        color: var(--chiffr-text);
+      }
+
+      .ch-mobile-head .ch-brand-name {
+        color: var(--chiffr-text);
+        font-size: 21px;
+      }
+
+      .ch-mobile-close {
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--chiffr-border);
+        border-radius: 11px;
+        background: var(--chiffr-surface);
+        color: var(--chiffr-text);
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .ch-mobile-body {
+        display: grid;
+        align-content: start;
+        gap: 22px;
+        padding: 20px 18px 28px;
+        overflow-y: auto;
+      }
+
+      .ch-mobile-group p {
+        margin: 0 0 10px;
+        color: var(--chiffr-text-muted);
+        font-size: 11.5px;
+        line-height: 1;
+        font-weight: 650;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .ch-mobile-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .ch-mobile-link {
+        display: flex;
+        align-items: center;
+        min-height: 46px;
+        padding: 6px 14px;
+        border-radius: 11px;
+        border: 1px solid var(--chiffr-border);
+        background: var(--chiffr-surface);
+        color: var(--chiffr-text);
+        font-size: 14px;
+        font-weight: 550;
+      }
+
+      .ch-mobile-link.active {
+        background: var(--chiffr-teal);
+        border-color: var(--chiffr-teal);
+        color: #FFFFFF;
+      }
+
+      .ch-mobile-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .ch-mobile-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        min-height: 50px;
+        padding: 6px 15px;
+        border-radius: 12px;
+        border: 1px solid var(--chiffr-border);
+        background: var(--chiffr-surface);
+        color: var(--chiffr-text);
+        font-size: 15px;
+        font-weight: 550;
+      }
+
+      .ch-mobile-row span:last-child {
+        color: var(--chiffr-copper);
+      }
+
+      .ch-mobile-row.active {
+        background: var(--chiffr-teal);
+        border-color: var(--chiffr-teal);
+        color: #FFFFFF;
+      }
+
+      .ch-mobile-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 54px;
+        border-radius: 12px;
+        background: linear-gradient(160deg, #075058, var(--chiffr-teal-dark));
+        color: #FFFFFF;
+        font-size: 15px;
+        font-weight: 600;
+        box-shadow: 0 14px 32px rgba(4, 56, 64, 0.3);
+      }
+
+      /* ===== Footer ===== */
+      .ch-footer {
+        background: linear-gradient(180deg, var(--chiffr-navy), var(--chiffr-navy-soft));
+        color: #FFFFFF;
+      }
+
+      .ch-footer-shell {
+        width: min(1280px, 100% - 48px);
+        margin: 0 auto;
+        padding: 64px 0 48px;
+        display: grid;
+        gap: 44px;
+      }
+
+      .ch-footer-brand .ch-brand-name {
+        color: #FFFFFF;
+      }
+
+      .ch-footer-brand > p {
+        max-width: 460px;
+        margin: 18px 0 0;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 14.5px;
+        line-height: 1.7;
+        font-weight: 450;
+      }
+
+      .ch-footer-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        margin-top: 22px;
+        padding: 0 20px;
+        border-radius: 11px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.06);
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background 160ms ease;
+      }
+
+      .ch-footer-cta:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .ch-footer-title {
+        margin: 0 0 5px;
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 12px;
+        font-weight: 650;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .ch-footer-col {
+        display: grid;
+        align-content: start;
+        justify-items: start;
+        gap: 11px;
+      }
+
+      .ch-footer-col a {
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 14px;
+        font-weight: 480;
+        transition: color 140ms ease;
+      }
+
+      .ch-footer-col a:hover {
+        color: #FFFFFF;
+      }
+
+      .ch-footer-bottom {
+        width: min(1280px, 100% - 48px);
+        margin: 0 auto;
+        padding: 22px 0 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 13px;
+        font-weight: 450;
+      }
+
+      .ch-footer-bottom p {
+        margin: 0;
+      }
+
+      .ch-footer-bottom a {
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .ch-footer-bottom a:hover {
+        color: #FFFFFF;
+      }
+
+      @media (min-width: 880px) {
+        .ch-footer-shell {
+          grid-template-columns: 1.5fr 0.9fr 0.95fr 0.7fr;
         }
       }
 
+      @media (max-width: 879px) {
+        .ch-footer-shell {
+          padding: 52px 0 40px;
+          gap: 36px;
+        }
+
+        .ch-footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
 
       @media (prefers-reduced-motion: reduce) {
-        .site-header *,
-        .site-footer *,
-        .mobile-menu-panel,
-        .mobile-menu-backdrop {
+        .ch-header *,
+        .ch-footer *,
+        .ch-mobile-panel {
           transition-duration: 0.001ms !important;
           animation-duration: 0.001ms !important;
-          animation-iteration-count: 1 !important;
         }
-      }
-
-      .reveal,
-      .reveal-card,
-      .reveal.visible,
-      .reveal-card.visible,
-      .pricing-reveal,
-      .pricing-reveal-card,
-      .pricing-reveal.is-visible,
-      .pricing-reveal-card.is-visible {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-
-      .hero,
-      .section,
-      .irve-hero,
-      .irve-section,
-      .pricing-hero,
-      .pricing-plans,
-      .pricing-compare,
-      .pricing-proof-section,
-      .pricing-faq,
-      .pricing-cta,
-      .features-hero,
-      .features-section,
-      .features-cta,
-      .qm-hero,
-      .qm-section,
-      .qm-cta,
-      .models-hero,
-      .models-section,
-      .models-cta,
-      .contact-hero,
-      .contact-section,
-      .contact-cta,
-      .guide-hero,
-      .guide-section,
-      .guide-cta,
-      .usecase-hero,
-      .usecase-section,
-      .usecase-cta,
-      .alt-hero,
-      .alt-section,
-      .alt-cta,
-      .alt-hub-hero,
-      .alt-hub-section,
-      .alt-hub-cta {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-
-      a:active,
-      button:active,
-      summary:active,
-      .brand-card:active,
-      .header-cta:active,
-      .nav-link:active,
-      .nav-more-button:active,
-      .home-link:active,
-      .mobile-menu-toggle:active,
-      .mobile-menu-link:active,
-      .mobile-menu-row:active {
-        transform: none !important;
       }
     </style>
   </head>
 
   <body>
-    <header class="site-header" id="top" data-site-header>
-      <div class="header-shell">
-        <a href="/" class="brand-card" aria-label="Accueil Chiffr">
-          <div class="brand-mark" aria-hidden="true">C</div>
-
-          <div class="brand-copy">
-            <div class="brand-name">Chiffr</div>
-            <div class="brand-subtitle">Devis &amp; factures<br />artisans énergie</div>
-          </div>
+    <header class="ch-header" id="top" data-site-header>
+      <div class="ch-header-shell">
+        <a href="/" class="ch-brand" aria-label="Accueil Chiffr">
+          <span class="ch-brand-mark" aria-hidden="true">C</span>
+          <span class="ch-brand-name">Chiffr</span>
+          <span class="ch-brand-tagline">Le logiciel de devis des artisans</span>
         </a>
 
-        <nav class="nav-card" aria-label="Navigation principale">
-          <a
-            href="/"
-            class:list={['home-link', { active: isActive('/') }]}
-            aria-label="Accueil"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 11.4 12 4l8 7.4v8.1a.9.9 0 0 1-.9.9h-4.2v-5.8H9.1v5.8H4.9a.9.9 0 0 1-.9-.9v-8.1Z" />
-            </svg>
+        <nav class="ch-nav" aria-label="Navigation principale">
+          <a href="/fonctionnalites" class:list={['ch-nav-link', { active: isActive('/fonctionnalites') }]}>
+            Fonctionnalités
           </a>
 
-          <div class="nav-links">
-            {navItems.map((item) => (
-              <a
-                href={item.href}
-                class:list={['nav-link', { active: isActive(item.href) }]}
-              >
-                {item.label}
-              </a>
-            ))}
+          <details class:list={['ch-nav-item', { active: isMetierActive }]} data-nav-dropdown>
+            <summary class="ch-nav-trigger">
+              Métiers
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
+            </summary>
+            <div class="ch-nav-panel metiers">
+              {metierItems.map((item) => (
+                <a href={item.href} class:list={[{ active: isActive(item.href) }]}>
+                  <strong>{item.label}</strong>
+                  <small>{item.detail}</small>
+                </a>
+              ))}
+            </div>
+          </details>
 
-            <details class:list={['nav-more', { active: isResourceActive }]} data-nav-resources>
-              <summary class="nav-more-button">
-                Ressources
-                <span aria-hidden="true">⌄</span>
-              </summary>
-
-              <div class="nav-more-panel">
-                {resourceItems.map((item) => (
-                  <a
-                    href={item.href}
-                    class:list={['nav-more-link', { active: isActive(item.href) }]}
-                  >
-                    <strong>{item.label}</strong>
-                    <span>→</span>
-                  </a>
-                ))}
-              </div>
-            </details>
-          </div>
-
-          <a href="/contact" class="header-cta">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M13.6 4.4c2.4-.9 4.4-.8 5.2 0s.9 2.8 0 5.2c-.8 2-2.5 4.4-5 6.9l-.7.7-4.3-4.3.7-.7c2.5-2.5 4.9-4.2 6.9-5Z" />
-              <path d="M8.7 12.9 5.5 13.7 4 18l4.3-1.5.8-3.2" />
-              <path d="M13.2 17.4 11.8 21l3.5-1.4 1.4-3.4" />
-              <path d="M15.8 8.2h.01" />
-            </svg>
-            <span>Demander un accès</span>
+          <a href="/tarifs" class:list={['ch-nav-link', { active: isActive('/tarifs') }]}>
+            Tarifs
           </a>
 
-          <button
-            type="button"
-            class="mobile-menu-toggle"
-            data-mobile-menu-button
-            aria-label="Ouvrir le menu"
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </button>
+          <details class:list={['ch-nav-item', { active: isResourceActive }]} data-nav-dropdown>
+            <summary class="ch-nav-trigger">
+              Ressources
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
+            </summary>
+            <div class="ch-nav-panel ressources">
+              {resourceItems.map((item) => (
+                <a href={item.href} class:list={[{ active: isActive(item.href) }]}>
+                  <strong>{item.label}</strong>
+                  <small>{item.detail}</small>
+                </a>
+              ))}
+            </div>
+          </details>
         </nav>
+
+        <a href="/contact" class="ch-header-cta">Demander un accès</a>
+
+        <button
+          type="button"
+          class="ch-menu-button"
+          data-mobile-menu-button
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
       </div>
-
-      <a class="header-reform-strip" href="/fonctionnalites#facturation-electronique">
-        <span class="header-reform-icon" aria-hidden="true">✓</span>
-        <strong>Facturation électronique 2026–2027</strong>
-        <span>Chiffr vous aide à préparer vos factures, données client et dossiers.</span>
-      </a>
-
     </header>
 
     <dialog
       id="mobile-menu-dialog"
-      class="mobile-menu-dialog"
+      class="ch-mobile-dialog"
       data-mobile-menu-dialog
-      aria-label="Menu mobile Chiffr"
+      aria-label="Menu Chiffr"
     >
-        <div
-        id="mobile-menu"
-        class="mobile-menu-panel"
-        data-mobile-menu-panel
-      >
-        <div class="mobile-menu-head">
-          <a href="/" class="mobile-menu-logo" aria-label="Accueil Chiffr">
-            <div class="brand-mark small" aria-hidden="true">C</div>
-            <div>
-              <strong>Chiffr</strong>
-              <span>Devis &amp; factures artisans énergie</span>
-            </div>
+      <div id="mobile-menu" class="ch-mobile-panel" data-mobile-menu-panel>
+        <div class="ch-mobile-head">
+          <a href="/" class="ch-brand" aria-label="Accueil Chiffr">
+            <span class="ch-brand-mark" aria-hidden="true">C</span>
+            <span class="ch-brand-name">Chiffr</span>
           </a>
 
           <button
             type="button"
-            class="mobile-menu-close"
+            class="ch-mobile-close"
             data-mobile-menu-close
             aria-label="Fermer le menu"
           >
@@ -1211,46 +735,44 @@ const isLegalPath = legalPaths.some(
           </button>
         </div>
 
-        <div class="mobile-menu-body">
-          <div class="mobile-menu-group">
+        <div class="ch-mobile-body">
+          <div class="ch-mobile-group">
             <p>Métiers</p>
-            <div class="mobile-menu-grid">
-              {navItems.slice(0, 7).map((item) => (
-                <a href={item.href} class:list={['mobile-menu-link', { active: isActive(item.href) }]}>
+            <div class="ch-mobile-grid">
+              {metierItems.map((item) => (
+                <a href={item.href} class:list={['ch-mobile-link', { active: isActive(item.href) }]}>
                   {item.label}
                 </a>
               ))}
             </div>
           </div>
 
-          <div class="mobile-menu-group">
-            <p>Ressources</p>
-            <div class="mobile-menu-list">
-              <a href="/tarifs" class:list={['mobile-menu-row', { active: isActive('/tarifs') }]}>
-                <span>Tarifs</span>
-                <strong>→</strong>
+          <div class="ch-mobile-group">
+            <p>Chiffr</p>
+            <div class="ch-mobile-list">
+              <a href="/fonctionnalites" class:list={['ch-mobile-row', { active: isActive('/fonctionnalites') }]}>
+                <span>Fonctionnalités</span>
+                <span aria-hidden="true">→</span>
               </a>
-
+              <a href="/tarifs" class:list={['ch-mobile-row', { active: isActive('/tarifs') }]}>
+                <span>Tarifs</span>
+                <span aria-hidden="true">→</span>
+              </a>
               {resourceItems.map((item) => (
-                <a href={item.href} class:list={['mobile-menu-row', { active: isActive(item.href) }]}>
+                <a href={item.href} class:list={['ch-mobile-row', { active: isActive(item.href) }]}>
                   <span>{item.label}</span>
-                  <strong>→</strong>
+                  <span aria-hidden="true">→</span>
                 </a>
               ))}
             </div>
           </div>
 
-          <a href="/contact" class="mobile-menu-cta">
+          <a href="/contact" class="ch-mobile-cta">
             Demander un accès
             <span aria-hidden="true">→</span>
           </a>
-
-          <a class="mobile-menu-reform" href="/fonctionnalites#facturation-electronique">
-            <strong>Facturation électronique 2026–2027</strong>
-            <span>Préparer vos factures, mentions et dossiers client.</span>
-          </a>
         </div>
-        </div>
+      </div>
     </dialog>
 
     <main>
@@ -1266,62 +788,78 @@ const isLegalPath = legalPaths.some(
       </>
     )}
 
-    <footer class="site-footer">
-      <div class="footer-shell">
-        <div class="footer-brand">
-          <a href="/" class="footer-logo" aria-label="Accueil Chiffr">
-            <div class="brand-mark small" aria-hidden="true">C</div>
-            <div>
-              <strong>Chiffr</strong>
-              <span>Devis &amp; factures artisans énergie</span>
-            </div>
+    <footer class="ch-footer">
+      <div class="ch-footer-shell">
+        <div class="ch-footer-brand">
+          <a href="/" class="ch-brand" aria-label="Accueil Chiffr">
+            <span class="ch-brand-mark" aria-hidden="true">C</span>
+            <span class="ch-brand-name">Chiffr</span>
           </a>
 
           <p>
-            Logiciel de devis, factures, signature électronique et suivi client pensé pour les artisans PAC, climatisation,
-            chauffage, CVC, VMC, IRVE et solaire. Chiffr aide aussi à préparer la transition vers la facturation électronique 2026–2027.
+            Logiciel de devis, factures, signature électronique et suivi client pensé pour les artisans PAC,
+            climatisation, chauffage, CVC, VMC, IRVE et solaire. Chiffr aide aussi à préparer la transition
+            vers la facturation électronique 2026–2027.
           </p>
 
-          <a href="/contact" class="footer-cta">Demander un accès</a>
+          <a href="/contact" class="ch-footer-cta">Demander un accès</a>
         </div>
 
-        <div class="footer-column">
-          <h2>Métiers</h2>
+        <div class="ch-footer-col">
+          <p class="ch-footer-title">Métiers</p>
           {footerMetiers.map((item) => (
             <a href={item.href}>{item.label}</a>
           ))}
         </div>
 
-        <div class="footer-column">
-          <h2>Chiffr</h2>
+        <div class="ch-footer-col">
+          <p class="ch-footer-title">Chiffr</p>
           {footerChiffr.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </div>
+
+        <div class="ch-footer-col">
+          <p class="ch-footer-title">Légal</p>
+          {footerLegal.map((item) => (
             <a href={item.href}>{item.label}</a>
           ))}
         </div>
       </div>
 
-      <div class="footer-bottom">
+      <div class="ch-footer-bottom">
         <p>© {new Date().getFullYear()} Chiffr. Tous droits réservés.</p>
         <a href="#top">Retour en haut ↑</a>
       </div>
     </footer>
 
     <script is:inline>
-      const resourcesMenu = document.querySelector('[data-nav-resources]');
+      const dropdowns = Array.from(document.querySelectorAll('[data-nav-dropdown]'));
 
       document.addEventListener('click', (event) => {
-        if (!resourcesMenu || !resourcesMenu.open) return;
-        if (event.target instanceof Node && resourcesMenu.contains(event.target)) return;
-        resourcesMenu.open = false;
+        dropdowns.forEach((dropdown) => {
+          if (!dropdown.open) return;
+          if (event.target instanceof Node && dropdown.contains(event.target)) return;
+          dropdown.open = false;
+        });
       });
 
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && resourcesMenu) resourcesMenu.open = false;
+        if (event.key === 'Escape') dropdowns.forEach((dropdown) => (dropdown.open = false));
       });
 
-      resourcesMenu?.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          resourcesMenu.open = false;
+      dropdowns.forEach((dropdown) => {
+        dropdown.addEventListener('toggle', () => {
+          if (!dropdown.open) return;
+          dropdowns.forEach((other) => {
+            if (other !== dropdown) other.open = false;
+          });
+        });
+
+        dropdown.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            dropdown.open = false;
+          });
         });
       });
 
@@ -1335,7 +873,6 @@ const isLegalPath = legalPaths.some(
 
         if (open) {
           document.body.classList.add('mobile-menu-open');
-          mobileMenuButton.classList.add('is-open');
           mobileMenuButton.setAttribute('aria-expanded', 'true');
 
           if (typeof mobileMenuDialog.showModal === 'function') {
@@ -1352,7 +889,6 @@ const isLegalPath = legalPaths.some(
         }
 
         mobileMenuPanel.classList.remove('is-open');
-        mobileMenuButton.classList.remove('is-open');
         mobileMenuButton.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('mobile-menu-open');
 
@@ -1378,7 +914,6 @@ const isLegalPath = legalPaths.some(
 
       mobileMenuDialog?.addEventListener('close', () => {
         mobileMenuPanel?.classList.remove('is-open');
-        mobileMenuButton?.classList.remove('is-open');
         mobileMenuButton?.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('mobile-menu-open');
       });

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/lora";
+
 /****** Chiffr theme tokens — site marketing + app premium ******/
 :root {
   /* Structure / marque */
@@ -42,6 +45,11 @@
   --chiffr-warning-soft: #FBF1DE;
   --chiffr-danger: #C94B42;
   --chiffr-danger-soft: #FCE3E1;
+
+  /* Typographies */
+  --font-display: "Lora Variable", Lora, Georgia, "Times New Roman", serif;
+  --font-sans: "Inter Variable", Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* Compatibilité avec les anciens composants du site */
   --cream: var(--chiffr-bg);
@@ -95,14 +103,11 @@ html {
 
 body {
   margin: 0;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(185, 97, 52, 0.16), transparent 32rem),
-    radial-gradient(circle at top right, rgba(12, 20, 32, 0.14), transparent 34rem),
-    var(--cream);
+  font-family: var(--font-sans);
+  background: var(--cream);
   color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -112,235 +117,4 @@ a {
 ::selection {
   background: var(--copper-soft);
   color: var(--teal);
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  border-bottom: 1px solid rgba(12, 20, 32, 0.1);
-  background: rgba(247, 247, 244, 0.92);
-  backdrop-filter: blur(18px);
-}
-
-.site-header-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--teal);
-}
-
-.brand-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 16px;
-  background: var(--teal);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 18px;
-}
-
-.brand-name {
-  color: var(--teal);
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-
-.brand-subtitle {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.main-nav {
-  display: none;
-  align-items: center;
-  gap: 28px;
-  color: #5F6673;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.main-nav a {
-  color: #5F6673;
-}
-
-.main-nav a:hover {
-  color: var(--teal);
-}
-
-.header-cta {
-  border-radius: 999px;
-  background: var(--teal);
-  color: white;
-  padding: 12px 20px;
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.header-cta:hover {
-  background: #043840;
-}
-
-.site-footer {
-  border-top: 1px solid rgba(12, 20, 32, 0.1);
-  background: var(--teal);
-  color: white;
-}
-
-.site-footer-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 48px 20px;
-  display: grid;
-  gap: 40px;
-}
-
-.footer-brand {
-  font-size: 24px;
-  font-weight: 900;
-}
-
-.site-footer p {
-  margin-top: 16px;
-  max-width: 440px;
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.7;
-  font-size: 14px;
-}
-
-.footer-title {
-  font-weight: 800;
-}
-
-.footer-links {
-  margin-top: 16px;
-  display: grid;
-  gap: 12px;
-  font-size: 14px;
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.footer-links a:hover {
-  color: white;
-}
-
-@media (min-width: 900px) {
-  .main-nav {
-    display: flex;
-  }
-
-  .site-footer-inner {
-    grid-template-columns: 1.4fr 1fr 1fr;
-  }
-}
-
-/* Chiffr — correction header final : toute la hauteur en bleu nuit, lisibilité renforcée */
-body .site-header {
-  background:
-    radial-gradient(circle at 10% 0%, rgba(6, 72, 80, 0.44), transparent 34%),
-    radial-gradient(circle at 86% 0%, rgba(185, 97, 52, 0.18), transparent 30%),
-    linear-gradient(180deg, #0C1420 0%, #101B28 100%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
-  box-shadow: 0 18px 54px rgba(12, 20, 32, 0.20) !important;
-}
-
-body .header-shell {
-  background:
-    radial-gradient(circle at 8% 0%, rgba(6, 72, 80, 0.46), transparent 34%),
-    radial-gradient(circle at 92% 0%, rgba(185, 97, 52, 0.15), transparent 30%),
-    rgba(255, 255, 255, 0.045) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    0 18px 44px rgba(0, 0, 0, 0.16) !important;
-}
-
-body .brand-card,
-body .brand-card:hover {
-  background: transparent !important;
-}
-
-body .brand-name,
-body .mobile-menu-logo strong {
-  color: #FFFFFF !important;
-}
-
-body .brand-subtitle,
-body .mobile-menu-logo span {
-  color: rgba(255, 255, 255, 0.78) !important;
-}
-
-body .home-link {
-  color: #FFFFFF !important;
-  background: rgba(6, 72, 80, 0.62) !important;
-  border-color: rgba(255, 255, 255, 0.14) !important;
-}
-
-body .nav-link,
-body .nav-more-button {
-  color: rgba(255, 255, 255, 0.90) !important;
-}
-
-body .nav-link:hover,
-body .nav-link.active,
-body .nav-more.active .nav-more-button,
-body .nav-more[open] .nav-more-button,
-body .nav-more-button:hover {
-  color: #FFFFFF !important;
-  background: rgba(255, 255, 255, 0.10) !important;
-}
-
-body .header-cta {
-  background: linear-gradient(145deg, #064850, #043840) !important;
-  color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.18) !important;
-}
-
-body .header-reform-strip {
-  color: rgba(255, 255, 255, 0.92) !important;
-  background: linear-gradient(90deg, rgba(6, 72, 80, 0.72), rgba(255, 255, 255, 0.08)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
-}
-
-body .header-reform-strip strong {
-  color: #FFFFFF !important;
-}
-
-body .header-reform-strip span:last-child {
-  color: rgba(255, 255, 255, 0.74) !important;
-}
-
-body .header-reform-icon {
-  background: #E6F1F0 !important;
-  color: #064850 !important;
-}
-
-@media (max-width: 860px) {
-  body .mobile-menu-toggle {
-    background: rgba(255, 255, 255, 0.10) !important;
-    color: #FFFFFF !important;
-    border-color: rgba(255, 255, 255, 0.14) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
-  }
 }

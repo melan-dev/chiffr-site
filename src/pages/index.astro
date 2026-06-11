@@ -1,120 +1,148 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SignatureProofBadge from '../components/SignatureProofBadge.astro';
 
 const title = 'Logiciel devis facture pour artisans énergie | Chiffr';
 const description =
   'Chiffr aide les artisans énergie à créer devis, factures, signatures, acomptes et PDF premium avec des modèles métier PAC, clim, CVC, VMC, IRVE et solaire.';
 
-const asset = (name: string) => `/images/home/${name}`;
+const benefits = [
+  {
+    label: 'Devis guidés',
+    detail: 'Modèles métier prêts à adapter',
+    icon: '<svg viewBox="0 0 24 24"><path d="M9 3h9a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path d="M9 3v5H4"/><path d="M9 13h7M9 17h5"/></svg>',
+  },
+  {
+    label: 'PDF premium',
+    detail: 'Des documents propres et sérieux',
+    icon: '<svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 14.5l2 2 4-4.5"/></svg>',
+  },
+  {
+    label: 'Signature électronique',
+    detail: 'Sur place ou à distance',
+    icon: '<svg viewBox="0 0 24 24"><path d="m16.3 4.7 3 3L8.5 18.5 4 20l1.5-4.5z"/><path d="M14.5 6.5l3 3"/></svg>',
+  },
+  {
+    label: 'Acomptes & relances',
+    detail: 'Rien ne reste en attente',
+    icon: '<svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>',
+  },
+  {
+    label: 'Factures & suivi',
+    detail: 'Le cycle complet, au même endroit',
+    icon: '<svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>',
+  },
+];
 
 const trades = [
   {
-    label: 'PAC',
-    detail: 'Pompes à chaleur',
+    label: 'Pompe à chaleur',
+    detail: 'PAC air/eau & air/air',
     href: '/logiciel-devis-pompe-a-chaleur',
-    image: asset('trade-pac.webp'),
-    icon: '✺',
+    icon: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.6"/><path d="M12 8.4v1.2M12 14.4v1.2M8.4 12h1.2M14.4 12h1.2"/></svg>',
   },
   {
     label: 'Climatisation',
     detail: 'Monosplit & multisplit',
     href: '/logiciel-devis-climatisation',
-    image: asset('trade-clim.webp'),
-    icon: '❄',
+    icon: '<svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="m4.6 7.7 14.8 8.6M19.4 7.7 4.6 16.3"/><path d="M12 3l-2 2M12 3l2 2M12 21l-2-2M12 21l2-2"/></svg>',
   },
   {
     label: 'Chauffage',
     detail: 'Chaudières & radiateurs',
     href: '/logiciel-devis-chauffagiste',
-    image: asset('trade-chauffage.webp'),
-    icon: '♨',
+    icon: '<svg viewBox="0 0 24 24"><path d="M12 3s5.5 4.8 5.5 9.3a5.5 5.5 0 1 1-11 0C6.5 7.8 12 3 12 3z"/><path d="M12 17.5a2.6 2.6 0 0 0 2.6-2.6c0-1.6-2.6-4-2.6-4s-2.6 2.4-2.6 4a2.6 2.6 0 0 0 2.6 2.6z"/></svg>',
   },
   {
-    label: 'CVC',
-    detail: 'Ventilation & réseaux',
+    label: 'CVC / Froid',
+    detail: 'Frigoriste & ventilation',
     href: '/logiciel-devis-frigoriste-cvc',
-    image: asset('trade-cvc.webp'),
-    icon: '≈',
+    icon: '<svg viewBox="0 0 24 24"><path d="M3 8.5h11a3 3 0 1 0-2.8-4"/><path d="M3 13h15a3 3 0 1 1-2.8 4"/><path d="M3 17.5h6a2.4 2.4 0 1 1-2.3 3.2"/></svg>',
   },
   {
     label: 'VMC',
     detail: 'Simple & double flux',
     href: '/logiciel-devis-vmc',
-    image: asset('trade-vmc.webp'),
-    icon: '✽',
+    icon: '<svg viewBox="0 0 24 24"><path d="M21.5 12a9.5 9.5 0 1 1-2.8-6.7"/><path d="M21.5 2.5v6h-6"/><circle cx="12" cy="12" r="2.2"/></svg>',
   },
   {
     label: 'IRVE',
-    detail: 'Bornes & protections',
+    detail: 'Bornes de recharge',
     href: '/logiciel-devis-irve',
-    image: asset('trade-irve.webp'),
-    icon: '↯',
+    icon: '<svg viewBox="0 0 24 24"><path d="M9 2.5V8M15 2.5V8"/><path d="M6 8h12v4.5a6 6 0 0 1-12 0z"/><path d="M12 18.5V22"/></svg>',
   },
   {
     label: 'Solaire',
     detail: 'Photovoltaïque',
     href: '/logiciel-devis-photovoltaique',
-    image: asset('trade-solaire.webp'),
-    icon: '☼',
+    icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8"/></svg>',
+  },
+  {
+    label: 'Eau chaude',
+    detail: 'Chauffe-eau thermodynamique',
+    href: '/logiciel-devis-chauffe-eau-thermodynamique',
+    icon: '<svg viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 10.7a6 6 0 1 1-12 0C6 9.4 12 3 12 3z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg>',
   },
 ];
 
-const featureBlocks = [
-  {
-    title: 'Devis rapides et professionnels',
-    text:
-      'Modèles métier, lignes fréquentes, prix à compléter et PDF propre : vous partez d’une base claire.',
-    image: asset('clim-installation.webp'),
-    href: '/modeles-devis',
-    icon: '▦',
-  },
-  {
-    title: 'Suivi de chantier simplifié',
-    text:
-      'Photos, notes, plaque machine, accès chantier et historique client restent au même endroit.',
-    image: asset('boiler-service.webp'),
-    href: '/logiciel-devis-avec-photos-chantier',
-    icon: '◷',
-  },
-  {
-    title: 'Acompte, paiement et factures',
-    text:
-      'Après signature, Chiffr vous aide à suivre l’acompte, la facture de solde et le reste à encaisser.',
-    image: asset('irve-installation.webp'),
-    href: '/logiciel-devis-avec-acompte',
-    icon: '↯',
-  },
-  {
-    title: 'Tout votre dossier à portée de main',
-    text:
-      'Clients, devis, photos, relances et factures restent lisibles, sur mobile comme au bureau.',
-    image: asset('solar-roof-tablet.webp'),
-    href: '/fonctionnalites',
-    icon: '▣',
-  },
+const cockpitPoints = [
+  'Devis, clients, suivi et planning centralisés',
+  'Catalogue produit à jour',
+  'Factures, acomptes et relances',
+  'Statistiques et rentabilité',
 ];
 
-const trustCards = [
+const productViews = [
   {
-    title: 'Pensé pour votre métier',
-    text: 'PAC, clim, chauffage, CVC, VMC, IRVE et solaire : Chiffr parle votre terrain.',
-    icon: '▨',
+    eyebrow: 'Accueil',
+    title: 'Votre journée en un coup d’œil',
+    text:
+      'Devis à relancer, à signer, à facturer, à encaisser : l’accueil montre la prochaine bonne action et l’argent à récupérer, sans chercher.',
+    points: [
+      'La prochaine action mise en avant dès l’ouverture',
+      'Relances, signatures et encaissements à traiter',
+      'Les montants à récupérer toujours visibles',
+    ],
+    image: '/images/app/app-accueil-desktop.webp',
+    alt: 'Tableau de bord Chiffr : suivi commercial, devis à relancer et actions rapides',
   },
   {
-    title: 'Simple en surface',
-    text: 'L’interface montre la prochaine bonne action sans transformer votre devis en usine à gaz.',
-    icon: '✓',
+    eyebrow: 'Devis',
+    title: 'Des devis professionnels, signés plus vite',
+    text:
+      'Statuts clairs, montants à jour, relances en un clic : chaque devis avance du brouillon à la signature sans rien laisser en attente.',
+    points: [
+      'Statuts lisibles : brouillon, envoyé, signé, payé',
+      'Relance des devis en attente en un clic',
+      'Recherche et filtres par client, date ou statut',
+    ],
+    image: '/images/app/app-devis-desktop.webp',
+    alt: 'Liste des devis Chiffr avec statuts, montants et actions rapides',
   },
   {
-    title: 'Dossier plus clair',
-    text: 'Devis, photos, signature, acompte, facture et relance restent reliés au client.',
-    icon: '◌',
+    eyebrow: 'Clients',
+    title: 'Chaque client, avec tout son historique',
+    text:
+      'Coordonnées, devis, factures et échanges restent reliés au bon dossier. Vous retrouvez le contexte complet avant chaque intervention.',
+    points: [
+      'Historique complet relié à chaque dossier',
+      'Devis et factures rattachés au bon client',
+      'Coordonnées et notes accessibles sur le terrain',
+    ],
+    image: '/images/app/app-clients-desktop.webp',
+    alt: 'Fiches clients Chiffr avec historique des devis et factures',
   },
   {
-    title: 'Document premium',
-    text: 'Un PDF propre, rassurant et lisible pour présenter votre travail avec sérieux.',
-    icon: '◇',
+    eyebrow: 'Catalogue & planning',
+    title: 'Vos prix et vos chantiers, toujours à jour',
+    text:
+      'Un catalogue produit prêt à chiffrer et un planning qui organise les poses : le bureau et le terrain travaillent sur la même base.',
+    points: [
+      'Références et prix fournisseurs à jour',
+      'Import de catalogue : CSV, Excel, PDF ou photo',
+      'Le planning des poses partagé avec le terrain',
+    ],
+    image: '/images/app/app-catalogue-desktop.webp',
+    alt: 'Catalogue produit Chiffr avec références et fournisseurs',
   },
 ];
 
@@ -163,137 +191,122 @@ const faqSchema = {
 ---
 
 <BaseLayout title={title} description={description} canonicalPath="/" schema={faqSchema}>
-  <section class="home-hero">
-    <div class="home-glow glow-left"></div>
-    <div class="home-glow glow-right"></div>
+  <!-- ============ Hero ============ -->
+  <section class="hp-hero">
+    <div class="hp-shell hp-hero-grid">
+      <div class="hp-hero-copy">
+        <a class="hp-hero-badge" href="#facturation-electronique">
+          <span class="hp-hero-badge-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+          </span>
+          Facturation électronique 2026–2027 : préparez-vous dès aujourd’hui
+        </a>
 
-    <div class="home-shell home-hero-grid">
-      <div class="home-hero-copy">
-        <p class="home-pill">Conçu pour les artisans énergie</p>
+        <h1>
+          Le logiciel de devis pensé pour les
+          <em>artisans énergie</em> exigeants
+        </h1>
 
-        <h1>Le logiciel de devis et factures pensé pour les artisans énergie</h1>
-
-        <p class="home-lead">
-          Chiffr vous aide à gagner du temps, structurer vos devis et suivre vos clients :
-          modèles métier, photos chantier, PDF premium, signature électronique, acompte, factures et transition
-          facturation électronique 2026-2027 réunis dans un outil simple.
+        <p class="hp-hero-lead">
+          Chiffr vous aide à créer des devis professionnels, gagner du temps
+          sur le terrain et développer votre activité.
         </p>
 
-        <div class="home-actions">
-          <a class="home-btn primary" href="/contact">
-            Demander un accès
+        <div class="hp-hero-actions">
+          <a class="hp-btn primary" href="/contact">
+            Demander un accès gratuit
             <span aria-hidden="true">→</span>
           </a>
-          <a class="home-btn secondary" href="/modeles-devis">
-            Voir les modèles
-            <span aria-hidden="true">▻</span>
+          <a class="hp-btn secondary" href="#produit">
+            <span class="hp-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z" /></svg>
+            </span>
+            Voir le logiciel en action
           </a>
         </div>
 
-        <div class="home-badge-row">
-          <SignatureProofBadge tone="compact" detail="Sur place ou à distance" />
-          <a class="home-reform-badge" href="/fonctionnalites#facturation-electronique">
-            <strong>Facturation électronique 2026–2027</strong>
-            <small>Préparez vos factures, mentions et données client</small>
-          </a>
-        </div>
-
-        <div class="home-checks">
-          <span>Modèles métier</span>
-          <span>PDF premium</span>
-          <span>Signature électronique</span>
-          <span>Acompte</span>
-          <span>Factures</span>
-          <span>Réforme 2026–2027</span>
-        </div>
+        <ul class="hp-hero-checks">
+          <li>Devis ultra rapides</li>
+          <li>PDF premium</li>
+          <li>Signature électronique</li>
+          <li>Acompte & relances</li>
+        </ul>
       </div>
 
-      <div class="home-visual" aria-label="Aperçu Chiffr avec chantier et devis">
-        <div class="hero-photo-wrap main-photo">
+      <div class="hp-hero-visual" role="img" aria-label="Aperçu du logiciel Chiffr sur ordinateur, mobile et tablette">
+        <div class="hp-stage" aria-hidden="true"></div>
+
+        <figure class="hp-device hp-laptop">
+          <span class="hp-laptop-screen">
+            <img
+              src="/images/app/app-accueil-desktop.webp"
+              alt=""
+              width="1800"
+              height="908"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </span>
+          <span class="hp-laptop-base" aria-hidden="true"></span>
+        </figure>
+
+        <figure class="hp-device hp-tablet">
           <img
-            src={asset('hero-artisan-tablet-v2.webp')}
-            alt="Artisan énergie utilisant une tablette sur chantier"
-            width="560"
-            height="492"
+            src="/images/app/app-devis-desktop.webp"
+            alt=""
+            width="1800"
+            height="908"
             loading="eager"
             decoding="async"
           />
-        </div>
+        </figure>
 
-        <div class="hero-photo-wrap small-photo">
+        <figure class="hp-device hp-phone">
           <img
-            src={asset('pac-unit-v2.webp')}
-            alt="Unité extérieure de pompe à chaleur"
-            width="390"
-            height="284"
+            src="/images/app/app-mobile-accueil.webp"
+            alt=""
+            width="576"
+            height="1112"
             loading="eager"
             decoding="async"
           />
-        </div>
-
-        <div class="home-ui-card quote-card">
-          <div>
-            <small>Devis en préparation</small>
-            <strong>PAC air/eau</strong>
-          </div>
-
-          <p>Total HT</p>
-          <b>4 750,00 €</b>
-
-          <ul>
-            <li>Matériel</li>
-            <li>Main-d’œuvre</li>
-            <li>Déplacements</li>
-            <li>Options</li>
-          </ul>
-        </div>
-
-        <div class="home-ui-card pdf-card">
-          <div class="pdf-head">
-            <span>Devis n° DEV-2026-0042</span>
-            <strong>Votre entreprise</strong>
-          </div>
-
-          <div class="pdf-lines">
-            <p><span>Pompe à chaleur air/eau</span><b>4 250 €</b></p>
-            <p><span>Mise en service</span><b>500 €</b></p>
-          </div>
-
-          <div class="pdf-bottom">
-            <div class="signature-seal" aria-label="Signature électronique">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path d="M17 8h22l10 10v36a4 4 0 0 1-4 4H17a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z" />
-                <path d="M39 8v11h10" />
-                <path d="M20 41c5-9 10-9 9-2-.6 4.2 4.6 2.8 7.1.4 2.7-2.5 4.6-2.7 6.9-.2" />
-                <path d="m37.5 29.5 4.2 4.2 8.6-10" />
-              </svg>
-              <span>
-                <strong>Signature électronique</strong>
-                <small>Validation client</small>
-              </span>
-            </div>
-          </div>
-        </div>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="home-section home-trades" id="metiers">
-    <div class="home-shell">
-      <div class="home-section-head centered">
-        <p class="home-kicker">Métiers couverts</p>
-        <h2>Un outil complet pour vos chantiers énergie</h2>
-        <span>
-          Chaque métier a ses lignes, ses photos, ses modèles et ses points à vérifier.
-          Chiffr garde cette logique métier dès le départ.
-        </span>
+  <!-- ============ Bandeau bénéfices ============ -->
+  <section class="hp-benefits" aria-label="Ce que Chiffr apporte">
+    <div class="hp-shell hp-benefits-grid">
+      {benefits.map((benefit) => (
+        <div class="hp-benefit">
+          <span class="hp-benefit-icon" aria-hidden="true" set:html={benefit.icon} />
+          <div>
+            <strong>{benefit.label}</strong>
+            <small>{benefit.detail}</small>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============ Métiers ============ -->
+  <section class="hp-section" id="metiers">
+    <div class="hp-shell">
+      <div class="hp-section-head">
+        <p class="hp-kicker">Tous vos métiers couverts</p>
+        <h2>Un logiciel adapté à tous les métiers de l’énergie</h2>
+        <p class="hp-section-sub">
+          PAC, climatisation, chauffage, CVC, VMC, IRVE et solaire : Chiffr s’adapte à votre expertise,
+          avec des modèles et des lignes pensés pour chaque spécialité.
+        </p>
       </div>
 
-      <div class="trade-photo-grid">
+      <div class="hp-trades-grid">
         {trades.map((trade) => (
-          <a class="trade-photo-card" href={trade.href}>
-            <img src={trade.image} alt={`${trade.label} - ${trade.detail}`} width="220" height="180" loading="lazy" decoding="async" />
-            <span class="trade-icon" aria-hidden="true">{trade.icon}</span>
+          <a class="hp-trade-card" href={trade.href}>
+            <span class="hp-trade-icon" aria-hidden="true" set:html={trade.icon} />
             <strong>{trade.label}</strong>
             <small>{trade.detail}</small>
           </a>
@@ -302,127 +315,173 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="home-section">
-    <div class="home-shell">
-      <div class="home-section-head compact">
-        <p class="home-kicker">Terrain + bureau</p>
-        <h2>Gagnez du temps sur chaque chantier</h2>
-        <span>
-          Moins de texte, plus de concret : Chiffr relie le devis, les photos,
-          la signature, l’acompte et la facture dans un même dossier.
-        </span>
-      </div>
-
-      <div class="feature-photo-grid">
-        {featureBlocks.map((feature) => (
-          <article class="feature-photo-card">
-            <img src={feature.image} alt={feature.title} width="520" height="330" loading="lazy" decoding="async" />
-
-            <div>
-              <span class="feature-icon" aria-hidden="true">{feature.icon}</span>
-              <h3>{feature.title}</h3>
-              <p>{feature.text}</p>
-              <a href={feature.href}>En savoir plus →</a>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="home-section trust-section">
-    <div class="home-shell trust-grid">
-      <div>
-        <div class="home-section-head compact">
-          <p class="home-kicker">Pourquoi Chiffr ?</p>
-          <h2>Un logiciel sérieux, simple et vraiment métier</h2>
-          <span>
-            Chiffr ne cherche pas à devenir un gros outil généraliste. Il vous aide à produire
-            des devis énergie plus vite, plus propres et mieux suivis.
-          </span>
-        </div>
-
-        <div class="trust-card-grid">
-          {trustCards.map((card) => (
-            <article class="trust-card">
-              <span aria-hidden="true">{card.icon}</span>
-              <h3>{card.title}</h3>
-              <p>{card.text}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-
-      <figure class="trust-photo">
-        <img
-          src={asset('technicians-tablet.webp')}
-          alt="Deux professionnels consultant un dossier client sur tablette"
-          width="560"
-          height="364"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-    </div>
-  </section>
-
-  <section class="home-section home-reform-section" id="facturation-electronique">
-    <div class="home-shell reform-card">
-      <div class="reform-copy">
-        <p class="home-kicker">Réforme 2026–2027</p>
-        <h2>Préparez la facturation électronique sans attendre le dernier moment</h2>
-        <p>
-          Chiffr vous aide à structurer vos clients, vos factures, vos acomptes, vos signatures
-          et vos informations de dossier pour aborder plus sereinement la transition vers la
-          facturation électronique.
+  <!-- ============ Cockpit (section sombre) ============ -->
+  <section class="hp-cockpit">
+    <div class="hp-shell hp-cockpit-grid">
+      <div class="hp-cockpit-copy">
+        <p class="hp-kicker light">Tout au même endroit</p>
+        <h2>Un cockpit clair pour piloter votre activité</h2>
+        <p class="hp-cockpit-sub">
+          Du premier rendez-vous à la facture finale, Chiffr garde votre activité lisible :
+          vous savez toujours où en est chaque dossier.
         </p>
-        <div class="reform-tags">
-          <span>Réception dès 2026</span>
-          <span>Émission TPE/PME dès 2027</span>
-          <span>Données client mieux rangées</span>
-        </div>
+
+        <ul class="hp-cockpit-checks">
+          {cockpitPoints.map((point) => (
+            <li>
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+              </span>
+              {point}
+            </li>
+          ))}
+        </ul>
+
+        <a class="hp-btn ghost" href="/fonctionnalites">
+          Voir toutes les fonctionnalités
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
 
-      <div class="reform-mini-grid">
-        <article>
-          <b>01</b>
-          <strong>Factures mieux structurées</strong>
-          <span>Devis, acompte, solde et facture finale restent reliés au dossier client.</span>
-        </article>
-        <article>
-          <b>02</b>
-          <strong>Mentions à préparer</strong>
-          <span>SIREN client, adresse, opération, paiement : les informations clés sont plus faciles à suivre.</span>
-        </article>
-        <article>
-          <b>03</b>
-          <strong>Transition plus simple</strong>
-          <span>Chiffr est pensé pour accompagner la future connexion aux plateformes agréées.</span>
-        </article>
+      <div class="hp-cockpit-visual">
+        <figure class="hp-cockpit-shot">
+          <img
+            src="/images/app/app-suivi-desktop.webp"
+            alt="Suivi commercial Chiffr : devis envoyés, signatures, acomptes et factures"
+            width="1800"
+            height="908"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <figure class="hp-cockpit-phone">
+          <img
+            src="/images/app/app-mobile-devis.webp"
+            alt="Devis Chiffr sur mobile"
+            width="576"
+            height="1112"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="home-section guides-section">
-    <div class="home-shell guides-grid">
-      <div class="home-section-head compact">
-        <p class="home-kicker">Guides pratiques</p>
-        <h2>Des ressources concrètes pour mieux structurer vos devis</h2>
-        <span>
-          PAC, clim, acompte, relance, photos chantier : les guides Chiffr
-          répondent aux questions terrain que les artisans se posent vraiment.
-        </span>
+  <!-- ============ Produit ============ -->
+  <section class="hp-section" id="produit">
+    <div class="hp-shell">
+      <div class="hp-section-head">
+        <p class="hp-kicker">Le logiciel en action</p>
+        <h2>Simple en surface, sérieux en profondeur</h2>
+        <p class="hp-section-sub">
+          Chiffr montre la prochaine bonne action, sans transformer votre devis en usine à gaz.
+          Voici l’outil tel que vous l’utiliserez au quotidien.
+        </p>
       </div>
 
-      <div class="guide-link-grid">
+    </div>
+
+    <div class="hp-showcases">
+      {productViews.map((view) => (
+        <article class="hp-showcase">
+          <div class="hp-showcase-copy">
+            <p class="hp-kicker">{view.eyebrow}</p>
+            <h3>{view.title}</h3>
+            <p class="hp-showcase-text">{view.text}</p>
+
+            <ul class="hp-showcase-points">
+              {view.points.map((point) => (
+                <li>
+                  <span aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+                  </span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <figure class="hp-showcase-shot">
+            <span class="hp-window-bar" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </span>
+            <img
+              src={view.image}
+              alt={view.alt}
+              width="1800"
+              height="908"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============ E-facturation ============ -->
+  <section class="hp-section hp-reform-section" id="facturation-electronique">
+    <div class="hp-shell">
+      <div class="hp-reform-card">
+        <div class="hp-reform-copy">
+          <p class="hp-kicker">Réforme 2026–2027</p>
+          <h2>Préparez la facturation électronique sans attendre le dernier moment</h2>
+          <p>
+            Chiffr vous aide à structurer vos clients, vos factures, vos acomptes, vos signatures
+            et vos informations de dossier pour aborder plus sereinement la transition vers la
+            facturation électronique.
+          </p>
+          <div class="hp-reform-tags">
+            <span>Réception dès 2026</span>
+            <span>Émission TPE/PME dès 2027</span>
+            <span>Données client mieux rangées</span>
+          </div>
+        </div>
+
+        <div class="hp-reform-points">
+          <article>
+            <b>01</b>
+            <strong>Factures mieux structurées</strong>
+            <span>Devis, acompte, solde et facture finale restent reliés au dossier client.</span>
+          </article>
+          <article>
+            <b>02</b>
+            <strong>Mentions à préparer</strong>
+            <span>SIREN client, adresse, opération, paiement : les informations clés sont plus faciles à suivre.</span>
+          </article>
+          <article>
+            <b>03</b>
+            <strong>Transition plus simple</strong>
+            <span>Chiffr est pensé pour accompagner la future connexion aux plateformes agréées.</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Guides ============ -->
+  <section class="hp-section hp-guides">
+    <div class="hp-shell hp-guides-grid">
+      <div class="hp-section-head left">
+        <p class="hp-kicker">Guides pratiques</p>
+        <h2>Des ressources concrètes pour mieux structurer vos devis</h2>
+        <p class="hp-section-sub">
+          PAC, clim, acompte, relance, photos chantier : les guides Chiffr répondent
+          aux questions terrain que les artisans se posent vraiment.
+        </p>
+      </div>
+
+      <div class="hp-guide-links">
         {guideLinks.map(([label, href]) => (
-          <a href={href} class="guide-link-card">
+          <a href={href} class="hp-guide-link">
             <strong>{label}</strong>
             <span aria-hidden="true">→</span>
           </a>
         ))}
 
-        <a href="/guides-devis-artisans-energie" class="guide-link-card all">
+        <a href="/guides-devis-artisans-energie" class="hp-guide-link all">
           <strong>Tous les guides devis artisans énergie</strong>
           <span aria-hidden="true">→</span>
         </a>
@@ -430,51 +489,23 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="home-final">
-    <div class="home-shell final-card">
-      <div class="final-copy">
-        <p class="home-kicker light">Demander un accès</p>
-        <h2>Prêt à simplifier vos devis et votre suivi client ?</h2>
-        <ul>
-          <li>Modèles métier prêts à adapter</li>
-          <li>Photos chantier et PDF premium</li>
-          <li>Signature, acompte, factures et relances</li>
-        </ul>
-
-        <div class="home-actions">
-          <a class="home-btn light" href="/contact">
-            Demander un accès
-            <span aria-hidden="true">→</span>
-          </a>
-          <a class="home-btn ghost" href="/fonctionnalites">
-            Voir les fonctionnalités
-            <span aria-hidden="true">▻</span>
-          </a>
-        </div>
-      </div>
-
-      <img
-        src={asset('service-van.webp')}
-        alt="Camion d’artisan équipé pour les interventions énergie"
-        width="710"
-        height="246"
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
-  </section>
-
-  <section class="home-section home-faq">
-    <div class="home-shell faq-grid">
-      <div class="home-section-head compact">
-        <p class="home-kicker">FAQ</p>
+  <!-- ============ FAQ ============ -->
+  <section class="hp-section hp-faq">
+    <div class="hp-shell hp-faq-grid">
+      <div class="hp-section-head left">
+        <p class="hp-kicker">FAQ</p>
         <h2>Questions fréquentes</h2>
       </div>
 
-      <div class="faq-list">
+      <div class="hp-faq-list">
         {faqs.map(([question, answer]) => (
-          <details class="home-faq-card">
-            <summary>{question}</summary>
+          <details class="hp-faq-item">
+            <summary>
+              {question}
+              <span aria-hidden="true">
+                <svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4" /></svg>
+              </span>
+            </summary>
             <p>{answer}</p>
           </details>
         ))}
@@ -482,1015 +513,1127 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- ============ CTA final ============ -->
+  <section class="hp-final">
+    <div class="hp-shell">
+      <div class="hp-final-card">
+        <h2>Prêt à simplifier vos devis et votre suivi client ?</h2>
+        <p>
+          Modèles métier prêts à adapter, PDF premium, signature électronique,
+          acomptes, factures et relances : tout est déjà en place.
+        </p>
+
+        <div class="hp-hero-actions centered">
+          <a class="hp-btn light" href="/contact">
+            Demander un accès
+            <span aria-hidden="true">→</span>
+          </a>
+          <a class="hp-btn ghost" href="/fonctionnalites">
+            Voir les fonctionnalités
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <style is:inline>
-    .home-hero,
-    .home-section,
-    .home-final {
+    .hp-hero,
+    .hp-benefits,
+    .hp-section,
+    .hp-cockpit,
+    .hp-final {
       position: relative;
       overflow: hidden;
-      color: var(--ink);
     }
 
-    .home-shell {
-      width: 100%;
-      max-width: 1240px;
+    .hp-hero *,
+    .hp-benefits *,
+    .hp-section *,
+    .hp-cockpit *,
+    .hp-final * {
+      box-sizing: border-box;
+    }
+
+    .hp-shell {
+      width: min(1280px, 100% - 48px);
       margin: 0 auto;
-      padding: 0 20px;
     }
 
-    .home-hero {
-      padding: 78px 0 64px;
-      background:
-        radial-gradient(circle at 12% 8%, rgba(185, 97, 52, 0.14), transparent 32%),
-        radial-gradient(circle at 80% 6%, rgba(12, 20, 32, 0.1), transparent 34%),
-        linear-gradient(180deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.56));
-    }
-
-    .home-glow {
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      border-radius: 999px;
-      filter: blur(24px);
-      opacity: 0.45;
-      pointer-events: none;
-    }
-
-    .glow-left {
-      left: -90px;
-      top: 70px;
-      background: rgba(185, 97, 52, 0.16);
-    }
-
-    .glow-right {
-      right: 4%;
-      top: 40px;
-      background: rgba(12, 20, 32, 0.12);
-    }
-
-    .home-hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 54px;
-      align-items: center;
-    }
-
-    .home-pill,
-    .home-kicker {
-      display: inline-flex;
-      width: fit-content;
+    /* ===== Typo commune ===== */
+    .hp-kicker {
       margin: 0;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(185, 97, 52, 0.13);
-      color: #8F4524;
-      border: 1px solid rgba(185, 97, 52, 0.12);
-      font-size: 14px;
-      line-height: 1.2;
-      font-weight: 950;
-    }
-
-    .home-kicker {
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: var(--copper);
-    }
-
-    .home-kicker.light {
-      color: #F6E7DB;
-    }
-
-    .home-hero h1 {
-      margin: 24px 0 0;
-      max-width: 760px;
-      color: var(--teal);
-      font-size: clamp(46px, 5.8vw, 82px);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      font-weight: 950;
-    }
-
-    .home-lead {
-      margin: 24px 0 0;
-      max-width: 680px;
-      color: #5F6673;
-      font-size: 19px;
-      line-height: 1.72;
+      color: var(--chiffr-teal);
+      font-size: 13px;
+      line-height: 1;
       font-weight: 650;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
-    .home-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
+    .hp-kicker.light {
+      color: #9FC4C2;
     }
 
-    .home-btn {
+    .hp-section-head {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .hp-section-head.left {
+      margin: 0 0 36px;
+      text-align: left;
+    }
+
+    /* !important : neutralise les règles h1/h2 globales héritées de compact.css */
+    .hp-section-head h2,
+    .hp-cockpit h2,
+    .hp-reform-copy h2,
+    .hp-final-card h2 {
+      margin: 16px 0 0;
+      font-family: var(--font-display);
+      color: var(--chiffr-text);
+      font-size: clamp(30px, 3.4vw, 44px) !important;
+      line-height: 1.12 !important;
+      letter-spacing: -0.01em !important;
+      font-weight: 550;
+    }
+
+    .hp-section-sub {
+      margin: 16px auto 0;
+      color: var(--chiffr-text-soft);
+      font-size: 17px;
+      line-height: 1.65;
+      font-weight: 450;
+    }
+
+    .hp-section {
+      padding: 88px 0;
+    }
+
+    /* ===== Boutons ===== */
+    .hp-btn {
       display: inline-flex;
-      min-height: 54px;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 16px 22px;
-      border-radius: 999px;
-      font-weight: 950;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: 12px;
+      font-size: 15.5px;
       line-height: 1;
-      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      font-weight: 600;
+      transition: filter 160ms ease, box-shadow 160ms ease, background 160ms ease;
     }
 
-    .home-btn.primary {
-      color: white;
-      background: var(--teal);
-      box-shadow: 0 20px 44px rgba(12, 20, 32, 0.2);
+    .hp-btn.primary {
+      color: #FFFFFF;
+      background: linear-gradient(165deg, #0E2230, var(--chiffr-navy));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 16px 36px -10px rgba(12, 20, 32, 0.45);
     }
 
-    .home-btn.secondary {
-      color: var(--teal);
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(12, 20, 32, 0.12);
-      box-shadow: 0 16px 34px rgba(12, 20, 32, 0.06);
+    .hp-btn.primary:hover {
+      filter: brightness(1.25);
     }
 
-    .home-btn.light {
-      color: var(--teal);
-      background: white;
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.12);
+    .hp-btn.secondary {
+      color: var(--chiffr-text);
+      background: var(--chiffr-surface);
+      border: 1px solid var(--chiffr-border-strong);
+      box-shadow: 0 10px 24px -12px rgba(12, 20, 32, 0.2);
     }
 
-    .home-btn.ghost {
-      color: white;
-      background: rgba(255, 255, 255, 0.08);
+    .hp-btn.secondary:hover {
+      box-shadow: 0 14px 30px -12px rgba(12, 20, 32, 0.3);
+    }
+
+    .hp-btn.light {
+      color: var(--chiffr-navy);
+      background: #FFFFFF;
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.35);
+    }
+
+    .hp-btn.light:hover {
+      filter: brightness(0.96);
+    }
+
+    .hp-btn.ghost {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.22);
     }
 
-    .home-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 24px 54px rgba(12, 20, 32, 0.18);
+    .hp-btn.ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
     }
 
-    .home-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-top: 26px;
-    }
-
-    .home-reform-badge {
+    .hp-play {
       display: inline-grid;
-      gap: 2px;
-      width: fit-content;
-      max-width: 100%;
-      padding: 12px 15px;
+      place-items: center;
+      width: 26px;
+      height: 26px;
       border-radius: 999px;
-      border: 1px solid rgba(12, 20, 32, 0.12);
+      background: var(--chiffr-teal-soft);
+      color: var(--chiffr-teal);
+    }
+
+    .hp-play svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* ===== Hero ===== */
+    .hp-hero {
+      padding: 72px 0 96px;
       background:
-        radial-gradient(circle at 12% 0%, rgba(47, 125, 70, 0.12), transparent 42%),
-        rgba(255, 255, 255, 0.86);
-      color: var(--teal);
-      box-shadow: 0 16px 38px rgba(12, 20, 32, 0.07);
+        radial-gradient(900px 420px at 82% -10%, rgba(6, 72, 80, 0.07), transparent 70%),
+        linear-gradient(180deg, var(--chiffr-bg-warm), var(--chiffr-bg));
     }
 
-    .home-reform-badge strong {
-      color: var(--teal);
-      font-size: 14px;
-      line-height: 1.05;
-      font-weight: 950;
-      letter-spacing: -0.02em;
+    .hp-hero-grid {
+      display: grid;
+      gap: 64px;
+      align-items: center;
     }
 
-    .home-reform-badge small {
-      color: #5F6673;
-      font-size: 12px;
-      line-height: 1.2;
-      font-weight: 800;
+    .hp-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px 9px 10px;
+      border-radius: 999px;
+      background: var(--chiffr-surface);
+      border: 1px solid var(--chiffr-border);
+      box-shadow: 0 8px 20px -10px rgba(12, 20, 32, 0.14);
+      color: var(--chiffr-text-soft);
+      font-size: 13.5px;
+      line-height: 1.3;
+      font-weight: 550;
+      transition: box-shadow 160ms ease;
     }
 
-    .home-checks {
+    .hp-hero-badge:hover {
+      box-shadow: 0 12px 26px -10px rgba(12, 20, 32, 0.22);
+    }
+
+    .hp-hero-badge-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      flex: none;
+      border-radius: 999px;
+      background: var(--chiffr-success-soft);
+      color: var(--chiffr-success);
+    }
+
+    .hp-hero-badge-icon svg {
+      width: 13px;
+      height: 13px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .hp-hero h1 {
+      margin: 26px 0 0;
+      max-width: 640px !important;
+      font-family: var(--font-display);
+      color: var(--chiffr-navy);
+      font-size: clamp(38px, 3.7vw, 52px) !important;
+      line-height: 1.1 !important;
+      letter-spacing: -0.015em !important;
+      font-weight: 550;
+    }
+
+    .hp-hero h1 em {
+      font-style: normal;
+      color: var(--chiffr-teal);
+    }
+
+    .hp-hero-lead {
+      margin: 22px 0 0;
+      max-width: 520px;
+      color: var(--chiffr-text-soft);
+      font-size: 18px;
+      line-height: 1.7;
+      font-weight: 450;
+    }
+
+    .hp-hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 18px;
-      margin-top: 24px;
-      color: #5F6673;
-      font-size: 13px;
-      font-weight: 850;
+      gap: 14px;
+      margin-top: 34px;
     }
 
-    .home-checks span::before {
+    .hp-hero-actions.centered {
+      justify-content: center;
+    }
+
+    .hp-hero-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin: 30px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--chiffr-text-soft);
+      font-size: 13.5px;
+      font-weight: 550;
+    }
+
+    .hp-hero-checks li::before {
       content: "✓";
-      margin-right: 7px;
-      color: var(--success);
+      margin-right: 8px;
+      color: var(--chiffr-success);
+      font-weight: 700;
     }
 
-    .home-visual {
+    /* ===== Hero — composition devices ===== */
+    .hp-hero-visual {
       position: relative;
-      min-height: 540px;
+      padding: 44px 30px 0;
     }
 
-    .hero-photo-wrap,
-    .home-ui-card,
-    .trade-photo-card,
-    .feature-photo-card,
-    .trust-card,
-    .trust-photo,
-    .guide-link-card,
-    .final-card,
-    .home-faq-card {
-      border: 1px solid rgba(12, 20, 32, 0.1);
-      box-shadow:
-        0 24px 70px rgba(12, 20, 32, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.82);
-    }
-
-    .hero-photo-wrap {
+    .hp-stage {
       position: absolute;
-      overflow: hidden;
-      border-radius: 34px;
-      background: white;
+      inset: 0 0 34px;
+      border-radius: 28px;
+      background:
+        radial-gradient(420px 260px at 28% 18%, rgba(6, 72, 80, 0.1), transparent 70%),
+        linear-gradient(155deg, #F2EDE3, #E9E4D9);
+      border: 1px solid var(--chiffr-border);
     }
 
-    .hero-photo-wrap img,
-    .feature-photo-card img,
-    .trade-photo-card img,
-    .trust-photo img,
-    .final-card > img {
+    .hp-device {
+      margin: 0;
+    }
+
+    .hp-device img {
       display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
     }
 
-    .main-photo {
-      right: 72px;
+    .hp-laptop {
+      position: relative;
+      z-index: 2;
+      width: 86%;
+      margin-left: 2%;
+    }
+
+    .hp-laptop-screen {
+      display: block;
+      padding: 9px 9px 12px;
+      border-radius: 16px 16px 4px 4px;
+      background: linear-gradient(180deg, #1B2634, #0C1420);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 42px 80px -30px rgba(12, 20, 32, 0.5);
+    }
+
+    .hp-laptop-screen img {
+      border-radius: 8px 8px 2px 2px;
+    }
+
+    .hp-laptop-base {
+      display: block;
+      width: 112%;
+      height: 13px;
+      margin-left: -6%;
+      border-radius: 3px 3px 14px 14px;
+      background: linear-gradient(180deg, #E2DDD3, #B9B3A7);
+      box-shadow: 0 18px 32px -14px rgba(12, 20, 32, 0.45);
+      position: relative;
+    }
+
+    .hp-laptop-base::after {
+      content: "";
+      position: absolute;
+      left: 50%;
       top: 0;
-      width: min(430px, 78%);
-      height: 356px;
+      transform: translateX(-50%);
+      width: 13%;
+      height: 5px;
+      border-radius: 0 0 8px 8px;
+      background: rgba(12, 20, 32, 0.18);
     }
 
-    .small-photo {
-      left: 12px;
-      bottom: 72px;
-      width: 230px;
-      height: 168px;
-      border-radius: 26px;
+    .hp-tablet {
+      position: absolute;
       z-index: 3;
+      right: 0;
+      bottom: -16px;
+      width: 44%;
+      padding: 11px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #1B2634, #0C1420);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 34px 64px -22px rgba(12, 20, 32, 0.55);
     }
 
-    .home-ui-card {
+    .hp-tablet img {
+      border-radius: 9px;
+    }
+
+    .hp-phone {
       position: absolute;
       z-index: 4;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(16px);
+      left: 0;
+      bottom: -26px;
+      width: 17%;
+      padding: 7px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #1B2634, #0C1420);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 30px 56px -18px rgba(12, 20, 32, 0.55);
     }
 
-    .quote-card {
-      right: 0;
-      top: 36px;
-      width: 258px;
-      padding: 20px;
+    .hp-phone img {
+      border-radius: 17px;
     }
 
-    .quote-card > div {
-      margin: -20px -20px 16px;
-      padding: 16px 20px;
-      border-radius: 22px 22px 0 0;
-      color: white;
-      background: linear-gradient(145deg, #0C1420, #101B28);
+    /* ===== Bandeau bénéfices ===== */
+    .hp-benefits {
+      padding: 40px 0;
+      background: linear-gradient(180deg, var(--chiffr-navy), var(--chiffr-navy-soft));
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .quote-card small,
-    .quote-card strong {
-      display: block;
-    }
-
-    .quote-card small {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 12px;
-      font-weight: 850;
-    }
-
-    .quote-card strong {
-      margin-top: 4px;
-      color: white;
-      font-size: 17px;
-      font-weight: 950;
-    }
-
-    .quote-card p {
-      margin: 0;
-      color: #5F6673;
-      font-size: 12px;
-      font-weight: 850;
-    }
-
-    .quote-card b {
-      display: block;
-      margin-top: 4px;
-      color: var(--teal);
-      font-size: 28px;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      font-weight: 950;
-    }
-
-    .quote-card ul {
+    .hp-benefits-grid {
       display: grid;
-      gap: 10px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 28px;
+    }
+
+    .hp-benefit {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hp-benefit + .hp-benefit {
+      padding-left: 28px;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hp-benefit-icon {
+      display: inline-grid;
+      place-items: center;
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(159, 196, 194, 0.1);
+      color: #9FC4C2;
+    }
+
+    .hp-benefit-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .hp-benefit strong {
+      display: block;
+      color: #FFFFFF;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    .hp-benefit small {
+      display: block;
+      margin-top: 3px;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 12.5px;
+      line-height: 1.35;
+      font-weight: 450;
+    }
+
+    /* ===== Métiers ===== */
+    .hp-trades-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .hp-trade-card {
+      display: grid;
+      justify-items: start;
+      gap: 4px;
+      padding: 24px 22px;
+      border-radius: 16px;
+      background: var(--chiffr-surface);
+      border: 1px solid var(--chiffr-border);
+      box-shadow: 0 10px 28px -18px rgba(12, 20, 32, 0.16);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .hp-trade-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--chiffr-border-strong);
+      box-shadow: 0 22px 44px -18px rgba(12, 20, 32, 0.24);
+    }
+
+    .hp-trade-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      margin-bottom: 12px;
+      border-radius: 13px;
+      background: var(--chiffr-teal-soft);
+      color: var(--chiffr-teal);
+    }
+
+    .hp-trade-icon svg {
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .hp-trade-card strong {
+      color: var(--chiffr-text);
+      font-size: 15.5px;
+      font-weight: 600;
+    }
+
+    .hp-trade-card small {
+      color: var(--chiffr-text-soft);
+      font-size: 13px;
+      font-weight: 450;
+    }
+
+    /* ===== Cockpit ===== */
+    .hp-cockpit {
+      padding: 96px 0;
+      background:
+        radial-gradient(720px 420px at 85% 10%, rgba(6, 72, 80, 0.28), transparent 70%),
+        linear-gradient(180deg, var(--chiffr-navy), var(--chiffr-navy-soft));
+    }
+
+    .hp-cockpit-grid {
+      display: grid;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hp-cockpit h2 {
+      color: #FFFFFF;
+      max-width: 480px;
+    }
+
+    .hp-cockpit-sub {
       margin: 18px 0 0;
+      max-width: 460px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 16.5px;
+      line-height: 1.7;
+      font-weight: 450;
+    }
+
+    .hp-cockpit-checks {
+      display: grid;
+      gap: 14px;
+      margin: 28px 0 0;
       padding: 0;
       list-style: none;
     }
 
-    .quote-card li {
-      color: #5F6673;
-      font-size: 13px;
-      font-weight: 850;
-    }
-
-    .quote-card li::after {
-      content: "";
-      display: block;
-      height: 7px;
-      margin-top: 5px;
-      border-radius: 999px;
-      background: rgba(12, 20, 32, 0.08);
-    }
-
-    .pdf-card {
-      right: 22px;
-      bottom: 0;
-      width: 300px;
-      padding: 18px;
-    }
-
-    .pdf-head {
+    .hp-cockpit-checks li {
       display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      color: #5F6673;
-      font-size: 11px;
-      font-weight: 850;
-    }
-
-    .pdf-head strong {
-      color: var(--teal);
-      text-align: right;
-      text-transform: uppercase;
-      font-size: 10px;
-    }
-
-    .pdf-lines {
-      display: grid;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .pdf-lines p {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 0;
-      padding-bottom: 9px;
-      border-bottom: 1px solid rgba(12, 20, 32, 0.08);
-      color: #5F6673;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .pdf-lines b {
-      color: var(--teal);
-      white-space: nowrap;
-    }
-
-    .pdf-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .signature-seal {
-      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 10px 8px 8px;
-      border-radius: 999px;
-      background: rgba(47, 125, 70, 0.12);
-      color: var(--teal);
-      border: 1px solid rgba(47, 125, 70, 0.16);
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 15.5px;
+      font-weight: 500;
     }
 
-    .signature-seal svg {
-      width: 30px;
-      height: 30px;
+    .hp-cockpit-checks span {
+      display: inline-grid;
+      place-items: center;
       flex: none;
-      padding: 6px;
+      width: 24px;
+      height: 24px;
       border-radius: 999px;
-      background: var(--teal);
-      color: white;
+      background: rgba(159, 196, 194, 0.14);
+      color: #9FC4C2;
     }
 
-    .signature-seal svg path {
+    .hp-cockpit-checks svg {
+      width: 13px;
+      height: 13px;
       fill: none;
       stroke: currentColor;
+      stroke-width: 2.4;
       stroke-linecap: round;
       stroke-linejoin: round;
-      stroke-width: 3.1;
     }
 
-    .signature-seal span {
-      display: grid;
-      gap: 1px;
+    .hp-cockpit-copy .hp-btn {
+      margin-top: 32px;
     }
 
-    .signature-seal strong {
-      color: var(--teal);
-      font-size: 10px;
-      line-height: 1.05;
-      font-weight: 950;
-    }
-
-    .signature-seal small {
-      color: var(--success);
-      font-size: 9px;
-      line-height: 1;
-      font-weight: 950;
-    }
-
-    .home-section {
-      padding: 68px 0;
-    }
-
-    .home-section-head {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .home-section-head.centered {
-      max-width: 860px;
-      margin-inline: auto;
-      text-align: center;
-      justify-items: center;
-    }
-
-    .home-section-head.compact {
-      max-width: 700px;
-    }
-
-    .home-section-head h2,
-    .final-copy h2 {
-      margin: 0;
-      color: var(--teal);
-      font-size: clamp(34px, 4vw, 56px);
-      line-height: 1.02;
-      letter-spacing: -0.052em;
-      font-weight: 950;
-    }
-
-    .home-section-head span {
-      color: #5F6673;
-      font-size: 18px;
-      line-height: 1.65;
-      font-weight: 650;
-    }
-
-    .trade-photo-grid {
-      display: grid;
-      gap: 14px;
-    }
-
-    .trade-photo-card {
+    .hp-cockpit-visual {
       position: relative;
-      overflow: hidden;
-      min-height: 244px;
-      padding: 0 0 18px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.78);
-      text-align: center;
-      color: var(--teal);
-      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      padding: 0 0 40px 36px;
     }
 
-    .trade-photo-card:hover {
-      transform: translateY(-5px);
-      background: white;
-      box-shadow: 0 28px 70px rgba(12, 20, 32, 0.13);
-    }
-
-    .trade-photo-card img {
-      height: 148px;
-    }
-
-    .trade-icon {
-      display: grid;
-      width: 54px;
-      height: 54px;
-      place-items: center;
-      margin: -27px auto 12px;
-      position: relative;
-      z-index: 2;
-      border-radius: 999px;
-      background: var(--teal);
-      color: white;
-      border: 4px solid rgba(255, 255, 255, 0.86);
-      font-size: 22px;
-      font-weight: 950;
-      box-shadow: 0 16px 34px rgba(12, 20, 32, 0.18);
-    }
-
-    .trade-photo-card strong {
-      display: block;
-      color: var(--teal);
-      font-size: 16px;
-      font-weight: 950;
-    }
-
-    .trade-photo-card small {
-      display: block;
-      margin-top: 5px;
-      padding: 0 12px;
-      color: #5F6673;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .feature-photo-grid {
-      display: grid;
-      gap: 16px;
-      padding: 24px;
-      border-radius: 38px;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(185, 97, 52, 0.1), transparent 38%),
-        linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 252, 247, 0.82));
-      border: 1px solid rgba(12, 20, 32, 0.08);
-      box-shadow: 0 24px 70px rgba(12, 20, 32, 0.07);
-    }
-
-    .feature-photo-card {
-      display: grid;
-      overflow: hidden;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.86);
-    }
-
-    .feature-photo-card img {
-      min-height: 230px;
-    }
-
-    .feature-photo-card div {
-      padding: 24px;
-    }
-
-    .feature-icon {
-      display: grid;
-      width: 42px;
-      height: 42px;
-      place-items: center;
-      border-radius: 16px;
-      background: rgba(185, 97, 52, 0.12);
-      color: var(--copper);
-      font-weight: 950;
-    }
-
-    .feature-photo-card h3 {
-      margin: 16px 0 0;
-      color: var(--teal);
-      font-size: 24px;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      font-weight: 950;
-    }
-
-    .feature-photo-card p {
-      margin: 12px 0 0;
-      color: #5F6673;
-      font-size: 15px;
-      line-height: 1.58;
-      font-weight: 700;
-    }
-
-    .feature-photo-card a {
-      display: inline-flex;
-      margin-top: 16px;
-      color: var(--teal);
-      font-size: 14px;
-      font-weight: 950;
-    }
-
-    .trust-section {
-      padding-top: 44px;
-    }
-
-    .trust-grid {
-      display: grid;
-      gap: 26px;
-      align-items: center;
-    }
-
-    .trust-card-grid {
-      display: grid;
-      gap: 14px;
-      margin-top: 26px;
-    }
-
-    .trust-card {
-      border-radius: 24px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.84);
-    }
-
-    .trust-card span {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(185, 97, 52, 0.12);
-      color: var(--copper);
-      font-weight: 950;
-    }
-
-    .trust-card h3 {
-      margin: 14px 0 0;
-      color: var(--teal);
-      font-size: 17px;
-      line-height: 1.16;
-      font-weight: 950;
-    }
-
-    .trust-card p {
-      margin: 8px 0 0;
-      color: #5F6673;
-      font-size: 14px;
-      line-height: 1.5;
-      font-weight: 700;
-    }
-
-    .trust-photo {
-      overflow: hidden;
-      min-height: 320px;
+    .hp-cockpit-shot {
       margin: 0;
-      border-radius: 34px;
-      background: white;
+      padding: 10px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.65);
     }
 
-    .guides-section {
-      padding-top: 34px;
+    .hp-cockpit-shot img,
+    .hp-cockpit-phone img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
     }
 
-    .guides-grid {
-      display: grid;
-      gap: 26px;
-      align-items: start;
-    }
-
-    .guide-link-grid {
-      display: grid;
-      gap: 12px;
-    }
-
-    .guide-link-card {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: center;
-      min-height: 82px;
-      padding: 18px 20px;
+    .hp-cockpit-phone {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 132px;
+      margin: 0;
+      padding: 6px;
       border-radius: 22px;
-      background: rgba(255, 255, 255, 0.84);
-      color: var(--teal);
-      font-weight: 950;
-      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      background: linear-gradient(180deg, #1B2634, #0C1420);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 30px 60px -18px rgba(0, 0, 0, 0.7);
     }
 
-    .guide-link-card:hover {
-      transform: translateY(-3px);
-      background: white;
-      box-shadow: 0 20px 54px rgba(12, 20, 32, 0.1);
+    .hp-cockpit-phone img {
+      border-radius: 16px;
     }
 
-    .guide-link-card span {
-      color: var(--copper);
-      font-weight: 950;
-    }
-
-    .guide-link-card.all {
-      background: var(--teal);
-      color: white;
-    }
-
-    .guide-link-card.all span {
-      color: #F6E7DB;
-    }
-
-    .home-reform-section {
-      padding-top: 34px;
-    }
-
-    .reform-card {
+    /* ===== Produit — zones showcase ===== */
+    .hp-showcases {
       display: grid;
-      gap: 26px;
+      gap: 28px;
+      width: min(1440px, 100% - 48px);
+      margin: 0 auto;
+    }
+
+    .hp-showcase {
+      display: grid;
+      gap: 44px;
       align-items: center;
-      padding: 28px;
-      border-radius: 36px;
-      border: 1px solid rgba(12, 20, 32, 0.1);
-      background:
-        radial-gradient(circle at 12% 0%, rgba(185, 97, 52, 0.12), transparent 38%),
-        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 252, 247, 0.92));
-      box-shadow:
-        0 24px 70px rgba(12, 20, 32, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.88);
+      padding: clamp(24px, 3vw, 44px);
+      border-radius: 24px;
+      background: var(--chiffr-surface-warm);
+      border: 1px solid var(--chiffr-border);
+      box-shadow: 0 20px 50px -32px rgba(12, 20, 32, 0.2);
     }
 
-    .reform-copy h2 {
-      margin: 12px 0 0;
-      color: var(--teal);
-      font-size: clamp(32px, 3.6vw, 52px);
-      line-height: 1.04;
-      letter-spacing: -0.052em;
-      font-weight: 950;
+    .hp-showcase-copy h3 {
+      margin: 14px 0 0;
+      font-family: var(--font-display);
+      color: var(--chiffr-text);
+      font-size: clamp(24px, 2.4vw, 31px);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      font-weight: 550;
     }
 
-    .reform-copy p {
-      margin: 16px 0 0;
-      color: #5F6673;
-      font-size: 17px;
-      line-height: 1.62;
-      font-weight: 700;
+    .hp-showcase-text {
+      margin: 14px 0 0;
+      color: var(--chiffr-text-soft);
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 450;
     }
 
-    .reform-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .reform-tags span {
-      display: inline-flex;
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(230, 241, 240, 0.82);
-      color: var(--teal);
-      font-size: 12px;
-      font-weight: 950;
-    }
-
-    .reform-mini-grid {
+    .hp-showcase-points {
       display: grid;
       gap: 12px;
-    }
-
-    .reform-mini-grid article {
-      padding: 18px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.86);
-      border: 1px solid rgba(12, 20, 32, 0.08);
-      box-shadow: 0 16px 40px rgba(12, 20, 32, 0.06);
-    }
-
-    .reform-mini-grid b {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      border-radius: 14px;
-      background: var(--teal);
-      color: white;
-      font-size: 13px;
-      font-weight: 950;
-    }
-
-    .reform-mini-grid strong {
-      display: block;
-      margin-top: 14px;
-      color: var(--teal);
-      font-size: 17px;
-      line-height: 1.16;
-      font-weight: 950;
-    }
-
-    .reform-mini-grid span {
-      display: block;
-      margin-top: 8px;
-      color: #5F6673;
-      font-size: 14px;
-      line-height: 1.5;
-      font-weight: 700;
-    }
-
-    .home-final {
-      padding: 54px 0 72px;
-    }
-
-    .final-card {
-      overflow: hidden;
-      display: grid;
-      gap: 0;
-      border-radius: 36px;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.12), transparent 38%),
-        linear-gradient(145deg, #0C1420, #101B28);
-    }
-
-    .final-copy {
-      padding: 34px;
-      color: white;
-    }
-
-    .final-copy h2 {
-      margin-top: 14px;
-      max-width: 560px;
-      color: white;
-      font-size: clamp(32px, 4vw, 52px);
-    }
-
-    .final-copy ul {
-      display: grid;
-      gap: 9px;
       margin: 22px 0 0;
       padding: 0;
       list-style: none;
-      color: rgba(255, 255, 255, 0.78);
-      font-weight: 850;
     }
 
-    .final-copy li::before {
-      content: "✓";
-      margin-right: 9px;
-      color: #F6E7DB;
+    .hp-showcase-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      color: var(--chiffr-text);
+      font-size: 14.5px;
+      line-height: 1.5;
+      font-weight: 500;
     }
 
-    .final-card > img {
-      min-height: 250px;
+    .hp-showcase-points span {
+      display: inline-grid;
+      place-items: center;
+      flex: none;
+      width: 22px;
+      height: 22px;
+      margin-top: 1px;
+      border-radius: 999px;
+      background: var(--chiffr-teal-soft);
+      color: var(--chiffr-teal);
     }
 
-    .home-faq {
-      padding-top: 20px;
+    .hp-showcase-points svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .faq-grid {
+    .hp-showcase-shot {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      background: var(--chiffr-surface);
+      border: 1px solid var(--chiffr-border-strong);
+      box-shadow: 0 34px 70px -30px rgba(12, 20, 32, 0.35);
+    }
+
+    .hp-window-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 14px;
+      height: 34px;
+      background: linear-gradient(180deg, #18222F, var(--chiffr-navy-soft));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hp-window-bar i {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .hp-showcase-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ===== E-facturation ===== */
+    .hp-reform-section {
+      padding-top: 0;
+    }
+
+    .hp-reform-card {
       display: grid;
-      gap: 26px;
-      align-items: start;
+      gap: 44px;
+      align-items: center;
+      padding: clamp(28px, 4vw, 56px);
+      border-radius: 24px;
+      background: var(--chiffr-surface-warm);
+      border: 1px solid var(--chiffr-border);
+      box-shadow: 0 24px 60px -30px rgba(12, 20, 32, 0.18);
     }
 
-    .faq-list {
+    .hp-reform-copy h2 {
+      max-width: 520px;
+      font-size: clamp(26px, 2.8vw, 36px) !important;
+    }
+
+    .hp-reform-copy p {
+      margin: 16px 0 0;
+      max-width: 520px;
+      color: var(--chiffr-text-soft);
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 450;
+    }
+
+    .hp-reform-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .hp-reform-tags span {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--chiffr-teal-soft);
+      color: var(--chiffr-teal);
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+
+    .hp-reform-points {
       display: grid;
       gap: 12px;
     }
 
-    .home-faq-card {
-      border-radius: 24px;
-      padding: 20px 22px;
-      background: rgba(255, 255, 255, 0.84);
+    .hp-reform-points article {
+      padding: 20px;
+      border-radius: 16px;
+      background: var(--chiffr-surface);
+      border: 1px solid var(--chiffr-border);
     }
 
-    .home-faq-card summary {
-      cursor: pointer;
-      color: var(--teal);
-      font-size: 17px;
-      line-height: 1.35;
-      font-weight: 950;
+    .hp-reform-points b {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--chiffr-navy);
+      color: #FFFFFF;
+      font-size: 12.5px;
+      font-weight: 600;
     }
 
-    .home-faq-card p {
-      margin: 12px 0 0;
-      color: #5F6673;
+    .hp-reform-points strong {
+      display: block;
+      margin-top: 13px;
+      color: var(--chiffr-text);
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    .hp-reform-points span {
+      display: block;
+      margin-top: 7px;
+      color: var(--chiffr-text-soft);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 450;
+    }
+
+    /* ===== Guides ===== */
+    .hp-guides {
+      padding-top: 0;
+    }
+
+    .hp-guides-grid {
+      display: grid;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .hp-guide-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hp-guide-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 66px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      background: var(--chiffr-surface);
+      border: 1px solid var(--chiffr-border);
+      color: var(--chiffr-text);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .hp-guide-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px -20px rgba(12, 20, 32, 0.3);
+    }
+
+    .hp-guide-link strong {
       font-size: 15px;
+      line-height: 1.35;
+      font-weight: 550;
+    }
+
+    .hp-guide-link span {
+      color: var(--chiffr-copper);
+      font-weight: 600;
+    }
+
+    .hp-guide-link.all {
+      background: var(--chiffr-navy);
+      border-color: var(--chiffr-navy);
+      color: #FFFFFF;
+    }
+
+    .hp-guide-link.all span {
+      color: #9FC4C2;
+    }
+
+    /* ===== FAQ ===== */
+    .hp-faq {
+      padding-top: 0;
+    }
+
+    .hp-faq-grid {
+      display: grid;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .hp-faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hp-faq-item {
+      padding: 0 22px;
+      border-radius: 14px;
+      background: var(--chiffr-surface);
+      border: 1px solid var(--chiffr-border);
+    }
+
+    .hp-faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 19px 0;
+      cursor: pointer;
+      list-style: none;
+      color: var(--chiffr-text);
+      font-size: 15.5px;
+      line-height: 1.4;
+      font-weight: 550;
+    }
+
+    .hp-faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .hp-faq-item summary span {
+      display: inline-grid;
+      place-items: center;
+      flex: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--chiffr-bg);
+      color: var(--chiffr-text-soft);
+      transition: transform 160ms ease;
+    }
+
+    .hp-faq-item[open] summary span {
+      transform: rotate(180deg);
+    }
+
+    .hp-faq-item summary svg {
+      width: 13px;
+      height: 13px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .hp-faq-item p {
+      margin: 0;
+      padding: 0 0 20px;
+      color: var(--chiffr-text-soft);
+      font-size: 14.5px;
       line-height: 1.65;
-      font-weight: 700;
+      font-weight: 450;
     }
 
-    @media (min-width: 760px) {
-      .trade-photo-grid {
+    /* ===== CTA final ===== */
+    .hp-final {
+      padding: 0 0 96px;
+    }
+
+    .hp-final-card {
+      padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 64px);
+      border-radius: 28px;
+      text-align: center;
+      background:
+        radial-gradient(640px 320px at 50% -20%, rgba(6, 72, 80, 0.45), transparent 75%),
+        linear-gradient(180deg, var(--chiffr-navy), var(--chiffr-navy-soft));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 40px 90px -40px rgba(12, 20, 32, 0.55);
+    }
+
+    .hp-final-card h2 {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #FFFFFF;
+    }
+
+    .hp-final-card > p {
+      max-width: 540px;
+      margin: 18px auto 0;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 16.5px;
+      line-height: 1.7;
+      font-weight: 450;
+    }
+
+    /* ===== Responsive ===== */
+    @media (min-width: 1041px) {
+      .hp-hero-grid {
+        grid-template-columns: minmax(0, 11fr) minmax(0, 12fr);
+      }
+
+      .hp-cockpit-grid {
+        grid-template-columns: minmax(0, 9fr) minmax(0, 11fr);
+      }
+
+      .hp-showcase {
+        grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+      }
+
+      .hp-reform-card {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+
+      .hp-guides-grid,
+      .hp-faq-grid {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .hp-hero {
+        padding: 52px 0 72px;
+      }
+
+      .hp-hero-visual {
+        margin-top: 8px;
+      }
+
+      .hp-benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .hp-benefit + .hp-benefit {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .hp-trades-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .feature-photo-grid,
-      .trust-card-grid,
-      .guide-link-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .hp-section {
+        padding: 64px 0;
       }
 
-      .final-card {
-        grid-template-columns: 1.05fr 0.95fr;
-      }
-    }
-
-    @media (min-width: 1040px) {
-      .home-hero-grid {
-        grid-template-columns: 1fr 1fr;
+      .hp-cockpit {
+        padding: 72px 0;
       }
 
-      .trade-photo-grid {
-        grid-template-columns: repeat(7, 1fr);
+      .hp-cockpit-visual {
+        padding-left: 0;
       }
 
-      .feature-photo-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .hp-cockpit-phone {
+        left: -8px;
       }
 
-      .feature-photo-card {
-        grid-template-columns: 1.05fr 0.95fr;
-      }
-
-      .trust-grid,
-      .guides-grid,
-      .faq-grid {
-        grid-template-columns: 1fr 0.85fr;
-      }
-
-      .reform-card {
-        grid-template-columns: 0.95fr 1.05fr;
-      }
-
-      .reform-mini-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .trust-card-grid {
-        grid-template-columns: repeat(4, 1fr);
+      .hp-showcases {
+        gap: 20px;
       }
     }
 
-    @media (max-width: 720px) {
-      .home-hero {
-        padding: 52px 0 42px;
+    @media (max-width: 640px) {
+      .hp-shell {
+        width: min(1280px, 100% - 36px);
       }
 
-      .home-hero h1 {
-        font-size: clamp(42px, 13vw, 60px);
+      .hp-hero h1 {
+        font-size: clamp(34px, 9.6vw, 44px) !important;
       }
 
-      .home-lead,
-      .home-section-head span {
-        font-size: 17px;
+      .hp-hero-badge {
+        font-size: 12.5px;
       }
 
-      .home-actions,
-      .home-badge-row {
+      .hp-hero-actions {
         display: grid;
       }
 
-      .home-btn {
+      .hp-hero-actions .hp-btn {
         width: 100%;
       }
 
-      .home-visual {
-        min-height: 640px;
+      .hp-hero-visual {
+        padding: 28px 16px 0;
       }
 
-      .main-photo {
-        left: 0;
-        right: auto;
+      .hp-laptop {
         width: 100%;
-        height: 310px;
+        margin-left: 0;
       }
 
-      .quote-card {
-        top: 246px;
-        right: 10px;
-        width: min(260px, 76%);
+      .hp-tablet {
+        display: none;
       }
 
-      .small-photo {
-        left: 0;
-        bottom: 104px;
-        width: 48%;
-        height: 150px;
+      .hp-phone {
+        width: 26%;
+        left: auto;
+        right: 2px;
+        bottom: -22px;
       }
 
-      .pdf-card {
-        right: 0;
-        bottom: 0;
-        width: 82%;
+      .hp-benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
       }
 
-      .home-section {
-        padding: 50px 0;
+      .hp-trades-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
       }
 
-      .feature-photo-grid {
-        padding: 16px;
-        border-radius: 30px;
+      .hp-trade-card {
+        padding: 18px 16px;
       }
 
-      .final-copy {
-        padding: 28px;
+      .hp-cockpit-phone {
+        width: 96px;
+        bottom: 10px;
+      }
+
+      .hp-cockpit-visual {
+        padding-bottom: 0;
+      }
+
+      .hp-section-head {
+        margin-bottom: 36px;
+      }
+
+      .hp-final {
+        padding-bottom: 64px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .home-hero *,
-      .home-section *,
-      .home-final * {
+      .hp-hero *,
+      .hp-benefits *,
+      .hp-section *,
+      .hp-cockpit *,
+      .hp-final * {
         transition-duration: 0.001ms !important;
         animation-duration: 0.001ms !important;
       }
