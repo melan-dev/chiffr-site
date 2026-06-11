@@ -144,8 +144,18 @@ const isLegalPath = legalPaths.some(
         margin: 0 auto;
         display: grid;
         grid-template-columns: auto 1fr;
-        gap: 18px;
+        gap: 12px;
         align-items: center;
+        padding: 10px;
+        border-radius: 30px;
+        background:
+          radial-gradient(circle at 8% 0%, rgba(6, 72, 80, 0.60), transparent 34%),
+          radial-gradient(circle at 92% 0%, rgba(185, 97, 52, 0.18), transparent 30%),
+          linear-gradient(145deg, #0C1420, #101B28);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        box-shadow:
+          0 24px 64px rgba(12, 20, 32, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.10);
       }
 
       .brand-card {
@@ -154,23 +164,17 @@ const isLegalPath = legalPaths.some(
         align-items: center;
         gap: 14px;
         min-width: 264px;
-        padding: 11px 14px;
-        border-radius: 26px;
-        background:
-          linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(255, 252, 247, 0.72));
-        border: 1px solid rgba(12, 20, 32, 0.08);
-        box-shadow:
-          0 18px 46px rgba(12, 20, 32, 0.06),
-          inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        padding: 7px 12px;
+        border-radius: 22px;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        transition: transform 180ms ease, background 180ms ease;
       }
 
       .brand-card:hover {
         transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.92);
-        box-shadow:
-          0 22px 56px rgba(12, 20, 32, 0.09),
-          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.07);
       }
 
       .brand-mark {
@@ -189,8 +193,9 @@ const isLegalPath = legalPaths.some(
         line-height: 1;
         font-weight: 950;
         letter-spacing: -0.06em;
+        border: 1px solid rgba(255, 255, 255, 0.14);
         box-shadow:
-          0 14px 28px rgba(12, 20, 32, 0.18),
+          0 14px 28px rgba(0, 0, 0, 0.22),
           inset 0 -5px 0 rgba(185, 97, 52, 0.55);
       }
 
@@ -202,7 +207,7 @@ const isLegalPath = legalPaths.some(
       }
 
       .brand-name {
-        color: var(--teal);
+        color: #FFFFFF;
         font-size: 23px;
         line-height: 1;
         font-weight: 950;
@@ -211,7 +216,7 @@ const isLegalPath = legalPaths.some(
 
       .brand-subtitle {
         margin-top: 4px;
-        color: #5F6673;
+        color: rgba(255, 255, 255, 0.68);
         font-size: 13px;
         line-height: 1.25;
         font-weight: 800;
@@ -223,16 +228,11 @@ const isLegalPath = legalPaths.some(
         grid-template-columns: auto minmax(0, 1fr) auto;
         align-items: center;
         gap: 14px;
-        padding: 10px;
-        border-radius: 30px;
-        background:
-          radial-gradient(circle at 8% 0%, rgba(6, 72, 80, 0.55), transparent 34%),
-          radial-gradient(circle at 92% 0%, rgba(185, 97, 52, 0.18), transparent 30%),
-          linear-gradient(145deg, #0C1420, #101B28);
-        border: 1px solid rgba(255, 255, 255, 0.10);
-        box-shadow:
-          0 24px 64px rgba(12, 20, 32, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.10);
+        padding: 0;
+        border-radius: 24px;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
       }
 
       .home-link {
@@ -428,13 +428,14 @@ const isLegalPath = legalPaths.some(
         border-radius: 999px;
         background:
           radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.14), transparent 36%),
-          linear-gradient(145deg, #0C1420, #043840);
+          linear-gradient(145deg, #064850, #043840);
         color: white;
         font-size: 14px;
         font-weight: 950;
         white-space: nowrap;
+        border: 1px solid rgba(255, 255, 255, 0.14);
         box-shadow:
-          0 18px 42px rgba(12, 20, 32, 0.22),
+          0 18px 42px rgba(0, 0, 0, 0.18),
           inset 0 1px 0 rgba(255, 255, 255, 0.12);
         transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
       }
