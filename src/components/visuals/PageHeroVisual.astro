@@ -63,7 +63,7 @@ const finalImageAlt = imageAlt ?? story.hero.alt;
     min-height: 420px;
     display: grid;
     align-items: end;
-    border-radius: 36px;
+    border-radius: 24px;
     isolation: isolate;
     background: var(--teal);
     box-shadow: 0 30px 90px rgba(12, 20, 32, 0.16);
@@ -75,8 +75,7 @@ const finalImageAlt = imageAlt ?? story.hero.alt;
     inset: 0;
     z-index: -1;
     background:
-      linear-gradient(180deg, rgba(8, 29, 28, 0.04), rgba(8, 29, 28, 0.78)),
-      radial-gradient(circle at 86% 0%, rgba(185, 97, 52, 0.24), transparent 34%);
+      linear-gradient(180deg, rgba(8, 29, 28, 0.04), rgba(8, 29, 28, 0.78));
   }
 
   .page-hero-visual img {
@@ -98,7 +97,7 @@ const finalImageAlt = imageAlt ?? story.hero.alt;
     margin: 0 0 12px;
     color: #F6E7DB;
     font-size: 14px;
-    font-weight: 950;
+    font-weight: 650;
   }
 
   .page-hero-visual-copy h2 {
@@ -106,8 +105,8 @@ const finalImageAlt = imageAlt ?? story.hero.alt;
     color: white;
     font-size: clamp(30px, 4vw, 56px);
     line-height: 1.02;
-    letter-spacing: -0.052em;
-    font-weight: 950;
+    letter-spacing: -0.02em;
+    font-weight: 650;
   }
 
   .page-hero-visual-copy span {
@@ -116,7 +115,7 @@ const finalImageAlt = imageAlt ?? story.hero.alt;
     color: rgba(255, 255, 255, 0.76);
     font-size: 17px;
     line-height: 1.62;
-    font-weight: 700;
+    font-weight: 550;
   }
 
   .page-hero-visual-copy a {
@@ -126,6 +125,6 @@ const finalImageAlt = imageAlt ?? story.hero.alt;
     border-radius: 999px;
     background: white;
     color: var(--teal);
-    font-weight: 950;
+    font-weight: 650;
   }
 </style>

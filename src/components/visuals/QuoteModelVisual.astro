@@ -45,7 +45,7 @@ const story = getVisualStoryByPath(currentPath);
     min-height: 430px;
     display: grid;
     align-items: end;
-    border-radius: 36px;
+    border-radius: 24px;
     isolation: isolate;
     background: var(--teal);
     box-shadow: 0 28px 82px rgba(12, 20, 32, 0.14);
@@ -58,8 +58,7 @@ const story = getVisualStoryByPath(currentPath);
     inset: 0;
     z-index: -1;
     background:
-      linear-gradient(180deg, rgba(8, 29, 28, 0.03), rgba(8, 29, 28, 0.78)),
-      radial-gradient(circle at 88% 0%, rgba(185, 97, 52, 0.22), transparent 36%);
+      linear-gradient(180deg, rgba(8, 29, 28, 0.03), rgba(8, 29, 28, 0.78));
   }
 
   .quote-model-visual img {
@@ -80,7 +79,7 @@ const story = getVisualStoryByPath(currentPath);
     margin: 0 0 12px;
     color: #F6E7DB;
     font-size: 13px;
-    font-weight: 950;
+    font-weight: 650;
   }
 
   .quote-model-visual-card h2 {
@@ -89,8 +88,8 @@ const story = getVisualStoryByPath(currentPath);
     color: white;
     font-size: clamp(30px, 4vw, 52px);
     line-height: 1.02;
-    letter-spacing: -0.05em;
-    font-weight: 950;
+    letter-spacing: -0.02em;
+    font-weight: 650;
   }
 
   .quote-model-visual-card span {
@@ -100,6 +99,6 @@ const story = getVisualStoryByPath(currentPath);
     color: rgba(255, 255, 255, 0.78);
     font-size: 16px;
     line-height: 1.6;
-    font-weight: 730;
+    font-weight: 550;
   }
 </style>

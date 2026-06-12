@@ -149,7 +149,6 @@ const breadcrumbSchema = model
         inset: 0;
         pointer-events: none;
         background:
-          radial-gradient(circle at 12% 12%, rgba(185, 97, 52, 0.14), transparent 30%),
           radial-gradient(circle at 88% 18%, rgba(12, 20, 32, 0.12), transparent 32%);
       }
 
@@ -173,7 +172,7 @@ const breadcrumbSchema = model
         color: var(--teal);
         font-size: 14px;
         line-height: 1.3;
-        font-weight: 850;
+        font-weight: 600;
       }
 
       .qm-kicker {
@@ -194,8 +193,8 @@ const breadcrumbSchema = model
         color: var(--teal);
         font-size: clamp(42px, 5.5vw, 82px);
         line-height: 1;
-        letter-spacing: -0.055em;
-        font-weight: 950;
+        letter-spacing: -0.02em;
+        font-weight: 650;
       }
 
       .qm-lead {
@@ -220,7 +219,7 @@ const breadcrumbSchema = model
         min-height: 52px;
         border-radius: 999px;
         padding: 16px 24px;
-        font-weight: 950;
+        font-weight: 650;
         line-height: 1;
         transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
       }
@@ -256,7 +255,7 @@ const breadcrumbSchema = model
         gap: 10px;
         color: #5F6673;
         font-size: 13px;
-        font-weight: 850;
+        font-weight: 600;
       }
 
       .qm-checks span::before {
@@ -272,8 +271,7 @@ const breadcrumbSchema = model
       .qm-faq-card {
         border: 1px solid rgba(12, 20, 32, 0.12);
         background:
-          linear-gradient(145deg, rgba(255, 252, 247, 0.96), rgba(255, 255, 255, 0.86)),
-          radial-gradient(circle at top right, rgba(185, 97, 52, 0.1), transparent 44%);
+          linear-gradient(145deg, rgba(255, 252, 247, 0.96), rgba(255, 255, 255, 0.86));
         box-shadow:
           0 26px 74px rgba(12, 20, 32, 0.1),
           inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -281,7 +279,7 @@ const breadcrumbSchema = model
 
       .qm-card {
         overflow: hidden;
-        border-radius: 38px;
+        border-radius: 24px;
         padding: 22px;
         animation: qmFloat 5.8s ease-in-out infinite;
       }
@@ -327,7 +325,7 @@ const breadcrumbSchema = model
         background: rgba(12, 20, 32, 0.08);
         color: var(--teal);
         font-size: 13px;
-        font-weight: 900;
+        font-weight: 650;
       }
 
       .qm-status span {
@@ -340,7 +338,7 @@ const breadcrumbSchema = model
 
       .qm-card-head {
         padding: 24px;
-        border-radius: 28px;
+        border-radius: 18px;
         color: white;
         background:
           radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.12), transparent 34%),
@@ -351,7 +349,7 @@ const breadcrumbSchema = model
         margin: 0;
         color: rgba(255, 255, 255, 0.66);
         font-size: 14px;
-        font-weight: 800;
+        font-weight: 600;
       }
 
       .qm-card-head h2 {
@@ -359,8 +357,8 @@ const breadcrumbSchema = model
         color: white;
         font-size: 34px;
         line-height: 1.04;
-        letter-spacing: -0.04em;
-        font-weight: 950;
+        letter-spacing: -0.02em;
+        font-weight: 650;
       }
 
       .qm-card-steps {
@@ -396,19 +394,19 @@ const breadcrumbSchema = model
         background: var(--teal);
         color: white;
         font-size: 13px;
-        font-weight: 950;
+        font-weight: 650;
       }
 
       .qm-card-step strong {
         color: var(--teal);
         font-size: 15px;
-        font-weight: 950;
+        font-weight: 650;
       }
 
       .qm-card-step small {
         color: #5F6673;
         font-size: 12px;
-        font-weight: 850;
+        font-weight: 600;
         white-space: nowrap;
       }
 
@@ -422,7 +420,7 @@ const breadcrumbSchema = model
       .qm-mini-grid div {
         min-height: 88px;
         padding: 15px;
-        border-radius: 22px;
+        border-radius: 16px;
         background: white;
       }
 
@@ -438,7 +436,7 @@ const breadcrumbSchema = model
         display: block;
         color: #5F6673;
         font-size: 12px;
-        font-weight: 850;
+        font-weight: 600;
       }
 
       .qm-mini-grid strong {
@@ -447,7 +445,7 @@ const breadcrumbSchema = model
         color: var(--teal);
         font-size: 16px;
         line-height: 1.25;
-        font-weight: 950;
+        font-weight: 650;
       }
 
       .qm-section-head {
@@ -462,8 +460,8 @@ const breadcrumbSchema = model
         color: var(--teal);
         font-size: clamp(34px, 3.8vw, 56px);
         line-height: 1.06;
-        letter-spacing: -0.048em;
-        font-weight: 950;
+        letter-spacing: -0.02em;
+        font-weight: 650;
       }
 
       .qm-section-head p,
@@ -489,7 +487,7 @@ const breadcrumbSchema = model
       }
 
       .qm-panel {
-        border-radius: 34px;
+        border-radius: 24px;
         padding: 34px;
       }
 
@@ -515,10 +513,10 @@ const breadcrumbSchema = model
 
       .qm-mini-card,
       .qm-related-link {
-        border-radius: 22px;
+        border-radius: 16px;
         padding: 17px 18px;
         color: var(--teal);
-        font-weight: 900;
+        font-weight: 650;
         transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
       }
 
@@ -541,12 +539,12 @@ const breadcrumbSchema = model
         background: var(--success);
         color: white;
         font-size: 12px;
-        font-weight: 950;
+        font-weight: 650;
       }
 
       .qm-line-table-card {
         overflow: hidden;
-        border-radius: 32px;
+        border-radius: 20px;
       }
 
       .qm-table-wrap {
@@ -574,39 +572,38 @@ const breadcrumbSchema = model
       .qm-table th {
         background: var(--teal);
         color: white;
-        font-weight: 950;
+        font-weight: 650;
         white-space: nowrap;
       }
 
       .qm-table td:first-child {
         color: var(--teal);
-        font-weight: 950;
+        font-weight: 650;
       }
 
       .qm-table td:nth-child(5) {
         color: var(--copper);
-        font-weight: 950;
+        font-weight: 650;
         white-space: nowrap;
       }
 
       .qm-note {
         margin-top: 16px;
         padding: 16px 18px;
-        border-radius: 22px;
+        border-radius: 16px;
         background: rgba(230, 241, 240, 0.72);
         color: #5F6673;
         font-size: 14px;
         line-height: 1.55;
-        font-weight: 800;
+        font-weight: 600;
       }
 
       .qm-warning {
         display: grid;
         gap: 14px;
         padding: 28px;
-        border-radius: 34px;
+        border-radius: 24px;
         background:
-          radial-gradient(circle at 90% 0%, rgba(185, 97, 52, 0.14), transparent 38%),
           linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(255, 252, 247, 0.76));
         border: 1px solid rgba(12, 20, 32, 0.1);
         box-shadow: 0 22px 60px rgba(12, 20, 32, 0.08);
@@ -627,7 +624,7 @@ const breadcrumbSchema = model
         color: var(--teal);
         font-size: 14px;
         line-height: 1.4;
-        font-weight: 850;
+        font-weight: 600;
       }
 
       .qm-warning-list span::before {
@@ -640,7 +637,7 @@ const breadcrumbSchema = model
         border-radius: 999px;
         background: rgba(185, 97, 52, 0.18);
         color: var(--copper);
-        font-weight: 950;
+        font-weight: 650;
       }
 
       .qm-related-link {
@@ -660,7 +657,7 @@ const breadcrumbSchema = model
       }
 
       .qm-faq-card {
-        border-radius: 26px;
+        border-radius: 18px;
         padding: 22px 24px;
         transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
       }
@@ -677,7 +674,7 @@ const breadcrumbSchema = model
         font-size: 18px;
         line-height: 1.4;
         letter-spacing: -0.015em;
-        font-weight: 900;
+        font-weight: 650;
       }
 
       .qm-faq-card p {
@@ -693,10 +690,9 @@ const breadcrumbSchema = model
 
       .qm-cta .qm-shell {
         padding: 50px 28px;
-        border-radius: 38px;
+        border-radius: 24px;
         border: 1px solid rgba(12, 20, 32, 0.1);
         background:
-          radial-gradient(circle at 20% 0%, rgba(185, 97, 52, 0.13), transparent 36%),
           linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 252, 247, 0.86));
         box-shadow: 0 26px 78px rgba(12, 20, 32, 0.1);
       }
