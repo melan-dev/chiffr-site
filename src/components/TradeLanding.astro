@@ -223,6 +223,46 @@ const visualStory = getVisualStoryByPath(canonicalPath);
     </div>
   </section>
 
+  <section class="section tl-cockpit-section">
+    <div class="shell tl-cockpit reveal">
+      <div class="tl-cockpit-copy">
+        <p class="kicker light">Le logiciel</p>
+        <h2>Un cockpit clair pour préparer, suivre et facturer vos devis</h2>
+        <p class="tl-cockpit-lead">
+          Chiffr relie le devis, la signature, l’acompte, la facture et la relance
+          dans un seul dossier. Vous savez toujours où en est chaque chantier.
+        </p>
+
+        <div class="tl-cockpit-steps">
+          {appSteps.slice(0, 4).map((step, index) => (
+            <div>
+              <b>{String(index + 1).padStart(2, '0')}</b>
+              <strong>{step.title}</strong>
+              <span>{step.status}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="actions">
+          <a class="btn light" href="/contact">Demander un accès</a>
+          <a class="btn ghost" href="/fonctionnalites">Voir les fonctionnalités</a>
+        </div>
+      </div>
+
+      <figure class="tl-cockpit-shot">
+        <span class="tl-window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img
+          src="/images/app/app-suivi-desktop.webp"
+          alt={`Suivi des devis ${pill} dans Chiffr : statuts, signatures, acomptes et factures`}
+          width="1800"
+          height="908"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
   <section class="section">
     <div class="shell usecase-panel reveal">
       <div>
@@ -238,6 +278,47 @@ const visualStory = getVisualStoryByPath(canonicalPath);
             <p>{item.text}</p>
           </article>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="kicker">Le logiciel en situation</p>
+        <h2>L’outil tel que vous l’utiliserez au quotidien</h2>
+        <p>
+          De vrais écrans de Chiffr, sans retouche : l’accueil qui priorise votre
+          journée et la liste de devis qui suit chaque dossier.
+        </p>
+      </div>
+
+      <div class="tl-screens">
+        <figure class="reveal-card">
+          <span class="tl-window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img
+            src="/images/app/app-accueil-desktop.webp"
+            alt="Accueil Chiffr : priorités du jour, suivi commercial et actions rapides"
+            width="1800"
+            height="908"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>L’accueil : vos priorités du jour et l’argent à récupérer.</figcaption>
+        </figure>
+
+        <figure class="reveal-card">
+          <span class="tl-window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img
+            src="/images/app/app-devis-desktop.webp"
+            alt="Liste des devis Chiffr : statuts, montants et relances"
+            width="1800"
+            height="908"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Vos devis : statuts, montants et relances en un clic.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -297,15 +378,6 @@ const visualStory = getVisualStoryByPath(canonicalPath);
     </div>
   </section>
 
-  <section class="section cta">
-    <div class="shell narrow reveal">
-      <p class="kicker">Demander un accès</p>
-      <h2>{ctaTitle}</h2>
-      <p>{ctaText}</p>
-      <a class="btn primary" href="/contact">Demander un accès</a>
-    </div>
-  </section>
-
   <section class="section">
     <div class="shell narrow">
       <div class="section-head reveal">
@@ -320,6 +392,19 @@ const visualStory = getVisualStoryByPath(canonicalPath);
             <p>{item.answer}</p>
           </details>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="shell">
+      <div class="cta-card reveal">
+        <h2>{ctaTitle}</h2>
+        <p>{ctaText}</p>
+        <div class="actions">
+          <a class="btn light" href="/contact">Demander un accès</a>
+          <a class="btn ghost" href="/fonctionnalites">Voir les fonctionnalités</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1132,6 +1217,29 @@ const visualStory = getVisualStoryByPath(canonicalPath);
       box-shadow: 0 22px 60px rgba(12, 20, 32, 0.1);
     }
 
+    .line-grid {
+      counter-reset: lc;
+    }
+
+    .line-card {
+      counter-increment: lc;
+    }
+
+    .line-card::before {
+      content: counter(lc, decimal-leading-zero);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 14px;
+      border-radius: 9px;
+      background: var(--chiffr-teal-soft);
+      color: var(--chiffr-teal);
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+
     .line-card strong,
     .feature-card h3,
     .usecase-grid strong {
@@ -1225,12 +1333,215 @@ const visualStory = getVisualStoryByPath(canonicalPath);
       color: var(--copper);
     }
 
+    /* ===== Cockpit navy ===== */
+    .tl-cockpit-section {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .tl-cockpit {
+      display: grid;
+      gap: 44px;
+      align-items: center;
+      padding: clamp(28px, 4vw, 56px);
+      border-radius: 24px;
+      background:
+        radial-gradient(640px 360px at 85% 0%, rgba(6, 72, 80, 0.4), transparent 72%),
+        linear-gradient(180deg, var(--chiffr-navy), var(--chiffr-navy-soft));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 36px 80px -38px rgba(12, 20, 32, 0.55);
+    }
+
+    .tl-cockpit h2 {
+      margin: 16px 0 0;
+      color: #FFFFFF;
+      max-width: 480px;
+    }
+
+    .tl-cockpit-lead {
+      margin: 16px 0 0;
+      max-width: 480px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .tl-cockpit-steps {
+      display: grid;
+      gap: 9px;
+      margin-top: 24px;
+    }
+
+    .tl-cockpit-steps > div {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .tl-cockpit-steps b {
+      width: 30px;
+      height: 30px;
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      background: rgba(159, 196, 194, 0.14);
+      color: #9FC4C2;
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+
+    .tl-cockpit-steps strong {
+      flex: 1;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14.5px;
+      line-height: 1.3;
+      font-weight: 550;
+    }
+
+    .tl-cockpit-steps span {
+      flex: none;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(159, 196, 194, 0.12);
+      color: #9FC4C2;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .tl-cockpit .actions {
+      margin-top: 30px;
+    }
+
+    .tl-cockpit-shot {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 36px 80px -28px rgba(0, 0, 0, 0.65);
+      background: var(--chiffr-surface);
+    }
+
+    .tl-cockpit-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .tl-window-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 14px;
+      height: 32px;
+      background: linear-gradient(180deg, #18222F, var(--chiffr-navy-soft));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .tl-window-bar i {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    /* ===== Screens produit ===== */
+    .tl-screens {
+      display: grid;
+      gap: 30px;
+      max-width: 1040px;
+      margin: 40px auto 0;
+    }
+
+    .tl-screens figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      background: var(--chiffr-surface);
+      border: 1px solid var(--chiffr-border-strong);
+      box-shadow: 0 30px 64px -30px rgba(12, 20, 32, 0.32);
+    }
+
+    .tl-screens img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .tl-screens figcaption {
+      padding: 14px 18px;
+      border-top: 1px solid var(--chiffr-border);
+      background: var(--chiffr-surface-warm);
+      color: var(--chiffr-text-soft);
+      font-size: 13.5px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    /* ===== Boutons variantes sombres ===== */
+    .btn.light {
+      color: var(--chiffr-navy);
+      background: #FFFFFF;
+      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn.light:hover {
+      transform: translateY(-2px);
+      background: #F1EDE5;
+    }
+
+    .btn.ghost {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .btn.ghost:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* ===== CTA final navy ===== */
     .cta {
       text-align: center;
     }
 
-    .cta .btn {
-      margin-top: 28px;
+    .cta-card {
+      padding: clamp(44px, 5.5vw, 72px) clamp(24px, 5vw, 64px);
+      border-radius: 24px;
+      background:
+        radial-gradient(640px 320px at 50% -20%, rgba(6, 72, 80, 0.45), transparent 75%),
+        linear-gradient(180deg, var(--chiffr-navy), var(--chiffr-navy-soft));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 36px 80px -38px rgba(12, 20, 32, 0.55);
+    }
+
+    .cta-card h2 {
+      margin: 0 auto;
+      max-width: 640px;
+      color: #FFFFFF;
+    }
+
+    .cta-card > p {
+      margin: 18px auto 0;
+      max-width: 560px;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 16.5px;
+      line-height: 1.7;
+    }
+
+    .cta-card .actions {
+      margin-top: 30px;
+      justify-content: center;
     }
 
     .faq-list {
@@ -1305,6 +1616,10 @@ const visualStory = getVisualStoryByPath(canonicalPath);
     @media (min-width: 1020px) {
       .hero-grid {
         grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .tl-cockpit {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
       }
 
       .split {

@@ -280,7 +280,7 @@ const faqSchema = {
   <section class="hp-benefits" aria-label="Ce que Chiffr apporte">
     <div class="hp-shell hp-benefits-grid">
       {benefits.map((benefit) => (
-        <div class="hp-benefit">
+        <div class="hp-benefit reveal-card">
           <span class="hp-benefit-icon" aria-hidden="true" set:html={benefit.icon} />
           <div>
             <strong>{benefit.label}</strong>
@@ -294,7 +294,7 @@ const faqSchema = {
   <!-- ============ Métiers ============ -->
   <section class="hp-section" id="metiers">
     <div class="hp-shell">
-      <div class="hp-section-head">
+      <div class="hp-section-head reveal">
         <p class="hp-kicker">Tous vos métiers couverts</p>
         <h2>Un logiciel adapté à tous les métiers de l’énergie</h2>
         <p class="hp-section-sub">
@@ -305,7 +305,7 @@ const faqSchema = {
 
       <div class="hp-trades-grid">
         {trades.map((trade) => (
-          <a class="hp-trade-card" href={trade.href}>
+          <a class="hp-trade-card reveal-card" href={trade.href}>
             <span class="hp-trade-icon" aria-hidden="true" set:html={trade.icon} />
             <strong>{trade.label}</strong>
             <small>{trade.detail}</small>
@@ -318,7 +318,7 @@ const faqSchema = {
   <!-- ============ Cockpit (section sombre) ============ -->
   <section class="hp-cockpit">
     <div class="hp-shell hp-cockpit-grid">
-      <div class="hp-cockpit-copy">
+      <div class="hp-cockpit-copy reveal">
         <p class="hp-kicker light">Tout au même endroit</p>
         <h2>Un cockpit clair pour piloter votre activité</h2>
         <p class="hp-cockpit-sub">
@@ -343,7 +343,7 @@ const faqSchema = {
         </a>
       </div>
 
-      <div class="hp-cockpit-visual">
+      <div class="hp-cockpit-visual reveal">
         <figure class="hp-cockpit-shot">
           <img
             src="/images/app/app-suivi-desktop.webp"
@@ -372,7 +372,7 @@ const faqSchema = {
   <!-- ============ Produit ============ -->
   <section class="hp-section" id="produit">
     <div class="hp-shell">
-      <div class="hp-section-head">
+      <div class="hp-section-head reveal">
         <p class="hp-kicker">Le logiciel en action</p>
         <h2>Simple en surface, sérieux en profondeur</h2>
         <p class="hp-section-sub">
@@ -385,7 +385,7 @@ const faqSchema = {
 
     <div class="hp-showcases">
       {productViews.map((view) => (
-        <article class="hp-showcase">
+        <article class="hp-showcase reveal">
           <div class="hp-showcase-copy">
             <p class="hp-kicker">{view.eyebrow}</p>
             <h3>{view.title}</h3>
@@ -424,7 +424,7 @@ const faqSchema = {
   <!-- ============ E-facturation ============ -->
   <section class="hp-section hp-reform-section" id="facturation-electronique">
     <div class="hp-shell">
-      <div class="hp-reform-card">
+      <div class="hp-reform-card reveal">
         <div class="hp-reform-copy">
           <p class="hp-kicker">Réforme 2026–2027</p>
           <h2>Préparez la facturation électronique sans attendre le dernier moment</h2>
@@ -464,7 +464,7 @@ const faqSchema = {
   <!-- ============ Guides ============ -->
   <section class="hp-section hp-guides">
     <div class="hp-shell hp-guides-grid">
-      <div class="hp-section-head left">
+      <div class="hp-section-head left reveal">
         <p class="hp-kicker">Guides pratiques</p>
         <h2>Des ressources concrètes pour mieux structurer vos devis</h2>
         <p class="hp-section-sub">
@@ -492,7 +492,7 @@ const faqSchema = {
   <!-- ============ FAQ ============ -->
   <section class="hp-section hp-faq">
     <div class="hp-shell hp-faq-grid">
-      <div class="hp-section-head left">
+      <div class="hp-section-head left reveal">
         <p class="hp-kicker">FAQ</p>
         <h2>Questions fréquentes</h2>
       </div>
@@ -516,7 +516,7 @@ const faqSchema = {
   <!-- ============ CTA final ============ -->
   <section class="hp-final">
     <div class="hp-shell">
-      <div class="hp-final-card">
+      <div class="hp-final-card reveal">
         <h2>Prêt à simplifier vos devis et votre suivi client ?</h2>
         <p>
           Modèles métier prêts à adapter, PDF premium, signature électronique,

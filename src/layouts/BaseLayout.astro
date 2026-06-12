@@ -93,6 +93,16 @@ const isLegalPath = legalPaths.some(
       schema={schema}
     />
 
+    <script is:inline>
+      // Active les reveals avant le premier paint ; sans JS rien n'est masqué.
+      if (
+        'IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        document.documentElement.classList.add('rv');
+      }
+    </script>
+
     <style is:inline>
       html {
         scroll-padding-top: 92px;
@@ -922,6 +932,26 @@ const isLegalPath = legalPaths.some(
       mobileMenuPanel?.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', () => setMobileMenu(false));
       });
+
+      // Observer global de reveal : couvre les pages sans observer local (ex. home).
+      if (document.documentElement.classList.contains('rv')) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add(
+                entry.target.matches('.pricing-reveal, .pricing-reveal-card') ? 'is-visible' : 'visible'
+              );
+              revealObserver.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
+        );
+
+        document
+          .querySelectorAll('.reveal, .reveal-card, .pricing-reveal, .pricing-reveal-card')
+          .forEach((item) => revealObserver.observe(item));
+      }
     </script>
   </body>
 </html>
