@@ -1,6 +1,7 @@
 ---
 import PagePhotoShowcase from './visuals/PagePhotoShowcase.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AppShowcaseBand from './AppShowcaseBand.astro';
 import type { CompetitorAlternative } from '../data/competitorAlternatives';
 
 interface Props {
@@ -887,18 +888,10 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <section class="alt-cta">
-      <div class="alt-shell alt-narrow">
-        <p class="alt-kicker">Demander un accès</p>
-        <h2>Vous faites surtout des devis énergie ?</h2>
-        <p>
-          Chiffr vous aide à démarrer depuis des modèles métier, ajouter vos lignes,
-          générer un PDF premium, faire signer, demander un acompte et facturer proprement.
-        </p>
-
-        <a href="/contact" class="alt-btn primary">Demander un accès</a>
-      </div>
-    </section>
+    <AppShowcaseBand
+      title="Vous faites surtout des devis énergie ?"
+      text="Chiffr vous aide à démarrer depuis des modèles métier, ajouter vos lignes, générer un PDF premium, faire signer, demander un acompte et facturer proprement."
+    />
 
     <section class="alt-section">
       <div class="alt-shell alt-narrow">

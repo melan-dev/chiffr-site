@@ -1,6 +1,7 @@
 ---
 import PageHeroVisual from './visuals/PageHeroVisual.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AppShowcaseBand from './AppShowcaseBand.astro';
 import type { SeoGuidePage as SeoGuideData } from '../data/seoGuides';
 
 interface Props {
@@ -852,18 +853,10 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <section class="guide-cta">
-      <div class="guide-shell guide-narrow">
-        <p class="guide-kicker">Demander un accès</p>
-        <h2>Vous voulez créer des devis plus clairs, sans repartir de zéro ?</h2>
-        <p>
-          Chiffr vous aide à partir d’un modèle métier, ajouter vos lignes, joindre vos photos,
-          générer un PDF premium, faire signer, demander un acompte et facturer proprement.
-        </p>
-
-        <a href="/contact" class="guide-btn primary">Demander un accès</a>
-      </div>
-    </section>
+    <AppShowcaseBand
+      title="Vous voulez créer des devis plus clairs, sans repartir de zéro ?"
+      text="Chiffr vous aide à partir d’un modèle métier, ajouter vos lignes, joindre vos photos, générer un PDF premium, faire signer, demander un acompte et facturer proprement."
+    />
 
     <section class="guide-section">
       <div class="guide-shell guide-narrow">

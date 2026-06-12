@@ -2,6 +2,7 @@
 import QuoteModelVisual from '../components/visuals/QuoteModelVisual.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import QuoteModelPdfPreview from '../components/QuoteModelPdfPreview.astro';
+import AppShowcaseBand from '../components/AppShowcaseBand.astro';
 import CompetitorAlternativePage from '../components/CompetitorAlternativePage.astro';
 import UseCaseAlternativePage from '../components/UseCaseAlternativePage.astro';
 import SeoGuidePage from '../components/SeoGuidePage.astro';
@@ -1090,19 +1091,12 @@ const breadcrumbSchema = model
         </div>
       </section>
 
-      <section class="qm-cta">
-        <div class="qm-shell qm-narrow reveal">
-          <p class="qm-kicker">Demander un accès</p>
-          <h2>Vous faites souvent ce type de devis ?</h2>
-          <p>
-            Chiffr vous aide à démarrer depuis une structure métier, avec les lignes utiles,
-            les prix à compléter, les photos chantier, le PDF premium, la signature, l’acompte
-            et les factures.
-          </p>
-
-          <a href="/contact" class="qm-btn primary">Demander un accès</a>
-        </div>
-      </section>
+      <AppShowcaseBand
+        title="Vous faites souvent ce type de devis ?"
+        text="Chiffr vous aide à démarrer depuis une structure métier, avec les lignes utiles, les prix à compléter, les photos chantier, le PDF premium, la signature, l’acompte et les factures."
+        image="/images/app/app-devis-desktop.webp"
+        alt="Liste des devis Chiffr : statuts, montants et relances"
+      />
 
       <section class="qm-section">
         <div class="qm-shell qm-narrow">

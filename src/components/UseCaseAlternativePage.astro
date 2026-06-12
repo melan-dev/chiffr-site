@@ -1,6 +1,7 @@
 ---
 import PageHeroVisual from './visuals/PageHeroVisual.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AppShowcaseBand from './AppShowcaseBand.astro';
 import type { UseCaseAlternativePage as UseCaseAlternativeData } from '../data/useCaseAlternatives';
 
 interface Props {
@@ -880,18 +881,10 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <section class="usecase-cta">
-      <div class="usecase-shell usecase-narrow">
-        <p class="usecase-kicker">Demander un accès</p>
-        <h2>Vous voulez un outil plus guidé pour vos devis énergie ?</h2>
-        <p>
-          Chiffr vous aide à partir d’un modèle métier, ajouter vos lignes, joindre vos photos,
-          générer un PDF premium, faire signer, demander un acompte et facturer.
-        </p>
-
-        <a href="/contact" class="usecase-btn primary">Demander un accès</a>
-      </div>
-    </section>
+    <AppShowcaseBand
+      title="Vous voulez un outil plus guidé pour vos devis énergie ?"
+      text="Chiffr vous aide à partir d’un modèle métier, ajouter vos lignes, joindre vos photos, générer un PDF premium, faire signer, demander un acompte et facturer."
+    />
 
     <section class="usecase-section">
       <div class="usecase-shell usecase-narrow">
