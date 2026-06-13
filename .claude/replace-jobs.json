@@ -1,0 +1,18 @@
+{
+  "_methode": "Pour chaque image : 1) mesurer les 4 BORDS aux profils de luminosité pixel (B<70 = contour, C>185 = écran) — horizontaux pour gauche/droite, VERTICAUX pour haut/bas ; ne JAMAIS déduire un bord par parallélisme, la perspective rend les pentes différentes. Attention : le contenu sombre de l'ancienne UI (photos, panneaux, hero) est indistinguable du contour par luminosité — dans ce cas se fier au liseré du contour visible au zoom 1:1. 2) process-screen.cjs détecte automatiquement (transitions sombre→clair + Theil-Sen) ; vérifier les comptes d'inliers — un bord < 50 % d'inliers doit être re-mesuré à la main et passé via job.corners. 3) composer, zoomer sur les 4 bords, écrire vers un temp puis Move-Item (le serveur de dev verrouille les webp ; récupérer un original via cmd /c git cat-file blob — la redirection PowerShell corrompt le binaire).",
+  "_resultat_2026_06_13": "8 images remplacées par les vraies captures de l'app, 4 laissées telles quelles (volontairement).",
+  "jobs": [
+    { "photo": "ui-acompte-mobile-chantier.webp", "screen": "app-mobile-devis.webp", "statut": "FAIT", "corners": { "tl": [884, 286], "tr": [1117, 318], "br": [1008, 856], "bl": [774, 808] } },
+    { "photo": "ui-facturation-laptop-facture.webp", "screen": "app-suivi-desktop.webp", "statut": "FAIT (détection auto)", "corners": { "tl": [523, 319], "tr": [1178, 345], "br": [1154, 785], "bl": [500, 741] } },
+    { "photo": "ui-tarifs-laptop-bureau.webp", "screen": "app-accueil-desktop.webp", "statut": "FAIT (détection auto)", "corners": { "tl": [557, 276], "tr": [1311, 315], "br": [1252, 823], "bl": [492, 750] } },
+    { "photo": "ui-tarifs-bureau-premium.webp", "screen": "app-planning-desktop.webp", "statut": "FAIT (détection auto)", "corners": { "tl": [590, 378], "tr": [1203, 382], "br": [1176, 802], "bl": [556, 761] } },
+    { "photo": "ui-modeles-devis-laptop.webp", "screen": "app-devis-desktop.webp", "statut": "FAIT (bord bas aligné sur la bannière flottante du mockup ; micro-résidu de pagination crème accepté)", "corners": { "tl": [496, 169], "tr": [1142, 202], "br": [1079, 706], "bl": [444, 616] } },
+    { "photo": "ui-signature-client-tablette.webp", "screen": "app-devis-desktop.webp", "statut": "FAIT (détection auto)", "corners": { "tl": [471, 634], "tr": [787, 614], "br": [850, 845], "bl": [529, 880] } },
+    { "photo": "ui-contact-guides-tablette.webp", "screen": "app-clients-desktop.webp", "statut": "FAIT (bord bas mesuré à la main — l'ancienne UI avait une photo sombre en bas d'écran)", "corners": { "tl": [242, 472], "tr": [772, 453], "br": [866, 925], "bl": [315, 950] } },
+    { "photo": "ui-home-tablette-pac.webp", "screen": "app-accueil-desktop.webp", "statut": "FAIT (bord haut mesuré au liseré — hero sombre de l'ancienne UI en haut-droit)", "corners": { "tl": [592, 577], "tr": [1122, 535], "br": [1079, 958], "bl": [543, 900] } },
+    { "photo": "ui-guides-tablette-atelier.webp", "statut": "LAISSÉE : tablette vue de dos, aucun écran visible" },
+    { "photo": "ui-plaque-machine-photo.webp", "statut": "LAISSÉE : l'écran montre un viseur photo (feature plaque machine), pas l'ancien site" },
+    { "photo": "ui-scan-catalogue-mobile.webp", "statut": "LAISSÉE : l'écran montre l'UI de scan EAN (feature scan), pas l'ancien site — une liste catalogue serait moins juste" },
+    { "photo": "ui-guides-salle-technique.webp", "statut": "LAISSÉE : écran minuscule et très incliné, contenu illisible à la taille d'affichage, remplacement risqué sans gain" }
+  ]
+}
