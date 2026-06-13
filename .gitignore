@@ -25,4 +25,9 @@ pnpm-debug.log*
 
 # claude tooling
 .claude/shots/
+.claude/job-screen.json
+.claude/jobs-ui-*.json
+
+# garde-fou : la prospection vit dans ../chiffr-prospection, jamais dans ce repo
+prospection/
 
