@@ -54,7 +54,7 @@ const defaultRelatedLinks: AlternativeLink[] = [
 ];
 
 const defaultChiffrDifferences = [
-  'Onboarding métier : l’artisan choisit ses spécialités et Chiffr adapte modèles, catalogue, wording et prochaines actions.',
+  'Mise en route métier : l’artisan choisit ses spécialités et Chiffr adapte modèles, catalogue, textes et prochaines actions.',
   'Modèles métier orientés PAC, climatisation, chauffage, CVC, VMC, chauffe-eau thermodynamique, IRVE et solaire.',
   'Lignes fréquentes déjà prêtes : matériel, main-d’œuvre, raccordements, protections, mise en service, options et contrôles.',
   'Photos chantier, photo plaque machine, scan EAN et catalogue adapté pour garder un dossier client propre.',

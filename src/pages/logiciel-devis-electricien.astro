@@ -1,0 +1,229 @@
+---
+import TradeLanding from '../components/TradeLanding.astro';
+
+const page = {
+  "title": "Logiciel devis électricien | Devis installation & rénovation électrique | Chiffr",
+  "description": "Logiciel de devis électricien : mise aux normes du tableau, installation, dépannage, borne de recharge IRVE et raccordement photovoltaïque. Lignes par postes, photos chantier, signature, acompte et factures.",
+  "canonicalPath": "/logiciel-devis-electricien",
+  "pill": "Logiciel devis électricien",
+  "h1": "Le logiciel de devis de l’électricien, du tableau à la borne",
+  "lead": "Tableau électrique, mise aux normes, installation complète, dépannage, borne de recharge ou raccordement photovoltaïque : vos lignes se devisent par postes, point par point. Photos chantier, signature, acompte et facture restent dans le même dossier client.",
+  "checks": [
+    "Tableau et mise aux normes",
+    "Installation neuf / rénovation",
+    "Borne de recharge IRVE",
+    "Raccordement photovoltaïque",
+    "Acompte et factures"
+  ],
+  "appTitle": "Électricien",
+  "appSubtitle": "Modèle métier préparé",
+  "appBadgeLabel": "Base",
+  "appBadgeValue": "Élec",
+  "appStripLabel": "Chantier type",
+  "appStripText": "Relevé existant → reprise tableau → protection dédiée → câblage → délestage → mise en service → signature → acompte → facture",
+  "appSteps": [
+    {
+      "title": "Relevé de l’existant",
+      "text": "Tableau en place, nombre de circuits, protections, section d’arrivée, monophasé ou triphasé, état des gaines et accès.",
+      "status": "relevé"
+    },
+    {
+      "title": "Tableau et protections",
+      "text": "Disjoncteurs, protections différentielles, répartition des circuits, mise aux normes et réorganisation du tableau.",
+      "status": "à chiffrer"
+    },
+    {
+      "title": "Points et circuits",
+      "text": "Points lumineux, prises, circuits dédiés, câblage, gaines, appareillage et liaisons par pièce.",
+      "status": "à chiffrer"
+    },
+    {
+      "title": "Borne ou raccordement",
+      "text": "Pose de borne de recharge, protection dédiée, délestage, raccordement photovoltaïque ou circuit spécialisé.",
+      "status": "à vérifier"
+    },
+    {
+      "title": "Mise en service",
+      "text": "Vérifications, essais, mise sous tension, dossier final et préparation des éléments pour le Consuel.",
+      "status": "ensuite"
+    },
+    {
+      "title": "Validation client",
+      "text": "PDF premium, photos visibles, signature, acompte, facture de solde et relance.",
+      "status": "ensuite"
+    }
+  ],
+  "appMini": [
+    {
+      "label": "Photos",
+      "value": "Tableau / gaines"
+    },
+    {
+      "label": "Client",
+      "value": "Signature"
+    },
+    {
+      "label": "Suivi",
+      "value": "Acompte + solde"
+    }
+  ],
+  "problemTitle": "Un devis électrique flou peut faire douter le client sur ce qu’il paie vraiment.",
+  "problemText": "Une installation électrique ne se résume pas à « fourniture et pose ». Il faut souvent détailler la reprise du tableau, les protections, les circuits, les points, les gaines, la borne de recharge, le délestage, la mise en service et les éléments à préparer pour le Consuel. Sans structure, le devis devient vague et long à monter.",
+  "solutionTitle": "Chiffr prépare une structure de devis électrique carrée, poste par poste.",
+  "solutionText": "Selon le métier choisi, Chiffr met en avant les postes fréquents d’un chantier électrique, les actions utiles après envoi du devis et les éléments de suivi client. L’électricité se devise bien par lignes (points, circuits, protections, tableau) : vous partez d’une base claire et gardez la main sur les prix.",
+  "quoteKicker": "Lignes de devis électricien",
+  "quoteTitle": "Les postes à ne pas oublier dans un devis électrique",
+  "quoteIntro": "La page aide à structurer les lignes que le client doit comprendre : relevé, tableau, protections, circuits, points, borne de recharge, raccordement et suivi administratif.",
+  "quoteLines": [
+    {
+      "title": "Relevé et préparation",
+      "text": "État de l’existant, photos du tableau, repérage des circuits, section d’arrivée, monophasé ou triphasé, accès et contraintes."
+    },
+    {
+      "title": "Tableau électrique et mise aux normes",
+      "text": "Reprise ou remplacement du tableau, organisation des départs, repérage, protection différentielle et disjoncteurs adaptés."
+    },
+    {
+      "title": "Circuits et points",
+      "text": "Points lumineux, prises, circuits dédiés, attentes, appareillage et liaisons, comptés par pièce ou par zone."
+    },
+    {
+      "title": "Câblage et passage de gaines",
+      "text": "Câbles, gaines, saignées, encastrement ou apparent, cheminements et réservations selon le type de bâti."
+    },
+    {
+      "title": "Borne de recharge (IRVE)",
+      "text": "Borne de recharge 7 ou 22 kW, protection dédiée, délestage, câblage, support et mise en service de la borne."
+    },
+    {
+      "title": "Raccordement photovoltaïque",
+      "text": "Circuit dédié, protections, coffret, liaison au tableau et raccordement de l’installation photovoltaïque selon le projet."
+    },
+    {
+      "title": "Mise en service et Consuel",
+      "text": "Vérifications, essais, mise sous tension et préparation des éléments à faire figurer pour la démarche Consuel."
+    },
+    {
+      "title": "Acompte, solde et factures",
+      "text": "Demande d’acompte, facture d’acompte, facture de solde ou finale, reste à encaisser et relance."
+    }
+  ],
+  "featuresKicker": "Fonctions utiles",
+  "featuresTitle": "Un logiciel devis électricien qui suit aussi l’après-devis",
+  "featuresIntro": "Chiffr ne s’arrête pas à la création du PDF. Le devis devient un dossier vivant : photos, signature, paiement, factures et relances restent reliés au client.",
+  "features": [
+    {
+      "title": "Modèles électricien",
+      "text": "Bases adaptées au tableau et à la mise aux normes, à l’installation neuf ou rénovation, à la borne de recharge et au raccordement photovoltaïque."
+    },
+    {
+      "title": "Catalogue adapté",
+      "text": "Retrouvez vos fournitures, protections, points, prestations et accessoires récurrents sans tout ressaisir à chaque chantier."
+    },
+    {
+      "title": "Photos chantier",
+      "text": "Ajoutez le tableau existant, les gaines, l’emplacement de la borne, l’arrivée ou l’accès pour justifier les lignes techniques."
+    },
+    {
+      "title": "PDF premium",
+      "text": "Un devis clair, lisible, rassurant, avec les lignes utiles et une présentation professionnelle."
+    }
+  ],
+  "usecaseTitle": "Cas fréquents pour les électriciens",
+  "usecaseIntro": "Les devis électriques varient beaucoup selon l’existant et le projet. Chiffr aide à garder une structure claire pour chaque configuration.",
+  "useCases": [
+    {
+      "title": "Mise aux normes du tableau",
+      "text": "Relevé, reprise du tableau, protections différentielles, disjoncteurs, repérage des circuits et mise en service."
+    },
+    {
+      "title": "Installation complète",
+      "text": "Logement neuf ou rénové : points lumineux, prises, circuits dédiés, câblage, gaines, tableau et mise en service."
+    },
+    {
+      "title": "Pose de borne de recharge",
+      "text": "Borne 7 ou 22 kW, protection dédiée, délestage, câblage, support et mise en service de la borne."
+    },
+    {
+      "title": "Dépannage et reprise",
+      "text": "Intervention ponctuelle, remplacement de protection, reprise de circuit, diagnostic et remise en état."
+    }
+  ],
+  "photoTitle": "Des photos chantier qui rendent le devis électrique plus crédible",
+  "photoIntro": "Les photos évitent les oublis et rassurent le client : l’électricien montre ce qui justifie les lignes techniques du devis.",
+  "photoItems": [
+    "Tableau électrique existant et repérage des circuits",
+    "Arrivée, section et type d’alimentation (mono / tri)",
+    "Gaines, cheminements et accès",
+    "Emplacement de la borne ou point de raccordement"
+  ],
+  "internalTitle": "Continuez avec les pages liées aux devis électriques",
+  "internalIntro": "Renforcez le parcours avec les bornes de recharge, le photovoltaïque, les modèles, les fonctionnalités et les tarifs.",
+  "internalLinks": [
+    {
+      "label": "Logiciel devis IRVE (bornes de recharge)",
+      "href": "/logiciel-devis-irve"
+    },
+    {
+      "label": "Logiciel devis photovoltaïque",
+      "href": "/logiciel-devis-photovoltaique"
+    },
+    {
+      "label": "Explorer les modèles de devis",
+      "href": "/modeles-devis"
+    },
+    {
+      "label": "Voir les fonctionnalités",
+      "href": "/fonctionnalites"
+    },
+    {
+      "label": "Voir les tarifs Chiffr",
+      "href": "/tarifs"
+    }
+  ],
+  "ctaTitle": "Préparer vos devis électriques avec une base métier plus claire",
+  "ctaText": "Essayez Chiffr gratuitement pour découvrir une approche plus spécialisée des devis électriciens, avec modèles, photos, signature, acompte et factures.",
+  "faqTitle": "Logiciel devis électricien : questions fréquentes",
+  "faqs": [
+    {
+      "question": "Quel logiciel utiliser pour faire un devis électricien ?",
+      "answer": "Un électricien a intérêt à utiliser un logiciel capable de gérer les modèles métier, les lignes par postes (tableau, protections, circuits, points), les photos chantier, la signature, l’acompte et la facturation. Chiffr, issu de l’univers énergie, prépare ce type de devis et couvre aussi la borne de recharge et le raccordement photovoltaïque."
+    },
+    {
+      "question": "Chiffr gère-t-il les devis de borne de recharge (IRVE) et de photovoltaïque ?",
+      "answer": "Oui. Chiffr aide à structurer les lignes d’une pose de borne de recharge 7 ou 22 kW (protection dédiée, délestage, câblage, mise en service) et celles d’un raccordement photovoltaïque. Ces univers énergie font partie du quotidien de l’électricien."
+    },
+    {
+      "question": "Chiffr donne-t-il des prix automatiques pour les chantiers électriques ?",
+      "answer": "Chiffr aide à structurer les postes et le catalogue. Les prix restent sous le contrôle de l’électricien afin de respecter ses fournisseurs, ses marges et les contraintes réelles du chantier."
+    },
+    {
+      "question": "Chiffr gère-t-il les normes électriques et le Consuel ?",
+      "answer": "Chiffr aide à structurer le devis et à faire figurer les éléments utiles, mais ne se substitue pas aux normes en vigueur ni à la démarche Consuel. Les règles et conditions évoluent : elles restent à vérifier auprès des organismes compétents."
+    },
+    {
+      "question": "Peut-on joindre des photos au devis électrique ?",
+      "answer": "Oui. Les photos peuvent documenter le tableau existant, l’arrivée et le type d’alimentation, les gaines, les cheminements, l’accès ou l’emplacement de la borne."
+    },
+    {
+      "question": "Chiffr remplace-t-il l’expertise de l’électricien ?",
+      "answer": "Non. Chiffr prépare la structure et les actions utiles, mais l’électricien garde la main sur les choix techniques, les quantités, les prix et les mentions adaptées au chantier."
+    }
+  ],
+  "chantierType": {
+    "title": "Mise aux normes du tableau et pose d’une borne de recharge 7 kW",
+    "intro": "Une maison individuelle dont le tableau est à reprendre, avec l’ajout d’une borne de recharge 7 kW. Voici comment les postes peuvent s’enchaîner dans le devis, du relevé à la mise en service.",
+    "steps": [
+      "Relevé de l’existant : tableau en place, circuits, type d’alimentation (monophasé ou triphasé), section d’arrivée, accès et emplacement prévu pour la borne.",
+      "Reprise du tableau : réorganisation des départs, protections différentielles, disjoncteurs et repérage des circuits pour la mise aux normes.",
+      "Protection dédiée à la borne : circuit spécialisé, protection adaptée à la borne 7 kW et préparation du délestage.",
+      "Câblage et délestage : passage des câbles, raccordement de la borne, mise en place du délestage pour gérer la charge sur l’installation.",
+      "Mise en service : vérifications, essais, mise sous tension du tableau et de la borne, explications au client.",
+      "Préparation Consuel : rassembler les éléments à faire figurer pour la démarche Consuel, puis signature, acompte et facture de solde dans le même dossier."
+    ],
+    "note": "Exemple illustratif. Les postes, quantités, choix techniques, prix et démarches (normes, Consuel) restent à adapter au chantier réel et à valider auprès des organismes compétents."
+  }
+};
+---
+
+<TradeLanding {...page} />

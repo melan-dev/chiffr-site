@@ -71,6 +71,12 @@ interface Props {
   ctaText: string;
   faqTitle: string;
   faqs: FaqItem[];
+  chantierType?: {
+    title: string;
+    intro: string;
+    steps: string[];
+    note?: string;
+  };
 }
 
 const {
@@ -114,6 +120,7 @@ const {
   ctaText,
   faqTitle,
   faqs,
+  chantierType,
 } = Astro.props;
 
 const faqSchema = {
@@ -136,6 +143,10 @@ const visualStory = getVisualStoryByPath(canonicalPath);
 // Appliqué à la pastille du hero (point + filet), sans toucher au système
 // teal=action / cuivre=marque.
 const METIER_ACCENTS: Record<string, string> = {
+  'pac-air-air': '#C8702A',
+  'renovation-energetique': '#B96134',
+  'plombier-chauffagiste': '#C8702A',
+  'electricien': '#0E7C86',
   'pompe-a-chaleur': '#B96134',
   'climatisation': '#0E7C86',
   'chauffagiste': '#C8702A',
@@ -152,6 +163,10 @@ const metierAccent =
 // Mot-clé métier du H1 souligné cuivre (DA §15, « 1 accent par titre »).
 // Surlignage sûr : si le terme n'est pas dans le H1, on rend le titre tel quel.
 const METIER_TERMS: Record<string, string> = {
+  'pac-air-air': 'air/air',
+  'renovation-energetique': 'rénovation énergétique',
+  'plombier-chauffagiste': 'plombier-chauffagiste',
+  'electricien': 'électricien',
   'pompe-a-chaleur': 'pompe à chaleur',
   'climatisation': 'climatisation',
   'chauffagiste': 'chauffagistes',
@@ -166,6 +181,8 @@ const metierTerm =
 // Lead-magnet (audit conversion) : exemple de devis PDF du métier (rendu réel
 // de l'app). Repli pour les visiteurs pas encore prêts à s'inscrire.
 const EXEMPLE_MAP: Record<string, string> = {
+  'pac-air-air': 'pac',
+  'plombier-chauffagiste': 'chauffagiste',
   'pompe-a-chaleur': 'pac',
   'climatisation': 'climatisation',
   'chauffagiste': 'chauffagiste',
@@ -311,6 +328,24 @@ if (metierTerm) {
       </div>
     </div>
   </section>
+
+  {chantierType && (
+    <section class="section">
+      <div class="shell tl-chantier reveal">
+        <div class="tl-chantier-head">
+          <p class="kicker">Chantier type</p>
+          <h2>{chantierType.title}</h2>
+          <p>{chantierType.intro}</p>
+        </div>
+
+        <ol class="tl-chantier-steps">
+          {chantierType.steps.map((step) => <li>{step}</li>)}
+        </ol>
+
+        {chantierType.note && <p class="tl-chantier-note">{chantierType.note}</p>}
+      </div>
+    </section>
+  )}
 
   <section class="section">
     <div class="shell">
@@ -1875,6 +1910,89 @@ if (metierTerm) {
       color: #5F6673;
       font-size: 16px;
       line-height: 1.75;
+    }
+
+    /* ===== Chantier type (récit terrain) ===== */
+    .tl-chantier {
+      border-radius: 24px;
+      padding: clamp(28px, 4vw, 48px);
+      border: 1px solid rgba(12, 20, 32, 0.1);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(255, 252, 247, 0.72));
+      box-shadow: 0 18px 50px rgba(12, 20, 32, 0.07);
+    }
+
+    .tl-chantier-head {
+      max-width: 840px;
+    }
+
+    .tl-chantier-head h2 {
+      margin: 14px 0 0;
+      color: var(--teal);
+      font-size: clamp(30px, 3.4vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 650;
+    }
+
+    .tl-chantier-head p {
+      margin: 18px 0 0;
+      color: #5F6673;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .tl-chantier-steps {
+      margin: 26px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: ct;
+      display: grid;
+      gap: 10px;
+    }
+
+    .tl-chantier-steps li {
+      counter-increment: ct;
+      position: relative;
+      padding: 14px 16px 14px 58px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(12, 20, 32, 0.08);
+      color: var(--chiffr-text);
+      font-size: 15.5px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .tl-chantier-steps li::before {
+      content: counter(ct, decimal-leading-zero);
+      position: absolute;
+      left: 14px;
+      top: 12px;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--chiffr-teal-soft);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .tl-chantier-note {
+      margin: 18px 0 0;
+      color: var(--chiffr-text-soft);
+      font-size: 14px;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    @media (min-width: 760px) {
+      .tl-chantier-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     .reveal,

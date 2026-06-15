@@ -1,0 +1,233 @@
+---
+import TradeLanding from '../components/TradeLanding.astro';
+
+const page = {
+  "title": "Logiciel devis rénovation énergétique | Devis multi-postes artisan | Chiffr",
+  "description": "Logiciel de devis pour la rénovation énergétique d'ampleur : structurez un devis clair par lots (PAC, VMC, chauffe-eau thermodynamique, photovoltaïque, isolation), sous-totaux par poste, reste à charge et calendrier de paiement.",
+  "canonicalPath": "/logiciel-devis-renovation-energetique",
+  "pill": "Logiciel devis rénovation énergétique",
+  "h1": "Le devis de rénovation énergétique, sans s'emmêler les lots",
+  "lead": "PAC, VMC, chauffe-eau thermodynamique, photovoltaïque, isolation : quand vous coordonnez plusieurs postes sur un même chantier, le client doit comprendre chaque lot et ce qui reste à sa charge. Chiffr vous aide à structurer un devis lisible, poste par poste, avec sous-totaux et calendrier de paiement.",
+  "checks": [
+    "Devis multi-postes",
+    "Sous-totaux par lot",
+    "Reste à charge clair",
+    "Photos chantier",
+    "Acompte et factures"
+  ],
+  "appTitle": "Rénovation énergétique",
+  "appSubtitle": "Modèle multi-postes préparé",
+  "appBadgeLabel": "Base",
+  "appBadgeValue": "Multi-lots",
+  "appStripLabel": "Chantier type",
+  "appStripText": "Relevé global → lot chauffage/PAC → lot ventilation → lot eau chaude → lot isolation → récap par poste → calendrier de paiement",
+  "appSteps": [
+    {
+      "title": "Relevé global du logement",
+      "text": "État du logement, postes à traiter, contraintes d'accès, photos d'ensemble et informations client avant de répartir en lots.",
+      "status": "relevé"
+    },
+    {
+      "title": "Lot chauffage / PAC",
+      "text": "Dépose existant, unité extérieure, module hydraulique, raccordements et mise en service rassemblés dans un poste à part.",
+      "status": "à chiffrer"
+    },
+    {
+      "title": "Lot ventilation",
+      "text": "VMC double flux ou simple flux, réseau de gaines, bouches, caisson et mise en route, présentés comme un lot distinct.",
+      "status": "à chiffrer"
+    },
+    {
+      "title": "Lot eau chaude",
+      "text": "Chauffe-eau thermodynamique, dépose ballon, raccordements, évacuation des condensats et réglages dans leur propre poste.",
+      "status": "à vérifier"
+    },
+    {
+      "title": "Lot isolation",
+      "text": "Isolation des combles, des murs ou des planchers selon le chantier, en poste séparé pour rester lisible.",
+      "status": "selon chantier"
+    },
+    {
+      "title": "Récap et validation client",
+      "text": "Sous-totaux par lot, reste à charge, calendrier de paiement, PDF clair, signature et acompte dans le même dossier.",
+      "status": "ensuite"
+    }
+  ],
+  "appMini": [
+    {
+      "label": "Lecture",
+      "value": "Lot par lot"
+    },
+    {
+      "label": "Client",
+      "value": "Reste à charge"
+    },
+    {
+      "label": "Paiement",
+      "value": "Acompte + jalons"
+    }
+  ],
+  "problemTitle": "Sur une rénovation d'ampleur, un devis fourre-tout perd le client.",
+  "problemText": "Quand vous coordonnez plusieurs postes — PAC, VMC, chauffe-eau thermodynamique, photovoltaïque, isolation — tout mélanger dans une longue liste rend le devis illisible. Le client ne voit plus à quoi correspond chaque ligne, ni ce qui reste à sa charge une fois ses démarches d'aides faites. C'est souvent là que la confiance se fissure.",
+  "solutionTitle": "Chiffr vous aide à structurer un devis clair, lot par lot.",
+  "solutionText": "Plutôt qu'une page blanche, vous partez d'une structure par postes : un lot chauffage, un lot ventilation, un lot eau chaude, un lot isolation, chacun avec son sous-total. Le client lit le chantier comme vous le pensez. Vous gardez la main sur les prix ; Chiffr vous aide seulement à présenter le devis de façon lisible.",
+  "quoteKicker": "Lignes de devis rénovation énergétique",
+  "quoteTitle": "Les postes à structurer dans un devis de rénovation d'ampleur",
+  "quoteIntro": "L'idée n'est pas d'imposer un prix, mais d'aider à découper le chantier en lots que le client comprend, avec des sous-totaux et un récapitulatif clair. Vous adaptez chaque poste à la réalité du logement.",
+  "quoteLines": [
+    {
+      "title": "Relevé global et préparation",
+      "text": "État du logement, postes retenus, photos d'ensemble, contraintes d'accès, informations client et répartition prévisionnelle en lots."
+    },
+    {
+      "title": "Lot chauffage / pompe à chaleur",
+      "text": "Dépose de l'ancien générateur, unité extérieure, module hydraulique, raccordements, désembouage éventuel et mise en service, regroupés en un poste."
+    },
+    {
+      "title": "Lot ventilation (VMC)",
+      "text": "VMC double flux ou simple flux, caisson, réseau de gaines, bouches, raccordement électrique et mise en route, dans un lot dédié."
+    },
+    {
+      "title": "Lot eau chaude (chauffe-eau thermodynamique)",
+      "text": "Dépose du ballon existant, chauffe-eau thermodynamique, raccordements, évacuation des condensats et réglages, en poste séparé."
+    },
+    {
+      "title": "Lot photovoltaïque",
+      "text": "Modules, structure de pose, onduleur, câblage, coffret de protection et mise en service, présentés comme un lot à part entière."
+    },
+    {
+      "title": "Lot isolation",
+      "text": "Isolation des combles, des murs ou des planchers selon le chantier, avec fourniture et pose réparties par zone traitée."
+    },
+    {
+      "title": "Récapitulatif par poste et reste à charge",
+      "text": "Sous-totaux par lot, total du devis et présentation claire du reste à charge. L'éligibilité et le montant des aides sont à valider avec le client et les organismes."
+    },
+    {
+      "title": "Calendrier de paiement",
+      "text": "Acompte, jalons par phase de chantier et solde, posés dès le devis pour que le client sache quand et combien régler."
+    }
+  ],
+  "featuresKicker": "Fonctions utiles",
+  "featuresTitle": "Un logiciel de devis pensé pour les chantiers multi-postes",
+  "featuresIntro": "Sur une rénovation d'ampleur, le devis n'est qu'un début : photos, signature, acompte, jalons et factures restent reliés au même dossier client, du relevé à la dernière facture.",
+  "features": [
+    {
+      "title": "Devis par lots",
+      "text": "Découpez le chantier en postes clairs — chauffage, ventilation, eau chaude, isolation, photovoltaïque — chacun avec son sous-total."
+    },
+    {
+      "title": "Catalogue réutilisable",
+      "text": "Retrouvez vos fournitures et prestations récurrentes par poste sans tout ressaisir à chaque rénovation."
+    },
+    {
+      "title": "Photos chantier",
+      "text": "Documentez l'existant et chaque lot : ancien chauffage, combles, ballon, emplacement unité extérieure, tableau électrique."
+    },
+    {
+      "title": "Récap et factures suivies",
+      "text": "Sous-totaux par poste, acompte, factures de jalon et solde sont pensés dès le devis pour suivre un chantier qui dure."
+    }
+  ],
+  "usecaseTitle": "Cas fréquents en rénovation énergétique",
+  "usecaseIntro": "Chaque rénovation d'ampleur mélange les postes différemment. Chiffr vous aide à garder une structure lisible quelle que soit la combinaison de lots.",
+  "useCases": [
+    {
+      "title": "Rénovation complète d'un pavillon",
+      "text": "PAC, VMC double flux, chauffe-eau thermodynamique et isolation regroupés en lots, avec récapitulatif et reste à charge clair."
+    },
+    {
+      "title": "Chauffage + production solaire",
+      "text": "Lot pompe à chaleur et lot photovoltaïque présentés séparément, pour que le client lise chaque investissement à part."
+    },
+    {
+      "title": "Bouquet ventilation + eau chaude",
+      "text": "VMC et chauffe-eau thermodynamique posés ensemble, en deux lots distincts, avec leurs sous-totaux respectifs."
+    },
+    {
+      "title": "Chantier en plusieurs phases",
+      "text": "Lots échelonnés dans le temps, calendrier de paiement par phase et suivi des factures sur un dossier qui s'étale sur la durée."
+    }
+  ],
+  "photoTitle": "Des photos chantier qui rendent un devis multi-postes crédible",
+  "photoIntro": "Sur une rénovation d'ampleur, les photos évitent les oublis d'un lot à l'autre et rassurent le client : vous montrez ce qui justifie chaque poste du devis.",
+  "photoItems": [
+    "Vue d'ensemble du logement et état initial",
+    "Ancien chauffage et emplacement unité extérieure",
+    "Combles, murs ou planchers à isoler",
+    "Ballon existant, tableau électrique et accès"
+  ],
+  "internalTitle": "Continuez avec les pages métier liées à la rénovation énergétique",
+  "internalIntro": "Cette page chapeau relie vers les métiers dédiés. Approfondissez chaque lot et préparez la suite avec les pages ci-dessous.",
+  "internalLinks": [
+    {
+      "label": "Logiciel devis pompe à chaleur",
+      "href": "/logiciel-devis-pompe-a-chaleur"
+    },
+    {
+      "label": "Logiciel devis VMC",
+      "href": "/logiciel-devis-vmc"
+    },
+    {
+      "label": "Logiciel devis chauffe-eau thermodynamique",
+      "href": "/logiciel-devis-chauffe-eau-thermodynamique"
+    },
+    {
+      "label": "Logiciel devis photovoltaïque",
+      "href": "/logiciel-devis-photovoltaique"
+    },
+    {
+      "label": "Facturation électronique 2026 : ce qui change",
+      "href": "/facturation-electronique-2026-artisan"
+    },
+    {
+      "label": "Explorer les modèles de devis",
+      "href": "/modeles-devis"
+    }
+  ],
+  "ctaTitle": "Préparer vos devis de rénovation énergétique, lot par lot",
+  "ctaText": "Essayez Chiffr gratuitement pour structurer vos chantiers multi-postes : devis par lots, sous-totaux, reste à charge, calendrier de paiement, photos, signature et factures dans un seul dossier.",
+  "faqTitle": "Logiciel devis rénovation énergétique : questions fréquentes",
+  "faqs": [
+    {
+      "question": "Comment présenter un devis de rénovation énergétique avec plusieurs postes ?",
+      "answer": "Le plus lisible est de découper le chantier en lots — chauffage, ventilation, eau chaude, isolation, photovoltaïque — chacun avec son sous-total, puis un récapitulatif par poste. Chiffr vous aide à structurer ce type de devis multi-lots sans page blanche."
+    },
+    {
+      "question": "Chiffr calcule-t-il mes aides ou ma TVA pour la rénovation énergétique ?",
+      "answer": "Non. Chiffr vous aide à présenter un devis clair que vous pourrez utiliser dans vos démarches d'aides, mais l'éligibilité, les montants d'aides (MaPrimeRénov', parcours accompagné, CEE…) et les taux de TVA sont à valider avec le client, votre comptable et les organismes concernés. Ces conditions évoluent et ne sont jamais promises ici."
+    },
+    {
+      "question": "Peut-on faire apparaître le reste à charge sur le devis ?",
+      "answer": "Vous pouvez structurer le devis par lots avec des sous-totaux et présenter clairement le total et le reste à charge. Le montant réel des aides déduites dépend des démarches du client et reste à confirmer avec les organismes, pas avec Chiffr."
+    },
+    {
+      "question": "Et si je sous-traite une partie des lots ?",
+      "answer": "Vous pouvez organiser chaque lot dans le devis. En revanche, la sous-traitance et l'éventuelle autoliquidation de TVA dans le BTP sont à cadrer avec votre comptable selon votre situation : Chiffr ne tranche pas ces questions fiscales."
+    },
+    {
+      "question": "Chiffr donne-t-il des prix de référence pour la rénovation ?",
+      "answer": "Non. Chiffr vous aide à structurer les postes et à réutiliser votre catalogue, mais les prix restent sous votre contrôle pour respecter vos fournisseurs, vos marges et les contraintes réelles du chantier."
+    },
+    {
+      "question": "Cette page remplace-t-elle les pages métier dédiées ?",
+      "answer": "Non. C'est une page chapeau pour coordonner plusieurs postes. Pour le détail de chaque lot, suivez les liens vers les pages dédiées : pompe à chaleur, VMC, chauffe-eau thermodynamique et photovoltaïque."
+    }
+  ],
+  "chantierType": {
+    "title": "Une rénovation d'ampleur d'un pavillon, présentée en lots clairs",
+    "intro": "Un pavillon à rénover : pompe à chaleur air/eau, VMC double flux, chauffe-eau thermodynamique et isolation. Plutôt qu'une longue liste indigeste, vous présentez le chantier comme une suite de lots, chacun avec son sous-total et son rôle dans la rénovation.",
+    "steps": [
+      "Relevé global du logement : état de l'existant, postes retenus, contraintes d'accès et photos d'ensemble avant de répartir en lots.",
+      "Lot chauffage / PAC : dépose de l'ancien chauffage, unité extérieure air/eau, module hydraulique, raccordements et mise en service, regroupés en un sous-total.",
+      "Lot ventilation : VMC double flux, caisson, réseau de gaines et bouches, raccordement et mise en route, présentés comme un poste distinct.",
+      "Lot eau chaude : dépose du ballon existant, chauffe-eau thermodynamique, raccordements et évacuation des condensats, dans leur propre sous-total.",
+      "Lot isolation : isolation des combles et des zones prévues, fourniture et pose réparties par zone traitée.",
+      "Récapitulatif par poste et calendrier de paiement : sous-totaux par lot, total, reste à charge présenté clairement, puis acompte et jalons posés dès le devis."
+    ],
+    "note": "Exemple illustratif, pas un client réel : la combinaison de lots, les marques et les prix dépendent toujours du chantier. L'éligibilité aux aides (MaPrimeRénov', parcours accompagné, CEE…), leurs montants et les taux de TVA sont à valider avec le client, votre comptable et les organismes concernés."
+  }
+};
+---
+
+<TradeLanding {...page} />

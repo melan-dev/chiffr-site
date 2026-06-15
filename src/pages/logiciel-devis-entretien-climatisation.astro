@@ -1,0 +1,224 @@
+---
+import TradeLanding from '../components/TradeLanding.astro';
+
+const page = {
+  "title": "Logiciel devis entretien climatisation | Contrats d'entretien clim | Chiffr",
+  "description": "Logiciel de devis entretien climatisation pour artisans : visite annuelle, contrat reconductible, bon d'intervention, attestation, relances et factures dans un seul dossier client.",
+  "canonicalPath": "/logiciel-devis-entretien-climatisation",
+  "pill": "Logiciel devis entretien climatisation",
+  "h1": "L'entretien climatisation, du contrat annuel à la facture",
+  "lead": "Visite annuelle, contrôle d'étanchéité, nettoyage, attestation : vos lignes d'entretien clim sont déjà prêtes. Le devis sert à vendre un contrat reconductible, et la relance de la prochaine visite reste dans le même dossier client.",
+  "checks": [
+    "Visite annuelle",
+    "Contrat reconductible",
+    "Bon d'intervention",
+    "Relance prochaine visite",
+    "Attestation et factures"
+  ],
+  "appTitle": "Entretien clim",
+  "appSubtitle": "Modèle métier préparé",
+  "appBadgeLabel": "Base",
+  "appBadgeValue": "Entretien",
+  "appStripLabel": "Visite type",
+  "appStripText": "Visite annuelle → contrôles → nettoyage → attestation → contrat reconductible → relance → facture",
+  "appSteps": [
+    {
+      "title": "Parc et historique",
+      "text": "Unités intérieures et extérieures, type multisplit, dernière visite, fluide, accès et contraintes du site.",
+      "status": "relevé"
+    },
+    {
+      "title": "Prestations de visite",
+      "text": "Contrôle des performances, nettoyage et désinfection des unités, vérification des condensats et des filtres.",
+      "status": "à chiffrer"
+    },
+    {
+      "title": "Contrôles techniques",
+      "text": "Contrôle d'étanchéité du circuit frigorifique et vérification du fluide, selon vos obligations.",
+      "status": "à vérifier"
+    },
+    {
+      "title": "Contrat et reconduction",
+      "text": "Devis du contrat annuel, attestation d'entretien remise au client, signature et reconduction.",
+      "status": "ensuite"
+    },
+    {
+      "title": "Relance et facture",
+      "text": "Relance automatique de la prochaine visite, bon d'intervention et facture de la prestation.",
+      "status": "suivi"
+    }
+  ],
+  "appMini": [
+    {
+      "label": "Visite",
+      "value": "Annuelle planifiée"
+    },
+    {
+      "label": "Client",
+      "value": "Attestation"
+    },
+    {
+      "label": "Suivi",
+      "value": "Relance auto"
+    }
+  ],
+  "problemTitle": "Une visite d'entretien oubliée, c'est un client perdu et un chiffre d'affaires qui s'envole.",
+  "problemText": "L'entretien climatisation est un métier de récurrence : la vraie valeur n'est pas dans une visite isolée, mais dans le contrat annuel qui revient chaque année. Sans suivi clair, les prochaines visites passent à la trappe, les attestations s'oublient et les bons d'intervention se perdent.",
+  "solutionTitle": "Chiffr vous aide à structurer vos visites et à transformer chaque entretien en contrat reconductible.",
+  "solutionText": "Selon le métier choisi, Chiffr met en avant les prestations fréquentes d'une visite d'entretien, les éléments à remettre au client et la relance de la prochaine échéance. Le devis sert à vendre le contrat ; l'artisan garde la main sur les prix, mais part d'une base déjà claire.",
+  "quoteKicker": "Lignes de devis entretien",
+  "quoteTitle": "Les postes à ne pas oublier dans un devis d'entretien climatisation",
+  "quoteIntro": "La page aide à structurer les lignes que le client doit comprendre : visite, contrôles, nettoyage, contrat annuel et suivi administratif. Aucun prix imposé, vous gardez la main.",
+  "quoteLines": [
+    {
+      "title": "Visite annuelle et déplacement",
+      "text": "Prise de rendez-vous, déplacement, inspection visuelle des unités intérieures et extérieures, relevé de l'état du parc."
+    },
+    {
+      "title": "Contrôle des performances",
+      "text": "Vérification du fonctionnement, des températures, des débits, des sécurités et du bon comportement de l'installation."
+    },
+    {
+      "title": "Nettoyage et désinfection",
+      "text": "Nettoyage des filtres, des unités intérieures, des échangeurs, désinfection et vérification de l'évacuation des condensats."
+    },
+    {
+      "title": "Contrôle d'étanchéité et fluide",
+      "text": "Contrôle d'étanchéité du circuit frigorifique et vérification du fluide, selon vos obligations et le type d'installation."
+    },
+    {
+      "title": "Attestation d'entretien",
+      "text": "Compte rendu de visite, attestation remise au client et points de vigilance relevés pendant l'intervention."
+    },
+    {
+      "title": "Contrat annuel reconductible",
+      "text": "Proposition d'un contrat d'entretien annuel, conditions de reconduction, périmètre des unités couvertes et fréquence."
+    },
+    {
+      "title": "Travaux complémentaires",
+      "text": "Remplacement de pièces, recharge éventuelle, réglages ou prestations en plus relevés pendant la visite."
+    },
+    {
+      "title": "Bon d'intervention et facture",
+      "text": "Bon d'intervention signé, facture de la prestation, suivi du règlement et relance de la prochaine échéance."
+    }
+  ],
+  "featuresKicker": "Fonctions utiles",
+  "featuresTitle": "Un logiciel devis entretien clim pensé pour la récurrence",
+  "featuresIntro": "Chiffr ne s'arrête pas à la création du PDF. Le devis devient un dossier vivant : contrat, attestation, bon d'intervention, facture et relance de la prochaine visite restent reliés au client.",
+  "features": [
+    {
+      "title": "Modèles entretien",
+      "text": "Bases adaptées à la visite annuelle, au contrat reconductible et aux interventions sur installation multisplit."
+    },
+    {
+      "title": "Catalogue de prestations",
+      "text": "Retrouvez vos prestations de visite, contrôles et accessoires récurrents sans tout ressaisir à chaque client."
+    },
+    {
+      "title": "Relance de la prochaine visite",
+      "text": "Gardez la trace de la dernière intervention pour relancer la prochaine échéance et ne plus perdre de contrat."
+    },
+    {
+      "title": "Suivi du contrat",
+      "text": "Attestation, bon d'intervention, signature, facture et reconduction restent dans le même dossier client."
+    }
+  ],
+  "usecaseTitle": "Cas fréquents pour les artisans de l'entretien clim",
+  "usecaseIntro": "Les visites d'entretien varient selon le parc et le contrat. Chiffr aide à garder une structure claire pour chaque situation.",
+  "useCases": [
+    {
+      "title": "Première visite et vente du contrat",
+      "text": "Devis d'entretien, contrôles, attestation remise au client et proposition d'un contrat annuel reconductible."
+    },
+    {
+      "title": "Contrat multisplit reconduit",
+      "text": "Visite planifiée des unités, contrôles, nettoyage, bon d'intervention et reconduction du contrat pour l'année suivante."
+    },
+    {
+      "title": "Intervention avec travaux en plus",
+      "text": "Visite annuelle, relevé d'un défaut, devis de remplacement ou de réglage et facture des prestations complémentaires."
+    },
+    {
+      "title": "Relance d'une échéance",
+      "text": "Suivi client, message de relance de la prochaine visite, historique des interventions et prochain rendez-vous à caler."
+    }
+  ],
+  "photoTitle": "Des photos d'intervention qui rendent l'entretien plus crédible",
+  "photoIntro": "Les photos documentent l'état du parc et rassurent le client : l'artisan montre ce qui justifie les lignes de la visite et du contrat.",
+  "photoItems": [
+    "Unités intérieures avant et après nettoyage",
+    "Unité extérieure et état du circuit",
+    "Filtres, échangeurs et évacuation des condensats",
+    "Points de vigilance relevés pendant la visite"
+  ],
+  "internalTitle": "Continuez avec les pages liées à la climatisation",
+  "internalIntro": "Renforcez le parcours avec les métiers proches, les modèles de devis et les fonctionnalités de Chiffr.",
+  "internalLinks": [
+    {
+      "label": "Logiciel devis climatisation",
+      "href": "/logiciel-devis-climatisation"
+    },
+    {
+      "label": "Logiciel devis PAC air/air",
+      "href": "/logiciel-devis-pac-air-air"
+    },
+    {
+      "label": "Logiciel devis frigoriste / CVC",
+      "href": "/logiciel-devis-frigoriste-cvc"
+    },
+    {
+      "label": "Explorer les modèles de devis",
+      "href": "/modeles-devis"
+    },
+    {
+      "label": "Voir les fonctionnalités",
+      "href": "/fonctionnalites"
+    }
+  ],
+  "ctaTitle": "Transformer vos visites d'entretien clim en contrats reconductibles",
+  "ctaText": "Essayez Chiffr gratuitement pour découvrir une approche plus spécialisée des devis d'entretien climatisation, avec modèles, contrat reconductible, attestation, relance et factures.",
+  "faqTitle": "Logiciel devis entretien climatisation : questions fréquentes",
+  "faqs": [
+    {
+      "question": "Quel logiciel utiliser pour un devis d'entretien climatisation ?",
+      "answer": "Un artisan qui propose de l'entretien clim a intérêt à utiliser un logiciel capable de gérer la visite annuelle, le contrat reconductible, le bon d'intervention, l'attestation, la facture et la relance de la prochaine visite. Chiffr est pensé pour ce type de devis récurrent."
+    },
+    {
+      "question": "Chiffr aide-t-il à vendre un contrat d'entretien annuel ?",
+      "answer": "Oui. Le devis d'entretien sert souvent à proposer un contrat reconductible. Chiffr aide à structurer les prestations de la visite et le périmètre du contrat, mais l'artisan garde la main sur les conditions et les prix."
+    },
+    {
+      "question": "Chiffr gère-t-il la relance de la prochaine visite ?",
+      "answer": "Chiffr aide à garder la trace de la dernière intervention pour relancer la prochaine échéance. Le suivi reste dans le même dossier client, ce qui aide à ne plus perdre de contrat d'une année sur l'autre."
+    },
+    {
+      "question": "Chiffr s'occupe-t-il du contrôle d'étanchéité et des obligations réglementaires ?",
+      "answer": "Non. Chiffr vous aide à structurer vos visites et vos contrats, mais ne remplace pas la réglementation. Les contrôles d'étanchéité, la manipulation des fluides et les obligations d'entretien relèvent de règles précises : vérifiez ce qui s'applique à votre activité et à chaque installation."
+    },
+    {
+      "question": "Chiffr donne-t-il des prix automatiques pour l'entretien ?",
+      "answer": "Chiffr aide à structurer les postes et le catalogue de prestations. Les prix restent sous le contrôle de l'artisan afin de respecter ses fournisseurs, ses marges et les contraintes réelles de chaque site."
+    },
+    {
+      "question": "Peut-on joindre une attestation et un bon d'intervention ?",
+      "answer": "Oui. Le dossier client peut réunir le devis, l'attestation d'entretien, le bon d'intervention signé et la facture, pour garder une trace claire de chaque visite annuelle."
+    }
+  ],
+  "chantierType": {
+    "title": "Une visite d'entretien sur une clim multisplit",
+    "intro": "Voici comment se déroule une visite d'entretien annuel typique sur une installation multisplit, de l'arrivée sur site à la proposition d'un contrat reconductible. Exemple illustratif.",
+    "steps": [
+      "Arrivée sur site : relevé du parc (unités intérieures et extérieure), historique de la dernière visite et type d'installation multisplit.",
+      "Contrôle des performances : vérification du fonctionnement, des températures, des sécurités et du bon comportement de l'installation.",
+      "Nettoyage : filtres, unités intérieures et échangeurs, désinfection et vérification de l'évacuation des condensats.",
+      "Contrôle d'étanchéité du circuit frigorifique et vérification du fluide, selon les obligations qui s'appliquent à l'installation.",
+      "Attestation : compte rendu de visite et attestation d'entretien remises au client, avec les points de vigilance relevés.",
+      "Contrat : proposition d'un contrat annuel reconductible et relance calée pour la prochaine visite."
+    ],
+    "note": "Exemple illustratif. Les prestations, contrôles et obligations dépendent de l'installation et des règles en vigueur : vérifiez ce qui s'applique à votre activité."
+  }
+};
+---
+
+<TradeLanding {...page} />

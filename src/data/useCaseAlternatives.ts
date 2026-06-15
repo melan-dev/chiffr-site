@@ -504,7 +504,7 @@ export const useCaseAlternatives: UseCaseAlternativePage[] = [
       'Relance acompte ou paiement.',
       'Historique client.',
       'Suivi des statuts devis, signature, paiement et facture.',
-      'Dashboard métier pour voir quoi faire ensuite.',
+      'Suivi métier pour voir quoi faire ensuite.',
     ],
     energyUseCases: defaultEnergyUseCases,
     comparisonRows: defaultComparisonRows('Un logiciel de devis sans suivi client guidé'),

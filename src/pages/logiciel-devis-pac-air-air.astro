@@ -1,0 +1,229 @@
+---
+import TradeLanding from '../components/TradeLanding.astro';
+
+const page = {
+  "title": "Logiciel devis PAC air/air | Devis pompe à chaleur air-air | Chiffr",
+  "description": "Logiciel de devis PAC air/air pour installateurs : monosplit, multisplit, gainable, liaisons frigorifiques au mètre, mise en service, entretien, photos chantier, signature et acompte.",
+  "canonicalPath": "/logiciel-devis-pac-air-air",
+  "pill": "Logiciel devis PAC air/air",
+  "h1": "Le devis PAC air/air, du split réversible à la mise en service",
+  "lead": "Monosplit ou multisplit réversible, unités murales, console ou gainable, liaisons frigorifiques au mètre, alimentation dédiée et mise en service : vos lignes PAC air/air sont déjà prêtes. Photos chantier, signature, acompte et facture restent dans le même dossier client.",
+  "checks": [
+    "Monosplit / multisplit",
+    "Gainable et console",
+    "Liaisons frigo au mètre",
+    "Mise en service",
+    "Entretien annuel en option"
+  ],
+  "appTitle": "PAC air/air",
+  "appSubtitle": "Modèle métier préparé",
+  "appBadgeLabel": "Base",
+  "appBadgeValue": "Air/air",
+  "appStripLabel": "Chantier type",
+  "appStripText": "Visite → emplacement unités → matériel → liaisons frigo → alimentation → mise en service → signature → acompte → facture",
+  "appSteps": [
+    {
+      "title": "Relevé et emplacement",
+      "text": "Pièces à traiter, emplacement des unités intérieures et du groupe extérieur, accès, distances de liaison et contraintes.",
+      "status": "relevé"
+    },
+    {
+      "title": "Matériel air/air",
+      "text": "Groupe extérieur, unités intérieures murales, console ou gainable, supports et accessoires selon configuration.",
+      "status": "à chiffrer"
+    },
+    {
+      "title": "Liaisons frigorifiques",
+      "text": "Liaisons au mètre selon les distances, condensats, goulottes, percements et passage de gaines.",
+      "status": "à mesurer"
+    },
+    {
+      "title": "Alimentation dédiée",
+      "text": "Ligne électrique dédiée, protection, câblage et raccordement au tableau selon l'installation.",
+      "status": "à vérifier"
+    },
+    {
+      "title": "Mise en service",
+      "text": "Tirage au vide, mise sous fluide, essais, réglages, explications client et photos finales.",
+      "status": "ensuite"
+    },
+    {
+      "title": "Validation client",
+      "text": "PDF clair, photos visibles, signature, acompte, facture de solde et entretien annuel proposé.",
+      "status": "ensuite"
+    }
+  ],
+  "appMini": [
+    {
+      "label": "Photos",
+      "value": "Unités / liaisons"
+    },
+    {
+      "label": "Client",
+      "value": "Signature"
+    },
+    {
+      "label": "Suivi",
+      "value": "Acompte + solde"
+    }
+  ],
+  "problemTitle": "Un devis PAC air/air flou peut faire douter le client sur ce qui est vraiment inclus.",
+  "problemText": "Une PAC air/air, c'est une clim réversible qui chauffe et rafraîchit : ce n'est pas une simple fourniture posée. Il faut souvent détailler le nombre d'unités intérieures, le type (murale, console, gainable), les liaisons frigorifiques au mètre selon les distances, l'alimentation dédiée, la mise en service et l'entretien annuel. Sans cette clarté, le client compare mal et hésite.",
+  "solutionTitle": "Chiffr prépare une structure de devis air/air claire, sans page blanche.",
+  "solutionText": "Selon le métier choisi, Chiffr met en avant les postes fréquents d'une installation PAC air/air, en la distinguant bien de la PAC air/eau qui repose sur un réseau hydraulique. L'artisan garde la main sur les prix, mais part d'une base plus complète : matériel, liaisons au mètre, mise en service, entretien et suivi client.",
+  "quoteKicker": "Lignes de devis PAC air/air",
+  "quoteTitle": "Les postes à ne pas oublier dans un devis PAC air/air",
+  "quoteIntro": "La page aide à structurer les lignes que le client doit comprendre : matériel, pose, liaisons frigorifiques, alimentation, mise en service et suivi. Les exemples montrent des structures de lignes, pas des tarifs.",
+  "quoteLines": [
+    {
+      "title": "Visite et emplacement des unités",
+      "text": "Pièces à traiter, choix mono ou multisplit, emplacement des unités intérieures et du groupe extérieur, accès, photos et contraintes."
+    },
+    {
+      "title": "Groupe extérieur",
+      "text": "Unité extérieure, support mural ou sur plots, fixation, console de sol selon configuration et accessoires de pose."
+    },
+    {
+      "title": "Unités intérieures",
+      "text": "Unités murales, console ou gainable selon les pièces, supports, habillage et raccordement des condensats."
+    },
+    {
+      "title": "Liaisons frigorifiques",
+      "text": "Liaisons frigorifiques au mètre selon les distances entre unités, goulottes, percements, calorifuge et évacuation des condensats."
+    },
+    {
+      "title": "Alimentation électrique dédiée",
+      "text": "Ligne dédiée, protection, disjoncteur, câblage, passage de gaine et raccordement au tableau si nécessaire."
+    },
+    {
+      "title": "Mise en service",
+      "text": "Tirage au vide, mise sous fluide (charge de fluide), essais de fonctionnement chaud et froid, réglages, paramétrage et explications client."
+    },
+    {
+      "title": "Mention COP / SCOP",
+      "text": "Possibilité de faire figurer les performances annoncées du matériel (COP, SCOP) sur le devis pour informer le client."
+    },
+    {
+      "title": "Entretien annuel et factures",
+      "text": "Entretien annuel proposé en option, demande d'acompte, facture d'acompte, facture de solde ou finale et reste à encaisser."
+    }
+  ],
+  "featuresKicker": "Fonctions utiles",
+  "featuresTitle": "Un logiciel devis PAC air/air qui suit aussi l'après-devis",
+  "featuresIntro": "Chiffr ne s'arrête pas à la création du PDF. Le devis devient un dossier vivant : photos, signature, paiement, factures, entretien et relances restent reliés au client.",
+  "features": [
+    {
+      "title": "Modèles air/air",
+      "text": "Bases adaptées aux installations monosplit, multisplit, gainable ou console réversibles, distinctes de la PAC air/eau."
+    },
+    {
+      "title": "Liaisons au mètre",
+      "text": "Chiffrez les liaisons frigorifiques au mètre selon les distances réelles entre unités, sans tout ressaisir à chaque chantier."
+    },
+    {
+      "title": "Photos chantier",
+      "text": "Ajoutez l'emplacement des unités intérieures, du groupe extérieur, des liaisons, du tableau et des plaques machine."
+    },
+    {
+      "title": "Signature et acompte",
+      "text": "Faites valider le devis, demandez un acompte et gardez le suivi de la mise en service dans le même dossier client."
+    }
+  ],
+  "usecaseTitle": "Cas fréquents pour les artisans PAC air/air",
+  "usecaseIntro": "Les devis air/air varient selon le nombre de pièces et les distances. Chiffr aide à garder une structure claire pour chaque configuration.",
+  "useCases": [
+    {
+      "title": "Monosplit réversible une pièce",
+      "text": "Une unité intérieure, un groupe extérieur, liaison frigorifique au mètre, alimentation dédiée et mise en service."
+    },
+    {
+      "title": "Multisplit plusieurs pièces",
+      "text": "Plusieurs unités intérieures sur un même groupe extérieur, liaisons selon les distances, condensats et mise en service globale."
+    },
+    {
+      "title": "Gainable ou console",
+      "text": "Unité gainable en faux plafond ou console de sol, réseau de distribution, grilles, habillage et raccordements."
+    },
+    {
+      "title": "Entretien annuel proposé",
+      "text": "Contrat d'entretien annuel proposé en option après installation, avec suivi client, relance et historique des actions."
+    }
+  ],
+  "photoTitle": "Des photos chantier qui rendent le devis air/air plus crédible",
+  "photoIntro": "Les photos évitent les oublis et rassurent le client : l'artisan montre les emplacements, les distances et ce qui justifie les lignes techniques du devis.",
+  "photoItems": [
+    "Emplacement des unités intérieures",
+    "Groupe extérieur et support",
+    "Tracé des liaisons frigorifiques et condensats",
+    "Tableau électrique et plaque machine"
+  ],
+  "internalTitle": "Continuez avec les pages liées aux devis PAC air/air",
+  "internalIntro": "Renforcez le parcours avec la climatisation, la PAC air/eau, l'entretien, les modèles et les fonctionnalités.",
+  "internalLinks": [
+    {
+      "label": "Logiciel devis climatisation",
+      "href": "/logiciel-devis-climatisation"
+    },
+    {
+      "label": "Logiciel devis pompe à chaleur (air/eau)",
+      "href": "/logiciel-devis-pompe-a-chaleur"
+    },
+    {
+      "label": "Entretien climatisation",
+      "href": "/logiciel-devis-entretien-climatisation"
+    },
+    {
+      "label": "Explorer les modèles de devis",
+      "href": "/modeles-devis"
+    },
+    {
+      "label": "Voir les fonctionnalités",
+      "href": "/fonctionnalites"
+    }
+  ],
+  "ctaTitle": "Préparer vos devis PAC air/air avec une base métier plus claire",
+  "ctaText": "Essayez Chiffr gratuitement pour découvrir une approche plus spécialisée des devis air/air, avec modèles, liaisons au mètre, photos, signature, acompte, factures et entretien.",
+  "faqTitle": "Logiciel devis PAC air/air : questions fréquentes",
+  "faqs": [
+    {
+      "question": "Quelle différence entre une PAC air/air et une PAC air/eau dans le devis ?",
+      "answer": "La PAC air/air est une clim réversible qui chauffe et rafraîchit l'air directement, avec des unités intérieures et des liaisons frigorifiques. La PAC air/eau alimente un réseau hydraulique (radiateurs, plancher chauffant, ballon). Chiffr propose des bases distinctes pour ne pas mélanger les deux dans le devis."
+    },
+    {
+      "question": "Comment chiffrer les liaisons frigorifiques dans Chiffr ?",
+      "answer": "Vous pouvez prévoir une ligne de liaison frigorifique au mètre et ajuster la quantité selon les distances réelles entre les unités intérieures et le groupe extérieur. L'artisan garde la main sur les quantités et les prix."
+    },
+    {
+      "question": "Peut-on faire figurer la mise en service et le COP/SCOP sur le devis ?",
+      "answer": "Oui. Vous pouvez détailler la mise en service (tirage au vide, mise sous fluide, essais, réglages) comme une ligne du devis et faire figurer les performances annoncées du matériel, comme le COP ou le SCOP, pour informer le client."
+    },
+    {
+      "question": "Chiffr gère-t-il l'entretien annuel proposé après l'installation ?",
+      "answer": "Vous pouvez proposer l'entretien annuel en option et le suivre dans le dossier client, avec relance et historique. Pour les aides éventuelles, la TVA réduite ou un statut RGE, Chiffr aide à structurer et à faire figurer les éléments, mais les conditions sont à valider avec votre comptable et les organismes concernés."
+    },
+    {
+      "question": "Chiffr donne-t-il des prix automatiques pour les PAC air/air ?",
+      "answer": "Non. Chiffr aide à structurer les postes et le catalogue. Les prix restent sous le contrôle de l'artisan afin de respecter ses fournisseurs, ses marges et les contraintes réelles du chantier."
+    },
+    {
+      "question": "Chiffr remplace-t-il l'expertise de l'installateur ?",
+      "answer": "Non. Chiffr prépare la structure et les actions utiles, mais l'artisan garde la main sur les choix techniques, le dimensionnement, les quantités, les prix et les mentions adaptées au chantier."
+    }
+  ],
+  "chantierType": {
+    "title": "Exemple : un multisplit réversible 3 unités dans un pavillon",
+    "intro": "Pour illustrer la structure d'un devis air/air, voici le déroulé d'un multisplit réversible avec trois unités intérieures raccordées à un seul groupe extérieur. C'est un exemple de configuration, pas un tarif ni un chantier réel.",
+    "steps": [
+      "Relevé des trois pièces à traiter (séjour, deux chambres) et choix des unités intérieures murales.",
+      "Emplacement du groupe extérieur sur support, en tenant compte de l'accès et des distances vers chaque pièce.",
+      "Matériel : un groupe extérieur multisplit et trois unités intérieures avec supports et habillage.",
+      "Liaisons frigorifiques au mètre selon les distances propres à chaque unité, plus l'évacuation des condensats.",
+      "Alimentation électrique dédiée du groupe extérieur, protection et raccordement au tableau.",
+      "Mise en service : tirage au vide, mise sous fluide, essais chaud et froid, réglages, puis entretien annuel proposé en option."
+    ],
+    "note": "Exemple illustratif servant à montrer la structure des lignes d'un devis. Ce n'est pas un vrai chantier Chiffr ni une grille de prix."
+  }
+};
+---
+
+<TradeLanding {...page} />
