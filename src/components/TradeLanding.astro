@@ -77,6 +77,7 @@ interface Props {
     steps: string[];
     note?: string;
   };
+  comingSoon?: boolean;
 }
 
 const {
@@ -121,6 +122,7 @@ const {
   faqTitle,
   faqs,
   chantierType,
+  comingSoon,
 } = Astro.props;
 
 const faqSchema = {
@@ -213,7 +215,10 @@ if (metierTerm) {
   <section class="hero trade-hero-simple" style={`--metier-accent: ${metierAccent}`}>
     <div class="shell hero-grid trade-hero-simple-grid">
       <div class="hero-copy reveal">
-        <p class="pill">{pill}</p>
+        <p class="pill">
+          {pill}
+          {comingSoon && <span class="soon-badge">Bientôt</span>}
+        </p>
 
         <h1>
           {h1Parts ? (
@@ -225,8 +230,15 @@ if (metierTerm) {
 
         <p class="lead">{lead}</p>
 
+        {comingSoon && (
+          <p class="soon-note">
+            <strong>Bientôt dans Chiffr.</strong> Le préréglage métier {appTitle.toLowerCase()} arrive prochainement.
+            Chiffr est déjà disponible pour les métiers de l’énergie — créez votre compte et nous vous préviendrons dès que ce métier est prêt.
+          </p>
+        )}
+
         <div class="actions">
-          <a class="btn primary" href={APP_URL}>Créer mon devis {appTitle}</a>
+          <a class="btn primary" href={APP_URL}>{comingSoon ? 'Créer mon compte Chiffr' : `Créer mon devis ${appTitle}`}</a>
           <a class="btn secondary" href="#lignes-devis">Voir les lignes à prévoir</a>
         </div>
 
@@ -546,7 +558,7 @@ if (metierTerm) {
         <h2>{ctaTitle}</h2>
         <p>{ctaText}</p>
         <div class="actions">
-          <a class="btn light" href={APP_URL}>Créer mon devis {appTitle}</a>
+          <a class="btn light" href={APP_URL}>{comingSoon ? 'Créer mon compte Chiffr' : `Créer mon devis ${appTitle}`}</a>
           <a class="btn ghost" href="/fonctionnalites">Voir les fonctionnalités</a>
         </div>
 
@@ -1910,6 +1922,37 @@ if (metierTerm) {
       color: #5F6673;
       font-size: 16px;
       line-height: 1.75;
+    }
+
+    /* ===== Bientôt disponible ===== */
+    .soon-badge {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 8px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--chiffr-copper);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .soon-note {
+      margin: 22px 0 0;
+      max-width: 640px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--chiffr-copper-soft);
+      background: var(--chiffr-cream);
+      color: var(--chiffr-text-soft);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .soon-note strong {
+      color: var(--chiffr-copper-dark);
     }
 
     /* ===== Chantier type (récit terrain) ===== */

@@ -35,8 +35,8 @@ const metierItems = [
   { label: 'PAC air/air', detail: 'Clim réversible & multisplit', href: '/logiciel-devis-pac-air-air' },
   { label: 'Entretien clim', detail: 'Contrats & visites annuelles', href: '/logiciel-devis-entretien-climatisation' },
   { label: 'Rénovation énergétique', detail: 'Devis multi-postes', href: '/logiciel-devis-renovation-energetique' },
-  { label: 'Plombier-chauffagiste', detail: 'Chauffage, sanitaire & PAC', href: '/logiciel-devis-plombier-chauffagiste' },
-  { label: 'Électricien', detail: 'Tableau, rénovation & IRVE', href: '/logiciel-devis-electricien' },
+  { label: 'Plombier-chauffagiste', detail: 'Chauffage, sanitaire & PAC', href: '/logiciel-devis-plombier-chauffagiste', soon: true },
+  { label: 'Électricien', detail: 'Tableau, rénovation & IRVE', href: '/logiciel-devis-electricien', soon: true },
 ];
 
 const resourceItems = [
@@ -273,6 +273,21 @@ const isLegalPath = legalPaths.some(
         gap: 2px;
       }
 
+      .ch-soon {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 7px;
+        padding: 2px 7px;
+        border-radius: 999px;
+        background: var(--chiffr-copper);
+        color: #fff;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        vertical-align: middle;
+      }
+
       .ch-nav-panel.ressources {
         width: 280px;
         display: grid;
@@ -473,6 +488,7 @@ const isLegalPath = legalPaths.some(
       .ch-mobile-link {
         display: flex;
         align-items: center;
+        gap: 7px;
         min-height: 46px;
         padding: 6px 14px;
         border-radius: 11px;
@@ -481,6 +497,21 @@ const isLegalPath = legalPaths.some(
         color: var(--chiffr-text);
         font-size: 14px;
         font-weight: 550;
+      }
+
+      .ch-soon {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 7px;
+        padding: 2px 7px;
+        border-radius: 999px;
+        background: var(--chiffr-copper);
+        color: #fff;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        vertical-align: middle;
       }
 
       .ch-mobile-link.active {
@@ -732,7 +763,7 @@ const isLegalPath = legalPaths.some(
             <div class="ch-nav-panel metiers">
               {metierItems.map((item) => (
                 <a href={item.href} class:list={[{ active: isActive(item.href) }]}>
-                  <strong>{item.label}</strong>
+                  <strong>{item.label}{item.soon && <span class="ch-soon">Bientôt</span>}</strong>
                   <small>{item.detail}</small>
                 </a>
               ))}
@@ -805,7 +836,7 @@ const isLegalPath = legalPaths.some(
             <div class="ch-mobile-grid">
               {metierItems.map((item) => (
                 <a href={item.href} class:list={['ch-mobile-link', { active: isActive(item.href) }]}>
-                  {item.label}
+                  {item.label}{item.soon && <span class="ch-soon">Bientôt</span>}
                 </a>
               ))}
             </div>
