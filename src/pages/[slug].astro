@@ -130,7 +130,7 @@ const breadcrumbSchema = model
     canonicalPath={`/${model.slug}`}
     schema={[faqSchema, breadcrumbSchema].filter(Boolean)}
   >
-    <style is:inline>
+    <style is:global>
       .quote-model-page,
       .quote-model-page * {
         box-sizing: border-box;
@@ -1140,26 +1140,6 @@ const breadcrumbSchema = model
       </section>
     </div>
 
-    <script is:inline>
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const items = document.querySelectorAll('.reveal, .reveal-card');
-
-      if (reduce) {
-        items.forEach((item) => item.classList.add('visible'));
-      } else {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            });
-          },
-          { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
-        );
-
-        items.forEach((item) => observer.observe(item));
-      }
-    </script>
+    {/* Reveal géré globalement par l'observer de BaseLayout (.reveal/.reveal-card). */}
   </BaseLayout>
 )}
