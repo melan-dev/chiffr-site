@@ -49,6 +49,25 @@ export function getStaticPaths() {
 
 const { pageType, model, alternative, useCasePage, seoGuide } = Astro.props;
 
+// SEO Lot 1 : rattacher l'exemple de devis PDF (rendu réel de l'app) au modèle,
+// quand un PDF métier correspond. Aimant à liens + preuve produit.
+const MODEL_PDF: Record<string, string> = {
+  'modele-devis-pac-air-eau': 'pac',
+  'modele-devis-remplacement-chaudiere-pac': 'pac',
+  'modele-devis-mise-en-service-pac-clim': 'pac',
+  'modele-devis-clim-monosplit': 'climatisation',
+  'modele-devis-clim-multisplit': 'climatisation',
+  'modele-devis-entretien-climatisation': 'climatisation',
+  'modele-devis-chauffe-eau-thermodynamique': 'chauffe-eau-thermodynamique',
+  'modele-devis-vmc-simple-flux': 'vmc',
+  'modele-devis-vmc-double-flux': 'vmc',
+  'modele-devis-borne-recharge-7kw': 'irve',
+  'modele-devis-borne-recharge-22kw': 'irve',
+  'modele-devis-photovoltaique-autoconsommation': 'photovoltaique',
+  'modele-devis-desembouage-chauffage': 'chauffagiste',
+};
+const examplePdf = model && MODEL_PDF[model.slug] ? `/exemples/devis-${MODEL_PDF[model.slug]}.pdf` : null;
+
 const faqSchema = model
   ? {
       '@context': 'https://schema.org',
@@ -816,8 +835,12 @@ const breadcrumbSchema = model
             <p class="qm-lead">{model.intro}</p>
 
             <div class="qm-actions">
-              <a href="/contact" class="qm-btn primary">Demander un accès</a>
-              <a href="/modeles-devis" class="qm-btn secondary">Voir les modèles de devis</a>
+              <a href="https://chiffr.web.app" class="qm-btn primary">Essayer gratuitement</a>
+              {examplePdf ? (
+                <a href={examplePdf} download class="qm-btn secondary">Télécharger l’exemple (PDF)</a>
+              ) : (
+                <a href="/modeles-devis" class="qm-btn secondary">Voir les modèles de devis</a>
+              )}
             </div>
 
             <div class="qm-checks">

@@ -31,3 +31,4 @@ pnpm-debug.log*
 # garde-fou : la prospection vit dans ../chiffr-prospection, jamais dans ce repo
 prospection/
 
+.claude/settings.local.json

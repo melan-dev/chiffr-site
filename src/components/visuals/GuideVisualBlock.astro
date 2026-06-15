@@ -1,5 +1,6 @@
 ---
 import { pageVisuals } from '../../data/visualAssets';
+import { imgDims } from '../../data/imageDimensions';
 
 interface Props {
   title?: string;
@@ -17,7 +18,7 @@ const visual = pageVisuals[variant] ?? pageVisuals.guides;
 ---
 
 <section class="guide-visual-block">
-  <img src={visual.src} alt={visual.alt} width="1600" height="900" loading="lazy" decoding="async" />
+  <img src={visual.src} alt={visual.alt} {...imgDims(visual.src)} loading="lazy" decoding="async" />
 
   <div>
     <p>Guide Chiffr</p>

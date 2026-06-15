@@ -1,5 +1,6 @@
 ---
 import { featureVisuals } from '../../data/visualAssets';
+import { imgDims } from '../../data/imageDimensions';
 
 const items = [
   {
@@ -41,8 +42,7 @@ const items = [
       <img
         src={item.image.src}
         alt={item.image.alt}
-        width="1400"
-        height="933"
+        {...imgDims(item.image.src)}
         loading="lazy"
         decoding="async"
       />

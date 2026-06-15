@@ -217,8 +217,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -418,8 +418,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -602,8 +602,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -785,8 +785,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -968,8 +968,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -1151,8 +1151,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -1334,8 +1334,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -1509,8 +1509,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -1684,8 +1684,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -1867,8 +1867,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -2041,8 +2041,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -2224,8 +2224,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [
@@ -2407,8 +2407,8 @@ export const quoteModels: QuoteModelPage[] = [
         "href": "/alternatives-logiciels-devis-batiment"
       },
       {
-        "label": "Demander un accès",
-        "href": "/contact"
+        "label": "Essayer gratuitement",
+        "href": "https://chiffr.web.app"
       }
     ],
     "faqs": [

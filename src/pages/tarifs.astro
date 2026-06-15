@@ -2,10 +2,11 @@
 import PagePhotoShowcase from '../components/visuals/PagePhotoShowcase.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SignatureProofBadge from '../components/SignatureProofBadge.astro';
+import { APP_URL, CTA_TRUST } from '../config';
 
 const title = 'Tarifs Chiffr | Logiciel devis facture artisans énergie';
 const description =
-  'Tarifs Chiffr pour artisans énergie : devis, factures, signature électronique, acompte, photos chantier et suivi client, avec offres Découverte, Solo, Pro et Équipe.';
+  'Tarifs Chiffr pour artisans énergie : Découverte 0 €, Solo, Pro, Équipe. Devis, signature, acompte et factures — gratuit pour commencer, sans carte bancaire, sans engagement.';
 
 const plans = [
   {
@@ -17,7 +18,7 @@ const plans = [
     period: 'HT/mois',
     intro: 'Pour découvrir Chiffr et créer ses premiers devis sans risque.',
     bestFor: 'Découvrir Chiffr sans engagement',
-    cta: 'Demander un accès',
+    cta: 'Essayer gratuitement',
     recommended: false,
     highlights: ['3 devis / mois', '3 factures / mois', 'PDF premium', 'Signature électronique téléphone'],
     included: [
@@ -48,7 +49,7 @@ const plans = [
     period: 'HT/mois',
     intro: 'Pour un artisan seul qui veut remplacer Word, Excel ou un outil trop basique.',
     bestFor: 'Créer devis et factures sans limite',
-    cta: 'Demander un accès',
+    cta: 'Essayer gratuitement',
     recommended: false,
     highlights: ['Devis illimités', 'Factures illimitées', 'Catalogue illimité', 'Photos chantier'],
     included: [
@@ -80,9 +81,9 @@ const plans = [
     annual: '39 €',
     monthly: '49 €',
     period: 'HT/mois',
-    intro: 'Pour gérer le cycle complet : devis, signature électronique, acompte, facture et relance.',
+    intro: 'Pour passer du devis au règlement : signature à distance, acompte en ligne, relances. La vraie promesse Chiffr : faire signer, encaisser.',
     bestFor: 'Passer du devis au règlement',
-    cta: 'Demander un accès',
+    cta: 'Essayer gratuitement',
     recommended: true,
     highlights: ['Signature électronique à distance', 'Acompte Stripe', 'Relances client', 'Import catalogue IA'],
     included: [
@@ -112,7 +113,7 @@ const plans = [
     period: 'HT/mois',
     intro: 'Pour une petite société avec bureau, terrain, plusieurs personnes et suivi avancé.',
     bestFor: 'Organiser bureau + terrain',
-    cta: 'Demander un accès',
+    cta: 'Essayer gratuitement',
     recommended: false,
     highlights: ['3 utilisateurs', 'Chantiers', 'Rentabilité', 'Exports comptables'],
     included: [
@@ -1486,8 +1487,8 @@ const faqSchema = {
           <h1>Des offres simples, pensées pour les artisans énergie</h1>
 
           <p class="pricing-lead">
-            Demandez un accès, puis choisissez l’offre adaptée à votre façon de travailler :
-            créer des devis, faire signer, demander un acompte, facturer et suivre vos clients.
+            Commencez gratuitement, payez quand ça vous sert vraiment : créer des devis, faire
+            signer, encaisser l’acompte, facturer. Sans carte bancaire, sans engagement.
           </p>
 
           <div class="pricing-proof">
@@ -1507,9 +1508,11 @@ const faqSchema = {
           </div>
 
           <div class="pricing-actions">
-            <a href="/contact" class="pricing-btn pricing-btn-primary">Demander un accès</a>
+            <a href={APP_URL} class="pricing-btn pricing-btn-primary">Essayer gratuitement</a>
             <a href="#comparatif" class="pricing-btn pricing-btn-secondary">Comparer les offres</a>
           </div>
+
+          <p class="cta-trust">{CTA_TRUST}</p>
         </div>
 
         <aside class="pricing-card pricing-reveal" aria-label="Offre sélectionnée">
@@ -1637,7 +1640,7 @@ const faqSchema = {
               </div>
 
               <a
-                href="/contact"
+                href="https://chiffr.web.app"
                 class={`pricing-btn pricing-btn-full ${plan.recommended ? 'pricing-btn-primary' : 'pricing-btn-secondary'}`}
               >
                 {plan.cta}
@@ -1820,13 +1823,14 @@ const faqSchema = {
 
     <section class="pricing-cta">
       <div class="pricing-shell pricing-narrow pricing-reveal">
-        <p class="pricing-kicker">Demander un accès</p>
+        <p class="pricing-kicker">Essayer gratuitement</p>
         <h2>L’app métier qui prépare vos devis avec les bonnes lignes dès le départ.</h2>
         <p>
           PAC, climatisation, chauffage, CVC, VMC, IRVE ou solaire : Chiffr aide à passer
           du devis au règlement avec une interface simple et un dossier client propre.
         </p>
-        <a href="/contact" class="pricing-btn pricing-btn-primary">Demander un accès</a>
+        <a href={APP_URL} class="pricing-btn pricing-btn-primary">Essayer gratuitement</a>
+        <p class="cta-trust">{CTA_TRUST}</p>
       </div>
     </section>
   </div>

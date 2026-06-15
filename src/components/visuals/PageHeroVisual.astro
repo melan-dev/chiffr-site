@@ -1,5 +1,6 @@
 ---
 import { getVisualStoryByPath } from '../../data/visualAssets';
+import { imgDims } from '../../data/imageDimensions';
 
 interface Props {
   currentPath?: string;
@@ -37,8 +38,7 @@ const finalImageAlt = imageAlt ?? story.hero.alt;
   <img
     src={finalImageSrc}
     alt={finalImageAlt}
-    width="1800"
-    height="1200"
+    {...imgDims(finalImageSrc)}
     loading="lazy"
     decoding="async"
   />

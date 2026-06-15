@@ -171,6 +171,40 @@ const faqSchema = {
       line-height: 1.7;
     }
 
+    .alt-hub-soon {
+      display: block;
+      max-width: 780px;
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--chiffr-copper-soft);
+      border: 1px solid color-mix(in srgb, var(--chiffr-copper) 22%, transparent);
+      color: var(--chiffr-text);
+      font-size: 15px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .alt-hub-soon-tag {
+      display: inline-block;
+      margin-right: 8px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--chiffr-copper);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    .alt-hub-soon a {
+      color: var(--chiffr-copper-dark);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
     .alt-hub-actions {
       margin-top: 30px;
       display: flex;
@@ -660,6 +694,12 @@ const faqSchema = {
             devis, signature, acompte, factures, relances et suivi client pour artisans énergie.
           </p>
 
+          <p class="alt-hub-soon">
+            <span class="alt-hub-soon-tag">Bientôt</span>
+            Une version <strong>Chiffr Bâtiment</strong> élargie (rénovation, multi‑corps d’état) est en
+            préparation. <a href="/contact">Être prévenu au lancement →</a>
+          </p>
+
           <div class="alt-hub-actions">
             <a href="#alternatives" class="alt-hub-btn primary">Voir les alternatives</a>
             <a href="/modeles-devis" class="alt-hub-btn secondary">Voir les modèles de devis</a>
@@ -939,7 +979,7 @@ const faqSchema = {
           générer un PDF premium, faire signer, demander un acompte, facturer et relancer sans perdre le fil.
         </p>
 
-        <a href="/contact" class="alt-hub-btn primary">Demander un accès</a>
+        <a href="https://chiffr.web.app" class="alt-hub-btn primary">Essayer gratuitement</a>
       </div>
     </section>
 

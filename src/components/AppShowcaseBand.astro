@@ -3,6 +3,8 @@
  * Bandeau navy "section sombre produit" : copy + vrai screenshot app + CTA.
  * Factorisé pour les pages guides, alternatives et modèles de devis.
  */
+import { APP_URL, CTA_TRUST } from '../config';
+
 interface Props {
   kicker?: string;
   title: string;
@@ -13,7 +15,7 @@ interface Props {
 }
 
 const {
-  kicker = 'Demander un accès',
+  kicker = 'Essayer gratuitement',
   title,
   text,
   image = '/images/app/app-suivi-desktop.webp',
@@ -46,9 +48,11 @@ const {
         </ul>
 
         <div class="asb-actions">
-          <a class="asb-btn light" href="/contact">Demander un accès</a>
+          <a class="asb-btn light" href={APP_URL}>Essayer gratuitement</a>
           <a class="asb-btn ghost" href="/fonctionnalites">Voir les fonctionnalités</a>
         </div>
+
+        <p class="cta-trust on-dark">{CTA_TRUST}</p>
       </div>
 
       <figure class="asb-shot">

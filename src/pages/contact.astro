@@ -1,12 +1,13 @@
 ---
 import PagePhotoShowcase from '../components/visuals/PagePhotoShowcase.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { APP_URL } from '../config';
 
 const contactEmail = 'melan@livdapps.com';
 
-const title = 'Demander un accès Chiffr | Contact artisans énergie';
+const title = 'Contact Chiffr | Parler à un expert du devis énergie';
 const description =
-  'Demandez un accès à Chiffr : logiciel devis, factures, modèles métier, signature, acompte et suivi client pour artisans PAC, clim, chauffage, CVC, VMC, IRVE et solaire.';
+  'Une question, une démo, un cas particulier ? Parlez à quelqu’un qui connaît le devis énergie (PAC, clim, chauffage, CVC, VMC, IRVE, solaire). Réponse sous 24 h, sans spam.';
 
 const trades = [
   'Pompe à chaleur / PAC',
@@ -83,9 +84,9 @@ const quickLinks = [
 ];
 
 const reassuranceItems = [
-  'Pas de démonstration générique : parlez-nous de vos devis réels.',
-  'Pas de prix inventés : vous gardez vos tarifs et vos marges.',
-  'Pas d’outil lourd : Chiffr vise une app métier puissante mais simple.',
+  'Réponse sous 24 h ouvrées — pas de démarchage agressif.',
+  'On ne vous piste pas : contact par e-mail direct, zéro tracking.',
+  'On parle PAC et acompte, pas « synergies » et « onboarding ».',
 ];
 
 const faqs = [
@@ -277,6 +278,20 @@ const faqSchema = {
       transform: translateY(-2px);
     }
 
+    .access-self-serve {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 16px;
+      color: var(--teal);
+      font-size: 15px;
+      font-weight: 650;
+    }
+
+    .access-self-serve:hover {
+      gap: 11px;
+    }
+
     .access-proof {
       margin-top: 26px;
       display: grid;
@@ -361,6 +376,28 @@ const faqSchema = {
       margin-top: 24px;
       display: grid;
       gap: 16px;
+    }
+
+    /* Formulaire progressif (audit conversion) : 2 champs visibles, le reste
+       se déplie à la 1re interaction. Sans JS, tout reste visible. */
+    .form-step-hint {
+      margin: 0;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .access-form.is-expanded .form-step-hint {
+      display: none;
+    }
+
+    .form-rest {
+      display: grid;
+      gap: 16px;
+    }
+
+    .access-form.is-progressive:not(.is-expanded) .form-rest {
+      display: none;
     }
 
     .form-row {
@@ -765,22 +802,27 @@ const faqSchema = {
     <section class="access-hero">
       <div class="access-shell access-grid">
         <div class="reveal">
-          <p class="access-pill">Demander un accès Chiffr</p>
+          <p class="access-pill">Parler à un expert métier</p>
 
-          <h1>Parlez-nous de vos devis. On vous répond métier, pas logiciel générique.</h1>
+          <h1>Parlez-nous de vos devis. On répond énergie, pas logiciel générique.</h1>
 
           <p class="access-lead">
-            Vous êtes artisan PAC, clim, chauffage, CVC, VMC, IRVE ou solaire ?
-            Dites-nous ce que vous voulez améliorer : modèles métier, photos chantier,
-            signature, acompte, factures ou relances client.
+            Une question, une démo, un cas particulier (équipe, migration de vos modèles) ?
+            Vous êtes artisan PAC, clim, chauffage, CVC, VMC, IRVE ou solaire : dites-nous ce
+            que vous voulez améliorer, on vous répond sous 24 h ouvrées, sans spam.
           </p>
 
           <div class="access-actions">
-            <a class="access-btn primary" href="#demande-acces">Remplir la demande</a>
-            <a class="access-btn secondary" href={`mailto:${contactEmail}?subject=Demande%20d%27acc%C3%A8s%20Chiffr`}>
+            <a class="access-btn primary" href="#demande-acces">Poser ma question</a>
+            <a class="access-btn secondary" href={`mailto:${contactEmail}?subject=Question%20Chiffr`}>
               Écrire directement
             </a>
           </div>
+
+          <a class="access-self-serve" href={APP_URL}>
+            Pressé ? Essayez Chiffr gratuitement tout de suite
+            <span aria-hidden="true">→</span>
+          </a>
 
           <div class="access-proof">
             {reassuranceItems.map((item) => <span>{item}</span>)}
@@ -788,40 +830,29 @@ const faqSchema = {
         </div>
 
         <aside id="demande-acces" class="access-form-card reveal" aria-label="Formulaire de demande d’accès Chiffr">
-          <p class="form-badge">Accès Chiffr</p>
-          <h2>Demander un accès</h2>
+          <p class="form-badge">Votre demande</p>
+          <h2>Parlez-nous de votre activité</h2>
           <p>
             Le formulaire prépare un email complet. Vous gardez la main avant l’envoi :
-            il s’ouvrira dans votre application mail.
+            il s’ouvrira dans votre application mail. Aucune donnée n’est envoyée sans vous.
           </p>
 
-          <form class="access-form" data-access-form>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="name">Nom *</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Votre nom"
-                  autocomplete="name"
-                  required
-                />
-              </div>
-
-              <div class="form-field">
-                <label for="company">Entreprise</label>
-                <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  placeholder="Nom de votre entreprise"
-                  autocomplete="organization"
-                />
-              </div>
-            </div>
+          <form class="access-form" data-access-form data-progressive>
+            <p class="form-step-hint" data-step-hint>
+              2 champs pour commencer — le reste se déplie ensuite.
+            </p>
 
             <div class="form-row">
+              <div class="form-field">
+                <label for="trade">Votre métier *</label>
+                <select id="trade" name="trade" required>
+                  <option value="">Choisir un métier</option>
+                  {trades.map((trade) => (
+                    <option value={trade}>{trade}</option>
+                  ))}
+                </select>
+              </div>
+
               <div class="form-field">
                 <label for="email">Email *</label>
                 <input
@@ -833,60 +864,76 @@ const faqSchema = {
                   required
                 />
               </div>
-
-              <div class="form-field">
-                <label for="phone">Téléphone</label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  placeholder="06..."
-                  autocomplete="tel"
-                />
-              </div>
             </div>
 
-            <div class="form-row">
-              <div class="form-field">
-                <label for="trade">Métier principal *</label>
-                <select id="trade" name="trade" required>
-                  <option value="">Choisir un métier</option>
-                  {trades.map((trade) => (
-                    <option value={trade}>{trade}</option>
+            <div class="form-rest" data-form-rest>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name">Nom</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Votre nom"
+                    autocomplete="name"
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label for="company">Entreprise</label>
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    placeholder="Nom de votre entreprise"
+                    autocomplete="organization"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="phone">Téléphone</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="06..."
+                    autocomplete="tel"
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label for="priority">Priorité principale</label>
+                  <select id="priority" name="priority">
+                    <option value="">Choisir une priorité</option>
+                    {priorities.map((priority) => (
+                      <option value={priority}>{priority}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <p class="need-label">Ce que vous voulez améliorer</p>
+                <div class="need-grid">
+                  {priorities.slice(0, 6).map((need) => (
+                    <label class="need-chip">
+                      <input type="checkbox" name="needs" value={need} />
+                      <span>{need}</span>
+                    </label>
                   ))}
-                </select>
+                </div>
               </div>
 
               <div class="form-field">
-                <label for="priority">Priorité principale</label>
-                <select id="priority" name="priority">
-                  <option value="">Choisir une priorité</option>
-                  {priorities.map((priority) => (
-                    <option value={priority}>{priority}</option>
-                  ))}
-                </select>
+                <label for="message">Votre besoin</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Ex : je fais surtout des devis PAC air/eau, je veux des modèles plus rapides, des photos chantier dans le PDF, la facture d’acompte et les relances..."
+                ></textarea>
               </div>
-            </div>
-
-            <div>
-              <p class="need-label">Ce que vous voulez améliorer</p>
-              <div class="need-grid">
-                {priorities.slice(0, 6).map((need) => (
-                  <label class="need-chip">
-                    <input type="checkbox" name="needs" value={need} />
-                    <span>{need}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label for="message">Votre besoin</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Ex : je fais surtout des devis PAC air/eau, je veux des modèles plus rapides, des photos chantier dans le PDF, la facture d’acompte et les relances..."
-              ></textarea>
             </div>
 
             <p class="form-feedback" data-form-feedback>
@@ -1045,6 +1092,20 @@ const faqSchema = {
   <script is:inline>
     const accessForm = document.querySelector('[data-access-form]');
     const formFeedback = document.querySelector('[data-form-feedback]');
+
+    // Formulaire progressif : JS actif → on masque le reste jusqu'à la 1re
+    // interaction (focus/saisie sur métier ou email). Sans JS, tout reste visible.
+    if (accessForm && accessForm.hasAttribute('data-progressive')) {
+      accessForm.classList.add('is-progressive');
+      const expand = () => accessForm.classList.add('is-expanded');
+      ['#trade', '#email'].forEach((sel) => {
+        const el = accessForm.querySelector(sel);
+        if (!el) return;
+        el.addEventListener('focus', expand, { once: true });
+        el.addEventListener('input', expand, { once: true });
+        el.addEventListener('change', expand, { once: true });
+      });
+    }
 
     accessForm?.addEventListener('submit', (event) => {
       event.preventDefault();

@@ -1,5 +1,6 @@
 ---
 import { tradeVisuals } from '../../data/visualAssets';
+import { imgDims } from '../../data/imageDimensions';
 
 const trades = [
   ['pac', 'PAC', '/logiciel-devis-pompe-a-chaleur'],
@@ -17,7 +18,7 @@ const trades = [
     const visual = tradeVisuals[key];
     return (
       <a href={href} class="trade-photo-premium-card">
-        <img src={visual.hero.src} alt={visual.hero.alt} width="1400" height="933" loading="lazy" decoding="async" />
+        <img src={visual.hero.src} alt={visual.hero.alt} {...imgDims(visual.hero.src)} loading="lazy" decoding="async" />
         <strong>{label}</strong>
         <span>{visual.eyebrow}</span>
       </a>

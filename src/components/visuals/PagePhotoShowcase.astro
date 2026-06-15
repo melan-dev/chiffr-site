@@ -1,5 +1,5 @@
 ---
-import { featureVisuals, pageVisuals } from '../../data/visualAssets';
+import { imgDims } from '../../data/imageDimensions';
 
 interface Props {
   variant?: string;
@@ -25,25 +25,35 @@ const {
   reversed = false,
 } = Astro.props;
 
-const pageMap = pageVisuals as Record<string, { src: string; alt: string }>;
-const featureMap = featureVisuals as Record<string, { src: string; alt: string }>;
+// Vitrine produit = vrai screenshot net de l'app, encadré navigateur
+// (plus de composite IA avec écran muddy). Un écran réel par variante.
+const APP_SHOTS: Record<string, { src: string; alt: string }> = {
+  modeles: { src: '/images/app/app-devis-desktop.webp', alt: 'Liste des devis dans Chiffr : statuts, montants et relances' },
+  guides: { src: '/images/app/app-accueil-desktop.webp', alt: 'Accueil Chiffr : priorités du jour et suivi commercial' },
+  tarifs: { src: '/images/app/app-suivi-desktop.webp', alt: 'Suivi commercial Chiffr : devis, signatures, acomptes et factures' },
+  contact: { src: '/images/app/app-clients-desktop.webp', alt: 'Fiches clients Chiffr : dossiers, devis et historique' },
+  alternatives: { src: '/images/app/app-devis-desktop.webp', alt: 'Liste des devis Chiffr : un outil pensé pour le chantier' },
+  dashboard: { src: '/images/app/app-suivi-desktop.webp', alt: 'Tableau de suivi Chiffr : ce qu’il reste à signer, facturer et encaisser' },
+};
 
-const selectedVisual =
+const shot =
   imageSrc && imageAlt
     ? { src: imageSrc, alt: imageAlt }
-    : pageMap[variant] ?? featureMap[variant] ?? pageVisuals.guides;
+    : APP_SHOTS[variant] ?? APP_SHOTS.guides;
 ---
 
 <article class:list={['page-photo-showcase', { reversed }]}>
   <div class="page-photo-showcase-image">
-    <img
-      src={selectedVisual.src}
-      alt={selectedVisual.alt}
-      width="1600"
-      height="900"
-      loading="lazy"
-      decoding="async"
-    />
+    <figure class="pps-shot">
+      <span class="pps-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+      <img
+        src={shot.src}
+        alt={shot.alt}
+        {...imgDims(shot.src)}
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
   </div>
 
   <div class="page-photo-showcase-copy">
@@ -75,31 +85,50 @@ const selectedVisual =
 
   .page-photo-showcase-image {
     position: relative;
-    min-height: 320px;
-    overflow: hidden;
-    background: var(--teal);
-  }
-
-  .page-photo-showcase-image::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: clamp(22px, 3vw, 40px);
     background:
-      linear-gradient(180deg, rgba(8, 29, 28, 0.02), rgba(8, 29, 28, 0.18));
-    pointer-events: none;
+      radial-gradient(120% 120% at 80% 0%, rgba(6, 72, 80, 0.1), transparent 60%),
+      linear-gradient(160deg, var(--chiffr-bg-warm), #FFFFFF);
   }
 
-  .page-photo-showcase-image img {
+  .pps-shot {
+    margin: 0;
     width: 100%;
-    height: 100%;
-    min-height: 320px;
-    display: block;
-    object-fit: cover;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid var(--chiffr-border);
+    background: var(--chiffr-surface);
+    box-shadow: 0 36px 80px -30px rgba(12, 20, 32, 0.45);
     transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .page-photo-showcase:hover .page-photo-showcase-image img {
-    transform: scale(1.025);
+  .page-photo-showcase:hover .pps-shot {
+    transform: translateY(-4px);
+  }
+
+  .pps-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 14px;
+    height: 34px;
+    background: linear-gradient(180deg, #18222F, var(--chiffr-navy-soft));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .pps-bar i {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .pps-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .page-photo-showcase-copy {
@@ -159,26 +188,16 @@ const selectedVisual =
     .page-photo-showcase.reversed .page-photo-showcase-image {
       order: 2;
     }
-
-    .page-photo-showcase-image,
-    .page-photo-showcase-image img {
-      min-height: 440px;
-    }
   }
 
   @media (max-width: 720px) {
     .page-photo-showcase {
       border-radius: 20px;
     }
-
-    .page-photo-showcase-image,
-    .page-photo-showcase-image img {
-      min-height: 280px;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .page-photo-showcase-image img {
+    .pps-shot {
       transition-duration: 0.001ms !important;
     }
   }

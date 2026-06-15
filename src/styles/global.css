@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @import "@fontsource-variable/inter";
-@import "@fontsource-variable/lora";
+@import "@fontsource-variable/playfair-display";
 
 /****** Chiffr theme tokens — site marketing + app premium ******/
 :root {
@@ -47,7 +47,8 @@
   --chiffr-danger-soft: #FCE3E1;
 
   /* Typographies */
-  --font-display: "Lora Variable", Lora, Georgia, "Times New Roman", serif;
+  --font-display: "Playfair Display Variable", "Playfair Display", Georgia,
+    "Times New Roman", serif;
   --font-sans: "Inter Variable", Inter, ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
 
@@ -117,4 +118,126 @@ a {
 ::selection {
   background: var(--copper-soft);
   color: var(--teal);
+}
+
+/* ===== Cuivre co-lead — propagation site (DA premium) =========================
+   Les kickers / eyebrows de section passent en cuivre (signature chaude
+   « atelier »). Le teal reste réservé à l'action (CTA, liens). !important pour
+   surcharger les couleurs scopées par composant. (.hp-kicker est géré dans la
+   home, avec sa variante .light sur fond sombre.) ============================ */
+.kicker,
+.features-kicker,
+.qm-kicker,
+.alt-kicker,
+.alt-hub-kicker,
+.guide-kicker,
+.guides-kicker,
+.usecase-kicker,
+.pricing-kicker,
+.models-kicker,
+.access-kicker,
+.asb-kicker,
+.pdf-kicker,
+.related-models-kicker {
+  color: var(--chiffr-copper) !important;
+}
+
+/* ===== Cuivre co-lead — puces ✓ (signature DA, « pas vertes ») ===============
+   Les coches des listes marketing (réassurance, preuves, inclus, comparatif,
+   tags d'offre) passent en cuivre = signature « artisan ». Les statuts de
+   maquette d'app (.app-status, .status, .models-status) et les montants de
+   facture restent VERTS : ils imitent l'UI réelle du produit. ================ */
+.alt-hub-proof span::before,
+.alt-proof span::before,
+.checks span::before,
+.features-proof span::before,
+.guide-proof span::before,
+.guides-proof span::before,
+.models-proof span::before,
+.pricing-card-tags span::before,
+.pricing-included li::before,
+.pricing-proof span::before,
+.qm-checks span::before,
+.usecase-proof span::before {
+  color: var(--chiffr-copper) !important;
+}
+
+/* Comparatif tarifs : ✓ cuivre (cf. DA §11) ; le ✗ reste neutre. */
+.pricing-check-yes {
+  background: var(--chiffr-copper) !important;
+}
+
+/* ===== Focus visible — accessibilité clavier + DA §17 (anneau teal) =========
+   Aucun focus-visible n'existait : navigation clavier invisible. Anneau teal
+   (= action), uniquement au clavier (pas au clic souris). ==================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+details:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--chiffr-teal);
+  outline-offset: 2px;
+}
+
+/* ===== Conversion (audit UX) — contrat de friction + preuves factuelles =====
+   .cta-trust  = micro-ligne sous un CTA primaire (« gratuit · sans CB · 2 min »)
+   .trust-bandeau = liste horizontale de preuves factuelles (UE · RGPD · Stripe…)
+   Variante .on-dark pour les fonds navy. ==================================== */
+.cta-trust {
+  margin: 12px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--chiffr-text-soft);
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.45;
+}
+
+.cta-trust::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--chiffr-copper);
+}
+
+.cta-trust.on-dark {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.trust-bandeau {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px 22px;
+}
+
+.trust-bandeau li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--chiffr-text-soft);
+  font-size: 13.5px;
+  font-weight: 550;
+}
+
+.trust-bandeau li::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--chiffr-copper);
+}
+
+.trust-bandeau.on-dark li {
+  color: rgba(255, 255, 255, 0.74);
 }

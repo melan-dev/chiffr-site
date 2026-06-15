@@ -1,5 +1,6 @@
 ---
 import { featureVisuals } from '../../data/visualAssets';
+import { imgDims } from '../../data/imageDimensions';
 
 interface Props {
   variant?: keyof typeof featureVisuals;
@@ -21,7 +22,7 @@ const visual = featureVisuals[variant] ?? featureVisuals.photosChantier;
 ---
 
 <section class="feature-photo-band">
-  <img src={visual.src} alt={visual.alt} width="1400" height="933" loading="lazy" decoding="async" />
+  <img src={visual.src} alt={visual.alt} {...imgDims(visual.src)} loading="lazy" decoding="async" />
 
   <div>
     <p>{eyebrow}</p>

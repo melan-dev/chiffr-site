@@ -38,7 +38,7 @@ const defaultRelatedLinks: UseCaseAlternativeLink[] = [
   { label: 'Logiciel devis pompe à chaleur', href: '/logiciel-devis-pompe-a-chaleur' },
   { label: 'Logiciel devis climatisation', href: '/logiciel-devis-climatisation' },
   { label: 'Logiciel devis IRVE', href: '/logiciel-devis-irve' },
-  { label: 'Demander un accès', href: '/contact' },
+  { label: 'Essayer gratuitement', href: '/contact' },
 ];
 
 const defaultEnergyUseCases = [

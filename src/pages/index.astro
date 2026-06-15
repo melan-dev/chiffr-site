@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { APP_URL, CTA_PRIMARY, CTA_TRUST, TRUST_POINTS } from '../config';
 
 const title = 'Logiciel devis facture pour artisans énergie | Chiffr';
 const description =
-  'Chiffr aide les artisans énergie à créer devis, factures, signatures, acomptes et PDF premium avec des modèles métier PAC, clim, CVC, VMC, IRVE et solaire.';
+  'Chiffr : le devis énergie du rendez-vous à l’encaissement. Modèles métier PAC, clim, chauffage, VMC, IRVE, solaire — signature, acompte et facture dans un seul dossier client.';
 
 const benefits = [
   {
@@ -91,6 +92,35 @@ const cockpitPoints = [
   'Statistiques et rentabilité',
 ];
 
+// Frise « le cycle » (DA §7) : devis → signature → acompte → facture → suivi.
+const cycleSteps = [
+  {
+    label: 'Devis',
+    sub: 'Modèle métier prêt',
+    icon: '<svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 12h5M9.5 15.5h5"/></svg>',
+  },
+  {
+    label: 'Signature',
+    sub: 'Validation client',
+    icon: '<svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M5 16 14.5 6.5a2 2 0 0 1 3 3L8 19l-4 1z"/></svg>',
+  },
+  {
+    label: 'Acompte',
+    sub: 'Encaissé à la commande',
+    icon: '<svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>',
+  },
+  {
+    label: 'Facture',
+    sub: 'Solde et finale',
+    icon: '<svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h4"/></svg>',
+  },
+  {
+    label: 'Suivi',
+    sub: 'Relances & reste à encaisser',
+    icon: '<svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="m4 15 4-4 3 3 5-6 4 4"/></svg>',
+  },
+];
+
 const productViews = [
   {
     eyebrow: 'Accueil',
@@ -155,24 +185,32 @@ const guideLinks = [
 
 const faqs = [
   [
-    'Chiffr est-il seulement pour les installateurs de PAC ?',
-    'Non. Chiffr est pensé pour les artisans énergie : PAC, climatisation, chauffage, CVC, VMC, IRVE, photovoltaïque et chauffe-eau thermodynamique.',
+    'C’est encore un logiciel compliqué ?',
+    'Non. On part d’un modèle de votre métier, vous adaptez les lignes, vous envoyez. Le premier devis prend quelques minutes, pas une formation.',
   ],
   [
-    'Quelle est la différence avec un logiciel généraliste ?',
-    'Chiffr ne vous donne pas une page blanche. Il prépare des modèles, des lignes et des actions selon le métier choisi.',
+    'C’est vraiment fait pour mon métier ?',
+    'Oui : PAC, climatisation, chauffage, CVC, VMC, IRVE, solaire et chauffe-eau thermodynamique ont leurs modèles et leurs lignes typiques (dépose, raccordements, mise en service…).',
   ],
   [
-    'Peut-on gérer les photos chantier ?',
-    'Oui. Vous pouvez rattacher les photos importantes au dossier : plaque machine, accès chantier, tableau électrique, emplacement ou croquis.',
+    'Je peux essayer sans m’engager ?',
+    'Oui. Compte gratuit, sans carte bancaire, sans engagement. Vous payez seulement si l’outil vous sert vraiment.',
   ],
   [
-    'Chiffr gère-t-il les acomptes et les factures ?',
-    'Oui. Chiffr est conçu pour suivre le cycle complet : devis, signature électronique, acompte, facture d’acompte, facture de solde, facture finale et relance.',
+    'Je vais perdre du temps à tout migrer ?',
+    'Vous reprenez vos prix et vos modèles. On ne vous fait pas tout recommencer : vous adaptez ce qui existe déjà.',
   ],
   [
-    'Chiffr est-il prêt pour la réforme de la facturation électronique ?',
-    'Chiffr est pensé pour préparer la transition 2026–2027 : factures mieux structurées, données client plus propres, acompte, solde, suivi et future connexion aux plateformes agréées.',
+    'Chiffr gère-t-il l’acompte et les factures ?',
+    'Oui : devis, signature, acompte, facture d’acompte, de solde, finale et relances — tout reste dans le même dossier client.',
+  ],
+  [
+    'Et mes données ?',
+    'Hébergées en France, conformes au RGPD. Le contact se fait par e-mail direct, sans tracking.',
+  ],
+  [
+    'Et la réforme de la facturation électronique ?',
+    'Chiffr structure dès aujourd’hui vos factures et vos données pour aborder la transition 2026–2027 sans précipitation, sans changer d’outil au dernier moment.',
   ],
 ];
 
@@ -203,18 +241,17 @@ const faqSchema = {
         </a>
 
         <h1>
-          Le logiciel de devis pensé pour les
-          <em>artisans énergie</em> exigeants
+          Le devis énergie, <em>du rendez-vous à l’encaissement</em>.
         </h1>
 
         <p class="hp-hero-lead">
-          Chiffr vous aide à créer des devis professionnels, gagner du temps
-          sur le terrain et développer votre activité.
+          Modèles PAC, clim, chauffage, VMC, IRVE, solaire : chaque devis part
+          avec les bonnes lignes, les photos chantier et le dossier client.
         </p>
 
         <div class="hp-hero-actions">
-          <a class="hp-btn primary" href="/contact">
-            Demander un accès gratuit
+          <a class="hp-btn primary" href={APP_URL}>
+            {CTA_PRIMARY}
             <span aria-hidden="true">→</span>
           </a>
           <a class="hp-btn secondary" href="#produit">
@@ -224,6 +261,8 @@ const faqSchema = {
             Voir le logiciel en action
           </a>
         </div>
+
+        <p class="cta-trust">{CTA_TRUST}</p>
 
         <ul class="hp-hero-checks">
           <li>Devis ultra rapides</li>
@@ -272,7 +311,20 @@ const faqSchema = {
             decoding="async"
           />
         </figure>
+
+        <span class="hp-annot" aria-hidden="true">
+          <span class="hp-annot-pill"><i></i>Prochaine action</span>
+          <span class="hp-annot-line"></span>
+          <span class="hp-annot-ring"></span>
+        </span>
       </div>
+    </div>
+
+    <!-- Bandeau de confiance (audit conversion) — preuves factuelles -->
+    <div class="hp-shell">
+      <ul class="trust-bandeau hp-trust-bandeau">
+        {TRUST_POINTS.map((point) => <li>{point}</li>)}
+      </ul>
     </div>
   </section>
 
@@ -315,12 +367,63 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- ============ E-facturation (pourquoi maintenant) ============ -->
+  <section class="hp-section hp-reform-section" id="facturation-electronique">
+    <div class="hp-shell">
+      <div class="hp-reform-card reveal">
+        <div class="hp-reform-copy">
+          <p class="hp-kicker">Réforme 2026–2027 · Pourquoi maintenant</p>
+          <h2>La facturation électronique arrive. Prenez de l’avance pendant que c’est simple.</h2>
+          <p>
+            Réception des factures dès 2026, émission pour les TPE/PME en 2027 : en structurant
+            dès aujourd’hui vos devis, factures, acomptes et données client, vous abordez la
+            transition sans précipitation — et sans changer d’outil au dernier moment.
+          </p>
+          <div class="hp-reform-tags">
+            <span>Réception dès 2026</span>
+            <span>Émission TPE/PME dès 2027</span>
+            <span>Données client mieux rangées</span>
+          </div>
+
+          <div class="hp-reform-actions">
+            <a class="hp-btn primary hp-reform-cta" href={APP_URL}>
+              Prendre de l’avance maintenant
+              <span aria-hidden="true">→</span>
+            </a>
+            <a class="hp-reform-guide" href="/facturation-electronique-2026-artisan">
+              Comprendre la réforme 2026
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hp-reform-points">
+          <article>
+            <b>01</b>
+            <strong>Factures mieux structurées</strong>
+            <span>Devis, acompte, solde et facture finale restent reliés au dossier client.</span>
+          </article>
+          <article>
+            <b>02</b>
+            <strong>Mentions à préparer</strong>
+            <span>SIREN client, adresse, opération, paiement : les informations clés sont plus faciles à suivre.</span>
+          </article>
+          <article>
+            <b>03</b>
+            <strong>Transition plus simple</strong>
+            <span>Chiffr est pensé pour accompagner la future connexion aux plateformes agréées.</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ Cockpit (section sombre) ============ -->
   <section class="hp-cockpit">
     <div class="hp-shell hp-cockpit-grid">
       <div class="hp-cockpit-copy reveal">
         <p class="hp-kicker light">Tout au même endroit</p>
-        <h2>Un cockpit clair pour piloter votre activité</h2>
+        <h2>Vous savez toujours où en est chaque chantier</h2>
         <p class="hp-cockpit-sub">
           Du premier rendez-vous à la facture finale, Chiffr garde votre activité lisible :
           vous savez toujours où en est chaque dossier.
@@ -366,6 +469,30 @@ const faqSchema = {
           />
         </figure>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ Le cycle ============ -->
+  <section class="hp-section hp-cycle" aria-label="Le cycle complet dans Chiffr">
+    <div class="hp-shell">
+      <div class="hp-section-head reveal">
+        <p class="hp-kicker">Le cycle complet</p>
+        <h2>Du devis à l’encaissement, un seul fil</h2>
+        <p class="hp-section-sub">
+          Chaque étape reste reliée au même dossier client : rien ne se perd entre le
+          terrain et le bureau.
+        </p>
+      </div>
+
+      <ol class="hp-cycle-flow reveal">
+        {cycleSteps.map((step) => (
+          <li class="hp-cycle-step">
+            <span class="hp-cycle-icon" aria-hidden="true" set:html={step.icon} />
+            <strong>{step.label}</strong>
+            <small>{step.sub}</small>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
@@ -418,46 +545,6 @@ const faqSchema = {
           </figure>
         </article>
       ))}
-    </div>
-  </section>
-
-  <!-- ============ E-facturation ============ -->
-  <section class="hp-section hp-reform-section" id="facturation-electronique">
-    <div class="hp-shell">
-      <div class="hp-reform-card reveal">
-        <div class="hp-reform-copy">
-          <p class="hp-kicker">Réforme 2026–2027</p>
-          <h2>Préparez la facturation électronique sans attendre le dernier moment</h2>
-          <p>
-            Chiffr vous aide à structurer vos clients, vos factures, vos acomptes, vos signatures
-            et vos informations de dossier pour aborder plus sereinement la transition vers la
-            facturation électronique.
-          </p>
-          <div class="hp-reform-tags">
-            <span>Réception dès 2026</span>
-            <span>Émission TPE/PME dès 2027</span>
-            <span>Données client mieux rangées</span>
-          </div>
-        </div>
-
-        <div class="hp-reform-points">
-          <article>
-            <b>01</b>
-            <strong>Factures mieux structurées</strong>
-            <span>Devis, acompte, solde et facture finale restent reliés au dossier client.</span>
-          </article>
-          <article>
-            <b>02</b>
-            <strong>Mentions à préparer</strong>
-            <span>SIREN client, adresse, opération, paiement : les informations clés sont plus faciles à suivre.</span>
-          </article>
-          <article>
-            <b>03</b>
-            <strong>Transition plus simple</strong>
-            <span>Chiffr est pensé pour accompagner la future connexion aux plateformes agréées.</span>
-          </article>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -517,21 +604,23 @@ const faqSchema = {
   <section class="hp-final">
     <div class="hp-shell">
       <div class="hp-final-card reveal">
-        <h2>Prêt à simplifier vos devis et votre suivi client ?</h2>
+        <h2>Votre prochain devis énergie commence ici</h2>
         <p>
-          Modèles métier prêts à adapter, PDF premium, signature électronique,
-          acomptes, factures et relances : tout est déjà en place.
+          Modèles métier prêts à adapter, photos chantier, signature, acompte,
+          factures et relances : tout est déjà en place. Vous adaptez, vous envoyez.
         </p>
 
         <div class="hp-hero-actions centered">
-          <a class="hp-btn light" href="/contact">
-            Demander un accès
+          <a class="hp-btn light" href={APP_URL}>
+            {CTA_PRIMARY}
             <span aria-hidden="true">→</span>
           </a>
           <a class="hp-btn ghost" href="/fonctionnalites">
             Voir les fonctionnalités
           </a>
         </div>
+
+        <p class="cta-trust on-dark hp-final-trust">{CTA_TRUST}</p>
       </div>
     </div>
   </section>
@@ -562,7 +651,7 @@ const faqSchema = {
     /* ===== Typo commune ===== */
     .hp-kicker {
       margin: 0;
-      color: var(--chiffr-teal);
+      color: var(--chiffr-copper);
       font-size: 13px;
       line-height: 1;
       font-weight: 650;
@@ -571,7 +660,7 @@ const faqSchema = {
     }
 
     .hp-kicker.light {
-      color: #9FC4C2;
+      color: #DBA47C;
     }
 
     .hp-section-head {
@@ -686,9 +775,10 @@ const faqSchema = {
 
     /* ===== Hero ===== */
     .hp-hero {
-      padding: 72px 0 96px;
+      padding: 64px 0 56px;
       background:
         radial-gradient(900px 420px at 82% -10%, rgba(6, 72, 80, 0.07), transparent 70%),
+        radial-gradient(680px 360px at 12% 8%, rgba(185, 97, 52, 0.05), transparent 70%),
         linear-gradient(180deg, var(--chiffr-bg-warm), var(--chiffr-bg));
     }
 
@@ -790,7 +880,7 @@ const faqSchema = {
     .hp-hero-checks li::before {
       content: "✓";
       margin-right: 8px;
-      color: var(--chiffr-success);
+      color: var(--chiffr-copper);
       font-weight: 700;
     }
 
@@ -798,6 +888,101 @@ const faqSchema = {
     .hp-hero-visual {
       position: relative;
       padding: 44px 30px 0;
+    }
+
+    /* Annotation cuivre « montrer, pas décrire » (DA §8/§13) : callout posé
+       sur la capture du laptop, pointant l'action à faire. */
+    .hp-annot {
+      position: absolute;
+      top: 62px;
+      right: 124px;
+      z-index: 4;
+      display: grid;
+      justify-items: center;
+      pointer-events: none;
+    }
+
+    .hp-annot-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px 8px 11px;
+      border-radius: 999px;
+      background: var(--chiffr-copper);
+      color: #FFFFFF;
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 14px 30px -10px rgba(185, 97, 52, 0.65);
+    }
+
+    .hp-annot-pill i {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+    }
+
+    .hp-annot-line {
+      width: 2px;
+      height: 26px;
+      margin-top: 4px;
+      background: linear-gradient(var(--chiffr-copper), rgba(185, 97, 52, 0.15));
+    }
+
+    .hp-annot-ring {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid var(--chiffr-copper);
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 0 4px rgba(185, 97, 52, 0.18);
+    }
+
+    @media (max-width: 900px) {
+      .hp-annot {
+        display: none;
+      }
+    }
+
+    .hp-trust-bandeau {
+      margin-top: 30px;
+      justify-content: center;
+    }
+
+    .hp-final-trust {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .hp-reform-actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 24px;
+    }
+
+    .hp-reform-guide {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--teal);
+      font-size: 15px;
+      font-weight: 650;
+    }
+
+    .hp-reform-guide:hover {
+      gap: 11px;
+    }
+
+    @media (max-width: 760px) {
+      .hp-trust-bandeau {
+        margin-top: 22px;
+        justify-content: flex-start;
+      }
     }
 
     .hp-stage {
@@ -980,10 +1165,12 @@ const faqSchema = {
 
     .hp-trade-card:hover {
       transform: translateY(-3px);
-      border-color: var(--chiffr-border-strong);
+      border-color: var(--chiffr-copper);
       box-shadow: 0 22px 44px -18px rgba(12, 20, 32, 0.24);
     }
 
+    /* Icône métier = accent cuivre (signature « chaude / artisan » de la DA ;
+       le teal reste réservé à l'action). */
     .hp-trade-icon {
       display: inline-grid;
       place-items: center;
@@ -991,8 +1178,8 @@ const faqSchema = {
       height: 46px;
       margin-bottom: 12px;
       border-radius: 13px;
-      background: var(--chiffr-teal-soft);
-      color: var(--chiffr-teal);
+      background: var(--chiffr-copper-soft);
+      color: var(--chiffr-copper);
     }
 
     .hp-trade-icon svg {
@@ -1015,6 +1202,80 @@ const faqSchema = {
       color: var(--chiffr-text-soft);
       font-size: 13px;
       font-weight: 450;
+    }
+
+    /* ===== Frise du cycle (DA §7) ===== */
+    .hp-cycle-flow {
+      list-style: none;
+      margin: 38px 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .hp-cycle-step {
+      position: relative;
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      gap: 8px;
+      padding: 0 6px;
+    }
+
+    .hp-cycle-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      top: 15px;
+      right: -7px;
+      color: var(--chiffr-copper);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .hp-cycle-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: var(--chiffr-copper-soft);
+      color: var(--chiffr-copper);
+      border: 1px solid color-mix(in srgb, var(--chiffr-copper) 20%, transparent);
+    }
+
+    .hp-cycle-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .hp-cycle-step strong {
+      color: var(--chiffr-text);
+      font-size: 16px;
+      font-weight: 650;
+    }
+
+    .hp-cycle-step small {
+      color: var(--chiffr-text-soft);
+      font-size: 12.5px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 760px) {
+      .hp-cycle-flow {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 10px;
+      }
+
+      .hp-cycle-step:not(:last-child)::after {
+        display: none;
+      }
     }
 
     /* ===== Cockpit ===== */
@@ -1300,10 +1561,10 @@ const faqSchema = {
       width: 34px;
       height: 34px;
       border-radius: 10px;
-      background: var(--chiffr-navy);
-      color: #FFFFFF;
+      background: var(--chiffr-copper-soft);
+      color: var(--chiffr-copper-dark);
       font-size: 12.5px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .hp-reform-points strong {

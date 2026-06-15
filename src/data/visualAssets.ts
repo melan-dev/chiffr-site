@@ -20,7 +20,7 @@ export type VisualStory = {
 const img = (path: string) => path;
 
 const ui = {
-  homeTablettePac: img('/images/chiffr-ui/ui-home-tablette-pac.webp'),
+  homeTablettePac: img('/images/features/photos-chantier/photo-unite-exterieure.webp'),
   guidesTabletteAtelier: img('/images/chiffr-ui/ui-guides-tablette-atelier.webp'),
   tarifsLaptopBureau: img('/images/chiffr-ui/ui-tarifs-laptop-bureau.webp'),
   signatureClientTablette: img('/images/chiffr-ui/ui-signature-client-tablette.webp'),
@@ -40,7 +40,7 @@ export const tradeVisuals: Record<string, VisualStory> = {
       'Photos chantier, plaque machine, lignes de devis, signature, acompte et facture restent reliés au même client.',
     hero: {
       src: ui.homeTablettePac,
-      alt: 'Technicienne énergie présentant Chiffr sur tablette devant une pompe à chaleur',
+      alt: 'Technicien installant une pompe à chaleur devant une maison',
     },
     ctaLabel: 'Voir les pages PAC',
     ctaHref: '/logiciel-devis-pompe-a-chaleur',
