@@ -41,3 +41,6 @@ public/video/voiceover.mp3
 public/video/_align.json
 public/video/samples/
 public/video/_raw/
+
+# tooling local marketing (référence ../chiffr-prospection)
+tools/
