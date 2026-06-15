@@ -32,3 +32,12 @@ pnpm-debug.log*
 prospection/
 
 .claude/settings.local.json
+
+# artefacts de build vidéo (gardés en local, jamais déployés) ; le .mp4 + poster, eux, sont versionnés
+video-build.mjs
+tts-variants.cjs
+public/_video.html
+public/video/voiceover.mp3
+public/video/_align.json
+public/video/samples/
+public/video/_raw/
