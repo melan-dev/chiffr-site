@@ -8,6 +8,11 @@ export const APP_URL = "https://chiffr.web.app";
 // Libellé du CTA principal (action d'accès au produit).
 export const CTA_PRIMARY = "Essayer gratuitement";
 
+// Téléchargement de l'application de bureau Windows (vrai installeur .exe Electron,
+// hébergé sur le hosting de l'app — Cloudflare Pages bloque les fichiers > 25 Mo).
+// Nom de fichier sans version → le lien reste stable entre les mises à jour.
+export const DOWNLOAD_URL = `${APP_URL}/Chiffr-Setup.exe`;
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Conversion (audit UX) : contrat de friction + preuves factuelles.
 // L'app étant en self-serve, chaque CTA primaire annonce sa friction réelle.

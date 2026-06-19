@@ -1,5 +1,5 @@
 ---
-import { APP_URL, CTA_PRIMARY, CTA_TRUST_SHORT } from '../config';
+import { APP_URL, DOWNLOAD_URL, CTA_PRIMARY, CTA_TRUST_SHORT } from '../config';
 import '../styles/global.css';
 import '../styles/compact.css';
 import '../styles/responsive.css';
@@ -344,34 +344,33 @@ const isLegalPath = legalPaths.some(
         box-shadow: 0 14px 30px rgba(4, 56, 64, 0.45);
       }
 
-      /* Bouton secondaire « Installer l'app » (à gauche du CTA principal). */
+      /* Lien discret « Télécharger l'app » : action secondaire (téléchargement de
+         l'installeur Windows .exe). Volontairement effacé — pas de bouton plein,
+         pas de bordure — pour ne pas concurrencer le CTA principal. */
       .ch-header-install {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        gap: 7px;
+        gap: 6px;
         flex: none;
         min-height: 44px;
-        padding: 0 16px;
-        margin-right: 10px;
-        border-radius: 11px;
-        background: rgba(255, 255, 255, 0.55);
-        color: #0C1420;
-        font-size: 14px;
-        font-weight: 600;
+        padding: 0 6px;
+        margin-right: 6px;
+        background: transparent;
+        color: var(--chiffr-ink-soft, #51606e);
+        font-size: 13.5px;
+        font-weight: 500;
         white-space: nowrap;
-        border: 1px solid rgba(12, 20, 32, 0.14);
-        transition: background 160ms ease, border-color 160ms ease;
+        border: none;
+        transition: color 160ms ease;
       }
 
       .ch-header-install svg {
-        width: 16px;
-        height: 16px;
+        width: 15px;
+        height: 15px;
+        opacity: 0.8;
       }
 
       .ch-header-install:hover {
-        background: #FFFFFF;
-        border-color: var(--chiffr-teal, #075058);
         color: var(--chiffr-teal-dark, #043840);
       }
 
@@ -823,17 +822,17 @@ const isLegalPath = legalPaths.some(
         </nav>
 
         <a
-          href={`${APP_URL}/?install=1`}
+          href={DOWNLOAD_URL}
           class="ch-header-install"
-          data-install-app
-          aria-label="Installer l'application Chiffr"
+          aria-label="Télécharger l'application Chiffr pour Windows"
+          download
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 3v12" />
             <path d="m7 11 5 5 5-5" />
             <path d="M5 21h14" />
           </svg>
-          Installer l'app
+          Télécharger l'app
         </a>
 
         <a href={APP_URL} class="ch-header-cta">{CTA_PRIMARY}</a>
