@@ -344,6 +344,37 @@ const isLegalPath = legalPaths.some(
         box-shadow: 0 14px 30px rgba(4, 56, 64, 0.45);
       }
 
+      /* Bouton secondaire « Installer l'app » (à gauche du CTA principal). */
+      .ch-header-install {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        flex: none;
+        min-height: 44px;
+        padding: 0 16px;
+        margin-right: 10px;
+        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.55);
+        color: #0C1420;
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+        border: 1px solid rgba(12, 20, 32, 0.14);
+        transition: background 160ms ease, border-color 160ms ease;
+      }
+
+      .ch-header-install svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .ch-header-install:hover {
+        background: #FFFFFF;
+        border-color: var(--chiffr-teal, #075058);
+        color: var(--chiffr-teal-dark, #043840);
+      }
+
       .ch-menu-button {
         display: none;
       }
@@ -361,7 +392,8 @@ const isLegalPath = legalPaths.some(
         }
 
         .ch-nav,
-        .ch-header-cta {
+        .ch-header-cta,
+        .ch-header-install {
           display: none;
         }
 
@@ -789,6 +821,20 @@ const isLegalPath = legalPaths.some(
             </div>
           </details>
         </nav>
+
+        <a
+          href={APP_URL}
+          class="ch-header-install"
+          data-install-app
+          aria-label="Installer l'application Chiffr"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12" />
+            <path d="m7 11 5 5 5-5" />
+            <path d="M5 21h14" />
+          </svg>
+          Installer l'app
+        </a>
 
         <a href={APP_URL} class="ch-header-cta">{CTA_PRIMARY}</a>
 

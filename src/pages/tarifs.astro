@@ -15,7 +15,7 @@ const plans = [
     badge: 'Accès découverte',
     annual: '0 €',
     monthly: '0 €',
-    period: 'HT/mois',
+    period: '/mois',
     intro: 'Pour découvrir Chiffr et créer ses premiers devis sans risque.',
     bestFor: 'Découvrir Chiffr sans engagement',
     cta: 'Essayer gratuitement',
@@ -46,7 +46,7 @@ const plans = [
     badge: 'Artisan seul',
     annual: '19 €',
     monthly: '24 €',
-    period: 'HT/mois',
+    period: '/mois',
     intro: 'Pour un artisan seul qui veut remplacer Word, Excel ou un outil trop basique.',
     bestFor: 'Créer devis et factures sans limite',
     cta: 'Essayer gratuitement',
@@ -80,7 +80,7 @@ const plans = [
     badge: 'Recommandé',
     annual: '39 €',
     monthly: '49 €',
-    period: 'HT/mois',
+    period: '/mois',
     intro: 'Pour passer du devis au règlement : signature à distance, acompte en ligne, relances. La vraie promesse Chiffr : faire signer, encaisser.',
     bestFor: 'Passer du devis au règlement',
     cta: 'Essayer gratuitement',
@@ -110,7 +110,7 @@ const plans = [
     badge: 'TPE énergie',
     annual: '69 €',
     monthly: '89 €',
-    period: 'HT/mois',
+    period: '/mois',
     intro: 'Pour une petite société avec bureau, terrain, plusieurs personnes et suivi avancé.',
     bestFor: 'Organiser bureau + terrain',
     cta: 'Essayer gratuitement',
@@ -133,7 +133,7 @@ const plans = [
       'Support prioritaire renforcé',
     ],
     notes: [
-      'Utilisateur supplémentaire : 9 € HT/mois',
+      'Utilisateur supplémentaire : 9 €/mois',
       'Pack IA supplémentaire selon usage',
     ],
   },
@@ -345,6 +345,15 @@ const faqSchema = {
       color: #5F6673;
       font-size: 18px;
       line-height: 1.62;
+    }
+
+    .pricing-vat-note {
+      margin: 22px auto 0;
+      max-width: 640px;
+      text-align: center;
+      color: #8A92A0;
+      font-size: 13.5px;
+      line-height: 1.5;
     }
 
     .pricing-proof {
@@ -1494,7 +1503,7 @@ const faqSchema = {
           <div class="pricing-proof">
             <span>Accès découverte</span>
             <span>Sans engagement</span>
-            <span>Prix HT clairs</span>
+            <span>Prix clairs, tout compris</span>
             <span>Offre Pro recommandée</span>
             <span>Réforme 2026–2027</span>
           </div>
@@ -1524,7 +1533,7 @@ const faqSchema = {
 
             <div class="pricing-card-price">
               <strong data-advisor-price>39 €</strong>
-              <small>HT/mois</small>
+              <small>/mois</small>
             </div>
           </div>
 
@@ -1674,6 +1683,7 @@ const faqSchema = {
             </article>
           ))}
         </div>
+        <p class="pricing-vat-note">Prix nets, à payer tels quels. TVA non applicable, art. 293 B du CGI.</p>
       </div>
     </section>
 
