@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { APP_URL, DOWNLOAD_URL } from '../config';
+
+const title = 'Télécharger Chiffr pour Windows | Application de bureau';
+const description =
+  'Téléchargez l’application de bureau Chiffr pour Windows : devis, factures, signature et suivi dans une fenêtre dédiée, toujours à jour. Gratuit pour commencer.';
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/telecharger">
+  <section class="dl">
+    <div class="dl-shell">
+      <p class="dl-eyebrow">Application de bureau · Windows</p>
+      <h1 class="dl-title">Chiffr, comme un vrai logiciel sur votre PC</h1>
+      <p class="dl-sub">
+        L’application complète dans sa propre fenêtre : devis, factures, signature, acomptes et suivi.
+        Elle se lance depuis votre bureau et reste <strong>toujours à jour</strong>, sans rien réinstaller.
+      </p>
+
+      <a class="dl-btn" href={DOWNLOAD_URL} download>
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12" />
+          <path d="m7 11 5 5 5-5" />
+          <path d="M5 21h14" />
+        </svg>
+        Télécharger pour Windows
+      </a>
+      <p class="dl-meta">Installeur .exe · Windows 10 et 11 · ~78 Mo</p>
+
+      <!-- Note rassurante : l'installeur n'est pas (encore) signé numériquement,
+           Windows SmartScreen affiche donc un avertissement « éditeur inconnu ».
+           On explique les 2 clics pour passer, sans inquiéter l'artisan. -->
+      <div class="dl-note" role="note">
+        <div class="dl-note-head">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 9v4" /><path d="M12 17h.01" />
+            <path d="M10.3 3.6 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.6a2 2 0 0 0-3.4 0Z" />
+          </svg>
+          <strong>Windows peut afficher un avertissement bleu — c’est normal</strong>
+        </div>
+        <p class="dl-note-text">
+          Comme beaucoup de logiciels d’éditeurs indépendants, Chiffr n’est pas encore signé numériquement.
+          Windows affiche alors « <em>Windows a protégé votre ordinateur</em> ». Le fichier provient bien de Chiffr,
+          vous pouvez continuer en toute sécurité :
+        </p>
+        <ol class="dl-steps">
+          <li>Cliquez sur <strong>« Informations complémentaires »</strong></li>
+          <li>Puis sur <strong>« Exécuter quand même »</strong></li>
+        </ol>
+        <p class="dl-note-foot">L’avertissement n’apparaît qu’une seule fois, à la première installation.</p>
+      </div>
+
+      <ul class="dl-trust">
+        <li>Gratuit pour commencer</li>
+        <li>Données hébergées en France</li>
+        <li>Toujours la dernière version</li>
+      </ul>
+
+      <p class="dl-alt">
+        Pas sous Windows, ou vous préférez sans installer ?
+        <a href={APP_URL}>Ouvrir Chiffr dans votre navigateur →</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .dl {
+    display: flex;
+    justify-content: center;
+    padding: clamp(48px, 9vw, 104px) 20px clamp(64px, 10vw, 120px);
+    background:
+      radial-gradient(120% 120% at 50% -10%, var(--chiffr-surface-warm, #FBF8F1) 0%, var(--chiffr-bg, #FAF8F2) 60%);
+  }
+
+  .dl-shell {
+    width: min(720px, 100%);
+    text-align: center;
+  }
+
+  .dl-eyebrow {
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--chiffr-teal-dark, #043840);
+  }
+
+  .dl-title {
+    margin: 0 0 16px;
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.12;
+    font-weight: 700;
+    color: var(--chiffr-text, #0C1420);
+  }
+
+  .dl-sub {
+    margin: 0 auto 32px;
+    max-width: 560px;
+    font-size: clamp(15px, 2.4vw, 17px);
+    line-height: 1.55;
+    color: var(--chiffr-text-soft, #51606e);
+  }
+
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 56px;
+    padding: 0 30px;
+    border-radius: 14px;
+    background: linear-gradient(160deg, #075058, var(--chiffr-teal-dark, #043840));
+    color: #fff;
+    font-size: 16.5px;
+    font-weight: 650;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 30px rgba(4, 56, 64, 0.32);
+    transition: filter 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+
+  .dl-btn:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 18px 38px rgba(4, 56, 64, 0.42);
+    transform: translateY(-1px);
+  }
+
+  .dl-btn svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .dl-meta {
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: var(--chiffr-text-muted, #7a8694);
+  }
+
+  .dl-note {
+    margin: 40px auto 0;
+    max-width: 560px;
+    text-align: left;
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: var(--chiffr-warning-soft, #FBF1DD);
+    border: 1px solid color-mix(in srgb, var(--chiffr-warning, #B8842B) 28%, transparent);
+  }
+
+  .dl-note-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--chiffr-warning, #8a5a12);
+    font-size: 15px;
+  }
+
+  .dl-note-head svg {
+    width: 20px;
+    height: 20px;
+    flex: none;
+  }
+
+  .dl-note-text {
+    margin: 12px 0 10px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--chiffr-text, #2c3742);
+  }
+
+  .dl-steps {
+    margin: 0;
+    padding-left: 22px;
+    display: grid;
+    gap: 6px;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--chiffr-text, #2c3742);
+  }
+
+  .dl-note-foot {
+    margin: 12px 0 0;
+    font-size: 13px;
+    color: var(--chiffr-text-muted, #7a8694);
+  }
+
+  .dl-trust {
+    margin: 30px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 22px;
+    font-size: 13.5px;
+    color: var(--chiffr-text-soft, #51606e);
+  }
+
+  .dl-trust li {
+    position: relative;
+    padding-left: 18px;
+  }
+
+  .dl-trust li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    background: var(--chiffr-teal, #075058);
+  }
+
+  .dl-alt {
+    margin: 34px 0 0;
+    font-size: 14px;
+    color: var(--chiffr-text-soft, #51606e);
+  }
+
+  .dl-alt a {
+    color: var(--chiffr-teal-dark, #043840);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .dl-alt a:hover {
+    text-decoration: underline;
+  }
+</style>
