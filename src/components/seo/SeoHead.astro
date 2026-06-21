@@ -18,7 +18,10 @@ const {
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL('https://chiffr-devis.fr');
-const canonicalUrl = new URL(canonicalPath, siteUrl).toString().replace(/\/$/, '');
+// Canonical AVEC slash final (Cloudflare Pages sert les pages en /page/ et
+// redirige /page → /page/ en 308). Sans slash, le canonical pointait vers une
+// URL qui redirige → « Erreur liée à des redirections » dans Search Console.
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString().replace(/\/+$/, '') + '/';
 const absoluteOgImage = new URL(ogImage, siteUrl).toString();
 const toAbsoluteSiteUrl = (value: string) => new URL(value, siteUrl).toString();
 
