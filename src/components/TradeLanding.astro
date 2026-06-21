@@ -138,6 +138,37 @@ const faqSchema = {
   })),
 };
 
+// Fil d'Ariane (BreadcrumbList) : Accueil → page métier. Les URLs relatives sont
+// absolutisées par SeoHead. On garde le slash final (cohérent avec le canonical).
+const trailPath = `/${canonicalPath.replace(/^\/+|\/+$/g, '')}/`;
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: '/' },
+    { '@type': 'ListItem', position: 2, name: pill, item: trailPath },
+  ],
+};
+
+// Entité produit (SoftwareApplication) — données VÉRIDIQUES uniquement : offre
+// gratuite + plans 19→89 € HT/mois (aucune note/avis inventé, pas d'aggregateRating).
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Chiffr',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, Android, iOS, Windows',
+  url: '/',
+  description,
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'EUR',
+    lowPrice: '0',
+    highPrice: '89',
+    offerCount: '4',
+  },
+};
+
 const visualStory = getVisualStoryByPath(canonicalPath);
 
 // Accent subtil par métier (DA §10/§146) : nuance constante, dérivée du
@@ -211,10 +242,15 @@ if (metierTerm) {
 }
 ---
 
-<BaseLayout title={title} description={description} canonicalPath={canonicalPath} schema={faqSchema}>
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} schema={[faqSchema, breadcrumbSchema, softwareSchema]}>
   <section class="hero trade-hero-simple" style={`--metier-accent: ${metierAccent}`}>
     <div class="shell hero-grid trade-hero-simple-grid">
       <div class="hero-copy reveal">
+        <nav class="trade-crumb" aria-label="Fil d'Ariane" style="display:flex;gap:8px;align-items:center;font-size:12.5px;color:#6E6A62;margin-bottom:14px;flex-wrap:wrap;">
+          <a href="/" style="color:#6E6A62;text-decoration:none;">Accueil</a>
+          <span aria-hidden="true" style="color:#B7AE9E;">›</span>
+          <span style="color:#3A4A4D;">{pill}</span>
+        </nav>
         <p class="pill">
           {pill}
           {comingSoon && <span class="soon-badge">Bientôt</span>}

@@ -261,9 +261,27 @@ const faqSchema = {
     },
   })),
 };
+
+// Entité de marque (Organization) + site (WebSite) — données véridiques.
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Chiffr',
+  url: '/',
+  logo: 'https://chiffr-devis.fr/favicon.png',
+  description:
+    'Logiciel de devis et factures conçu pour les artisans de l’énergie (PAC, climatisation, chauffage, CVC, photovoltaïque, IRVE, VMC).',
+  sameAs: ['https://chiffr.web.app'],
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Chiffr',
+  url: '/',
+};
 ---
 
-<BaseLayout title={title} description={description} canonicalPath="/" schema={faqSchema}>
+<BaseLayout title={title} description={description} canonicalPath="/" schema={[faqSchema, organizationSchema, websiteSchema]}>
   <!-- ============ Hero ============ -->
   <section class="hp-hero">
     <div class="hp-shell hp-hero-grid">

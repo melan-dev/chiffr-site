@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { APP_URL } from '../config';
+
+const title = 'Page introuvable (404) | Chiffr';
+const description =
+  'Cette page n’existe pas ou a été déplacée. Retrouvez Chiffr : logiciels de devis et factures par métier, modèles, guides et tarifs.';
+
+// Liens utiles vers les pôles du site (réduit le rebond + aide le crawl).
+const links = [
+  { href: '/', label: 'Accueil', detail: 'Le logiciel de devis des artisans énergie' },
+  { href: '/fonctionnalites/', label: 'Fonctionnalités', detail: 'Devis, factures, signature, acomptes' },
+  { href: '/tarifs/', label: 'Tarifs', detail: 'Gratuit pour commencer · 19 à 89 € HT/mois' },
+  { href: '/modeles-devis/', label: 'Modèles de devis', detail: 'Exemples par métier (PAC, clim, CVC…)' },
+  { href: '/guides-devis-artisans-energie/', label: 'Guides', detail: 'Bien faire ses devis et factures' },
+  { href: '/logiciel-devis-pompe-a-chaleur/', label: 'Devis pompe à chaleur', detail: 'PAC air/eau, air/air' },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/404">
+  <section class="nf">
+    <div class="nf-shell">
+      <p class="nf-code">404</p>
+      <h1 class="nf-title">Cette page n’existe pas (ou a déménagé)</h1>
+      <p class="nf-sub">
+        Le lien est peut-être ancien ou mal recopié. Voici par où continuer — ou
+        <a href={APP_URL}>essayer Chiffr gratuitement</a>.
+      </p>
+
+      <div class="nf-grid">
+        {links.map((l) => (
+          <a class="nf-card" href={l.href}>
+            <strong>{l.label}</strong>
+            <small>{l.detail}</small>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf {
+    display: flex;
+    justify-content: center;
+    padding: clamp(48px, 9vw, 100px) 20px clamp(56px, 9vw, 104px);
+    background: radial-gradient(120% 120% at 50% -10%, var(--chiffr-surface-warm, #FBF8F1) 0%, var(--chiffr-bg, #FAF8F2) 60%);
+  }
+  .nf-shell { width: min(760px, 100%); text-align: center; }
+  .nf-code {
+    margin: 0 0 6px; font-size: clamp(40px, 8vw, 64px); font-weight: 700; line-height: 1;
+    color: var(--chiffr-teal-dark, #043840);
+  }
+  .nf-title {
+    margin: 0 0 12px; font-size: clamp(24px, 4.5vw, 34px); line-height: 1.15; font-weight: 700;
+    color: var(--chiffr-text, #0C1420);
+  }
+  .nf-sub {
+    margin: 0 auto 32px; max-width: 540px; font-size: clamp(14px, 2.4vw, 16px); line-height: 1.55;
+    color: var(--chiffr-text-soft, #51606e);
+  }
+  .nf-sub a { color: var(--chiffr-teal-dark, #043840); font-weight: 600; }
+  .nf-grid {
+    display: grid; gap: 12px; text-align: left;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .nf-card {
+    display: flex; flex-direction: column; gap: 3px;
+    padding: 14px 16px; border-radius: 13px; text-decoration: none;
+    background: #fff; border: 0.5px solid var(--chiffr-border, #E8E1D5);
+    transition: border-color 160ms ease, transform 160ms ease;
+  }
+  .nf-card:hover { border-color: var(--chiffr-teal, #075058); transform: translateY(-1px); }
+  .nf-card strong { font-size: 15px; font-weight: 600; color: var(--chiffr-text, #0C1420); }
+  .nf-card small { font-size: 12.5px; color: var(--chiffr-text-muted, #7a8694); }
+</style>
